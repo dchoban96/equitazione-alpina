@@ -1,4 +1,4 @@
-# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
+# Testo scritto su fonti e sui contenuti gia presenti nel sito (vedi FONTI.md). Illustrazioni ancora di prova.
 slug: "pastore-del-lagorai/galleria"
 title: "Galleria cani"
 section: "pastore-del-lagorai"
@@ -15,7 +15,7 @@ blocks:
     kicker: "Galleria"
     title: "Galleria cani"
     intro: |
-      Testo di prova. I cani al lavoro, in ogni stagione.
+      I cani al lavoro e a riposo, in ogni stagione.
     image: "../../../assets/pastore-del-lagorai/mockup-pastore-gregge.jpg"
     imageAlt: "Illustrazione di prova: un cane da pastore accanto a un gregge"
   - type: "gallery"

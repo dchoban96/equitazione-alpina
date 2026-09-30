@@ -1,4 +1,4 @@
-# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
+# Testo scritto su fonti e sui contenuti gia presenti nel sito (vedi FONTI.md). Illustrazioni ancora di prova.
 slug: "equitazione/galleria"
 title: "Galleria equitazione"
 section: "equitazione"
@@ -15,7 +15,7 @@ blocks:
     kicker: "Galleria"
     title: "Galleria equitazione"
     intro: |
-      Testo di prova. Un anno al recinto e sui sentieri, dalle Orobie alla Valmalenco.
+      Un anno al recinto e sui sentieri, dalle Orobie alla Valmalenco.
     image: "../../../assets/equitazione/mockup-tramonto-conduzione.jpg"
     imageAlt: "Illustrazione di prova: una persona conduce un cavallo al tramonto"
   - type: "gallery"

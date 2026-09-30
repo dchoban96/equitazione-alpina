@@ -1,4 +1,4 @@
-# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
+# Testo scritto su fonti e sui contenuti gia presenti nel sito (vedi FONTI.md). Illustrazioni ancora di prova.
 slug: "equitazione/pensione-cavalli"
 title: "Pensione cavalli"
 section: "equitazione"
@@ -36,14 +36,14 @@ blocks:
     style: "tiles"
     items:
       - title: "In gruppo"
-        text: "Testo di prova: il cavallo vive in branco, come in natura."
+        text: "I cavalli in pensione vivono insieme agli altri, in branco."
       - title: "All'aperto"
-        text: "Testo di prova: prati in pendenza e ripari naturali."
+        text: "Fuori tutto l'anno, su terreno in pendenza: zoccoli buoni e muscoli veri."
       - title: "Seguiti ogni giorno"
-        text: "Testo di prova: fieno, acqua, controllo degli zoccoli."
+        text: "Il fieno, l'acqua, un'occhiata agli zoccoli: ogni giorno, per tutti."
   - type: "cta-contact"
     kicker: "Contatti"
     heading: "Chiedi se c'è posto"
     body: |
-      Testo di prova. Raccontaci del tuo cavallo: età, abitudini, esigenze. Ti diciamo se il gruppo fa per lui.
+      Raccontaci del tuo cavallo: età, abitudini, esigenze. Ti diciamo se il gruppo fa per lui.
     form: true

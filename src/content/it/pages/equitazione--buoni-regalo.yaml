@@ -1,4 +1,4 @@
-# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
+# Testo scritto su fonti e sui contenuti gia presenti nel sito (vedi FONTI.md). Illustrazioni ancora di prova.
 slug: "equitazione/buoni-regalo"
 title: "Regala un'esperienza"
 section: "equitazione"
@@ -24,19 +24,19 @@ blocks:
     style: "cards"
     items:
       - title: "Primo incontro con i cavalli"
-        text: "Testo di prova: per chi non è mai salito in sella."
+        text: "Per chi non è mai salito in sella e per i bambini: si conosce il cavallo da terra e si fanno i primi passi, condotti a mano."
         image: "../../../assets/equitazione/mockup-lezione-maneggio.jpg"
         alt: "Illustrazione di prova: un cavaliere lungo lo steccato"
         link: "/contatti/"
         label: "Chiedi il buono"
       - title: "Passeggiata sulle Orobie"
-        text: "Testo di prova: al passo nei boschi sopra Albosaggia."
+        text: "Un'uscita al passo nei boschi sopra Albosaggia, in ogni stagione."
         image: "../../../assets/equitazione/mockup-sentiero-orobie.jpg"
         alt: "Illustrazione di prova: un cavaliere nel bosco"
         link: "/contatti/"
         label: "Chiedi il buono"
       - title: "Giornata in Valmalenco"
-        text: "Testo di prova: d'estate, verso l'Alpe Palù."
+        text: "D'estate, fino all'Alpe Palù, con il pranzo in quota."
         image: "../../../assets/equitazione/mockup-alpe-palu-valmalenco.jpg"
         alt: "Illustrazione di prova: il lago dell'Alpe Palù"
         link: "/contatti/"
@@ -45,7 +45,7 @@ blocks:
     kicker: "Il buono"
     heading: "Come funziona"
     body: |
-      Testo di prova. Scrivici o chiamaci dicendo quale esperienza vuoi regalare: ti mandiamo il buono via email. Chi lo riceve ci chiama e sceglie il giorno.
+      Scrivici o chiamaci e dicci quale esperienza vuoi regalare: ti mandiamo il buono via email. Chi lo riceve ci chiama, e il giorno si sceglie insieme, guardando il tempo e la stagione.
 
       Validità 6 mesi dall'acquisto. Per le esperienze in Valmalenco, che si svolgono da fine giugno a inizio settembre, la scadenza si estende fino alla prima stagione utile.
   - type: "faq"
@@ -58,5 +58,5 @@ blocks:
     kicker: "Contatti"
     heading: "Chiedi il tuo buono"
     body: |
-      Testo di prova. Ti rispondiamo con le esperienze disponibili e il modo di pagamento.
+      Ti rispondiamo con le esperienze disponibili, i prezzi e il modo di pagamento.
     form: true

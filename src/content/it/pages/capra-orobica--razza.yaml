@@ -1,4 +1,4 @@
-# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
+# Testo scritto su fonti e sui contenuti gia presenti nel sito (vedi FONTI.md). Illustrazioni ancora di prova.
 slug: "capra-orobica/razza"
 title: "La razza"
 section: "capra-orobica"
@@ -8,14 +8,14 @@ nav:
   order: 10
 seo:
   title: "Capra Orobica: razza e caratteristiche"
-  description: "La Capra Orobica, detta anche capra di Val Gerola: la razza caprina autoctona delle Alpi Orobie, con pelo lungo e corna ampie."
+  description: "La Capra Orobica o di Val Gerola: corna lunghe e ritorte, pelo lungo, pascoli delle Orobie. Caratteristiche, zona di allevamento e formaggi."
   image: "../../../assets/capra-orobica/mockup-capra-ritratto.jpg"
 blocks:
   - type: "hero"
     kicker: "La razza"
     title: "La Capra Orobica: razza e caratteristiche"
     intro: |
-      Testo di prova. Una razza caprina autoctona delle Alpi Orobie, conosciuta anche come capra di Val Gerola.
+      La Capra Orobica, detta anche di Val Gerola, è la capra delle Alpi Orobie. Di taglia media, si riconosce da lontano: corna molto lunghe, appiattite e leggermente ritorte, presenti anche nelle femmine, e un mantello di pelo lungo. La sua origine non è documentata con certezza; l'ipotesi più accreditata è che venga proprio dalla Val Gerola, in provincia di Sondrio, dove l'isolamento l'ha resa diversa dalle altre capre.
     image: "../../../assets/capra-orobica/mockup-capra-ritratto.jpg"
     imageAlt: "Illustrazione di prova: una Capra Orobica con le corna lunghe"
   - type: "facts"
@@ -30,12 +30,20 @@ blocks:
     kicker: "Caratteristiche"
     heading: "Una capra di montagna"
     body: |
-      Testo di prova. Rustica e abituata ai pendii, vive bene sui pascoli alti. Il testo definitivo sarà scritto con fonti verificate sulla razza.
+      Le corna si allargano di lato alla base e risalgono verso l'alto in punta. Le orecchie sono dritte, mai pendenti, e la barba, folta nei maschi, c'è spesso anche nelle femmine. Il mantello cambia molto da un animale all'altro: grigio, beige, nero, marrone o pezzato, spesso più scuro dietro e più chiaro davanti.
+
+      Vive nelle Alpi Orobie e nelle prealpi vicine: in provincia di Sondrio in Val Gerola e nelle valli accanto, in provincia di Lecco in Valsassina e in Val Varrone, in provincia di Bergamo nell'alta Val Brembana. Si alleva in modo tradizionale, al pascolo in primavera e in autunno e in alpeggio d'estate.
+
+      È una razza a duplice attitudine, da latte e da carne. Con il latte si fanno piccoli formaggi di valle, come il matuscin in Valtellina e il formagìn in Valsassina, e una parte finisce nello Storico Ribelle, il formaggio d'alpeggio delle valli del Bitto. Fra i salumi c'è il violino di capra.
+
+      Un tempo ce n'erano in ogni casa. Poi sono arrivate razze più produttive, molti allevatori hanno smesso, e l'Orobica si è ridotta a pochi greggi: per questo oggi è tutelata da un Presidio Slow Food e ha un libro genealogico, tenuto dall'Associazione Nazionale della Pastorizia.
+
+      Dei formaggi parliamo nella pagina [Formaggi](/valtellina/cibo-e-vino/formaggi/).
 
       Accanto alle capre vivono i nostri cavalli: vedi la sezione [Equitazione](/equitazione/).
   - type: "cta-contact"
     kicker: "Contatti"
     heading: "Hai domande sulla razza?"
     body: |
-      Testo di prova. Chiamaci o scrivici.
+      Chiamaci o scrivici: le capre sono al pascolo accanto ai cavalli, e le raccontiamo volentieri.
     form: false

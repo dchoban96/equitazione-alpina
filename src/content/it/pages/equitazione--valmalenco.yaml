@@ -1,4 +1,4 @@
-# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
+# Testo scritto su fonti e sui contenuti gia presenti nel sito (vedi FONTI.md). Illustrazioni ancora di prova.
 slug: "equitazione/valmalenco"
 title: "Passeggiate in Valmalenco"
 section: "equitazione"
@@ -15,7 +15,7 @@ blocks:
     kicker: "Valmalenco"
     title: "D'estate, a cavallo verso l'Alpe Palù"
     intro: |
-      Testo di prova. Per poche settimane all'anno i cavalli salgono in Valmalenco. Quando la neve libera i pascoli alti si sale verso l'Alpe Palù. Sono poche settimane, diverse da tutto il resto dell'anno: pascoli aperti, granito chiaro, silenzio.
+      Da fine giugno a inizio settembre Equitazione Alpina si sposta in Valmalenco, a San Giuseppe, in località Sabbionaccio. Quando la neve libera i pascoli alti si sale verso l'Alpe Palù: poche settimane, diverse da tutto il resto dell'anno, fra pascoli aperti, granito chiaro e silenzio.
     altitude: 1950
     image: "../../../assets/equitazione/mockup-alpe-palu-valmalenco.jpg"
     imageAlt: "Illustrazione di prova: il lago dell'Alpe Palù fra le montagne"
@@ -35,7 +35,11 @@ blocks:
     kicker: "La giornata"
     heading: "Com'è una giornata in quota"
     body: |
-      Testo di prova. Si parte al mattino, si sale al passo tra pascoli aperti e rocce chiare, ci si ferma quando lo chiedono i cavalli. Il resto dell'anno i cavalli restano ad Albosaggia, dove si cavalca in ogni stagione: vedi le [passeggiate sulle Orobie](/equitazione/passeggiate-orobie/).
+      Gli itinerari sono diversi. Per chi comincia ci sono uscite di un'ora o di qualche ora; chi vuole la giornata intera sale fino alla conca dell'Alpe Palù, con il suo lago, e si ferma a pranzo in quota, in rifugio o in malga, con i piatti della valle. Si va al passo, e ci si ferma quando lo chiedono i cavalli.
+
+      Per chi non se la sente di salire in sella, d'estate ci sono anche le uscite in carrozza.
+
+      Il resto dell'anno i cavalli restano ad Albosaggia, dove si cavalca in ogni stagione: vedi le [passeggiate sulle Orobie](/equitazione/passeggiate-orobie/).
 
       Per conoscere la valle, i paesi e cosa vedere senza cavallo, apri la guida alla [Valmalenco](/valtellina/la-valmalenco/).
   - type: "gallery-preview"
@@ -48,5 +52,5 @@ blocks:
     kicker: "Contatti"
     heading: "Chiedi le date della stagione"
     body: |
-      Testo di prova. I posti in Valmalenco sono pochi: chiamaci per sapere quando si sale.
+      La stagione in Valmalenco è breve: chiamaci per sapere da quando si sale e per metterci d'accordo.
     form: true

@@ -1,4 +1,4 @@
-# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
+# Testo scritto su fonti e sui contenuti gia presenti nel sito (vedi FONTI.md). Illustrazioni ancora di prova.
 slug: "equitazione/lezioni"
 title: "Lezioni"
 section: "equitazione"
@@ -15,7 +15,7 @@ blocks:
     kicker: "Lezioni"
     title: "Lezioni di equitazione, dal primo contatto al sentiero"
     intro: |
-      Testo di prova. Chi non è mai salito in sella comincia da terra: si conosce l'animale, si impara a stargli accanto, si sale quando si è pronti.
+      Alla scuola di equitazione di Albosaggia non si comincia dalla sella. Chi non è mai salito a cavallo parte da terra: conosce l'animale, impara a stargli accanto e a condurlo, e sale quando è pronto. Vale per gli adulti come per i bambini, che possono avvicinarsi ai cavalli già da tre anni. Le lezioni si fanno in struttura, su appuntamento, e il ritmo lo decidono insieme chi impara e il cavallo.
     image: "../../../assets/equitazione/mockup-lezione-maneggio.jpg"
     imageAlt: "Illustrazione di prova: un cavaliere al passo lungo lo steccato"
   - type: "cards"
@@ -24,11 +24,11 @@ blocks:
     style: "tiles"
     items:
       - title: "Primo approccio"
-        text: "Testo di prova: conoscere il cavallo da terra, pulirlo, condurlo a mano."
+        text: "Si conosce il cavallo da terra: come avvicinarlo, come stargli accanto, come condurlo a mano."
       - title: "Lezioni di base"
-        text: "Testo di prova: equilibrio, andature, comandi, sempre al ritmo del cavallo."
+        text: "In sella, in struttura: l'equilibrio e le prime andature, al ritmo di chi impara."
       - title: "Verso il sentiero"
-        text: "Testo di prova: le prime uscite accompagnate fuori dal recinto."
+        text: "Quando si è pronti, le prime uscite accompagnate fuori dal recinto, sui sentieri delle Orobie."
       - title: "Bambini"
         text: "Da tre anni, condotti a mano, per il tempo che serve."
   - type: "facts"
@@ -47,7 +47,11 @@ blocks:
     kicker: "Il metodo"
     heading: "Perché si parte da terra"
     body: |
-      Testo di prova. Un cavallo si fida di chi sa stargli accanto. Per questo le prime volte si passa più tempo vicino all'animale che in sella: si impara a leggerne i segnali, e la sella arriva quasi da sé.
+      Un cavallo si fida di chi sa stargli accanto. Per questo le prime volte si passa più tempo vicino all'animale che in sella: lo si osserva, lo si tocca, si impara a leggerne i segnali. Sembra tempo perso e non lo è: quando poi si sale, il cavallo lo si conosce già.
+
+      Quello che conta, per chi arriva qui la prima volta, è che qualcuno sappia leggere un cavallo prima che il cavallo debba farsi capire a modo suo. È il lavoro di Simone da più di trent'anni.
+
+      In struttura non c'è solo la scuola: ci si occupa anche dell'addestramento dei cavalli giovani e della rieducazione di quelli che ne hanno bisogno.
 
       Chi monta da anni può saltare questa parte e passare direttamente alle [passeggiate sulle Orobie](/equitazione/passeggiate-orobie/).
   - type: "faq"
@@ -58,5 +62,5 @@ blocks:
     kicker: "Contatti"
     heading: "Prenota la prima lezione"
     body: |
-      Testo di prova. Chiamaci o scrivici su WhatsApp: troviamo insieme il giorno e l'ora.
+      Chiamaci o scrivici su WhatsApp: ci diciamo quando venire e da dove cominciare.
     form: true

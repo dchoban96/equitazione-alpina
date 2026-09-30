@@ -37,7 +37,7 @@
     - "pastore"
 - id: "vedere-cani"
   question: "Si possono vedere i cani?"
-  answer: "Testo di prova: sì, i cani vivono al recinto insieme ai cavalli."
+  answer: "Sì: i cani vivono al recinto insieme ai cavalli, e chi passa a trovarci li incontra."
   tags:
     - "pastore"
 - id: "capra-cosa"

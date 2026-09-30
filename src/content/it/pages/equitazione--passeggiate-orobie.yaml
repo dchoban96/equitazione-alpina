@@ -1,4 +1,4 @@
-# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
+# Testo scritto su fonti e sui contenuti gia presenti nel sito (vedi FONTI.md). Illustrazioni ancora di prova.
 slug: "equitazione/passeggiate-orobie"
 title: "Passeggiate sulle Orobie"
 section: "equitazione"
@@ -19,7 +19,7 @@ blocks:
     kicker: "Passeggiate"
     title: "Al passo sulle Orobie, tutto l'anno"
     intro: |
-      Testo di prova. Si parte dal recinto di Albosaggia e si sale nei boschi del versante orobico, con la Valtellina che si apre sotto.
+      Si parte dal recinto di Albosaggia e si sale nei boschi del versante orobico, dentro il Parco delle Orobie Valtellinesi, con la valle che si apre sotto man mano che si guadagna quota. Le uscite durano un'ora o più: per chi comincia ci sono i percorsi brevi, per chi ha esperienza i trekking di uno o più giorni.
     altitude: 500
     image: "../../../assets/equitazione/mockup-sentiero-orobie.jpg"
     imageAlt: "Illustrazione di prova: un cavaliere nel bosco di conifere sotto le montagne"
@@ -36,9 +36,9 @@ blocks:
     style: "tiles"
     items:
       - title: "Primavera"
-        text: "Testo di prova: i prati che tornano verdi e i torrenti pieni."
+        text: "I boschi tornano verdi e i prati di San Bernardo si riaprono al sole."
       - title: "Estate"
-        text: "Testo di prova: si esce presto, quando l'aria è ancora fresca."
+        text: "All'ombra del bosco, quando in fondovalle fa caldo."
       - title: "Autunno"
         text: "Le foglie che scivolano sotto gli zoccoli."
       - title: "Inverno"
@@ -47,7 +47,11 @@ blocks:
     kicker: "Per chi"
     heading: "Chi può venire"
     body: |
-      Testo di prova. Le passeggiate sono pensate per chi ha già un po' di confidenza con il cavallo. Chi comincia adesso parte dalle [lezioni](/equitazione/lezioni/).
+      L'uscita verso San Bernardo è la più semplice, adatta anche a chi non ha allenamento: si sale per una mulattiera nel bosco di latifoglie fino ai prati, piani e soleggiati.
+
+      Quella verso il Lago Casera è un'altra cosa. È riservata a cavalli e cavalieri ben allenati, e in cambio attraversa tutti gli ambienti del parco e arriva dove si vedono il Monte Disgrazia e il gruppo del Bernina.
+
+      Chi non è mai salito in sella comincia con una breve introduzione al cavallo, oppure dalle [lezioni](/equitazione/lezioni/).
 
       Per conoscere il versante a piedi c'è la nostra guida ad [Albosaggia e le Orobie](/valtellina/albosaggia-e-orobie/).
     image: "../../../assets/equitazione/mockup-tramonto-conduzione.jpg"
@@ -63,5 +67,5 @@ blocks:
     kicker: "Contatti"
     heading: "Organizza la tua uscita"
     body: |
-      Testo di prova. Dicci quando vorresti venire e quanta esperienza hai: ti proponiamo il percorso giusto.
+      Dicci quando vorresti venire e quanta esperienza hai: ti proponiamo il percorso giusto.
     form: true

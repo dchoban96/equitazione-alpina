@@ -1,4 +1,4 @@
-# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
+# Testo scritto su fonti e sui contenuti gia presenti nel sito (vedi FONTI.md). Illustrazioni ancora di prova.
 slug: "pastore-del-lagorai/razza"
 title: "La razza"
 section: "pastore-del-lagorai"
@@ -8,14 +8,14 @@ nav:
   order: 10
 seo:
   title: "Pastore del Lagorai: razza, carattere e origini"
-  description: "Il Pastore del Lagorai, cane da pastore delle montagne del Trentino: origini, carattere e lavoro con il gregge, raccontati da chi lo vede ogni giorno."
+  description: "Il Pastore del Lagorai: origini, carattere e lavoro con il gregge del cane da pastore delle Alpi del Nord-Est, riconosciuto dall'ENCI nel 2020."
   image: "../../../assets/pastore-del-lagorai/mockup-pastore-gregge.jpg"
 blocks:
   - type: "hero"
     kicker: "La razza"
     title: "Il Pastore del Lagorai: carattere e origini"
     intro: |
-      Testo di prova. Un cane da pastore di montagna, nato per condurre le greggi sui pascoli del Lagorai, in Trentino.
+      Il suo nome ufficiale è Cane da Pastore della Lessinia e del Lagorai, ma quasi tutti lo chiamano Pastore del Lagorai, dalla catena di montagne del Trentino orientale. È un cane da gregge di taglia media, agile e resistente, che da secoli accompagna la transumanza fra le montagne e le pianure del Nord-Est. Per molto tempo è stato considerato un semplice meticcio dei pastori; dal 2020 è una razza riconosciuta dall'ENCI, la prima nata in Trentino.
     image: "../../../assets/pastore-del-lagorai/mockup-pastore-gregge.jpg"
     imageAlt: "Illustrazione di prova: un cane da pastore accanto a un gregge"
   - type: "facts"
@@ -28,15 +28,21 @@ blocks:
     kicker: "Il carattere"
     heading: "Carattere"
     body: |
-      Testo di prova. Attento, resistente, legato al gruppo con cui lavora. Il testo definitivo di questa pagina sarà scritto con fonti verificate sulla razza.
+      Lo standard dell'ENCI lo descrive come un cane di tipo lupoide, di taglia media, agile ma con una muscolatura forte. È rustico: lavora con qualunque tempo, su terreni ripidi e pieni di ostacoli, e lo fa con disinvoltura. Ha di solito orecchie erette o semierette e pelo semilungo, e fra i mantelli ce n'è uno che si riconosce subito, il blue merle, grigio marezzato di scuro.
+
+      Di carattere è vivace e collaborativo: lavora insieme al pastore, più che per lui. Per questo oggi lo si incontra anche negli sport cinofili, dove serve un cane attento e pronto. C'è chi lo chiama il Border Collie italiano.
   - type: "text"
     kicker: "Il lavoro"
     heading: "Il lavoro in montagna"
     body: |
-      Testo di prova. Sui pascoli alti il cane tiene unito il gregge e lo guida lungo i sentieri. Da noi lo stesso istinto si vede con i cavalli: vedi la sezione [Equitazione](/equitazione/).
+      Fra i pastori è un cane «paratore»: tiene unito il gregge, lo sposta, lo ferma, seguendo i cenni di chi lo guida. La sua terra sono le montagne e le prealpi del Nord-Est, dalla Lombardia orientale al Trentino-Alto Adige, al Veneto e al Friuli, e le strade della transumanza che da lì scendono in pianura lungo i grandi fiumi: l'Adige, il Brenta, il Piave, il Tagliamento. In questo lavoro è usato ancora oggi.
+
+      Il riconoscimento è arrivato dopo anni di impegno degli appassionati. I cani vengono censiti nei raduni, valutati dai giudici e iscritti in un registro che l'ENCI ha aperto nel 2020. È un riconoscimento italiano; l'obiettivo dichiarato dagli allevatori è quello internazionale.
+
+      Non lavora solo con le pecore: lo si usa anche con le mucche e con i cavalli. Da noi lo stesso istinto si vede ogni giorno al recinto: vedi la sezione [Equitazione](/equitazione/).
   - type: "cta-contact"
     kicker: "Contatti"
     heading: "Hai domande sulla razza?"
     body: |
-      Testo di prova. I nostri cani non sono in vendita e non vendiamo cuccioli: questa sezione racconta la razza e il lavoro dei cani con gli animali.
+      I nostri cani non sono in vendita e non vendiamo cuccioli. Se però la razza ti incuriosisce, chiamaci: ne parliamo volentieri.
     form: false

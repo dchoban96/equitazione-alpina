@@ -1,4 +1,4 @@
-# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
+# Testo scritto su fonti e sui contenuti gia presenti nel sito (vedi FONTI.md). Illustrazioni ancora di prova.
 slug: "pastore-del-lagorai"
 title: "Pastore del Lagorai"
 section: "pastore-del-lagorai"
@@ -15,7 +15,7 @@ blocks:
     kicker: "Pastore del Lagorai"
     title: "Pastore del Lagorai, i cani del recinto"
     intro: |
-      Testo di prova. Il cane arriva sempre prima di tutti: accompagna i cavalli, controlla il prato, conosce ogni sentiero.
+      Al recinto il cane arriva sempre prima di tutti: corre avanti, accompagna i cavalli, conosce ogni sentiero. I nostri sono Pastori del Lagorai, una razza da lavoro delle Alpi del Nord-Est che da sempre segue greggi e mandrie nella transumanza.
 
       I nostri cani non sono in vendita e non vendiamo cuccioli: questa sezione racconta la razza e il lavoro dei cani con gli animali.
     image: "../../../assets/pastore-del-lagorai/mockup-pastore-prato.jpg"
@@ -24,7 +24,9 @@ blocks:
     kicker: "Il lavoro"
     heading: "Un cane da lavoro"
     body: |
-      Testo di prova. Il Pastore del Lagorai nasce come cane da conduzione del gregge sulle montagne del Trentino. Da noi lavora accanto ai cavalli e agli altri animali, ogni giorno.
+      Il Pastore del Lagorai, che di nome completo fa Cane da Pastore della Lessinia e del Lagorai, è un cane da conduzione: il suo mestiere è guidare e custodire il gregge. Lo si usa con pecore e capre, ma anche con animali più difficili da governare, come le mucche e i cavalli. Da noi fa proprio questo, ogni giorno, accanto ai cavalli e alle capre.
+
+      Della sua storia e del suo carattere parliamo nella pagina [La razza](/pastore-del-lagorai/razza/).
     image: "../../../assets/pastore-del-lagorai/mockup-pastore-gregge.jpg"
     alt: "Illustrazione di prova: un cane da pastore accanto a un gregge di pecore"
     side: "right"
@@ -55,5 +57,5 @@ blocks:
     kicker: "Contatti"
     heading: "Vieni a conoscerli"
     body: |
-      Testo di prova. I cani si vedono al recinto, insieme ai cavalli. Il modo migliore per capire se fa per voi è stare mezz'ora a guardare i cavalli. Ad Albosaggia si arriva in 10 minuti da Sondrio.
+      I cani si vedono al recinto, insieme ai cavalli. Ad Albosaggia si arriva in 10 minuti da Sondrio: una telefonata e ci si mette d'accordo.
     form: false
