@@ -1,4 +1,4 @@
-# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
+# Testo verificato su fonti (vedi FONTI.md). Le illustrazioni sono ancora di prova.
 slug: "valtellina/cibo-e-vino/formaggi"
 title: "Formaggi"
 section: "valtellina"
@@ -8,29 +8,41 @@ nav:
   order: 20
 seo:
   title: "Formaggi della Valtellina: Bitto e Valtellina Casera"
-  description: "I formaggi della Valtellina: il Bitto d'alpeggio, il Valtellina Casera e i formaggi di capra delle Orobie."
+  description: "Bitto e Valtellina Casera, i due formaggi DOP della Valtellina: come nascono, in cosa sono diversi e cosa c'entra la Capra Orobica."
   image: "../../../assets/valtellina/mockup-formaggi.jpg"
 blocks:
   - type: "hero"
     kicker: "Guida alla Valtellina"
     title: "Formaggi"
     intro: |
-      Testo di prova. D'estate le mandrie salgono agli alpeggi, e lì nascono i formaggi più conosciuti della valle.
+      In Valtellina il formaggio segue le stagioni. D'estate le mandrie salgono agli alpeggi e il latte si lavora lassù, appena munto: è il tempo del Bitto. Per il resto dell'anno gli animali stanno a valle e il latte di più stalle arriva nelle latterie, dove nasce il Valtellina Casera. Sono due formaggi diversi, figli delle stesse montagne, ed entrambi hanno la Denominazione di Origine Protetta dal 1996.
     image: "../../../assets/valtellina/mockup-formaggi.jpg"
     imageAlt: "Illustrazione di prova: forme di formaggio su un tavolo"
   - type: "text"
     kicker: "D'alpeggio"
     heading: "Bitto"
     body: |
-      Testo di prova. Formaggio d'alpeggio prodotto d'estate, adatto a lunghe stagionature. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+      Il Bitto si fa solo d'estate, dal 1° giugno al 30 settembre, quando le vacche pascolano in quota sugli alpeggi della provincia di Sondrio e di alcune zone confinanti. Il latte è intero e crudo, e si lavora subito dopo la mungitura, sul posto.
+
+      Al latte di vacca si può aggiungere latte di capra, fino a un massimo del 10%: sono le capre che da sempre salgono in alpeggio insieme alle mandrie, e il loro latte rende l'aroma più deciso.
+
+      La cagliata viene cotta, messa nelle fascere che danno alla forma il suo bordo concavo e salata a secco. Le forme pesano da 8 a 25 chili e stagionano almeno 70 giorni: cominciano nelle casere d'alpe e finiscono a fondovalle. Da giovane il Bitto è dolce e delicato; con il tempo diventa più intenso, e alcune forme vengono lasciate maturare per anni.
+
+      Nelle valli di Gerola e di Albaredo alcuni produttori seguono regole ancora più strette. Il loro formaggio si chiama Storico Ribelle, è un Presidio Slow Food, e il latte di capra è obbligatorio: deve venire da capre di razza Orobica. È la stessa razza che alleviamo noi: vedi la sezione [Capra Orobica](/capra-orobica/).
   - type: "text"
     kicker: "Di latteria"
     heading: "Valtellina Casera"
     body: |
-      Testo di prova. Il formaggio semigrasso che si usa anche nei pizzoccheri. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+      Il Valtellina Casera è il formaggio di tutti i giorni. Le sue origini risalgono al Cinquecento, alle latterie turnarie e sociali dove più allevatori mettevano insieme il latte per lavorarlo in comune. Un tempo si faceva d'inverno, quando il bestiame era sceso a valle; oggi si produce tutto l'anno, in tutta la provincia di Sondrio.
+
+      Il latte è di vacca, di due o più mungiture, e viene in parte scremato prima della lavorazione: per questo il Casera è un formaggio semigrasso. La cagliata si cuoce a una temperatura più bassa rispetto al Bitto, la forma viene pressata e poi stagiona per almeno 70 giorni. Le forme pesano da 7 a 12 chili e hanno il bordo diritto.
+
+      Da giovane è dolce e sa di latte; stagionando prende note di frutta secca e un profumo di fieno. Il nome viene dalla casera, il locale dove i formaggi si lavorano e si lasciano maturare.
+
+      In cucina è il formaggio dei pizzoccheri e degli sciatt: ne parliamo nella pagina dei [piatti tipici](/valtellina/cibo-e-vino/piatti-tipici/).
   - type: "cta-contact"
     kicker: "Equitazione Alpina"
     heading: "Scoprila a cavallo"
     body: |
-      Testo di prova. Gli alpeggi si raggiungono anche a cavallo: vedi le [passeggiate in Valmalenco](/equitazione/valmalenco/).
+      D'estate saliamo in quota anche noi, a cavallo, fra i pascoli della Valmalenco: vedi le [passeggiate in Valmalenco](/equitazione/valmalenco/).
     form: false

@@ -1,4 +1,4 @@
-# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
+# Testo verificato su fonti (vedi FONTI.md). Le illustrazioni sono ancora di prova.
 slug: "valtellina/cibo-e-vino"
 title: "Cibo e vino"
 section: "valtellina"
@@ -15,7 +15,7 @@ blocks:
     kicker: "Guida alla Valtellina"
     title: "Cibo e vino della Valtellina"
     intro: |
-      Testo di prova. Una cucina di montagna, fatta di grano saraceno, formaggi d'alpeggio e vini coltivati sui terrazzamenti.
+      La cucina della Valtellina nasce da poche cose, quelle che la montagna concedeva: grano saraceno, patate, verze, latte. Da lì vengono i pizzoccheri, gli sciatt e la polenta taragna, e due formaggi che si fanno da secoli, uno in alpeggio e uno a valle. Sul versante al sole, intanto, i muretti a secco reggono le vigne del Nebbiolo. In queste pagine raccontiamo che cosa c'è nel piatto e nel bicchiere, e da dove viene.
     image: "../../../assets/valtellina/mockup-pizzoccheri.jpg"
     imageAlt: "Illustrazione di prova: un piatto di pizzoccheri"
   - type: "cards"
@@ -45,5 +45,5 @@ blocks:
     kicker: "Equitazione Alpina"
     heading: "Dopo una giornata a cavallo"
     body: |
-      Testo di prova. Niente mette più appetito di una mattina al passo: vedi le [passeggiate](/equitazione/passeggiate-orobie/).
+      Una mattina al passo mette appetito. Vedi le [passeggiate sulle Orobie](/equitazione/passeggiate-orobie/): per il pranzo, poi, sai già cosa ordinare.
     form: false

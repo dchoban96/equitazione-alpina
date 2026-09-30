@@ -1,4 +1,4 @@
-# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
+# Testo verificato su fonti (vedi FONTI.md). Le illustrazioni sono ancora di prova.
 slug: "valtellina/cibo-e-vino/vini"
 title: "Vini"
 section: "valtellina"
@@ -8,29 +8,35 @@ nav:
   order: 30
 seo:
   title: "Vini della Valtellina: Nebbiolo dei terrazzamenti"
-  description: "I vini della Valtellina: il Nebbiolo coltivato sui terrazzamenti del versante retico, il Valtellina Superiore e lo Sforzato."
+  description: "I vini della Valtellina: il Nebbiolo dei terrazzamenti, le cinque sottozone del Valtellina Superiore e lo Sforzato, fatto con uve appassite."
   image: "../../../assets/valtellina/mockup-vini.jpg"
 blocks:
   - type: "hero"
     kicker: "Guida alla Valtellina"
     title: "Vini"
     intro: |
-      Testo di prova. Sul versante esposto al sole, i vigneti salgono su terrazze sostenute da muretti a secco.
+      Dal nostro versante le vigne si vedono bene: stanno tutte di fronte, sul lato della valle esposto a sud. Lì la montagna è stata ridisegnata a mano, con oltre 2.500 chilometri di muretti a secco, fatti pietra su pietra e senza malta, che reggono le terrazze. Le vigne corrono così per una cinquantina di chilometri lungo la valle, fino a Tirano. È la più grande area terrazzata d'Italia, e da secoli ci cresce quasi una sola uva.
     image: "../../../assets/valtellina/mockup-vini.jpg"
     imageAlt: "Illustrazione di prova: una bottiglia e un calice di vino rosso"
   - type: "text"
     kicker: "L'uva"
     heading: "Il Nebbiolo di montagna"
     body: |
-      Testo di prova. In valle il Nebbiolo si chiama Chiavennasca. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+      Quell'uva è il Nebbiolo, che in valle si chiama Chiavennasca. È lo stesso vitigno dei grandi rossi piemontesi, ma qui cresce in montagna e dà vini diversi: più freschi, con tannini più morbidi e profumi di frutti di bosco, come li descrive il consorzio dei produttori.
+
+      I pendii sono molto ripidi, e per lavorarli serve tanta fatica a mano: per questo si parla di viticoltura eroica. I produttori, a dire il vero, non amano troppo la parola: dicono di non essere eroi, ma gente che fa il proprio mestiere in un posto difficile.
   - type: "text"
     kicker: "I vini"
     heading: "Valtellina Superiore e Sforzato"
     body: |
-      Testo di prova. Il Valtellina Superiore ha le sue sottozone, come Sassella, Grumello, Inferno e Valgella; lo Sforzato si fa con uve lasciate appassire. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+      I vini della valle hanno una scala precisa. Alla base c'è il Rosso di Valtellina, il più semplice e immediato. Sopra c'è il Valtellina Superiore, che ha cinque sottozone, da ovest a est: Maroggia, Sassella, Grumello, Inferno e Valgella. Ogni nome ha la sua storia: la Sassella prende il suo da una piccola chiesa appena fuori Sondrio, il Grumello da un castello, l'Inferno dal caldo che d'estate si accumula fra le terrazze.
+
+      Poi c'è lo Sforzato, in dialetto Sfursat. Dopo la vendemmia i grappoli migliori vengono lasciati appassire in locali asciutti e ventilati, finché perdono circa un terzo del peso. Quello che resta è più concentrato, e ne viene un rosso asciutto e potente, che prima di arrivare in tavola invecchia almeno venti mesi.
+
+      A tavola stanno bene con i piatti della valle: vedi i [piatti tipici](/valtellina/cibo-e-vino/piatti-tipici/).
   - type: "cta-contact"
     kicker: "Equitazione Alpina"
     heading: "Scoprila a cavallo"
     body: |
-      Testo di prova. I terrazzamenti si vedono meglio dall'alto: dal nostro versante, al passo. Vedi le [passeggiate](/equitazione/passeggiate-orobie/).
+      I terrazzamenti si guardano meglio da lontano, dal versante di fronte: il nostro. Vedi le [passeggiate sulle Orobie](/equitazione/passeggiate-orobie/).
     form: false

@@ -1,4 +1,4 @@
-# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
+# Testo verificato su fonti (vedi FONTI.md). Le illustrazioni sono ancora di prova.
 slug: "valtellina/cibo-e-vino/piatti-tipici"
 title: "Piatti tipici"
 section: "valtellina"
@@ -8,34 +8,46 @@ nav:
   order: 10
 seo:
   title: "Piatti tipici della Valtellina: pizzoccheri e sciatt"
-  description: "I piatti tipici della Valtellina: pizzoccheri di grano saraceno, sciatt, polenta taragna e bresaola della Valtellina."
+  description: "I piatti tipici della Valtellina: pizzoccheri, sciatt, polenta taragna e bresaola. Cosa sono, come si fanno e da dove vengono i loro nomi."
   image: "../../../assets/valtellina/mockup-pizzoccheri.jpg"
 blocks:
   - type: "hero"
     kicker: "Guida alla Valtellina"
     title: "Piatti tipici"
     intro: |
-      Testo di prova. Il grano saraceno è la base di molti piatti della valle.
+      Molti piatti della valle partono dalla stessa farina scura: quella di grano saraceno. È una pianta rustica, che resiste al freddo e ha un ciclo breve, e fino all'inizio del Novecento è stata uno degli alimenti di base dei contadini valtellinesi. In valle si coltiva da oltre quattro secoli. Oggi i campi sono pochi, soprattutto attorno a Teglio, e molta della farina arriva da fuori; le ricette, però, sono rimaste le stesse.
     image: "../../../assets/valtellina/mockup-pizzoccheri.jpg"
     imageAlt: "Illustrazione di prova: un piatto di pizzoccheri"
   - type: "text"
     kicker: "Il piatto"
     heading: "Pizzoccheri"
     body: |
-      Testo di prova. Tagliatelle di grano saraceno con verze, patate, formaggio e burro. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+      I pizzoccheri sono tagliatelle corte e spesse, fatte con farina di grano saraceno e una parte minore di farina bianca: quattro parti di scura per una di chiara. Si cuociono nella stessa pentola con patate e verze, poi si scolano e si condiscono a strati con il formaggio, di solito Valtellina Casera, e con il burro in cui è stato dorato l'aglio.
+
+      Il paese dei pizzoccheri è Teglio. Lì nel 2002 è nata l'Accademia del Pizzocchero, che ha codificato la ricetta e la difende con una certa severità: quando un piatto si allontana troppo dall'originale, lo dice.
+
+      Sull'origine del nome non c'è accordo, e le spiegazioni in giro sono più d'una. Sul modo di mangiarli, invece, sì: caldi, appena conditi, mescolati dal basso verso l'alto.
+
+      Del Casera e del Bitto parliamo nella pagina dei [formaggi](/valtellina/cibo-e-vino/formaggi/).
   - type: "text"
     kicker: "Gli altri"
     heading: "Sciatt e polenta taragna"
     body: |
-      Testo di prova. Frittelle di grano saraceno con il formaggio dentro; polenta con farina di mais e grano saraceno. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+      Sciatt, in dialetto, vuol dire rospi, e il nome viene dalla forma: frittelle tonde e irregolari di pastella al grano saraceno, con un cubetto di formaggio che fonde all'interno. Sono gli stessi due ingredienti dei pizzoccheri, messi insieme in un altro modo. Si servono caldi, di solito su un letto di cicorino tagliato fine, che rinfresca la bocca tra uno e l'altro.
+
+      La polenta taragna è la polenta scura della valle: farina di mais e farina di grano saraceno insieme, e a fine cottura burro e formaggio mescolati dentro finché filano. Il nome viene dal bastone di legno con cui si rimesta nel paiolo. Un tempo era ancora più scura, fatta quasi solo di grano saraceno. La si trova anche nelle valli bergamasche e bresciane, dall'altra parte delle Orobie.
   - type: "text"
     kicker: "I salumi"
     heading: "Bresaola della Valtellina"
     body: |
-      Testo di prova. Il salume della valle, stagionato e tagliato sottile. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+      La bresaola è carne di manzo ricavata dalla coscia, salata e lasciata stagionare. La Bresaola della Valtellina ha l'Indicazione Geografica Protetta e la sua zona di produzione è l'intera provincia di Sondrio. I tagli usati sono cinque: fesa, punta d'anca, sottofesa, magatello e sottosso.
+
+      Il consorzio che la tutela spiega così il legame con la valle: l'aria fresca e asciutta che scende dalle Alpi permette una stagionatura lenta e una salatura leggera, e per questo la bresaola resta morbida e poco salata. Le prime testimonianze scritte risalgono al Quattrocento. Anche il nome, secondo il consorzio, è locale: verrebbe da «brisa», una parola del dialetto legata alla carne molto salata.
+
+      Una cosa che pochi sanno: le regole non chiedono che la carne venga dalla valle. Chiedono che sia lavorata e stagionata qui.
   - type: "cta-contact"
     kicker: "Equitazione Alpina"
     heading: "Scoprila a cavallo"
     body: |
-      Testo di prova. Prima del pranzo, una mattina a cavallo: vedi le [passeggiate sulle Orobie](/equitazione/passeggiate-orobie/).
+      Prima del pranzo, una mattina a cavallo: vedi le [passeggiate sulle Orobie](/equitazione/passeggiate-orobie/).
     form: false
