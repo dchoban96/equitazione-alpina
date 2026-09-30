@@ -1,0 +1,156 @@
+{%- comment -%}
+  ea-blocco — sezione di testo con o senza immagine.
+  Quattro disposizioni: solo testo, immagine a destra, immagine a sinistra,
+  immagine grande con scheda dati accanto.
+{%- endcomment -%}
+
+{{ 'ea-racconto.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign layout = section.settings.disposizione
+  assign ha_immagine = false
+  if layout != 'testo'
+    assign ha_immagine = true
+  endif
+
+  assign sizes_immagine = '(min-width: 820px) 50vw, 100vw'
+  if layout == 'sotto' or layout == 'sovrapposto'
+    assign sizes_immagine = '(min-width: 1220px) 1220px, 100vw'
+  endif
+-%}
+
+<section class="ea-sez ea-sez--rail ea-rivela{% if section.settings.bordo_alto %} ea-sez--bordo-alto{% endif %}"
+         {% if section.settings.ancora != blank %}id="{{ section.settings.ancora }}"{% endif %}>
+  <div class="ea-in{% if ha_immagine %} ea-blocco ea-blocco--{{ layout }}{% endif %}">
+
+    <div>
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="ea-eyebrow">{{ section.settings.eyebrow }}
+          {%- if section.settings.quota != blank %} <span class="ea-quota">· {{ section.settings.quota }}</span>{% endif -%}
+        </p>
+      {%- endif -%}
+      {%- if section.settings.titolo != blank -%}
+        <h2>{{ section.settings.titolo }}</h2>
+      {%- endif -%}
+      {%- if layout == 'scheda' -%}
+        {%- if section.settings.didascalia != blank -%}
+          <p class="ea-didascalia">{{ section.settings.didascalia }}</p>
+        {%- endif -%}
+      {%- else -%}
+        {%- if section.settings.testo != blank -%}{{ section.settings.testo }}{%- endif -%}
+      {%- endif -%}
+
+      {%- assign righe = section.blocks | where: 'type', 'meta' -%}
+      {%- if righe.size > 0 -%}
+        <dl class="ea-meta">
+          {%- for b in righe -%}
+            <div {{ b.shopify_attributes }}><dt>{{ b.settings.etichetta }}</dt><dd>{{ b.settings.valore }}</dd></div>
+          {%- endfor -%}
+        </dl>
+      {%- endif -%}
+
+      {%- assign dati = section.blocks | where: 'type', 'dato' -%}
+      {%- if dati.size > 0 -%}
+        <div class="ea-strip">
+          {%- for b in dati -%}
+            <div {{ b.shopify_attributes }}><span class="k">{{ b.settings.etichetta }}</span><span class="v">{{ b.settings.valore }}</span></div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- for b in section.blocks -%}
+        {%- if b.type == 'citazione' -%}
+          <blockquote class="ea-citazione" {{ b.shopify_attributes }}>
+            {{ b.settings.testo }}
+            {%- if b.settings.firma != blank -%}<span class="firma">{{ b.settings.firma }}</span>{%- endif -%}
+          </blockquote>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if ha_immagine -%}
+      <figure>
+        <div class="ea-lastra{% if section.settings.adatta == 'intera' %} ea-lastra--intera{% endif %}"
+             {% if section.settings.adatta == 'intera' %}style="--ea-ratio:auto"{% endif %}>
+          {%- if section.settings.immagine != blank -%}
+            {{ section.settings.immagine | image_url: width: 1600
+               | image_tag: widths: '360,540,720,900,1200,1600',
+                            sizes: sizes_immagine,
+                            loading: 'lazy',
+                            alt: section.settings.testo_alternativo }}
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag }}
+          {%- endif -%}
+        </div>
+        {%- if section.settings.sottotitolo_foto != blank -%}
+          <figcaption>{{ section.settings.sottotitolo_foto }}</figcaption>
+        {%- endif -%}
+      </figure>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "EA · Blocco",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "select", "id": "disposizione", "label": "Disposizione", "default": "testo",
+      "options": [
+        { "value": "testo", "label": "Solo testo" },
+        { "value": "destra", "label": "Testo a sinistra, foto a destra" },
+        { "value": "sinistra", "label": "Foto a sinistra, testo a destra" },
+        { "value": "sotto", "label": "Testo sopra, foto orizzontale sotto (16:9)" },
+        { "value": "sovrapposto", "label": "Testo ritagliato dentro la foto" },
+        { "value": "scheda", "label": "Foto grande + scheda dati" }
+      ]
+    },
+    { "type": "text", "id": "eyebrow", "label": "Sopratitolo" },
+    { "type": "text", "id": "quota", "label": "Quota o nota accanto al sopratitolo" },
+    { "type": "text", "id": "titolo", "label": "Titolo (H2)" },
+    { "type": "richtext", "id": "testo", "label": "Testo" },
+    { "type": "text", "id": "didascalia", "label": "Frase grande (solo disposizione «Foto + scheda»)" },
+    { "type": "header", "content": "Immagine" },
+    { "type": "image_picker", "id": "immagine", "label": "Immagine" },
+    { "type": "text", "id": "testo_alternativo", "label": "Testo alternativo", "info": "Descrive la foto ai motori di ricerca e a chi non la vede." },
+    { "type": "text", "id": "sottotitolo_foto", "label": "Didascalia sotto la foto" },
+    {
+      "type": "select", "id": "adatta", "label": "Adatta", "default": "ritaglia",
+      "info": "«Ritaglia» taglia la foto per riempire lo spazio previsto dalla disposizione. «Mostra intera» la fa vedere tutta, mantenendo le sue proporzioni originali.",
+      "options": [
+        { "value": "ritaglia", "label": "Ritaglia per riempire" },
+        { "value": "intera", "label": "Mostra intera" }
+      ]
+    },
+    { "type": "header", "content": "Altro" },
+    { "type": "text", "id": "ancora", "label": "Ancora (id)" },
+    { "type": "checkbox", "id": "bordo_alto", "label": "Linea di separazione sopra", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "meta", "name": "Riga scheda dati",
+      "settings": [
+        { "type": "text", "id": "etichetta", "label": "Etichetta" },
+        { "type": "text", "id": "valore", "label": "Valore" }
+      ]
+    },
+    {
+      "type": "dato", "name": "Riquadro dati",
+      "settings": [
+        { "type": "text", "id": "etichetta", "label": "Etichetta" },
+        { "type": "text", "id": "valore", "label": "Valore" }
+      ]
+    },
+    {
+      "type": "citazione", "name": "Citazione",
+      "settings": [
+        { "type": "richtext", "id": "testo", "label": "Testo" },
+        { "type": "text", "id": "firma", "label": "Firma" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "EA · Blocco" }]
+}
+{% endschema %}

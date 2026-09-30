@@ -1,0 +1,72 @@
+{{ 'ea-racconto.css' | asset_url | stylesheet_tag }}
+
+<section class="ea-sez ea-sez--rail ea-sez--bordo-alto ea-rivela"
+         id="{{ section.settings.ancora | default: 'visita' }}">
+  <div class="ea-in">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="ea-eyebrow">{{ section.settings.eyebrow }}
+        {%- if section.settings.quota != blank %} <span class="ea-quota">· {{ section.settings.quota }}</span>{% endif -%}
+      </p>
+    {%- endif -%}
+    {%- if section.settings.titolo != blank -%}<h2>{{ section.settings.titolo }}</h2>{%- endif -%}
+    {%- if section.settings.testo != blank -%}{{ section.settings.testo }}{%- endif -%}
+
+    {%- liquid
+      assign ha_contatti = false
+      if section.settings.telefono != blank or section.settings.email != blank or section.settings.mappa != blank or section.settings.recensioni != blank
+        assign ha_contatti = true
+      endif
+    -%}
+    {%- if ha_contatti -%}
+      <p class="ea-contatti">
+        {%- if section.settings.telefono != blank -%}
+          <a href="tel:{{ section.settings.telefono | remove: ' ' }}">{{ section.settings.telefono }}</a>
+        {%- endif -%}
+        {%- if section.settings.email != blank -%}
+          <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+        {%- endif -%}
+        {%- if section.settings.mappa != blank -%}
+          <a href="{{ section.settings.mappa }}" target="_blank" rel="noopener">Come arrivare</a>
+        {%- endif -%}
+        {%- if section.settings.recensioni != blank -%}
+          <a href="{{ section.settings.recensioni }}" target="_blank" rel="noopener">Recensioni</a>
+        {%- endif -%}
+      </p>
+    {%- endif -%}
+
+    {%- if section.settings.etichetta_1 != blank or section.settings.etichetta_2 != blank -%}
+      <div class="ea-azioni">
+        {%- if section.settings.etichetta_1 != blank -%}
+          <a class="ea-btn" href="{{ section.settings.link_1 | default: '#' }}">{{ section.settings.etichetta_1 }}</a>
+        {%- endif -%}
+        {%- if section.settings.etichetta_2 != blank -%}
+          <a class="ea-btn ea-btn--fantasma" href="{{ section.settings.link_2 | default: '#' }}">{{ section.settings.etichetta_2 }}</a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "EA · Contatti",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sopratitolo", "default": "Venire a trovarci" },
+    { "type": "text", "id": "quota", "label": "Nota accanto al sopratitolo", "default": "500 m" },
+    { "type": "text", "id": "titolo", "label": "Titolo (H2)", "default": "Passate al recinto, senza prenotare niente" },
+    { "type": "richtext", "id": "testo", "label": "Testo" },
+    { "type": "header", "content": "Contatti" },
+    { "type": "text", "id": "telefono", "label": "Telefono", "info": "Con prefisso internazionale: +39 333 1234567" },
+    { "type": "text", "id": "email", "label": "Email" },
+    { "type": "url", "id": "mappa", "label": "Link a Google Maps" },
+    { "type": "url", "id": "recensioni", "label": "Link alle recensioni (TripAdvisor)" },
+    { "type": "header", "content": "Pulsanti" },
+    { "type": "text", "id": "etichetta_1", "label": "Primo pulsante", "default": "Prenota un'uscita" },
+    { "type": "url", "id": "link_1", "label": "Destinazione" },
+    { "type": "text", "id": "etichetta_2", "label": "Secondo pulsante", "default": "Vedi i buoni regalo" },
+    { "type": "url", "id": "link_2", "label": "Destinazione" },
+    { "type": "text", "id": "ancora", "label": "Ancora (id)", "default": "visita" }
+  ],
+  "presets": [{ "name": "EA · Contatti" }]
+}
+{% endschema %}

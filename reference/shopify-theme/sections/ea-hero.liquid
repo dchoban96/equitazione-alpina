@@ -1,0 +1,114 @@
+{{ 'ea-racconto.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .ea-hero{min-height:{{ section.settings.altezza }}svh}
+{%- endstyle -%}
+
+<section class="ea-sez ea-sez--rail ea-hero" id="{{ section.settings.ancora | default: 'alto' }}">
+  {%- if section.settings.mostra_creste -%}
+    <div class="ea-creste{% if section.settings.creste_fisse %} ea-creste--fisse{% endif %}" data-creste></div>
+  {%- endif -%}
+  <div class="ea-in">
+    {%- if section.settings.coordinate != blank -%}
+      <p class="ea-coordinate">{{ section.settings.coordinate }}</p>
+    {%- endif -%}
+    {%- if section.settings.titolo != blank -%}
+      <h1>{{ section.settings.titolo }}</h1>
+    {%- endif -%}
+    {%- if section.settings.testo != blank -%}
+      <div class="ea-corpo">{{ section.settings.testo }}</div>
+    {%- endif -%}
+    {%- if section.settings.chiusa != blank -%}
+      <p class="ea-corpo"><em>{{ section.settings.chiusa }}</em></p>
+    {%- endif -%}
+    {%- if section.settings.nota_basso != blank -%}
+      <div class="ea-scendi"><span></span> {{ section.settings.nota_basso }}</div>
+    {%- endif -%}
+  </div>
+</section>
+
+<script>
+(function(){
+  function creste(){
+    var c = document.querySelector('#shopify-section-{{ section.id }} [data-creste]')
+         || document.querySelector('body > [data-creste]');
+    if(!c) return;
+
+    /* Se le creste sono fisse devono stare fuori dai contenitori del tema:
+       position:fixed si ancora al primo antenato con transform. */
+    if(c.classList.contains('ea-creste--fisse') && c.parentElement !== document.body){
+      document.body.appendChild(c);
+    }
+    var W = 2400, H = 900, half = W/2;
+    var css = getComputedStyle(document.documentElement);
+    function leggi(nome, riserva){
+      var v = css.getPropertyValue(nome);
+      return v && v.trim() ? v.trim() : riserva;
+    }
+    var salvia = leggi('--ea-salvia-rgb', '126,194,150');
+    var fieno  = leggi('--ea-miele-rgb',  '217,168,79');
+    var strati = [
+      {base:.86, amp:[46,22,11], col:leggi('--ea-cresta-1','#0f2a1c'), linea:'rgba('+salvia+',.22)', cls:'ea-strato-1', off:0.0},
+      {base:.93, amp:[62,26,13], col:leggi('--ea-cresta-2','#0c2016'), linea:'rgba('+salvia+',.16)', cls:'ea-strato-2', off:1.7},
+      {base:1.0, amp:[80,30,16], col:leggi('--ea-cresta-3','#0a1811'), linea:'rgba('+fieno+',.14)',  cls:'ea-strato-3', off:3.4}
+    ];
+
+    /* Se i colori non sono cambiati non rifacciamo il disegno;
+       se sono cambiati (modifica nell'editor) lo rigeneriamo. */
+    var firma = strati.map(function(s){ return s.col + s.linea; }).join('|');
+    if(c.dataset.firma === firma) return;
+    c.dataset.firma = firma;
+    /* Una sola piastrella, larga esattamente un periodo dell'onda:
+       i valori agli estremi coincidono, quindi le copie si saldano. */
+    var P = 1200;
+    function cresta(s){
+      var d = '';
+      for(var x=0; x<=P; x+=6){
+        var t = x/P*Math.PI*2;
+        var y = H*s.base - 120
+          - s.amp[0]*Math.sin(t + s.off)
+          - s.amp[1]*Math.sin(t*3 + s.off*1.4)
+          - s.amp[2]*Math.sin(t*5 + s.off*2.1);
+        d += (x === 0 ? 'M ' : 'L ') + x + ' ' + y.toFixed(1) + ' ';
+      }
+      return d;
+    }
+
+    c.innerHTML = strati.map(function(s){
+      var linea = cresta(s);
+      var pieno = linea + 'L ' + P + ' ' + H + ' L 0 ' + H + ' Z';
+      var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + P + ' ' + H + '" preserveAspectRatio="none">'
+        + '<path d="' + pieno + '" fill="' + s.col + '"/>'
+        + '<path d="' + linea + '" fill="none" stroke="' + s.linea + '" stroke-width="2"/>'
+        + '</svg>';
+      var uri = 'data:image/svg+xml,' + encodeURIComponent(svg).replace(/'/g, '%27');
+      return '<div class="ea-strato ' + s.cls + '" style="background-image:url(&quot;' + uri + '&quot;)"></div>';
+    }).join('');
+  }
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', creste); } else { creste(); }
+  document.addEventListener('shopify:section:load', creste);
+})();
+</script>
+
+{% schema %}
+{
+  "name": "EA · Apertura",
+  "settings": [
+    { "type": "text", "id": "coordinate", "label": "Riga in alto", "default": "Albosaggia · Valmalenco — 46°08′N 9°52′E" },
+    { "type": "text", "id": "titolo", "label": "Titolo (H1)", "default": "I cavalli, la montagna, il tempo che ci vuole" },
+    { "type": "richtext", "id": "testo", "label": "Testo" },
+    { "type": "text", "id": "chiusa", "label": "Frase di chiusura (in corsivo)" },
+    { "type": "text", "id": "nota_basso", "label": "Nota in basso", "default": "Si sale da 500 a 1950 m" },
+    { "type": "checkbox", "id": "mostra_creste", "label": "Mostra i profili di montagna animati", "default": true },
+    {
+      "type": "checkbox", "id": "creste_fisse",
+      "label": "Creste fisse in fondo alla pagina",
+      "info": "Le montagne restano ferme sul bordo inferiore dello schermo e il resto del sito ci scorre sopra.",
+      "default": false
+    },
+    { "type": "range", "id": "altezza", "min": 60, "max": 100, "step": 5, "unit": "vh", "label": "Altezza", "default": 100 },
+    { "type": "text", "id": "ancora", "label": "Ancora (id)", "default": "alto" }
+  ],
+  "presets": [{ "name": "EA · Apertura" }]
+}
+{% endschema %}

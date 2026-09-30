@@ -1,0 +1,213 @@
+{%- comment -%}
+  ea-contatto — pagina contatti: recapiti, modulo, orari, mappa.
+  Il modulo usa il tag 'contact' di Shopify: le richieste arrivano all'indirizzo
+  impostato in Impostazioni → Dettagli negozio → Email del mittente.
+{%- endcomment -%}
+
+{{ 'ea-racconto.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign tel_pulito = section.settings.telefono | remove: ' ' | remove: '-'
+  assign wa_pulito = section.settings.whatsapp | remove: ' ' | remove: '-' | remove: '+'
+-%}
+
+<section class="ea-sez ea-sez--rail ea-rivela"
+         {% if section.settings.ancora != blank %}id="{{ section.settings.ancora }}"{% endif %}>
+  <div class="ea-in">
+
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="ea-eyebrow">{{ section.settings.eyebrow }}
+        {%- if section.settings.quota != blank %} <span class="ea-quota">· {{ section.settings.quota }}</span>{% endif -%}
+      </p>
+    {%- endif -%}
+    {%- if section.settings.titolo != blank -%}<h1 class="ea-h1-pagina">{{ section.settings.titolo }}</h1>{%- endif -%}
+    {%- if section.settings.introduzione != blank -%}
+      <div class="ea-testo ea-cont-intro">{{ section.settings.introduzione }}</div>
+    {%- endif -%}
+
+    <div class="ea-contatto">
+
+      {%- comment -%} ---------- colonna dei recapiti ---------- {%- endcomment -%}
+      <aside class="ea-recapiti">
+
+        {%- if section.settings.telefono != blank -%}
+          <div class="ea-recapito ea-recapito--forte">
+            <span class="ea-recapito__etichetta">Telefono</span>
+            <a class="ea-recapito__valore" href="tel:{{ tel_pulito }}">{{ section.settings.telefono }}</a>
+            {%- if section.settings.nota_telefono != blank -%}
+              <span class="ea-recapito__nota">{{ section.settings.nota_telefono }}</span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.whatsapp != blank -%}
+          <div class="ea-recapito">
+            <span class="ea-recapito__etichetta">WhatsApp</span>
+            <a class="ea-recapito__valore" href="https://wa.me/{{ wa_pulito }}" target="_blank" rel="noopener">
+              {{ section.settings.whatsapp }}
+            </a>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.email != blank -%}
+          <div class="ea-recapito">
+            <span class="ea-recapito__etichetta">Email</span>
+            <a class="ea-recapito__valore" href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.indirizzo != blank -%}
+          <div class="ea-recapito">
+            <span class="ea-recapito__etichetta">Dove siamo</span>
+            <span class="ea-recapito__valore ea-recapito__valore--testo">{{ section.settings.indirizzo | newline_to_br }}</span>
+            {%- if section.settings.mappa_link != blank -%}
+              <a class="ea-recapito__nota ea-recapito__nota--link" href="{{ section.settings.mappa_link }}" target="_blank" rel="noopener">Apri le indicazioni</a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- assign orari = section.blocks | where: 'type', 'orario' -%}
+        {%- if orari.size > 0 -%}
+          <div class="ea-recapito">
+            <span class="ea-recapito__etichetta">Quando</span>
+            <dl class="ea-orari">
+              {%- for b in orari -%}
+                <div {{ b.shopify_attributes }}>
+                  <dt>{{ b.settings.giorni }}</dt>
+                  <dd>{{ b.settings.ore }}</dd>
+                </div>
+              {%- endfor -%}
+            </dl>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.nota_stagione != blank -%}
+          <p class="ea-cont-stagione">{{ section.settings.nota_stagione }}</p>
+        {%- endif -%}
+      </aside>
+
+      {%- comment -%} ---------- modulo ---------- {%- endcomment -%}
+      <div class="ea-modulo-guscio">
+        {%- form 'contact', id: 'ea-contatto-form', class: 'ea-modulo' -%}
+
+          {%- if form.posted_successfully? -%}
+            <p class="ea-avviso ea-avviso--ok" tabindex="-1" autofocus>
+              {{ section.settings.messaggio_inviato }}
+            </p>
+          {%- endif -%}
+
+          {%- if form.errors -%}
+            <div class="ea-avviso ea-avviso--errore" role="alert" tabindex="-1" autofocus>
+              {{ form.errors | default_errors }}
+            </div>
+          {%- endif -%}
+
+          <div class="ea-campo">
+            <label for="ea-nome">Nome e cognome</label>
+            <input id="ea-nome" type="text" name="contact[name]" autocomplete="name"
+                   value="{{ form.name }}" required>
+          </div>
+
+          <div class="ea-campo-riga">
+            <div class="ea-campo">
+              <label for="ea-email">Email</label>
+              <input id="ea-email" type="email" name="contact[email]" autocomplete="email"
+                     spellcheck="false" autocapitalize="off" value="{{ form.email }}" required>
+            </div>
+            <div class="ea-campo">
+              <label for="ea-tel">Telefono <span class="ea-facolt">facoltativo</span></label>
+              <input id="ea-tel" type="tel" name="contact[Telefono]" autocomplete="tel">
+            </div>
+          </div>
+
+          {%- if section.settings.mostra_motivo -%}
+            <div class="ea-campo">
+              <label for="ea-motivo">Di cosa si tratta</label>
+              <select id="ea-motivo" name="contact[Richiesta]">
+                {%- assign voci = section.settings.motivi | split: ',' -%}
+                {%- for v in voci -%}
+                  <option value="{{ v | strip }}">{{ v | strip }}</option>
+                {%- endfor -%}
+              </select>
+            </div>
+          {%- endif -%}
+
+          <div class="ea-campo">
+            <label for="ea-msg">Messaggio</label>
+            <textarea id="ea-msg" name="contact[body]" rows="6" required>{{ form.body }}</textarea>
+          </div>
+
+          {%- if section.settings.testo_consenso != blank -%}
+            <div class="ea-consenso">
+              <input id="ea-consenso" type="checkbox" name="contact[Consenso privacy]" value="Sì" required>
+              <label for="ea-consenso">{{ section.settings.testo_consenso }}</label>
+            </div>
+          {%- endif -%}
+
+          <button type="submit" class="ea-btn">{{ section.settings.etichetta_invio }}</button>
+
+          {%- if section.settings.nota_risposta != blank -%}
+            <p class="ea-cont-risposta">{{ section.settings.nota_risposta }}</p>
+          {%- endif -%}
+
+        {%- endform -%}
+      </div>
+    </div>
+
+    {%- if section.settings.mappa_incorpora != blank -%}
+      <div class="ea-mappa">
+        <iframe src="{{ section.settings.mappa_incorpora }}"
+                title="Mappa: {{ section.settings.titolo | escape }}"
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen></iframe>
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "EA · Contatti (pagina)",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sopratitolo", "default": "Parlare con noi" },
+    { "type": "text", "id": "quota", "label": "Nota accanto al sopratitolo" },
+    { "type": "text", "id": "titolo", "label": "Titolo (H1)", "default": "Come raggiungerci" },
+    { "type": "richtext", "id": "introduzione", "label": "Introduzione" },
+
+    { "type": "header", "content": "Recapiti" },
+    { "type": "text", "id": "telefono", "label": "Telefono", "info": "Con prefisso: +39 333 1234567" },
+    { "type": "text", "id": "nota_telefono", "label": "Nota sotto il telefono", "default": "Il modo più veloce" },
+    { "type": "text", "id": "whatsapp", "label": "WhatsApp", "info": "Stesso formato del telefono" },
+    { "type": "text", "id": "email", "label": "Email" },
+    { "type": "textarea", "id": "indirizzo", "label": "Indirizzo" },
+    { "type": "url", "id": "mappa_link", "label": "Link alle indicazioni" },
+    { "type": "text", "id": "nota_stagione", "label": "Nota sulla stagione", "default": "Le uscite in Valmalenco si svolgono da fine giugno a inizio settembre." },
+
+    { "type": "header", "content": "Modulo" },
+    { "type": "checkbox", "id": "mostra_motivo", "label": "Chiedi di cosa si tratta", "default": true },
+    { "type": "text", "id": "motivi", "label": "Voci del menu", "info": "Separate da virgola.", "default": "Passeggiata a cavallo, Buono regalo, Bambini e primo approccio, Scuola o pensione cavalli, Altro" },
+    { "type": "text", "id": "etichetta_invio", "label": "Testo del pulsante", "default": "Invia la richiesta" },
+    { "type": "text", "id": "nota_risposta", "label": "Nota sotto il pulsante", "default": "Rispondiamo entro 48 ore. Se hai fretta, meglio una telefonata." },
+    { "type": "text", "id": "messaggio_inviato", "label": "Messaggio dopo l'invio", "default": "Messaggio ricevuto, grazie. Ti rispondiamo al più presto." },
+    { "type": "text", "id": "testo_consenso", "label": "Testo del consenso", "default": "Ho letto l'informativa sulla privacy e acconsento al trattamento dei miei dati per rispondere a questa richiesta." },
+
+    { "type": "header", "content": "Mappa" },
+    { "type": "text", "id": "mappa_incorpora", "label": "Indirizzo della mappa incorporata", "info": "Su Google Maps: Condividi → Incorpora una mappa → copia solo il valore di src, non tutto il codice." },
+
+    { "type": "text", "id": "ancora", "label": "Ancora (id)", "default": "contatti" }
+  ],
+  "blocks": [
+    {
+      "type": "orario",
+      "name": "Orario",
+      "settings": [
+        { "type": "text", "id": "giorni", "label": "Giorni", "default": "Lunedì – Venerdì" },
+        { "type": "text", "id": "ore", "label": "Orario", "default": "9:00 – 18:00" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "EA · Contatti (pagina)", "blocks": [{ "type": "orario" }, { "type": "orario" }] }]
+}
+{% endschema %}

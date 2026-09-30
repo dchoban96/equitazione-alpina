@@ -1,0 +1,146 @@
+{%- comment -%}
+  ea-recensioni — testimonianze inserite a mano, un blocco per recensione.
+  Nessuna app, nessun costo mensile, nessun dato strutturato dichiarato a Google.
+{%- endcomment -%}
+
+{{ 'ea-racconto.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign auto = shop.metafields[section.settings.spazio][section.settings.chiave].value
+  assign usa_auto = false
+  if section.settings.fonte != 'manuale' and auto.recensioni.size > 0
+    assign usa_auto = true
+  endif
+
+  assign media = section.settings.media
+  assign conteggio = section.settings.conteggio
+  if usa_auto and section.settings.media_da_api
+    if auto.media != blank
+      assign media = auto.media
+    endif
+    if auto.conteggio != blank
+      assign conteggio = auto.conteggio
+    endif
+  endif
+-%}
+
+<section class="ea-sez ea-sez--rail ea-rivela"
+         {% if section.settings.ancora != blank %}id="{{ section.settings.ancora }}"{% endif %}>
+  <div class="ea-in">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="ea-eyebrow">{{ section.settings.eyebrow }}
+        {%- if section.settings.quota != blank %} <span class="ea-quota">· {{ section.settings.quota }}</span>{% endif -%}
+      </p>
+    {%- endif -%}
+    {%- if section.settings.titolo != blank -%}<h2>{{ section.settings.titolo }}</h2>{%- endif -%}
+
+    {%- if media != blank -%}
+      <p class="ea-rec-media">
+        <span class="ea-rec-voto">{{ media }}</span>
+        {%- if conteggio != blank -%}
+          <span class="ea-rec-conteggio">{{ conteggio }}</span>
+        {%- endif -%}
+      </p>
+    {%- endif -%}
+
+    <div class="ea-recensioni">
+      {%- if usa_auto -%}
+        {%- for r in auto.recensioni limit: section.settings.quante -%}
+          <figure class="ea-recensione">
+            {%- if r.stelle > 0 -%}
+              <p class="ea-stelle" aria-label="{{ r.stelle }} stelle su 5">
+                {%- for i in (1..5) -%}
+                  <span aria-hidden="true">{% if i <= r.stelle %}★{% else %}☆{% endif %}</span>
+                {%- endfor -%}
+              </p>
+            {%- endif -%}
+            {%- if r.titolo != blank -%}<h3>{{ r.titolo }}</h3>{%- endif -%}
+            <blockquote class="ea-rec-testo"><p>{{ r.testo | truncate: 320 }}</p></blockquote>
+            <figcaption class="ea-rec-firma">
+              {{ r.autore }}
+              {%- if r.data != blank -%}<span class="ea-rec-dettaglio">{{ r.data }}</span>{%- endif -%}
+            </figcaption>
+          </figure>
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- if section.settings.fonte != 'automatico' -%}
+      {%- for b in section.blocks -%}
+        <figure class="ea-recensione" {{ b.shopify_attributes }}>
+          {%- if b.settings.stelle > 0 -%}
+            <p class="ea-stelle" aria-label="{{ b.settings.stelle }} stelle su 5">
+              {%- for i in (1..5) -%}
+                <span aria-hidden="true">{% if i <= b.settings.stelle %}★{% else %}☆{% endif %}</span>
+              {%- endfor -%}
+            </p>
+          {%- endif -%}
+          {%- if b.settings.titolo != blank -%}<h3>{{ b.settings.titolo }}</h3>{%- endif -%}
+          <blockquote class="ea-rec-testo">{{ b.settings.testo }}</blockquote>
+          <figcaption class="ea-rec-firma">
+            {{ b.settings.autore }}
+            {%- if b.settings.dettaglio != blank -%}
+              <span class="ea-rec-dettaglio">{{ b.settings.dettaglio }}</span>
+            {%- endif -%}
+          </figcaption>
+        </figure>
+      {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.etichetta_fonte != blank -%}
+      <p class="ea-rec-fonte">
+        {%- if section.settings.link_fonte != blank -%}
+          <a href="{{ section.settings.link_fonte }}" target="_blank" rel="noopener">{{ section.settings.etichetta_fonte }}</a>
+        {%- else -%}
+          {{ section.settings.etichetta_fonte }}
+        {%- endif -%}
+      </p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "EA · Recensioni",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sopratitolo", "default": "Cosa dicono" },
+    { "type": "text", "id": "quota", "label": "Nota accanto al sopratitolo" },
+    { "type": "text", "id": "titolo", "label": "Titolo (H2)", "default": "Chi è già venuto" },
+    { "type": "text", "id": "media", "label": "Punteggio medio", "info": "Solo testo, es. «4,8 / 5». Non viene dichiarato a Google come dato strutturato." },
+    { "type": "text", "id": "conteggio", "label": "Numero di recensioni", "info": "Es. «su 13 recensioni»" },
+    { "type": "header", "content": "Importazione automatica" },
+    {
+      "type": "select", "id": "fonte", "label": "Da dove arrivano le recensioni", "default": "entrambi",
+      "info": "Le automatiche vengono dal metacampo aggiornato dallo script. Le manuali sono i blocchi qui sotto.",
+      "options": [
+        { "value": "automatico", "label": "Solo automatiche" },
+        { "value": "manuale", "label": "Solo manuali" },
+        { "value": "entrambi", "label": "Automatiche, poi manuali" }
+      ]
+    },
+    { "type": "text", "id": "spazio", "label": "Metacampo — spazio dei nomi", "default": "ea" },
+    { "type": "text", "id": "chiave", "label": "Metacampo — chiave", "default": "recensioni" },
+    { "type": "range", "id": "quante", "min": 1, "max": 5, "step": 1, "label": "Quante automatiche mostrarne", "default": 3 },
+    { "type": "checkbox", "id": "media_da_api", "label": "Prendi anche media e conteggio dall'importazione", "default": true },
+    { "type": "header", "content": "Fonte" },
+    { "type": "text", "id": "etichetta_fonte", "label": "Riga in fondo", "default": "Recensioni raccolte su Tripadvisor" },
+    { "type": "url", "id": "link_fonte", "label": "Link alla scheda" },
+    { "type": "text", "id": "ancora", "label": "Ancora (id)", "default": "recensioni" }
+  ],
+  "blocks": [
+    {
+      "type": "recensione",
+      "name": "Recensione",
+      "settings": [
+        { "type": "range", "id": "stelle", "min": 0, "max": 5, "step": 1, "label": "Stelle", "default": 5 },
+        { "type": "text", "id": "titolo", "label": "Titolo" },
+        { "type": "richtext", "id": "testo", "label": "Testo" },
+        { "type": "text", "id": "autore", "label": "Nome" },
+        { "type": "text", "id": "dettaglio", "label": "Dettaglio", "info": "Es. «agosto 2025» o «Milano»" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "EA · Recensioni", "blocks": [{ "type": "recensione" }, { "type": "recensione" }, { "type": "recensione" }] }]
+}
+{% endschema %}

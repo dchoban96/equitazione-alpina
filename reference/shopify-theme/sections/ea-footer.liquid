@@ -1,0 +1,59 @@
+{%- comment -%}
+  ea-footer — footer proprio della pagina.
+  Da usare insieme all'opzione «Nascondi il footer del tema» della sezione Atmosfera.
+{%- endcomment -%}
+
+{{ 'ea-racconto.css' | asset_url | stylesheet_tag }}
+
+<footer class="ea-sez ea-sez--rail ea-footer">
+  <div class="ea-in">
+    {%- if section.settings.copyright != blank -%}
+      <span class="ea-copy">© {{ 'now' | date: '%Y' }} {{ section.settings.copyright }}</span>
+    {%- endif -%}
+
+    {%- for b in section.blocks -%}
+      {%- if b.type == 'link' and b.settings.etichetta != blank -%}
+        <a href="{{ b.settings.link | default: '#' }}" {{ b.shopify_attributes }}>{{ b.settings.etichetta }}</a>
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- assign social = section.blocks | where: 'type', 'social' -%}
+    {%- if social.size > 0 -%}
+      <div class="ea-social">
+        {%- for b in social -%}
+          {%- if b.settings.etichetta != blank -%}
+            <a href="{{ b.settings.link | default: '#' }}" target="_blank" rel="noopener" {{ b.shopify_attributes }}>{{ b.settings.etichetta }}</a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "EA · Footer",
+  "max_blocks": 10,
+  "settings": [
+    { "type": "text", "id": "copyright", "label": "Nome dopo il ©", "default": "Equitazione Alpina" },
+    { "type": "paragraph", "content": "L'anno si aggiorna da solo. Ricordati di tenere qui i link alle pagine legali: privacy, termini, resi e rimborsi, cookie." }
+  ],
+  "blocks": [
+    {
+      "type": "link", "name": "Link",
+      "settings": [
+        { "type": "text", "id": "etichetta", "label": "Testo" },
+        { "type": "url", "id": "link", "label": "Destinazione" }
+      ]
+    },
+    {
+      "type": "social", "name": "Social",
+      "settings": [
+        { "type": "text", "id": "etichetta", "label": "Testo" },
+        { "type": "url", "id": "link", "label": "Destinazione" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "EA · Footer", "blocks": [{ "type": "link" }, { "type": "social" }] }]
+}
+{% endschema %}

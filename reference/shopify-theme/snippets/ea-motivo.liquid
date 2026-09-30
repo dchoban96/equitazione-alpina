@@ -1,0 +1,47 @@
+{%- comment -%}
+  ea-motivo — motivi disegnati per lo strato acquerelli.
+  Il filtro feTurbulence + feDisplacementMap sfrangia i bordi: è quello che
+  dà l'effetto di colore assorbito dalla carta invece di una forma netta.
+  Ogni motivo usa un seme diverso, così due copie non sono mai identiche.
+{%- endcomment -%}
+
+{%- assign f = 'acq-' | append: seme -%}
+
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <defs>
+    <filter id="{{ f }}" x="-25%" y="-25%" width="150%" height="150%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="4" seed="{{ seme | times: 17 }}" result="rumore"/>
+      <feDisplacementMap in="SourceGraphic" in2="rumore" scale="14" xChannelSelector="R" yChannelSelector="G" result="sfrangiato"/>
+      <feGaussianBlur in="sfrangiato" stdDeviation="1.6"/>
+    </filter>
+    <radialGradient id="{{ f }}-g" cx="42%" cy="38%">
+      <stop offset="0%" stop-color="currentColor" stop-opacity="0.85"/>
+      <stop offset="60%" stop-color="currentColor" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="currentColor" stop-opacity="0.75"/>
+    </radialGradient>
+  </defs>
+
+  <g filter="url(#{{ f }})" fill="url(#{{ f }}-g)" stroke="none">
+    {%- case motivo -%}
+
+      {%- when 'ferro' -%}
+        <path d="M100 26c-30 0-52 24-52 56 0 26 10 46 10 62 0 10-8 14-8 22h26c0-14-6-22-6-36 0-22-8-34-8-48 0-22 16-38 38-38s38 16 38 38c0 14-8 26-8 48 0 14-6 22-6 36h26c0-8-8-12-8-22 0-16 10-36 10-62 0-32-22-56-52-56z"/>
+        <circle cx="68" cy="96" r="4.5"/><circle cx="132" cy="96" r="4.5"/>
+        <circle cx="72" cy="124" r="4.5"/><circle cx="128" cy="124" r="4.5"/>
+
+      {%- when 'impronte' -%}
+        <path d="M62 44c16 0 28 13 28 30 0 15-10 27-14 38-3 8-14 10-14 10s-11-2-14-10c-4-11-14-23-14-38 0-17 12-30 28-30z"/>
+        <path d="M138 108c16 0 28 13 28 30 0 15-10 27-14 38-3 8-14 10-14 10s-11-2-14-10c-4-11-14-23-14-38 0-17 12-30 28-30z"/>
+
+      {%- when 'erba' -%}
+        <path d="M100 178c-4-30-2-58 8-84 2-6 8-4 7 2-6 26-8 52-6 82z"/>
+        <path d="M100 178c-14-26-24-48-26-74-1-7 6-8 8-2 7 24 14 46 22 74z"/>
+        <path d="M100 178c14-24 26-42 34-62 3-6 9-3 7 3-8 20-22 38-33 61z"/>
+        <path d="M100 178c-20-16-34-28-42-44-3-6 3-10 7-5 12 15 24 29 39 47z"/>
+
+      {%- else -%}
+        <path d="M104 30c30-6 58 12 66 40 7 26-6 44-2 64 4 22-16 40-44 42-30 2-56-8-70-28-14-21-10-46 0-66 10-21 22-48 50-52z"/>
+
+    {%- endcase -%}
+  </g>
+</svg>

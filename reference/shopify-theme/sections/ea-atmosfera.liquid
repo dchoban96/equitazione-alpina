@@ -1,0 +1,185 @@
+{%- comment -%}
+  ea-atmosfera — sfondo della pagina, altimetro laterale e script condivisi.
+  Va messa UNA SOLA VOLTA e come prima sezione della pagina.
+{%- endcomment -%}
+
+{{ 'ea-racconto.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  body{
+    background:
+      radial-gradient(70vw 50vh at 78% -5%, rgba(var(--ea-salvia-rgb),.12), transparent 62%),
+      radial-gradient(60vw 45vh at 6% 10%, rgba(var(--ea-miele-rgb),.09), transparent 66%),
+      linear-gradient(180deg,#f7f2e8 0%,#f2ebdd 45%,#f6f1e6 100%);
+    color:var(--ea-testo);
+  }
+  /* background-attachment:fixed su iOS causa scatti nello scroll: solo da desktop */
+  @media (min-width:1025px) and (hover:hover){
+    body{background-attachment:fixed}
+  }
+  {%- if section.settings.nascondi_footer_tema -%}
+    /* questo CSS esiste solo dove è presente questa sezione, quindi solo in home */
+    .shopify-section-group-footer-group{display:none}
+  {%- endif -%}
+{%- endstyle -%}
+
+{%- if section.blocks.size > 0 -%}
+  <div class="ea-acquerelli" aria-hidden="true">
+    {%- for b in section.blocks -%}
+      {%- assign d = b.settings -%}
+      <div class="ea-acq"
+           style="left:{{ d.x }}%;top:{{ d.y }}%;
+                  width:{{ d.dimensione }}px;
+                  opacity:{{ d.opacita | divided_by: 100.0 }};
+                  --ea-deriva:{{ d.lentezza }}s;
+                  --ea-ritardo:-{{ forloop.index | times: 7 }}s;
+                  color:{{ d.tinta }}">
+        {%- if d.immagine != blank -%}
+          {{ d.immagine | image_url: width: 900 | image_tag: loading: 'lazy', alt: '' }}
+        {%- else -%}
+          {% render 'ea-motivo', motivo: d.motivo, seme: forloop.index %}
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+{%- endif -%}
+
+{%- if section.settings.mostra_altimetro -%}
+  <div class="ea-altimetro" aria-hidden="true" data-quota-min="{{ section.settings.quota_min }}" data-quota-max="{{ section.settings.quota_max }}">
+    <div class="asta">
+      <span class="tacca" style="top:0"></span>
+      <span class="tacca" style="top:33%"></span>
+      <span class="tacca" style="top:66%"></span>
+      <span class="tacca" style="top:100%"></span>
+      <span class="marker" style="top:100%"></span>
+    </div>
+    <div class="lettura">{{ section.settings.quota_min }} m</div>
+    <div class="etichetta">quota</div>
+  </div>
+{%- endif -%}
+
+<script>
+(function(){
+  function avvia(){
+    /* rivelazioni allo scroll — vale per tutte le sezioni della pagina */
+    var el = document.querySelectorAll('.ea-rivela:not(.dentro)');
+    if(!('IntersectionObserver' in window)){
+      el.forEach(function(e){ e.classList.add('dentro'); });
+    } else {
+      var io = new IntersectionObserver(function(voci){
+        voci.forEach(function(v){ if(v.isIntersecting){ v.target.classList.add('dentro'); io.unobserve(v.target); } });
+      },{threshold:.15,rootMargin:'0px 0px -60px 0px'});
+      el.forEach(function(e){ io.observe(e); });
+    }
+
+    /* altimetro */
+    var tutti = document.querySelectorAll('.ea-altimetro');
+    if(!tutti.length) return;
+
+    /* Nell'editor del tema la sezione viene rigenerata a ogni modifica:
+       teniamo l'ultima copia e buttiamo via le precedenti. */
+    for(var i = 0; i < tutti.length - 1; i++){ tutti[i].remove(); }
+    var alt = tutti[tutti.length - 1];
+
+    /* position:fixed si ancora al primo antenato con transform, filter,
+       perspective, will-change o contain. Cerchiamo il contenitore più alto
+       che non ne abbia nessuno e spostiamo lì l'asta. */
+    function creaContesto(el){
+      var st = getComputedStyle(el);
+      return st.transform !== 'none' || st.filter !== 'none' ||
+             st.perspective !== 'none' || st.contain !== 'none' ||
+             (st.willChange !== 'auto' && st.willChange !== '');
+    }
+    var casa = creaContesto(document.body) ? document.documentElement : document.body;
+    if(alt.parentElement !== casa){ casa.appendChild(alt); }
+
+    if(alt.dataset.attivo) return;   /* listener già collegati */
+    alt.dataset.attivo = '1';
+
+    var marker = alt.querySelector('.marker');
+    var lettura = alt.querySelector('.lettura');
+    var qmin = parseInt(alt.dataset.quotaMin,10) || 500;
+    var qmax = parseInt(alt.dataset.quotaMax,10) || 1950;
+    var atteso = false;
+    var scorrevole = null;   /* l'elemento che scorre davvero, se non è la finestra */
+
+    function misura(){
+      /* Caso 1: scorre un contenitore interno (molti temi recenti fanno così) */
+      if(scorrevole && scorrevole.scrollHeight > scorrevole.clientHeight){
+        return { y: scorrevole.scrollTop, max: scorrevole.scrollHeight - scorrevole.clientHeight };
+      }
+      /* Caso 2: scorre la finestra */
+      var doc = document.documentElement;
+      var altezza = Math.max(doc.scrollHeight, document.body.scrollHeight);
+      var y = window.scrollY || window.pageYOffset || doc.scrollTop || document.body.scrollTop || 0;
+      return { y: y, max: altezza - window.innerHeight };
+    }
+
+    function aggiorna(){
+      atteso = false;
+      var m = misura();
+      var p = m.max > 0 ? Math.min(1, Math.max(0, m.y / m.max)) : 0;
+      marker.style.top = (100 - p*100) + '%';
+      lettura.textContent = Math.round(qmin + p*(qmax-qmin)) + ' m';
+    }
+
+    function chiedi(e){
+      /* Se l'evento arriva da un elemento invece che dal documento,
+         è quello il contenitore che scorre: ce lo teniamo. */
+      if(e && e.target && e.target.nodeType === 1 && e.target !== document.documentElement){
+        scorrevole = e.target;
+      }
+      if(!atteso){ atteso = true; requestAnimationFrame(aggiorna); }
+    }
+
+    window.addEventListener('scroll', chiedi, {passive:true});
+    document.addEventListener('scroll', chiedi, {passive:true, capture:true});
+    window.addEventListener('resize', chiedi);
+    if('ResizeObserver' in window){ new ResizeObserver(chiedi).observe(document.body); }
+    aggiorna();
+  }
+
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', avvia); } else { avvia(); }
+  document.addEventListener('shopify:section:load', avvia);
+})();
+</script>
+
+{% schema %}
+{
+  "name": "EA · Atmosfera",
+  "settings": [
+    { "type": "paragraph", "content": "Mettere questa sezione una sola volta, in cima alla pagina. Contiene lo sfondo e gli script usati da tutte le altre sezioni EA." },
+    { "type": "checkbox", "id": "nascondi_footer_tema", "label": "Nascondi il footer del tema", "info": "Vale solo per le pagine che usano queste sezioni. Ricordati di aggiungere in fondo la sezione «EA · Footer».", "default": true },
+    { "type": "checkbox", "id": "mostra_altimetro", "label": "Mostra l'altimetro laterale", "default": true },
+    { "type": "number", "id": "quota_min", "label": "Quota di partenza (m)", "default": 500 },
+    { "type": "number", "id": "quota_max", "label": "Quota di arrivo (m)", "default": 1950 }
+  ],
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "acquerello",
+      "name": "Acquerello",
+      "settings": [
+        { "type": "paragraph", "content": "Carica un acquerello tuo (PNG con sfondo trasparente) oppure lascia vuoto e scegli un motivo disegnato." },
+        { "type": "image_picker", "id": "immagine", "label": "Immagine" },
+        {
+          "type": "select", "id": "motivo", "label": "Motivo disegnato", "default": "macchia",
+          "options": [
+            { "value": "macchia", "label": "Macchia di colore" },
+            { "value": "ferro", "label": "Ferro di cavallo" },
+            { "value": "impronte", "label": "Impronte" },
+            { "value": "erba", "label": "Ciuffo d'erba" }
+          ]
+        },
+        { "type": "color", "id": "tinta", "label": "Tinta", "default": "#8aa98f" },
+        { "type": "range", "id": "x", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Posizione orizzontale", "default": 80 },
+        { "type": "range", "id": "y", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Posizione verticale", "default": 30 },
+        { "type": "range", "id": "dimensione", "min": 80, "max": 600, "step": 10, "unit": "px", "label": "Dimensione", "default": 260 },
+        { "type": "range", "id": "opacita", "min": 3, "max": 60, "step": 1, "unit": "%", "label": "Intensità", "default": 18 },
+        { "type": "range", "id": "lentezza", "min": 20, "max": 120, "step": 5, "unit": "s", "label": "Lentezza del movimento", "default": 60 }
+      ]
+    }
+  ],
+  "presets": [{ "name": "EA · Atmosfera", "blocks": [{ "type": "acquerello" }] }]
+}
+{% endschema %}

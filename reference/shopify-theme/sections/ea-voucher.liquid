@@ -1,0 +1,79 @@
+{%- comment -%}
+  ea-voucher — le cartoline dei buoni regalo lette dalla collezione.
+  Titoli, prezzi e indirizzi arrivano dai prodotti: nessun link da tenere
+  aggiornato a mano. Aggiungi un prodotto alla collezione e compare qui.
+{%- endcomment -%}
+
+{{ 'ea-racconto.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign coll = collections[section.settings.collezione]
+  assign prodotti = coll.products
+-%}
+
+<section class="ea-sez ea-sez--rail ea-rivela"
+         id="{{ section.settings.ancora | default: 'voucher' }}">
+  <div class="ea-in">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="ea-eyebrow">{{ section.settings.eyebrow }}
+        {%- if section.settings.quota != blank %} <span class="ea-quota">· {{ section.settings.quota }}</span>{% endif -%}
+      </p>
+    {%- endif -%}
+    {%- if section.settings.titolo != blank -%}<h2>{{ section.settings.titolo }}</h2>{%- endif -%}
+    {%- if section.settings.testo != blank -%}{{ section.settings.testo }}{%- endif -%}
+
+    {%- if prodotti.size > 0 -%}
+      <div class="ea-voucher">
+        {%- for product in prodotti limit: section.settings.quanti -%}
+          {%- liquid
+            assign nome = product.title
+            if section.settings.prefisso != blank
+              assign nome = nome | remove: section.settings.prefisso
+            endif
+          -%}
+          <a class="ea-card" href="{{ product.url }}">
+            <div>
+              {%- if product.type != blank -%}<p class="durata">{{ product.type }}</p>{%- endif -%}
+              <h3>{{ nome | strip }}</h3>
+            </div>
+            <p class="ea-prezzo">
+              <span class="ora">{{ product.price | money_without_trailing_zeros }}</span>
+              {%- if section.settings.mostra_barrato and product.compare_at_price > product.price -%}
+                <span class="prima">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+              {%- endif -%}
+            </p>
+          </a>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <p class="ea-todo">Nessun prodotto: scegli una collezione nelle impostazioni della sezione.</p>
+    {%- endif -%}
+
+    {%- if section.settings.validita != blank -%}
+      <p class="ea-validita">{{ section.settings.validita }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "EA · Buoni regalo",
+  "settings": [
+    { "type": "collection", "id": "collezione", "label": "Collezione dei buoni" },
+    { "type": "range", "id": "quanti", "min": 2, "max": 12, "step": 1, "label": "Quanti mostrarne", "default": 4 },
+    { "type": "text", "id": "prefisso", "label": "Prefisso da togliere dal titolo", "info": "Esempio: «Voucher - Buono Regalo ». Serve solo per accorciare il titolo in pagina, il prodotto non cambia.", "default": "Voucher - Buono Regalo " },
+    {
+      "type": "checkbox", "id": "mostra_barrato", "label": "Mostra il prezzo barrato", "default": false,
+      "info": "Attivalo solo se il prezzo pieno è stato davvero praticato nei 30 giorni precedenti (direttiva Omnibus)."
+    },
+    { "type": "header", "content": "Testi" },
+    { "type": "text", "id": "eyebrow", "label": "Sopratitolo", "default": "Le nostre esperienze" },
+    { "type": "text", "id": "quota", "label": "Nota accanto al sopratitolo", "default": "buoni regalo" },
+    { "type": "text", "id": "titolo", "label": "Titolo (H2)", "default": "Un'uscita da regalare" },
+    { "type": "richtext", "id": "testo", "label": "Testo" },
+    { "type": "text", "id": "validita", "label": "Riga sulla validità" },
+    { "type": "text", "id": "ancora", "label": "Ancora (id)", "default": "voucher" }
+  ],
+  "presets": [{ "name": "EA · Buoni regalo" }]
+}
+{% endschema %}

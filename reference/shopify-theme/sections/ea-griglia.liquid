@@ -1,0 +1,72 @@
+{%- comment -%}
+  ea-griglia — due usi: «versanti» (riquadri grandi con quota e stagione)
+  oppure «servizi» (riquadri piccoli). Cambia solo lo stile.
+{%- endcomment -%}
+
+{{ 'ea-racconto.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign stile = section.settings.stile
+  if stile == 'versanti'
+    assign classe_griglia = 'ea-griglia ea-griglia--due'
+    assign classe_cella = 'ea-versante'
+  else
+    assign classe_griglia = 'ea-griglia ea-griglia--auto'
+    assign classe_cella = 'ea-servizio'
+  endif
+-%}
+
+<section class="ea-sez ea-sez--rail ea-rivela"
+         {% if section.settings.ancora != blank %}id="{{ section.settings.ancora }}"{% endif %}>
+  <div class="ea-in">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="ea-eyebrow">{{ section.settings.eyebrow }}
+        {%- if section.settings.quota != blank %} <span class="ea-quota">· {{ section.settings.quota }}</span>{% endif -%}
+      </p>
+    {%- endif -%}
+    {%- if section.settings.titolo != blank -%}<h2>{{ section.settings.titolo }}</h2>{%- endif -%}
+
+    <div class="{{ classe_griglia }}">
+      {%- for b in section.blocks -%}
+        <article class="{{ classe_cella }}" {{ b.shopify_attributes }}>
+          {%- if b.settings.quota != blank -%}<p class="ea-quota">{{ b.settings.quota }}</p>{%- endif -%}
+          {%- if b.settings.titolo != blank -%}<h3>{{ b.settings.titolo }}</h3>{%- endif -%}
+          {%- if b.settings.testo != blank -%}{{ b.settings.testo }}{%- endif -%}
+          {%- if b.settings.stagione != blank -%}<p class="ea-stagione">{{ b.settings.stagione }}</p>{%- endif -%}
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "EA · Griglia",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "select", "id": "stile", "label": "Stile", "default": "versanti",
+      "options": [
+        { "value": "versanti", "label": "Riquadri grandi (luoghi)" },
+        { "value": "servizi", "label": "Riquadri piccoli (servizi)" }
+      ]
+    },
+    { "type": "text", "id": "eyebrow", "label": "Sopratitolo" },
+    { "type": "text", "id": "quota", "label": "Nota accanto al sopratitolo" },
+    { "type": "text", "id": "titolo", "label": "Titolo (H2)" },
+    { "type": "text", "id": "ancora", "label": "Ancora (id)" }
+  ],
+  "blocks": [
+    {
+      "type": "cella", "name": "Riquadro",
+      "settings": [
+        { "type": "text", "id": "quota", "label": "Quota o etichetta in alto" },
+        { "type": "text", "id": "titolo", "label": "Titolo (H3)" },
+        { "type": "richtext", "id": "testo", "label": "Testo" },
+        { "type": "text", "id": "stagione", "label": "Nota finale (stagione)" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "EA · Griglia", "blocks": [{ "type": "cella" }, { "type": "cella" }] }]
+}
+{% endschema %}
