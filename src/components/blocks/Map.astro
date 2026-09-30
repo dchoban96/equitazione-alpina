@@ -1,0 +1,37 @@
+---
+/* Static map image linking to directions. No embedded map, so no
+   third-party cookies. */
+import type { Block } from '../../lib/content';
+import { getSite } from '../../lib/content';
+import Section from './Section.astro';
+import Img from '../Img.astro';
+import { txt } from '../../lib/text';
+
+interface Props {
+  block: Extract<Block, { type: 'map' }>;
+  id: string;
+  ui: Record<string, string>;
+}
+const { block: b, id, ui } = Astro.props;
+const site = await getSite();
+const destination =
+  site.geo.lat !== null && site.geo.lng !== null
+    ? `${site.geo.lat},${site.geo.lng}`
+    : `${site.address.street}, ${site.address.postalCode} ${site.address.locality} ${site.address.province}`;
+const href = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}`;
+---
+
+<Section {...b} headingId={id}>
+  <a class="map" href={href} rel="noopener" target="_blank">
+    <div class="frame">
+      <Img src={b.image} alt={b.alt} sizes="(min-width: 1320px) 1220px, 100vw" />
+    </div>
+    <span class="map__label">
+      <span>
+        <Fragment set:html={txt(b.label)} />
+        {site.coordinatesText && ` · ${site.coordinatesText}`}
+      </span>
+      <span>{ui.mapDirections}</span>
+    </span>
+  </a>
+</Section>

@@ -1,0 +1,56 @@
+---
+/* Page opening (ea-hero): coordinates line, H1, intro, closing line, footnote,
+   optional mountain ridges, optional photo with a data panel over it. */
+import type { Block } from '../../lib/content';
+import Img from '../Img.astro';
+import Ridges from '../Ridges.astro';
+import { txt, md } from '../../lib/text';
+
+interface Props {
+  block: Extract<Block, { type: 'hero' }>;
+  draft: boolean;
+  ui: Record<string, string>;
+}
+const { block: b, draft, ui } = Astro.props;
+const intro = await md(b.intro);
+const tall = b.ridges !== 'none' && !b.image;
+---
+
+<section class:list={['blk', 'blk--hero', { 'blk--tall': tall }]} id={b.anchor} data-altitude={b.altitude}>
+  {b.ridges !== 'none' && <Ridges fixed={b.ridges === 'fixed'} />}
+  <div class="blk__in">
+    <div class="hero-seq">
+      {b.coordinates && <p class="hero__coords" set:html={txt(b.coordinates)} />}
+      {b.kicker && <p class="kicker" set:html={txt(b.kicker)} />}
+      <h1>
+        <Fragment set:html={txt(b.title)} />
+        {draft && <span class="draft-badge">{ui.draftBadge}</span>}
+      </h1>
+      {intro && <div class="hero__intro prose" set:html={intro} />}
+      {b.closing && <p class="hero__closing" set:html={txt(b.closing)} />}
+      {b.footnote && <p class="hero__foot" set:html={txt(b.footnote)} />}
+    </div>
+    {
+      b.image && (
+        <div class="hero__media split split--overlay">
+          <div class="frame">
+            <Img src={b.image} alt={b.imageAlt ?? ''} sizes="(min-width: 1320px) 1220px, 100vw" priority />
+          </div>
+          {b.panel && (
+            <div class="split__text">
+              {b.panelKicker && <p class="kicker" set:html={txt(b.panelKicker)} />}
+              <dl class="details">
+                {b.panel.map((r) => (
+                  <div>
+                    <dt set:html={txt(r.label)} />
+                    <dd set:html={txt(r.value)} />
+                  </div>
+                ))}
+              </dl>
+            </div>
+          )}
+        </div>
+      )
+    }
+  </div>
+</section>

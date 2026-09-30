@@ -1,0 +1,36 @@
+---
+/* "Lo sapevi?" box: a given curiosity, or one picked for the page's
+   section. The pick is stable per page, so builds do not change by chance. */
+import { getCollection } from 'astro:content';
+import type { Block } from '../../lib/content';
+import Section from './Section.astro';
+import { txt } from '../../lib/text';
+
+interface Props {
+  block: Extract<Block, { type: 'curiosity' }>;
+  pageSection: string;
+  slug: string;
+  ui: Record<string, string>;
+}
+const { block: b, pageSection, slug, ui } = Astro.props;
+const all = await getCollection('curiosities');
+let item = b.id ? all.find((c) => c.id === b.id) : undefined;
+if (b.id && !item) throw new Error(`curiosity block: no curiosity "${b.id}" in src/content/it/curiosities.yaml`);
+if (!item) {
+  const section = b.section ?? pageSection;
+  const pool = all.filter((c) => c.data.sections.includes(section as never));
+  const hash = [...slug].reduce((h, ch) => (h * 31 + ch.charCodeAt(0)) >>> 0, 7);
+  item = pool[hash % Math.max(pool.length, 1)];
+}
+---
+
+{
+  item && (
+    <Section type="curiosity" altitude={b.altitude} anchor={b.anchor}>
+      <aside class="curiosity">
+        <p class="kicker">{ui.curiosityTitle}</p>
+        <p set:html={txt(item.data.text)} />
+      </aside>
+    </Section>
+  )
+}

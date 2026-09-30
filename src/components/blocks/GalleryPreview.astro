@@ -1,0 +1,55 @@
+---
+/* 4 to 6 photos of a gallery, linking to the gallery page. */
+import { getEntry } from 'astro:content';
+import type { Block } from '../../lib/content';
+import { url } from '../../lib/content';
+import Section from './Section.astro';
+import Img from '../Img.astro';
+import { txt } from '../../lib/text';
+
+interface Props {
+  block: Extract<Block, { type: 'gallery-preview' }>;
+  id: string;
+  ui: Record<string, string>;
+}
+const { block: b, id, ui } = Astro.props;
+const gallery = await getEntry('galleries', b.gallery);
+if (!gallery) throw new Error(`gallery-preview: no gallery "${b.gallery}" in src/content/it/galleries/`);
+const photos = gallery.data.photos.slice(0, b.count);
+const target = (n: number) => (!b.link ? undefined : b.link.includes('#') ? url(b.link) : `${url(b.link)}#foto-${n}`);
+---
+
+<Section {...b} headingId={id}>
+  {
+    photos.length === 0 ? (
+      <p set:html={txt(ui.galleryEmpty)} />
+    ) : (
+      <ul class="gallery">
+        {photos.map((p, i) => (
+          <li>
+            {target(i + 1) ? (
+              <a href={target(i + 1)}>
+                <div class="frame">
+                  <Img src={p.file} alt={p.alt} sizes="(min-width: 1024px) 300px, (min-width: 750px) 33vw, 50vw" />
+                </div>
+              </a>
+            ) : (
+              <div class="frame">
+                <Img src={p.file} alt={p.alt} sizes="(min-width: 1024px) 300px, (min-width: 750px) 33vw, 50vw" />
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+  {
+    b.link && (
+      <p class="gallery__more">
+        <a class="btn btn--ghost" href={url(b.link)}>
+          {ui.galleryAll}
+        </a>
+      </p>
+    )
+  }
+</Section>

@@ -1,0 +1,56 @@
+---
+/* Copy beside a photo (ea-blocco): photo right, left, below, or text over it. */
+import type { Block } from '../../lib/content';
+import Section from './Section.astro';
+import Img from '../Img.astro';
+import { md, txt } from '../../lib/text';
+
+interface Props {
+  block: Extract<Block, { type: 'text-image' }>;
+  id: string;
+}
+const { block: b, id } = Astro.props;
+const body = await md(b.body);
+const wide = b.side === 'below' || b.side === 'overlay';
+const sizes = wide ? '(min-width: 1320px) 1220px, 100vw' : '(min-width: 820px) 50vw, 100vw';
+const note = b.note ?? (b.altitude !== undefined ? `${b.altitude} m` : undefined);
+---
+
+<Section type="text-image" altitude={b.altitude} anchor={b.anchor}>
+  <div class:list={['split', `split--${b.side}`]}>
+    <div class="split__text">
+      {
+        b.kicker && (
+          <p class="kicker">
+            <span set:html={txt(b.kicker)} />
+            {note && <span class="kicker__note">· {note}</span>}
+          </p>
+        )
+      }
+      {b.heading && <h2 id={id} set:html={txt(b.heading)} />}
+      {b.lead && <p class="lead" set:html={txt(b.lead)} />}
+      {body && <div class="prose" set:html={body} />}
+      {
+        b.details && (
+          <dl class="details">
+            {b.details.map((r) => (
+              <div>
+                <dt set:html={txt(r.label)} />
+                <dd set:html={txt(r.value)} />
+              </div>
+            ))}
+          </dl>
+        )
+      }
+    </div>
+    <figure>
+      <div
+        class:list={['frame', { 'frame--contain': b.fit === 'contain' }]}
+        style={b.fit === 'contain' ? '--ratio:auto' : undefined}
+      >
+        <Img src={b.image} alt={b.alt} sizes={sizes} />
+      </div>
+      {b.caption && <figcaption set:html={txt(b.caption)} />}
+    </figure>
+  </div>
+</Section>

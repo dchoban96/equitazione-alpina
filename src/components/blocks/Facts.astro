@@ -1,0 +1,25 @@
+---
+/* Short row of key facts (ea-strip). */
+import type { Block } from '../../lib/content';
+import Section from './Section.astro';
+import { txt } from '../../lib/text';
+
+interface Props {
+  block: Extract<Block, { type: 'facts' }>;
+  id: string;
+}
+const { block: b, id } = Astro.props;
+---
+
+<Section {...b} headingId={id}>
+  <dl class="facts">
+    {
+      b.items.map((r) => (
+        <div>
+          <dt set:html={txt(r.label)} />
+          <dd set:html={txt(r.value)} />
+        </div>
+      ))
+    }
+  </dl>
+</Section>

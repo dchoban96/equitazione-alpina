@@ -1,0 +1,18 @@
+---
+/* A quotation (ea-citazione). */
+import type { Block } from '../../lib/content';
+import Section from './Section.astro';
+import { txt } from '../../lib/text';
+
+interface Props {
+  block: Extract<Block, { type: 'quote' }>;
+}
+const { block: b } = Astro.props;
+---
+
+<Section type="quote" altitude={b.altitude} anchor={b.anchor}>
+  <blockquote class="quote">
+    <p set:html={txt(b.text)} />
+    {b.author && <footer set:html={txt(b.author)} />}
+  </blockquote>
+</Section>

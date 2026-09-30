@@ -1,0 +1,17 @@
+---
+/* Long-form copy (ea-blocco, "solo testo"). */
+import type { Block } from '../../lib/content';
+import Section from './Section.astro';
+import { md } from '../../lib/text';
+
+interface Props {
+  block: Extract<Block, { type: 'text' }>;
+  id: string;
+}
+const { block: b, id } = Astro.props;
+const body = await md(b.body);
+---
+
+<Section {...b} headingId={id}>
+  <div class="prose" set:html={body} />
+</Section>

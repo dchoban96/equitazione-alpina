@@ -1,0 +1,72 @@
+---
+/* Rating summary and review cards (ea-recensioni). Visual only: no rating
+   structured data, because self-published review stars break Google's rules. */
+import { getCollection } from 'astro:content';
+import type { Block } from '../../lib/content';
+import Section from './Section.astro';
+import { txt } from '../../lib/text';
+
+interface Props {
+  block: Extract<Block, { type: 'reviews' }>;
+  id: string;
+  ui: Record<string, string>;
+}
+const { block: b, id, ui } = Astro.props;
+const all = await getCollection('reviews');
+const reviews = b.ids ? b.ids.map((rid) => all.find((r) => r.id === rid)).filter((r) => r !== undefined) : all;
+if (b.ids && reviews.length !== b.ids.length) throw new Error(`reviews block: unknown review id in ${b.ids.join(', ')}`);
+---
+
+<Section {...b} headingId={id}>
+  {
+    b.rating && (
+      <p class="rating">
+        <span class="rating__value" set:html={txt(b.rating)} />
+        {b.count && <span class="rating__count" set:html={txt(b.count)} />}
+      </p>
+    )
+  }
+  <ul class="reviews">
+    {
+      reviews.map(({ data: r }) => (
+        <li>
+          <figure class="review">
+            {r.stars && (
+              <p class="review__stars">
+                <span aria-hidden="true">{'★'.repeat(r.stars) + '☆'.repeat(5 - r.stars)}</span>
+                <span class="visually-hidden">
+                  {r.stars} {ui.reviewsStars}
+                </span>
+              </p>
+            )}
+            {r.title && <h3 set:html={txt(r.title)} />}
+            <blockquote cite={r.sourceUrl}>
+              <p set:html={txt(r.text)} />
+            </blockquote>
+            <figcaption>
+              {r.sourceUrl ? (
+                <a href={r.sourceUrl} rel="noopener" target="_blank">
+                  {r.author}
+                </a>
+              ) : (
+                r.author
+              )}
+              <span>{r.date}</span>
+            </figcaption>
+          </figure>
+        </li>
+      ))
+    }
+  </ul>
+  {
+    b.sourceLabel && (
+      <p class="reviews__source">
+        {b.sourceUrl ? (
+          <a href={b.sourceUrl} rel="noopener" target="_blank" set:html={txt(b.sourceLabel)} />
+        ) : (
+          <span set:html={txt(b.sourceLabel)} />
+        )}
+      </p>
+    )
+  }
+</Section>

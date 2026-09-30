@@ -1,0 +1,41 @@
+---
+/* Latest or related curiosity articles. */
+import type { Block } from '../../lib/content';
+import { getArticles, url } from '../../lib/content';
+import Section from './Section.astro';
+import Img from '../Img.astro';
+import { txt } from '../../lib/text';
+
+interface Props {
+  block: Extract<Block, { type: 'article-list' }>;
+  id: string;
+  ui: Record<string, string>;
+}
+const { block: b, id, ui } = Astro.props;
+const articles = (await getArticles()).filter((a) => !b.section || a.data.section === b.section).slice(0, b.count);
+const fmt = new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<Section {...b} headingId={id}>
+  {
+    articles.length === 0 ? (
+      <p>{ui.articleListEmpty}</p>
+    ) : (
+      <ul class="articles">
+        {articles.map((a) => (
+          <li class="article-card">
+            <div class="frame">
+              <Img src={a.data.cover} alt={a.data.coverAlt} sizes="(min-width: 1024px) 400px, (min-width: 600px) 50vw, 100vw" />
+            </div>
+            <time datetime={a.data.date.toISOString().slice(0, 10)}>{fmt.format(a.data.date)}</time>
+            <h3>
+              <a href={url(`/curiosita/${a.id}/`)} set:html={txt(a.data.title)} />
+              {a.data.draft && <span class="draft-badge">{ui.draftBadge}</span>}
+            </h3>
+            <p set:html={txt(a.data.summary)} />
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</Section>

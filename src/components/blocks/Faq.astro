@@ -1,0 +1,28 @@
+---
+/* Questions and answers, as native <details> (open without JavaScript).
+   The page adds FAQPage structured data for these entries. */
+import type { Block } from '../../lib/content';
+import Section from './Section.astro';
+import { md, txt } from '../../lib/text';
+import { faqFor } from '../../lib/blocks';
+
+interface Props {
+  block: Extract<Block, { type: 'faq' }>;
+  id: string;
+}
+const { block: b, id } = Astro.props;
+const items = await Promise.all((await faqFor(b)).map(async (q) => ({ ...q, html: await md(q.answer) })));
+---
+
+<Section {...b} headingId={id}>
+  <div class="faq">
+    {
+      items.map((q) => (
+        <details>
+          <summary set:html={txt(q.question)} />
+          <div class="faq__answer prose" set:html={q.html} />
+        </details>
+      ))
+    }
+  </div>
+</Section>

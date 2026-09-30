@@ -1,0 +1,47 @@
+---
+/* Grid of short items: small tiles (ea-griglia "servizi") or cards with a
+   photo and a link (ea-card). */
+import type { Block } from '../../lib/content';
+import Section from './Section.astro';
+import Img from '../Img.astro';
+import { md, txt } from '../../lib/text';
+import { url } from '../../lib/content';
+
+interface Props {
+  block: Extract<Block, { type: 'cards' }>;
+  id: string;
+}
+const { block: b, id } = Astro.props;
+const items = await Promise.all(b.items.map(async (i) => ({ ...i, html: await md(i.text) })));
+---
+
+<Section {...b} headingId={id}>
+  {
+    b.style === 'tiles' ? (
+      <ul class="grid grid--auto">
+        {items.map((i) => (
+          <li class="tile">
+            <h3 set:html={txt(i.title)} />
+            {i.html && <div class="prose" set:html={i.html} />}
+            {i.link && <a class="tile__link" href={url(i.link)} set:html={txt(i.label ?? i.title)} />}
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <ul class="cards">
+        {items.map((i) => (
+          <li class="card">
+            {i.image && (
+              <div class="frame">
+                <Img src={i.image} alt={i.alt ?? ''} sizes="(min-width: 1024px) 400px, (min-width: 600px) 50vw, 100vw" />
+              </div>
+            )}
+            <h3 set:html={txt(i.title)} />
+            {i.html && <div class="prose" set:html={i.html} />}
+            {i.link && <a class="tile__link" href={url(i.link)} set:html={txt(i.label ?? i.title)} />}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</Section>

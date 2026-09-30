@@ -1,0 +1,46 @@
+---
+/* Shell shared by every block: anchor id, altitude for the altimeter,
+   scroll reveal, and the optional kicker / note / heading. */
+import { txt } from '../../lib/text';
+
+interface Props {
+  type: string;
+  altitude?: number;
+  anchor?: string;
+  kicker?: string;
+  note?: string;
+  heading?: string;
+  reveal?: boolean;
+  line?: boolean;
+  class?: string;
+  headingId?: string;
+}
+const { type, altitude, anchor, kicker, note, heading, reveal = true, line = false, class: cls, headingId } = Astro.props;
+// With an altitude and no other note, the altitude is written next to the kicker.
+const shownNote = note ?? (altitude !== undefined ? `${altitude} m` : undefined);
+const hasHead = Boolean(kicker || heading);
+---
+
+<section
+  class:list={['blk', `blk--${type}`, { reveal, 'blk--line': line }, cls]}
+  id={anchor}
+  data-altitude={altitude}
+  aria-labelledby={heading ? headingId : undefined}
+>
+  <div class="blk__in">
+    {
+      hasHead && (
+        <header>
+          {kicker && (
+            <p class="kicker">
+              <span set:html={txt(kicker)} />
+              {shownNote && <span class="kicker__note">· {shownNote}</span>}
+            </p>
+          )}
+          {heading && <h2 id={headingId} set:html={txt(heading)} />}
+        </header>
+      )
+    }
+    <slot />
+  </div>
+</section>

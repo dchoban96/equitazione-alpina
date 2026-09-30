@@ -1,0 +1,34 @@
+---
+/* Places with altitude and season (ea-griglia "versanti"). */
+import type { Block } from '../../lib/content';
+import Section from './Section.astro';
+import { md, txt } from '../../lib/text';
+
+interface Props {
+  block: Extract<Block, { type: 'places' }>;
+  id: string;
+  ui: Record<string, string>;
+}
+const { block: b, id, ui } = Astro.props;
+const items = await Promise.all(b.items.map(async (i) => ({ ...i, html: await md(i.text) })));
+---
+
+<Section {...b} headingId={id}>
+  <ul class:list={['grid', items.length === 2 ? 'grid--two' : 'grid--auto']}>
+    {
+      items.map((i) => (
+        <li class="place">
+          {i.altitude !== undefined && (
+            <p class="place__alt">
+              {i.approximate && '≈ '}
+              {i.altitude} {ui.altimeterUnit}
+            </p>
+          )}
+          <h3 set:html={txt(i.name)} />
+          {i.html && <div class="prose" set:html={i.html} />}
+          {i.season && <p class="place__season" set:html={txt(i.season)} />}
+        </li>
+      ))
+    }
+  </ul>
+</Section>

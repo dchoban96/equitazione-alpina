@@ -1,0 +1,140 @@
+---
+/* Closing call to contact (ea-visita + ea-contatto): phone, WhatsApp,
+   e-mail, address, hours, and the contact form. All data from site settings.
+   The form posts to the form service set in site.yaml (contactForm.action);
+   until one is chosen, sending is disabled and a note says so. */
+import type { Block } from '../../lib/content';
+import { getSite, url } from '../../lib/content';
+import Section from './Section.astro';
+import { md, telHref, waHref } from '../../lib/text';
+
+interface Props {
+  block: Extract<Block, { type: 'cta-contact' }>;
+  id: string;
+  ui: Record<string, string>;
+}
+const { block: b, id, ui } = Astro.props;
+const site = await getSite();
+const body = await md(b.body);
+const action = site.contactForm.action;
+const f = `f-${id}`;
+---
+
+<Section {...b} headingId={id} line>
+  {body && <div class="prose" set:html={body} />}
+  <div class:list={['contact', { 'contact--form': b.form }]}>
+    <div class="contact__list">
+      <div class="contact__item">
+        <span class="contact__label">{ui.contactPhone}</span>
+        <a class="contact__value contact__value--strong" href={telHref(site.phone)}>{site.phone}</a>
+        <span class="contact__note">{ui.contactPhoneNote}</span>
+      </div>
+      {
+        site.whatsapp && (
+          <div class="contact__item">
+            <span class="contact__label">{ui.contactWhatsapp}</span>
+            <a class="contact__value" href={waHref(site.whatsapp)} rel="noopener" target="_blank">
+              {site.whatsapp}
+            </a>
+          </div>
+        )
+      }
+      {
+        site.email && (
+          <div class="contact__item">
+            <span class="contact__label">{ui.contactEmail}</span>
+            <a class="contact__value" href={`mailto:${site.email}`}>
+              {site.email}
+            </a>
+          </div>
+        )
+      }
+      <div class="contact__item">
+        <span class="contact__label">{ui.contactAddress}</span>
+        <address class="contact__value contact__value--text">
+          {site.address.street}<br />
+          {site.address.postalCode}
+          {site.address.locality} ({site.address.province})
+        </address>
+      </div>
+      {
+        site.hours.length > 0 && (
+          <div class="contact__item">
+            <span class="contact__label">{ui.contactHours}</span>
+            <dl class="hours">
+              {site.hours.map((h) => (
+                <div>
+                  <dt>{h.days}</dt>
+                  <dd>{h.hours}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        )
+      }
+      <div class="contact__actions">
+        <a class="btn" href={telHref(site.phone)}>{ui.contactCall}</a>
+        {
+          site.whatsapp && (
+            <a class="btn btn--ghost" href={waHref(site.whatsapp)} rel="noopener" target="_blank">
+              {ui.contactWhatsappButton}
+            </a>
+          )
+        }
+      </div>
+    </div>
+
+    {
+      b.form && (
+        <form class="form" method="post" action={action || undefined} data-contact-form>
+          {!action && <p class="form__notice">{ui.formDisabled}</p>}
+          <div class="field">
+            <label for={`${f}-name`}>{ui.formName}</label>
+            <input id={`${f}-name`} name="nome" type="text" autocomplete="name" required />
+          </div>
+          <div class="form__row">
+            <div class="field">
+              <label for={`${f}-email`}>{ui.formEmail}</label>
+              <input id={`${f}-email`} name="email" type="email" autocomplete="email" spellcheck="false" autocapitalize="off" required />
+            </div>
+            <div class="field">
+              <label for={`${f}-tel`}>
+                {ui.formPhone} <span class="field__opt">{ui.formOptional}</span>
+              </label>
+              <input id={`${f}-tel`} name="telefono" type="tel" autocomplete="tel" />
+            </div>
+          </div>
+          {site.contactForm.reasons.length > 0 && (
+            <div class="field">
+              <label for={`${f}-reason`}>{ui.formReason}</label>
+              <select id={`${f}-reason`} name="richiesta">
+                {site.contactForm.reasons.map((r) => (
+                  <option>{r}</option>
+                ))}
+              </select>
+            </div>
+          )}
+          <div class="field">
+            <label for={`${f}-msg`}>{ui.formMessage}</label>
+            <textarea id={`${f}-msg`} name="messaggio" rows="6" required />
+          </div>
+          <div class="honeypot" aria-hidden="true">
+            <label>
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+            </label>
+          </div>
+          <div class="consent-field">
+            <input id={`${f}-ok`} name="consenso_privacy" type="checkbox" value="si" required />
+            <label for={`${f}-ok`}>
+              {ui.formConsent} <a href={url('/privacy/')}>{ui.formPrivacyLink}</a>
+            </label>
+          </div>
+          <button type="submit" class="btn" disabled={!action}>
+            {ui.formSubmit}
+          </button>
+          <p class="form__note">{ui.formReplyNote}</p>
+        </form>
+      )
+    }
+  </div>
+</Section>

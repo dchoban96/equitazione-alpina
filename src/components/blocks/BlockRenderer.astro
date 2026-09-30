@@ -1,0 +1,65 @@
+---
+/* Turns a page's ordered list of blocks into sections. Page templates only
+   loop over blocks; adding a page never needs new code. */
+import type { Page } from '../../lib/content';
+import Hero from './Hero.astro';
+import Text from './Text.astro';
+import TextImage from './TextImage.astro';
+import Facts from './Facts.astro';
+import Cards from './Cards.astro';
+import Places from './Places.astro';
+import Quote from './Quote.astro';
+import GalleryPreview from './GalleryPreview.astro';
+import Gallery from './Gallery.astro';
+import Reviews from './Reviews.astro';
+import Faq from './Faq.astro';
+import Curiosity from './Curiosity.astro';
+import ArticleList from './ArticleList.astro';
+import Map from './Map.astro';
+import CtaContact from './CtaContact.astro';
+
+interface Props {
+  page: Page;
+  ui: Record<string, string>;
+}
+const { page, ui } = Astro.props;
+const { blocks, slug, section, draft } = page.data;
+---
+
+{
+  blocks.map((block, i) => {
+    const id = block.anchor ? `${block.anchor}-titolo` : `b${i}-titolo`;
+    switch (block.type) {
+      case 'hero':
+        return <Hero block={block} draft={draft} ui={ui} />;
+      case 'text':
+        return <Text block={block} id={id} />;
+      case 'text-image':
+        return <TextImage block={block} id={id} />;
+      case 'facts':
+        return <Facts block={block} id={id} />;
+      case 'cards':
+        return <Cards block={block} id={id} />;
+      case 'places':
+        return <Places block={block} id={id} ui={ui} />;
+      case 'quote':
+        return <Quote block={block} />;
+      case 'gallery-preview':
+        return <GalleryPreview block={block} id={id} ui={ui} />;
+      case 'gallery':
+        return <Gallery block={block} id={id} ui={ui} />;
+      case 'reviews':
+        return <Reviews block={block} id={id} ui={ui} />;
+      case 'faq':
+        return <Faq block={block} id={id} />;
+      case 'curiosity':
+        return <Curiosity block={block} pageSection={section} slug={slug} ui={ui} />;
+      case 'article-list':
+        return <ArticleList block={block} id={id} ui={ui} />;
+      case 'map':
+        return <Map block={block} id={id} ui={ui} />;
+      case 'cta-contact':
+        return <CtaContact block={block} id={id} ui={ui} />;
+    }
+  })
+}

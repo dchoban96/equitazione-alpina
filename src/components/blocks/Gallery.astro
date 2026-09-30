@@ -1,0 +1,147 @@
+---
+/* Full gallery with a hand-written lightbox: keyboard (arrows, Escape),
+   swipe, focus kept inside, caption, and a URL fragment per photo
+   (#foto-3) so a photo can be linked. Without JavaScript each thumbnail
+   links to the large image. */
+import { getEntry } from 'astro:content';
+import type { Block } from '../../lib/content';
+import Section from './Section.astro';
+import Img from '../Img.astro';
+import { txt } from '../../lib/text';
+import { lightboxSources } from '../../lib/images';
+
+interface Props {
+  block: Extract<Block, { type: 'gallery' }>;
+  id: string;
+  ui: Record<string, string>;
+}
+const { block: b, id, ui } = Astro.props;
+const gallery = await getEntry('galleries', b.gallery);
+if (!gallery) throw new Error(`gallery: no gallery "${b.gallery}" in src/content/it/galleries/`);
+
+const photos = await Promise.all(
+  gallery.data.photos.map(async (p, i) => {
+    const caption = [p.caption, p.place, p.altitude !== undefined ? `${p.altitude} ${ui.altimeterUnit}` : undefined]
+      .filter(Boolean)
+      .join(' · ');
+    return { ...p, n: i + 1, caption, large: await lightboxSources(p.file) };
+  }),
+);
+---
+
+<Section {...b} headingId={id}>
+  {
+    photos.length === 0 ? (
+      <p set:html={txt(ui.galleryEmpty)} />
+    ) : (
+      <>
+        <ul class="gallery" data-gallery>
+          {photos.map((p) => (
+            <li id={`foto-${p.n}`}>
+              <figure>
+                <a
+                  href={p.large.src}
+                  data-lb
+                  data-avif={p.large.avif}
+                  data-webp={p.large.webp}
+                  data-alt={p.alt}
+                  data-caption={p.caption}
+                  aria-label={`${ui.galleryOpen}: ${p.alt}`}
+                >
+                  <div class="frame">
+                    <Img src={p.file} alt={p.alt} sizes="(min-width: 1024px) 300px, (min-width: 750px) 33vw, 50vw" />
+                  </div>
+                </a>
+                {p.caption && <figcaption set:html={txt(p.caption)} />}
+              </figure>
+            </li>
+          ))}
+        </ul>
+        <dialog class="lightbox" aria-label={gallery.data.title} data-lightbox data-of={ui.galleryOf}>
+          <div class="lightbox__bar">
+            <span data-lb-count aria-live="polite" />
+            <div class="lightbox__nav">
+              <button type="button" data-lb-prev aria-label={ui.galleryPrev}>←</button>
+              <button type="button" data-lb-next aria-label={ui.galleryNext}>→</button>
+              <button type="button" data-lb-close aria-label={ui.galleryClose}>✕</button>
+            </div>
+          </div>
+          <div class="lightbox__stage" data-lb-stage>
+            <picture>
+              <source type="image/avif" sizes="100vw" data-lb-avif />
+              <img alt="" sizes="100vw" data-lb-img />
+            </picture>
+          </div>
+          <p class="lightbox__caption" data-lb-caption />
+        </dialog>
+      </>
+    )
+  }
+</Section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-gallery]').forEach((list) => {
+    const dialog = list.nextElementSibling as HTMLDialogElement | null;
+    if (!dialog?.matches('[data-lightbox]')) return;
+    const links = [...list.querySelectorAll<HTMLAnchorElement>('[data-lb]')];
+    const img = dialog.querySelector<HTMLImageElement>('[data-lb-img]')!;
+    const avif = dialog.querySelector<HTMLSourceElement>('[data-lb-avif]')!;
+    const caption = dialog.querySelector<HTMLElement>('[data-lb-caption]')!;
+    const count = dialog.querySelector<HTMLElement>('[data-lb-count]')!;
+    const stage = dialog.querySelector<HTMLElement>('[data-lb-stage]')!;
+    const of = dialog.dataset.of ?? '/';
+    let index = 0;
+
+    const show = (i: number) => {
+      index = (i + links.length) % links.length;
+      const a = links[index];
+      avif.srcset = a.dataset.avif ?? '';
+      img.srcset = a.dataset.webp ?? '';
+      img.src = a.href;
+      img.alt = a.dataset.alt ?? '';
+      caption.textContent = a.dataset.caption ?? '';
+      count.textContent = `${index + 1} ${of} ${links.length}`;
+      history.replaceState(null, '', `#${a.closest('li')!.id}`);
+    };
+    const open = (i: number) => {
+      show(i);
+      if (!dialog.open) dialog.showModal();
+    };
+
+    links.forEach((a, i) =>
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        open(i);
+      }),
+    );
+    dialog.querySelector('[data-lb-prev]')!.addEventListener('click', () => show(index - 1));
+    dialog.querySelector('[data-lb-next]')!.addEventListener('click', () => show(index + 1));
+    dialog.querySelector('[data-lb-close]')!.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') show(index - 1);
+      if (e.key === 'ArrowRight') show(index + 1);
+    });
+    dialog.addEventListener('close', () => {
+      history.replaceState(null, '', location.pathname + location.search);
+      links[index].focus();
+    });
+
+    // swipe
+    let startX: number | null = null;
+    stage.addEventListener('pointerdown', (e) => (startX = e.clientX));
+    stage.addEventListener('pointerup', (e) => {
+      if (startX === null) return;
+      const dx = e.clientX - startX;
+      startX = null;
+      if (Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1));
+    });
+    // click on the dark area around the photo closes
+    dialog.addEventListener('click', (e) => {
+      if (e.target === stage) dialog.close();
+    });
+
+    // a shared link such as #foto-3 opens that photo
+    const fromHash = links.findIndex((a) => `#${a.closest('li')!.id}` === location.hash);
+    if (fromHash >= 0) open(fromHash);
+  });
+</script>
