@@ -1,0 +1,38 @@
+---
+/* Custom not-found page with links to the five main sections. */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getPages, getSite, getUi, navFrom } from '../lib/content';
+import { txt } from '../lib/text';
+
+const [site, ui, pages] = await Promise.all([getSite(), getUi(), getPages()]);
+// The five main sections: the main menu without the contact page.
+const sections = navFrom(pages, site.menu.filter((s) => s !== 'contatti'), 0);
+const home = pages.find((p) => p.data.slug === '') ?? pages[0];
+---
+
+<BaseLayout
+  title={`${ui.notFoundTitle} · ${site.name}`}
+  description={ui.notFoundSeoDescription}
+  image={home.data.seo.image}
+  path="/404/"
+  noindex
+>
+  <section class="blk blk--hero">
+    <div class="blk__in hero-seq">
+      <p class="kicker">404</p>
+      <h1 set:html={txt(ui.notFoundTitle)} />
+      <p class="hero__intro" set:html={txt(ui.notFoundText)} />
+      <ul class="contact__actions" style="list-style:none;padding:0;margin-top:var(--space-6)">
+        {
+          sections.map((s) => (
+            <li>
+              <a class="btn btn--ghost" href={s.href}>
+                {s.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

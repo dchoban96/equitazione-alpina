@@ -1,0 +1,75 @@
+---
+/* One page per curiosity article (src/content/it/articles/<name>.mdx). */
+import type { GetStaticPaths } from 'astro';
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Img from '../../components/Img.astro';
+import CtaContact from '../../components/blocks/CtaContact.astro';
+import { getArticles, getPages, getSite, getUi, breadcrumbs, absolute } from '../../lib/content';
+import { articleJsonLd } from '../../lib/jsonld';
+import { preloadFor } from '../../lib/images';
+import { txt } from '../../lib/text';
+import { getImage } from 'astro:assets';
+
+export const getStaticPaths = (async () => {
+  const articles = await getArticles();
+  return articles.map((article) => ({ params: { slug: article.id }, props: { article } }));
+}) satisfies GetStaticPaths;
+
+const { article } = Astro.props;
+const { data } = article;
+const [site, ui, pages] = await Promise.all([getSite(), getUi(), getPages()]);
+const { Content } = await render(article);
+const path = `/curiosita/${article.id}/`;
+const sizes = '(min-width: 1320px) 1220px, 100vw';
+const cover = await getImage({ src: data.cover, width: 1200, format: 'jpg' });
+const fmt = new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
+const jsonLd = [
+  articleJsonLd({
+    title: data.title,
+    description: data.summary,
+    url: absolute(path, site.url),
+    image: absolute(cover.src, site.url),
+    date: data.date,
+    site,
+  }),
+];
+---
+
+<BaseLayout
+  title={data.seoTitle ?? data.title}
+  description={data.summary}
+  image={data.cover}
+  path={path}
+  draft={data.draft}
+  crumbs={breadcrumbs(pages, 'curiosita', ui.home, data.title)}
+  jsonLd={jsonLd}
+  preload={await preloadFor(data.cover, sizes)}
+  ogType="article"
+>
+  <article>
+    <header class="blk blk--hero">
+      <div class="blk__in hero-seq">
+        <p class="kicker">
+          {ui.publishedOn} <time datetime={data.date.toISOString().slice(0, 10)}>{fmt.format(data.date)}</time>
+        </p>
+        <h1>
+          <Fragment set:html={txt(data.title)} />
+          {data.draft && <span class="draft-badge">{ui.draftBadge}</span>}
+        </h1>
+        <p class="hero__intro" set:html={txt(data.summary)} />
+      </div>
+    </header>
+    <div class="blk">
+      <div class="blk__in">
+        <figure class="frame" style="--ratio:3/2">
+          <Img src={data.cover} alt={data.coverAlt} sizes={sizes} priority />
+        </figure>
+        <div class="prose" style="margin-top:var(--space-6)">
+          <Content />
+        </div>
+      </div>
+    </div>
+  </article>
+  <CtaContact block={{ type: 'cta-contact', form: false, heading: ui.articleCta }} id="contatto" ui={ui} />
+</BaseLayout>

@@ -1,0 +1,95 @@
+---
+/* Every page of the site comes from a file in src/content/it/pages/, plus one
+   small forwarding page per old Shopify URL (for hosts without real
+   redirects, such as GitHub Pages). */
+import type { GetStaticPaths } from 'astro';
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlockRenderer from '../components/blocks/BlockRenderer.astro';
+import { getPages, getSite, getUi, breadcrumbs, pagePath, url, type Page } from '../lib/content';
+import { pageJsonLd, altimeterFor } from '../lib/blocks';
+import { preloadFor } from '../lib/images';
+
+export const getStaticPaths = (async () => {
+  const pages = await getPages();
+  const redirects = (await getEntry('redirects', 'redirects'))?.data.redirects ?? [];
+  const slugs = new Set(pages.map((p) => p.data.slug));
+
+  const pagePaths = pages.map((page) => ({
+    params: { slug: page.data.slug || undefined },
+    props: { kind: 'page' as const, page },
+  }));
+  const redirectPaths = redirects
+    .filter((r) => !r.from.includes('*'))
+    .map((r) => {
+      const from = r.from.replace(/^\/|\/$/g, '');
+      if (slugs.has(from)) throw new Error(`redirects.yaml: ${r.from} is also a page`);
+      return { params: { slug: from }, props: { kind: 'redirect' as const, to: r.to } };
+    });
+  return [...pagePaths, ...redirectPaths];
+}) satisfies GetStaticPaths;
+
+type Props = { kind: 'page'; page: Page } | { kind: 'redirect'; to: string };
+const props = Astro.props as Props;
+const [site, ui] = await Promise.all([getSite(), getUi()]);
+
+let view: null | {
+  page: Page;
+  crumbs: ReturnType<typeof breadcrumbs>;
+  jsonLd: object[];
+  altimeter: ReturnType<typeof altimeterFor>;
+  preload?: Awaited<ReturnType<typeof preloadFor>>;
+} = null;
+
+if (props.kind === 'page') {
+  const { page } = props;
+  const pages = await getPages();
+  const hero = page.data.blocks[0];
+  view = {
+    page,
+    crumbs: breadcrumbs(pages, page.data.slug, ui.home),
+    jsonLd: await pageJsonLd(page, site),
+    altimeter: altimeterFor(page),
+    preload:
+      hero.type === 'hero' && hero.image
+        ? await preloadFor(hero.image, '(min-width: 1320px) 1220px, 100vw')
+        : undefined,
+  };
+}
+const target = props.kind === 'redirect' ? new URL(props.to, site.url).href : '';
+---
+
+{
+  view ? (
+    <BaseLayout
+      title={view.page.data.seo.title}
+      description={view.page.data.seo.description}
+      image={view.page.data.seo.image}
+      path={pagePath(view.page.data.slug)}
+      noindex={view.page.data.noindex}
+      draft={view.page.data.draft}
+      crumbs={view.crumbs}
+      jsonLd={view.jsonLd}
+      altimeter={view.altimeter}
+      overlay={view.page.data.headerOverlay}
+      preload={view.preload}
+    >
+      <BlockRenderer page={view.page} ui={ui} />
+    </BaseLayout>
+  ) : (
+    <html lang={site.languages[0]}>
+      <head>
+        <meta charset="utf-8" />
+        <meta name="robots" content="noindex" />
+        <meta http-equiv="refresh" content={`0; url=${url((props as { to: string }).to)}`} />
+        <link rel="canonical" href={target} />
+        <title>{site.name}</title>
+      </head>
+      <body>
+        <p>
+          {ui.redirectText} <a href={url((props as { to: string }).to)}>{target}</a>
+        </p>
+      </body>
+    </html>
+  )
+}
