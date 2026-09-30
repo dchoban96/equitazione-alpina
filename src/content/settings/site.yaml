@@ -68,6 +68,10 @@ contactForm:
     - Scuola o pensione cavalli
     - Altro
 
+# Mountain ridges fixed to the bottom of every page, drifting slowly; the
+# nearest ridge passes in front of the content. false removes them.
+ridges: true
+
 analytics:
   # none | ga4. Statistics load only after consent in the cookie banner;
   # with "none" no banner is shown.

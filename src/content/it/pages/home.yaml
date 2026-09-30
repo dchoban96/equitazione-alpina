@@ -25,7 +25,6 @@ blocks:
     coordinates: "Albosaggia · Valtellina — 46°16′N 9°84′E"
     closing: "È da lì che comincia tutto il resto."
     footnote: "Si sale da 500 a 1950 m"
-    ridges: "fixed"
     panelKicker: "Rilevazione"
     panel:
       - label: "Ora"

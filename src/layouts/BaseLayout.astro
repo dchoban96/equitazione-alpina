@@ -39,8 +39,6 @@ interface Props {
   altimeter?: { min: number; max: number; start: number } | null;
   overlay?: boolean;
   preload?: { srcset: string; sizes: string; type: string };
-  /** Mountains fixed to the bottom of the screen, front profile over the page. */
-  ridges?: boolean;
   ogType?: 'website' | 'article';
 }
 
@@ -56,7 +54,6 @@ const {
   altimeter = null,
   overlay = false,
   preload,
-  ridges = false,
   ogType = 'website',
 } = Astro.props;
 
@@ -73,6 +70,7 @@ const og = await getImage({ src: image, width: 1200, height: 630, fit: 'cover', 
 const ogUrl = absolute(og.src, site.url);
 const robots = noindex || draft || IS_PREVIEW ? 'noindex, nofollow' : 'index, follow, max-image-preview:large';
 
+const ridges = site.ridges;
 const menu = navFrom(pages, site.menu, 2);
 const footerLinks = navFrom(pages, site.footer, 0);
 const allJsonLd = [...jsonLd, ...(crumbs.length > 1 ? [breadcrumbJsonLd(crumbs, site.url)] : [])];

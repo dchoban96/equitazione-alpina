@@ -22,7 +22,7 @@ The demo page with every block is at `/demo/` (not indexed, not in the menu).
 
 ```
 src/content/
-  settings/site.yaml       business name, phone, address, social links, menu, footer, form, statistics
+  settings/site.yaml       business name, phone, address, social links, menu, footer, form, statistics, mountains
   settings/theme.yaml      colours, fonts, sizes, spacing, motion (becomes CSS custom properties)
   settings/redirects.yaml  old Shopify URLs -> new URLs
   it/ui.yaml               interface text (buttons, labels, form)

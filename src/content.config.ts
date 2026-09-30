@@ -61,7 +61,6 @@ const blocks = ({ image }: SchemaContext) => {
       intro: rich.optional(),
       closing: z.string().optional(),
       footnote: z.string().optional(),
-      ridges: z.enum(['none', 'section', 'fixed']).default('none'),
       image: img.optional(),
       imageAlt: z.string().optional(),
       panelKicker: z.string().optional(),
@@ -328,6 +327,8 @@ const site = defineCollection({
       action: z.string(),
       reasons: z.array(z.string()).default([]),
     }),
+    // Mountains fixed to the bottom of every page, the front ridge over the content.
+    ridges: z.boolean().default(true),
     analytics: z.object({
       provider: z.enum(['none', 'ga4']),
       id: z.string().default(''),

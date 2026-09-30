@@ -1,11 +1,9 @@
 ---
 /* Page opening (ea-hero): coordinates line, H1, intro, closing line, footnote,
-   optional mountain ridges, optional photo with a data panel over it.
-   Ridges "section" sit at the bottom of this block; "fixed" ridges are drawn
-   by the layout, outside every block, so the front profile can cover them. */
+   optional photo with a data panel over it. The mountain ridges are drawn by
+   the layout on every page (site setting `ridges`). */
 import type { Block } from '../../lib/content';
 import Img from '../Img.astro';
-import Ridges from '../Ridges.astro';
 import { txt, md } from '../../lib/text';
 
 interface Props {
@@ -15,11 +13,9 @@ interface Props {
 }
 const { block: b, draft, ui } = Astro.props;
 const intro = await md(b.intro);
-const tall = b.ridges !== 'none' && !b.image;
 ---
 
-<section class:list={['blk', 'blk--hero', { 'blk--tall': tall }]} id={b.anchor} data-altitude={b.altitude}>
-  {b.ridges === 'section' && <Ridges />}
+<section class="blk blk--hero" id={b.anchor} data-altitude={b.altitude}>
   <div class="blk__in">
     <div class="hero-seq">
       {b.coordinates && <p class="hero__coords" set:html={txt(b.coordinates)} />}

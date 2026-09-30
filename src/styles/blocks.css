@@ -4,11 +4,6 @@
 .blk--hero {
   padding-top: calc(var(--space-6) + var(--space-4));
 }
-.blk--hero.blk--tall {
-  min-height: 100svh;
-  display: flex;
-  align-items: center;
-}
 .blk--hero .blk__in {
   width: 100%;
 }
