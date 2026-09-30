@@ -1,0 +1,71 @@
+# Interface text used by the templates. No copy is written inside components.
+# Form and contact labels are taken from the current site (ea-contatto).
+
+skipLink: Vai al contenuto
+home: Home
+breadcrumbLabel: Sei qui
+menuLabel: Menu principale
+menuOpen: Menu
+menuClose: Chiudi
+submenuToggle: Pagine della sezione
+draftBadge: Bozza
+
+altimeterLabel: quota
+altimeterUnit: m
+
+curiosityTitle: Lo sapevi?
+readMore: Leggi
+publishedOn: Pubblicato il
+articleListEmpty: Gli articoli sono in arrivo.
+
+galleryAll: Vedi tutta la galleria
+galleryEmpty: Le foto sono in arrivo.
+galleryOpen: Apri la foto
+galleryPrev: Foto precedente
+galleryNext: Foto successiva
+galleryClose: Chiudi
+galleryOf: di
+
+reviewsStars: stelle su 5
+
+mapDirections: Apri le indicazioni
+
+contactPhone: Telefono
+contactPhoneNote: Il modo più veloce
+contactWhatsapp: WhatsApp
+contactWhatsappButton: Scrivici su WhatsApp
+contactCall: Chiama
+contactEmail: Email
+contactAddress: Dove siamo
+contactHours: Quando
+
+formName: Nome e cognome
+formEmail: Email
+formPhone: Telefono
+formOptional: facoltativo
+formReason: Di cosa si tratta
+formMessage: Messaggio
+formConsent: Ho letto l'informativa sulla privacy e acconsento al trattamento dei miei dati per rispondere a questa richiesta.
+formPrivacyLink: Leggi l'informativa
+formSubmit: Invia la richiesta
+formReplyNote: Rispondiamo entro 48 ore. Se hai fretta, meglio una telefonata.
+formDisabled: "Il modulo non è ancora attivo: per ora chiamaci o scrivici su WhatsApp."
+
+footerNav: Informazioni
+footerSocial: Seguici
+footerVat: P. IVA
+cookieSettings: Preferenze cookie
+
+cookieTitle: Cookie
+cookieText: Usiamo cookie di statistica per capire come viene usato il sito. Li attiviamo solo se accetti.
+cookieAccept: Accetta
+cookieReject: Rifiuta
+cookieMore: Informativa cookie
+
+notFoundTitle: Pagina non trovata
+notFoundText: "La pagina che cerchi non c'è più o non è mai esistita. Puoi ripartire da qui:"
+notFoundSeoDescription: La pagina richiesta non esiste. Torna alle sezioni principali di Equitazione Alpina.
+
+articleCta: Venire a trovarci
+
+redirectText: "Questa pagina si è spostata:"

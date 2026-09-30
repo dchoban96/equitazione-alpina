@@ -1,0 +1,16 @@
+# Old Shopify URLs -> new URLs, all permanent (301).
+# A trailing /* matches everything under that path (only hosts with real
+# redirects support it; on GitHub Pages it is skipped).
+redirects:
+  - { from: /pages/equitazione-alpina, to: /equitazione/ }
+  - { from: /pages/contact, to: /contatti/ }
+  - { from: /collections/all, to: /equitazione/buoni-regalo/ }
+  - { from: /collections/voucher, to: /equitazione/buoni-regalo/ }
+  - { from: /collections/buoni-regalo, to: /equitazione/buoni-regalo/ }
+  - { from: /products/*, to: /equitazione/buoni-regalo/ }
+  - { from: /policies/privacy-policy, to: /privacy/ }
+  - { from: /policies/terms-of-service, to: / }
+  - { from: /policies/refund-policy, to: / }
+  - { from: /cart, to: / }
+  - { from: /account, to: / }
+  - { from: /search, to: / }

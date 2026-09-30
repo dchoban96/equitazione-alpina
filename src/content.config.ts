@@ -1,0 +1,364 @@
+import { defineCollection, type SchemaContext } from 'astro:content';
+import { glob, file } from 'astro/loaders';
+import { z } from 'astro/zod';
+
+/*
+ * Content model. Everything the site shows lives in src/content/ and is
+ * validated here, so a future CMS only has to read and write these files.
+ * Italian content sits under src/content/it/; another language becomes a
+ * sibling folder with the same collections.
+ */
+
+const LANG = 'it';
+const base = (dir: string) => `./src/content/${LANG}/${dir}`;
+
+export const SECTIONS = [
+  'home',
+  'equitazione',
+  'pastore-del-lagorai',
+  'capra-orobica',
+  'valtellina',
+  'curiosita',
+  'info',
+  'demo',
+] as const;
+const section = z.enum(SECTIONS);
+
+/** Markdown text. May contain [DA COMPLETARE: ...] markers. */
+const rich = z.string();
+const labelValue = z.object({ label: z.string(), value: z.string() });
+
+/* ---------- blocks ---------- */
+
+// Fields every block accepts: an altitude in metres (for the altimeter)
+// and an anchor id for in-page links.
+const common = {
+  altitude: z.number().int().min(0).max(4810).optional(),
+  anchor: z
+    .string()
+    .regex(/^[a-z0-9-]+$/, 'anchor: lowercase letters, digits and dashes only')
+    .optional(),
+};
+
+// Small label shown beside the kicker ("500 m", "recinto"). When a block has
+// an altitude and no note, the altitude is shown here, so it is always
+// written in the page text too.
+const heading = {
+  kicker: z.string().optional(),
+  note: z.string().optional(),
+  heading: z.string().optional(),
+};
+
+const blocks = ({ image }: SchemaContext) => {
+  const img = image();
+  const block = z.discriminatedUnion('type', [
+    z.object({
+      type: z.literal('hero'),
+      ...common,
+      coordinates: z.string().optional(),
+      kicker: z.string().optional(),
+      title: z.string(),
+      intro: rich.optional(),
+      closing: z.string().optional(),
+      footnote: z.string().optional(),
+      ridges: z.enum(['none', 'section', 'fixed']).default('none'),
+      image: img.optional(),
+      imageAlt: z.string().optional(),
+      panelKicker: z.string().optional(),
+      panel: z.array(labelValue).optional(),
+    }),
+    z.object({ type: z.literal('text'), ...common, ...heading, body: rich }),
+    z.object({
+      type: z.literal('text-image'),
+      ...common,
+      ...heading,
+      body: rich.optional(),
+      lead: z.string().optional(),
+      image: img,
+      alt: z.string().min(1),
+      caption: z.string().optional(),
+      side: z.enum(['left', 'right', 'below', 'overlay']).default('right'),
+      fit: z.enum(['crop', 'contain']).default('crop'),
+      details: z.array(labelValue).optional(),
+    }),
+    z.object({
+      type: z.literal('facts'),
+      ...common,
+      ...heading,
+      items: z.array(labelValue).min(1),
+    }),
+    z.object({
+      type: z.literal('cards'),
+      ...common,
+      ...heading,
+      style: z.enum(['tiles', 'cards']).default('tiles'),
+      items: z
+        .array(
+          z.object({
+            title: z.string(),
+            text: rich.optional(),
+            label: z.string().optional(),
+            link: z.string().optional(),
+            image: img.optional(),
+            alt: z.string().optional(),
+          }),
+        )
+        .min(1),
+    }),
+    z.object({
+      type: z.literal('places'),
+      ...common,
+      ...heading,
+      items: z
+        .array(
+          z.object({
+            name: z.string(),
+            altitude: z.number().int().optional(),
+            approximate: z.boolean().default(false),
+            text: rich.optional(),
+            season: z.string().optional(),
+          }),
+        )
+        .min(1),
+    }),
+    z.object({ type: z.literal('quote'), ...common, text: z.string(), author: z.string().optional() }),
+    z.object({
+      type: z.literal('gallery-preview'),
+      ...common,
+      ...heading,
+      gallery: z.string(),
+      count: z.number().int().min(4).max(6).default(6),
+      link: z.string().optional(),
+    }),
+    z.object({ type: z.literal('gallery'), ...common, ...heading, gallery: z.string() }),
+    z.object({
+      type: z.literal('reviews'),
+      ...common,
+      ...heading,
+      ids: z.array(z.string()).optional(),
+      rating: z.string().optional(),
+      count: z.string().optional(),
+      sourceLabel: z.string().optional(),
+      sourceUrl: z.url().optional(),
+    }),
+    z.object({
+      type: z.literal('faq'),
+      ...common,
+      ...heading,
+      tag: z.string().optional(),
+      ids: z.array(z.string()).optional(),
+    }),
+    z.object({
+      type: z.literal('curiosity'),
+      ...common,
+      id: z.string().optional(),
+      section: section.optional(),
+    }),
+    z.object({
+      type: z.literal('article-list'),
+      ...common,
+      ...heading,
+      section: section.optional(),
+      count: z.number().int().min(1).max(24).default(3),
+    }),
+    z.object({
+      type: z.literal('map'),
+      ...common,
+      ...heading,
+      label: z.string(),
+      image: img,
+      alt: z.string().min(1),
+    }),
+    z.object({
+      type: z.literal('cta-contact'),
+      ...common,
+      ...heading,
+      body: rich.optional(),
+      form: z.boolean().default(true),
+    }),
+  ]);
+  // Exactly one H1 per page: every page opens with one hero block.
+  return z
+    .array(block)
+    .min(1)
+    .refine((list) => list[0].type === 'hero' && list.filter((b) => b.type === 'hero').length === 1, {
+      message: 'blocks: a page starts with exactly one hero block (its title is the H1)',
+    });
+};
+
+/* ---------- collections ---------- */
+
+const pages = defineCollection({
+  // The URL comes from the `slug` field, not from the file name.
+  loader: glob({
+    pattern: '**/*.yaml',
+    base: base('pages'),
+    generateId: ({ data }) => String(data.slug || 'index'),
+  }),
+  schema: (ctx) =>
+    z.object({
+      slug: z
+        .string()
+        .regex(/^([a-z0-9-]+(\/[a-z0-9-]+)*)?$/, 'slug: lowercase path without slashes at the ends'),
+      title: z.string(),
+      section,
+      draft: z.boolean(),
+      noindex: z.boolean().default(false),
+      nav: z
+        .object({
+          label: z.string().optional(),
+          order: z.number().default(100),
+          hidden: z.boolean().default(false),
+        })
+        .default({ order: 100, hidden: false }),
+      seo: z.object({
+        title: z.string().max(60, 'seo.title: at most 60 characters'),
+        description: z.string().max(155, 'seo.description: at most 155 characters'),
+        image: ctx.image(),
+      }),
+      localBusiness: z.boolean().default(false),
+      headerOverlay: z.boolean().default(false),
+      altimeter: z
+        .object({
+          enabled: z.boolean(),
+          min: z.number().int(),
+          max: z.number().int(),
+        })
+        .refine((a) => a.max > a.min, 'altimeter.max must be greater than altimeter.min')
+        .optional(),
+      blocks: blocks(ctx),
+    }),
+});
+
+const articles = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: base('articles') }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      date: z.coerce.date(),
+      summary: z.string().max(155, 'summary: at most 155 characters (used as meta description)'),
+      cover: image(),
+      coverAlt: z.string().min(1),
+      section,
+      draft: z.boolean(),
+      seoTitle: z.string().max(60).optional(),
+    }),
+});
+
+const curiosities = defineCollection({
+  loader: file(`${base('')}curiosities.yaml`),
+  schema: z.object({ id: z.string(), text: z.string(), sections: z.array(section).min(1) }),
+});
+
+const galleries = defineCollection({
+  loader: glob({ pattern: '*.yaml', base: base('galleries') }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      section,
+      photos: z.array(
+        z.object({
+          file: image(),
+          alt: z.string().min(1, 'every gallery photo needs alt text'),
+          caption: z.string().optional(),
+          place: z.string().optional(),
+          altitude: z.number().int().optional(),
+        }),
+      ),
+    }),
+});
+
+const faq = defineCollection({
+  loader: file(`${base('')}faq.yaml`),
+  schema: z.object({
+    id: z.string(),
+    question: z.string(),
+    answer: rich,
+    tags: z.array(z.string()).default([]),
+  }),
+});
+
+const reviews = defineCollection({
+  loader: file(`${base('')}reviews.yaml`),
+  schema: z.object({
+    id: z.string(),
+    title: z.string().optional(),
+    text: z.string(),
+    author: z.string(),
+    date: z.string(),
+    stars: z.number().int().min(1).max(5).optional(),
+    sourceUrl: z.url().optional(),
+  }),
+});
+
+/** Interface strings: button labels, form labels, "quota", "Lo sapevi?"... */
+const ui = defineCollection({
+  loader: glob({ pattern: 'ui.yaml', base: base('') }),
+  schema: z.record(z.string(), z.string()),
+});
+
+const site = defineCollection({
+  loader: glob({ pattern: 'site.yaml', base: './src/content/settings' }),
+  schema: z.object({
+    name: z.string(),
+    legalName: z.string(),
+    vatNumber: z.string(),
+    url: z.url(),
+    languages: z.array(z.string()).min(1),
+    phone: z.string(),
+    whatsapp: z.string().optional(),
+    email: z.email().optional(),
+    address: z.object({
+      street: z.string(),
+      postalCode: z.string(),
+      locality: z.string(),
+      province: z.string(),
+      country: z.string().length(2),
+    }),
+    coordinatesText: z.string().optional(),
+    geo: z.object({ lat: z.number().nullable(), lng: z.number().nullable() }),
+    hours: z.array(z.object({ days: z.string(), hours: z.string() })).default([]),
+    social: z.array(z.object({ label: z.string(), url: z.url() })).default([]),
+    menu: z.array(z.string()),
+    footer: z.array(z.string()),
+    contactForm: z.object({
+      action: z.string(),
+      reasons: z.array(z.string()).default([]),
+    }),
+    analytics: z.object({
+      provider: z.enum(['none', 'ga4']),
+      id: z.string().default(''),
+    }),
+  }),
+});
+
+const theme = defineCollection({
+  loader: glob({ pattern: 'theme.yaml', base: './src/content/settings' }),
+  // group -> token name -> CSS value. Each token becomes --<token name>.
+  schema: z.record(z.string(), z.record(z.string(), z.union([z.string(), z.number()]))),
+});
+
+const redirects = defineCollection({
+  loader: glob({ pattern: 'redirects.yaml', base: './src/content/settings' }),
+  schema: z.object({
+    redirects: z.array(
+      z.object({
+        from: z.string().startsWith('/'),
+        to: z.string().startsWith('/'),
+      }),
+    ),
+  }),
+});
+
+export const collections = {
+  pages,
+  articles,
+  curiosities,
+  galleries,
+  faq,
+  reviews,
+  ui,
+  site,
+  theme,
+  redirects,
+};

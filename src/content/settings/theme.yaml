@@ -1,0 +1,101 @@
+# Design tokens, ported from the Shopify theme export in /reference/shopify-theme/.
+# Every key becomes a CSS custom property with the same name (color-bg -> --color-bg).
+# Change a value here and the whole site follows. Components use only these tokens.
+#
+# Sources:
+#   ea-racconto.css  = reference/shopify-theme/assets/ea-racconto.css (the ea-* sections)
+#   ea-atmosfera     = reference/shopify-theme/sections/ea-atmosfera.liquid
+#   header-group     = reference/shopify-theme/sections/header-group.json (Horizon header)
+#   settings_data    = reference/shopify-theme/config/settings_data.json
+
+colors:
+  color-bg: "#f5efe3"                # ea-racconto.css --ea-carta
+  color-bg-top: "#f7f2e8"            # ea-atmosfera body gradient, 0%
+  color-bg-mid: "#f2ebdd"            # ea-atmosfera body gradient, 45%
+  color-bg-bottom: "#f6f1e6"         # ea-atmosfera body gradient, 100%
+  color-surface: "#ece2d0"           # ea-racconto.css --ea-sabbia
+  color-surface-strong: "#e2d6c0"    # ea-racconto.css --ea-sabbia-alta
+  color-text: "#5b6357"              # ea-racconto.css --ea-testo (5.4:1 on color-bg)
+  # Contrast fix: the theme fades labels and captions with opacity .45-.78 over
+  # --ea-testo, which gives 1.7-3.3:1. Replaced by one solid colour with the
+  # same hue that reaches 4.6:1 on color-surface.
+  color-text-muted: "#60665b"
+  color-heading: "#22301f"           # ea-racconto.css --ea-inchiostro
+  # Contrast fix: --ea-salvia #4f7358 is 4.2:1 on color-surface. Same hue,
+  # slightly darker: 4.65:1 on color-surface, 5.2:1 on color-bg.
+  color-accent: "#4a6b52"
+  color-accent-rgb: "74, 107, 82"
+  color-accent-contrast: "#f5efe3"   # text on color-accent: ea-racconto.css --ea-carta
+  # Contrast fix: --ea-miele #8d5c1c is 4.4:1 on color-surface -> 4.66:1.
+  color-honey: "#89591b"
+  color-honey-rgb: "137, 89, 27"
+  color-button: "#e5c07a"            # ea-racconto.css --ea-miele-chiaro (.ea-btn background)
+  color-button-text: "#22301f"       # ea-racconto.css .ea-btn color (8.0:1)
+  color-border: "rgba(74, 107, 82, 0.22)"        # ea-racconto.css rgba(--ea-salvia-rgb, .22)
+  color-border-soft: "rgba(74, 107, 82, 0.12)"   # ea-racconto.css rgba(--ea-salvia-rgb, .1-.14)
+  color-overlay: "rgba(18, 26, 16, 0.62)"        # ea-racconto.css .ea-blocco--sovrapposto veil
+  color-on-overlay: "#ffffff"
+  color-error: "#7d2820"             # ea-racconto.css .ea-avviso--errore
+  color-error-line: "#a8342a"
+  color-ridge-1: "#dfe7d5"           # ea-racconto.css --ea-cresta-1 (farthest profile)
+  color-ridge-2: "#cfdcc4"           # ea-racconto.css --ea-cresta-2
+  color-ridge-3: "#bdcfb2"           # ea-racconto.css --ea-cresta-3 (nearest profile)
+  color-wash-sage: "#8aa98f"         # templates/index.json watercolour tints
+  color-wash-honey: "#c9a86a"
+  color-wash-grass: "#93ab8c"
+  color-header-bg: "#e1e6d7"         # header-group background_color_top
+  color-header-text: "#1d3f00"       # settings_data color_palette.color2 (page and header text)
+  color-drawer-bg: "#e9e5dd"         # header-group header-menu background_color
+
+fonts:
+  # The ea-* sections use these stacks. "Helvetica Neue" and "Iowan Old Style"
+  # are Apple system fonts and cannot be self-hosted; they stay first so Apple
+  # devices look exactly as today. Inter is self-hosted (SIL OFL) and is what
+  # other devices showed, because the Shopify theme loaded it.
+  font-heading: '"Helvetica Neue", Inter, "Segoe UI", system-ui, -apple-system, sans-serif'  # --ea-display
+  font-body: '"Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif'             # --ea-testo-font
+  font-mono: 'ui-monospace, "SF Mono", Menlo, Consolas, monospace'                         # --ea-dato
+  font-ui: 'Inter, "Segoe UI", system-ui, -apple-system, sans-serif'                       # settings_data type_body_font inter_n4 (header menu)
+  weight-heading: 300                # ea-racconto.css h1-h3 font-weight
+  weight-ui: 400
+
+text:
+  text-xs: "clamp(0.625rem, 0.6rem + 0.1vw, 0.6875rem)"    # 10-11px mono labels
+  text-sm: "clamp(0.8125rem, 0.78rem + 0.15vw, 0.9375rem)"  # 13-15px notes, form labels, tiles
+  text-base: "clamp(1rem, 0.95rem + 0.25vw, 1.125rem)"      # ea-sez clamp(16px,1.05vw,18px)
+  text-lg: "clamp(1.0625rem, 0.95rem + 0.55vw, 1.3125rem)"  # hero intro clamp(17px,1.35vw,21px)
+  text-xl: "clamp(1.25rem, 1.05rem + 0.9vw, 1.625rem)"      # h3 clamp(20px,2vw,26px)
+  text-2xl: "clamp(1.75rem, 1.2rem + 2.4vw, 3rem)"          # h2 clamp(28px,3.6vw,48px)
+  text-3xl: "clamp(2.375rem, 1.3rem + 4.8vw, 5.375rem)"     # h1 clamp(38px,7.2vw,86px)
+  leading-body: 1.72                 # ea-sez line-height
+  leading-tight: 1.08                # h2
+  tracking-label: "0.2em"            # mono labels, letter-spacing .16-.24em
+
+space:
+  space-1: "4px"
+  space-2: "8px"
+  space-3: "12px"
+  space-4: "20px"
+  space-5: "28px"
+  space-6: "44px"
+  space-7: "clamp(28px, 4.5vw, 64px)"      # ea-blocco gap
+  space-8: "clamp(72px, 11vh, 130px)"      # ea-sez vertical padding
+  space-gutter: "clamp(20px, 5vw, 64px)"   # --ea-gutter
+
+layout:
+  layout-max: "1220px"               # .ea-in max-width
+  layout-rail: "88px"                # --ea-rail (altimeter column)
+  layout-header: "64px"              # Horizon header, section_height compact
+  layout-measure: "62ch"             # paragraph max-width
+
+shape:
+  radius-sm: "2px"                   # .ea-btn, inputs
+  radius-md: "3px"                   # cards, images
+  shadow-sm: "0 6px 18px rgba(141, 92, 28, 0.22)"   # .ea-btn:hover
+  shadow-md: "0 14px 32px rgba(34, 48, 31, 0.10)"   # .ea-card:hover
+
+motion:
+  duration-fast: "250ms"             # hover transitions (.25s-.3s)
+  duration-base: "500ms"             # hero entrance steps
+  duration-slow: "900ms"             # scroll reveal (.ea-rivela .9s)
+  easing-standard: "cubic-bezier(0.2, 0.7, 0.3, 1)"  # .ea-rivela

@@ -1,0 +1,75 @@
+# Business data: one name, address and phone for the whole site.
+# Values marked "DA COMPLETARE" must be supplied before launch: the
+# production build fails while a published page shows one.
+# Phone, e-mail, address and social links are copied from the current
+# Shopify site (templates/page.contact.json and ea-footer).
+
+name: Equitazione Alpina
+legalName: "[DA COMPLETARE: ragione sociale]"
+vatNumber: "[DA COMPLETARE: partita IVA]"
+url: https://www.equitazione-alpina.it
+languages: [it]
+
+phone: "+39 348 282 1009"
+whatsapp: "+39 348 282 1009"
+email: info@equitazione-alpina.it
+address:
+  street: Località Ravasciolo
+  postalCode: "23010"
+  locality: Albosaggia
+  province: SO
+  country: IT
+
+# Shown exactly as on the current site.
+coordinatesText: "46°16′N 9°84′E"
+# Decimal coordinates for Google (LocalBusiness) and the directions link.
+# Waiting for the owner to confirm them; while empty, the address is used.
+geo:
+  lat: null
+  lng: null
+
+hours:
+  - days: Tutti i giorni
+    hours: su appuntamento
+  - days: Valmalenco
+    hours: fine giugno – inizio settembre
+
+social:
+  - label: Facebook
+    url: https://www.facebook.com/equitazione.alpina
+  - label: Instagram
+    url: https://www.instagram.com/equitazione_alpina/
+  - label: Tripadvisor
+    url: https://www.tripadvisor.it/Attraction_Review-g1096256-d3489629-Reviews-Equitazione_Alpina-Albosaggia_Province_of_Sondrio_Lombardy.html
+
+# Main menu and footer: page slugs, in order. Labels and sub-pages come from
+# the page files (nav.label, nav.order). Draft pages are left out.
+menu:
+  - equitazione
+  - pastore-del-lagorai
+  - capra-orobica
+  - valtellina
+  - curiosita
+  - contatti
+footer:
+  - chi-siamo
+  - domande-frequenti
+  - privacy
+  - cookie
+
+contactForm:
+  # URL of the form service that receives the messages. Not chosen yet:
+  # while empty, the form is shown but sending is disabled.
+  action: ""
+  reasons:
+    - Passeggiata a cavallo
+    - Buono regalo
+    - Bambini e primo approccio
+    - Scuola o pensione cavalli
+    - Altro
+
+analytics:
+  # none | ga4. Statistics load only after consent in the cookie banner;
+  # with "none" no banner is shown.
+  provider: none
+  id: ""
