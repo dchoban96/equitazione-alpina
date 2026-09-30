@@ -504,7 +504,7 @@
     transform: translateX(calc(var(--tile) * -1));
   }
 }
-/* colours are inherited: CSS selectors do not reach inside <use> copies */
+/* profile colours; the crest line uses currentColor */
 .ridge {
   color: var(--color-border);
 }

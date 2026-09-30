@@ -1,7 +1,7 @@
 ---
 /* Three mountain profiles (ea-hero "creste"), drawn at build time as inline
-   SVG with the theme's wave formula. Each layer is one wave period repeated
-   side by side and drifts sideways by exactly one period, so the loop is
+   SVG with the theme's wave formula. Each layer draws the periodic wave
+   across five periods and drifts sideways by exactly one period, so the loop is
    seamless (ea-deriva: 120 s, 80 s, 52 s). Only transform is animated.
 
    `part` splits the layers when the ridges are fixed to the viewport:
@@ -17,42 +17,36 @@ const P = 1200; // one wave period, in SVG units
 const H = 900;
 const REPEAT = 5; // periods per layer: covers wide screens while drifting
 const layers = [
-  { id: 'ridge-far', cls: 'r1', base: 0.86, amp: [46, 22, 11], off: 0, front: false },
-  { id: 'ridge-mid', cls: 'r2', base: 0.93, amp: [62, 26, 13], off: 1.7, front: false },
-  { id: 'ridge-near', cls: 'r3', base: 1.0, amp: [80, 30, 16], off: 3.4, front: true },
+  { cls: 'r1', base: 0.86, amp: [46, 22, 11], off: 0, front: false },
+  { cls: 'r2', base: 0.93, amp: [62, 26, 13], off: 1.7, front: false },
+  { cls: 'r3', base: 1.0, amp: [80, 30, 16], off: 3.4, front: true },
 ].filter((l) => part === 'all' || (part === 'front') === l.front);
 
+// The wave is periodic over P, so drawing it across REPEAT periods in one
+// path gives a seamless strip: drifting by one period loops without a jump.
+const W = P * REPEAT;
 const crest = (base: number, amp: number[], off: number) => {
   let d = '';
-  // two units of overlap on each side hide the seam between repeated periods
-  for (let x = -2; x <= P + 2; x += 12) {
+  for (let x = 0; x <= W; x += 16) {
     const t = (x / P) * Math.PI * 2;
     const y =
       H * base - 120 - amp[0] * Math.sin(t + off) - amp[1] * Math.sin(t * 3 + off * 1.4) - amp[2] * Math.sin(t * 5 + off * 2.1);
-    d += `${x === -2 ? 'M' : 'L'}${x} ${y.toFixed(1)}`;
+    d += `${x === 0 ? 'M' : 'L'}${x} ${y.toFixed(1)}`;
   }
   return d;
 };
 const shapes = layers.map((l) => {
   const line = crest(l.base, l.amp, l.off);
-  return { ...l, line, fill: `${line}L${P + 2} ${H}L-2 ${H}Z` };
+  return { ...l, line, fill: `${line}L${W} ${H}L0 ${H}Z` };
 });
-const copies = Array.from({ length: REPEAT }, (_, i) => i * P);
 ---
 
 <div class:list={['ridges', `ridges--${part}`, { 'ridges--fixed': fixed }]} aria-hidden="true">
   {
     shapes.map((s) => (
-      <svg class:list={['ridge', s.cls]} viewBox={`0 0 ${P * REPEAT} ${H}`} preserveAspectRatio="none">
-        <defs>
-          <g id={s.id}>
-            <path d={s.fill} />
-            <path d={s.line} fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke" />
-          </g>
-        </defs>
-        {copies.map((x) => (
-          <use href={`#${s.id}`} x={x} />
-        ))}
+      <svg class:list={['ridge', s.cls]} viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none">
+        <path d={s.fill} />
+        <path d={s.line} fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke" />
       </svg>
     ))
   }
