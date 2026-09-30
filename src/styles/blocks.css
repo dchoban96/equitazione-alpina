@@ -106,7 +106,13 @@
   justify-content: flex-end;
   padding: clamp(24px, 4vw, 64px);
   color: var(--color-on-overlay);
-  background: linear-gradient(to top, var(--color-overlay) 0%, var(--color-overlay) 35%, transparent 90%);
+  /* ea-blocco--sovrapposto veil: .62 at the bottom, .34 at 38%, clear from 72% */
+  background: linear-gradient(
+    to top,
+    var(--color-overlay) 0%,
+    color-mix(in srgb, var(--color-overlay) 55%, transparent) 38%,
+    transparent 72%
+  );
   border-radius: var(--radius-md);
 }
 .split--overlay :is(h2, h3, .lead, .kicker, .kicker__note, .details dt, .details dd, a) {
