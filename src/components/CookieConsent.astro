@@ -1,0 +1,89 @@
+---
+/* Cookie banner for visit statistics. Rendered only when site settings name
+   a statistics provider. Nothing is loaded before consent; rejecting is as
+   easy as accepting; nothing is preselected; the footer link reopens it. */
+import type { Site } from '../lib/content';
+import { url } from '../lib/content';
+
+interface Props {
+  site: Site;
+  ui: Record<string, string>;
+}
+const { site, ui } = Astro.props;
+const enabled = site.analytics.provider !== 'none' && site.analytics.id !== '';
+---
+
+{
+  enabled && (
+    <div class="consent" data-consent data-provider={site.analytics.provider} data-id={site.analytics.id} role="region" aria-labelledby="consent-title" hidden>
+      <h2 id="consent-title">{ui.cookieTitle}</h2>
+      <p>
+        {ui.cookieText} <a href={url('/cookie/')}>{ui.cookieMore}</a>
+      </p>
+      <div class="consent__actions">
+        <button type="button" class="btn" data-choice="yes">
+          {ui.cookieAccept}
+        </button>
+        <button type="button" class="btn btn--ghost" data-choice="no">
+          {ui.cookieReject}
+        </button>
+      </div>
+    </div>
+  )
+}
+
+<script>
+  const box = document.querySelector<HTMLElement>('[data-consent]');
+  const KEY = 'ea-consent';
+
+  function load(provider: string, id: string) {
+    if (provider !== 'ga4' || document.getElementById('ga4')) return;
+    const s = document.createElement('script');
+    s.id = 'ga4';
+    s.async = true;
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(id)}`;
+    document.head.append(s);
+    const w = window as unknown as { dataLayer: unknown[]; gtag: (...a: unknown[]) => void };
+    w.dataLayer = w.dataLayer || [];
+    w.gtag = function () {
+      // gtag needs the arguments object itself
+      // eslint-disable-next-line prefer-rest-params
+      w.dataLayer.push(arguments);
+    };
+    w.gtag('js', new Date());
+    w.gtag('config', id, { anonymize_ip: true });
+  }
+
+  if (box) {
+    const { provider = '', id = '' } = box.dataset;
+    let choice: string | null = null;
+    try {
+      choice = localStorage.getItem(KEY);
+    } catch {
+      /* storage blocked: ask every time, load nothing */
+    }
+    if (choice === 'yes') load(provider, id);
+    else if (choice !== 'no') box.hidden = false;
+
+    box.addEventListener('click', (e) => {
+      const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-choice]');
+      if (!btn) return;
+      const value = btn.dataset.choice!;
+      try {
+        localStorage.setItem(KEY, value);
+      } catch {
+        /* not stored: the banner comes back on the next page */
+      }
+      box.hidden = true;
+      if (value === 'yes') load(provider, id);
+      else if (document.getElementById('ga4')) location.reload(); // withdraw: stop the script already running
+    });
+
+    document.querySelectorAll('[data-consent-open]').forEach((b) =>
+      b.addEventListener('click', () => {
+        box.hidden = false;
+        box.querySelector<HTMLButtonElement>('[data-choice]')?.focus();
+      }),
+    );
+  }
+</script>

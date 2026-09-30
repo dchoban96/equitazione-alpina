@@ -1,0 +1,134 @@
+---
+import type { ImageMetadata } from 'astro';
+import { getImage } from 'astro:assets';
+import fontUrl from '../assets/fonts/inter-latin-var.woff2?url';
+import '../styles/base.css';
+import '../styles/layout.css';
+import '../styles/blocks.css';
+import '../styles/motion.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import Altimeter from '../components/Altimeter.astro';
+import Washes from '../components/Washes.astro';
+import CookieConsent from '../components/CookieConsent.astro';
+import {
+  getSite,
+  getUi,
+  getThemeCss,
+  getToken,
+  getPages,
+  navFrom,
+  url,
+  absolute,
+  IS_PREVIEW,
+  type Crumb,
+} from '../lib/content';
+import { breadcrumbJsonLd } from '../lib/jsonld';
+
+interface Props {
+  title: string;
+  description: string;
+  image: ImageMetadata;
+  path: string;
+  noindex?: boolean;
+  draft?: boolean;
+  crumbs?: Crumb[];
+  jsonLd?: object[];
+  altimeter?: { min: number; max: number; start: number } | null;
+  overlay?: boolean;
+  preload?: { srcset: string; sizes: string; type: string };
+  ogType?: 'website' | 'article';
+}
+
+const {
+  title,
+  description,
+  image,
+  path,
+  noindex = false,
+  draft = false,
+  crumbs = [],
+  jsonLd = [],
+  altimeter = null,
+  overlay = false,
+  preload,
+  ogType = 'website',
+} = Astro.props;
+
+const [site, ui, themeCss, pages, themeColor] = await Promise.all([
+  getSite(),
+  getUi(),
+  getThemeCss(),
+  getPages(),
+  getToken('color-header-bg'),
+]);
+
+const canonical = absolute(path, site.url);
+const og = await getImage({ src: image, width: 1200, height: 630, fit: 'cover', format: 'jpg' });
+const ogUrl = absolute(og.src, site.url);
+const robots = noindex || draft || IS_PREVIEW ? 'noindex, nofollow' : 'index, follow, max-image-preview:large';
+
+const menu = navFrom(pages, site.menu, 2);
+const footerLinks = navFrom(pages, site.footer, 0);
+const allJsonLd = [...jsonLd, ...(crumbs.length > 1 ? [breadcrumbJsonLd(crumbs, site.url)] : [])];
+// hreflang is written once a second language exists (site.languages).
+const alternates = site.languages.length > 1 ? site.languages.map((l) => ({ lang: l, href: canonical })) : [];
+---
+
+<!doctype html>
+<html lang={site.languages[0]} class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonical} />
+    {alternates.map((a) => <link rel="alternate" hreflang={a.lang} href={a.href} />)}
+    <script is:inline>
+      // Content stays visible unless JavaScript runs: animations hide it only under .js.
+      // If the reveal script has not started after 2.5 s, everything is shown.
+      document.documentElement.classList.replace('no-js', 'js');
+      setTimeout(function () {
+        if (!window.__eaReveal) document.documentElement.classList.add('reveal-off');
+      }, 2500);
+    </script>
+    <style set:html={themeCss}></style>
+    <link rel="preload" href={fontUrl} as="font" type="font/woff2" crossorigin />
+    {preload && <link rel="preload" as="image" imagesrcset={preload.srcset} imagesizes={preload.sizes} type={preload.type} fetchpriority="high" />}
+    <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
+    <meta name="theme-color" content={themeColor} />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogUrl} />
+
+    {allJsonLd.map((d) => <script type="application/ld+json" set:html={JSON.stringify(d)} />)}
+  </head>
+  <body class:list={{ 'has-altimeter': Boolean(altimeter), 'has-overlay-header': overlay }}>
+    <a class="skip-link" href="#main">{ui.skipLink}</a>
+    <Washes />
+    <Header name={site.name} menu={menu} current={url(path)} overlay={overlay} ui={ui} />
+    <Breadcrumb crumbs={crumbs} label={ui.breadcrumbLabel} />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <Footer site={site} links={footerLinks} ui={ui} />
+    {altimeter && <Altimeter min={altimeter.min} max={altimeter.max} start={altimeter.start} ui={ui} />}
+    <CookieConsent site={site} ui={ui} />
+    <script>
+      import '../scripts/reveal';
+    </script>
+  </body>
+</html>

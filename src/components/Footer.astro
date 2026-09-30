@@ -1,0 +1,53 @@
+---
+/* Footer ported from the theme's own ea-footer: one mono line of links,
+   social links on the right. Links, phone, social and legal data come from
+   site settings. */
+import type { NavItem, Site } from '../lib/content';
+import { txt, telHref } from '../lib/text';
+
+interface Props {
+  site: Site;
+  links: NavItem[];
+  ui: Record<string, string>;
+}
+const { site, links, ui } = Astro.props;
+const year = new Date().getFullYear();
+const address = `${site.address.street}, ${site.address.postalCode} ${site.address.locality} (${site.address.province})`;
+---
+
+<footer class="site-footer">
+  <div class="site-footer__in">
+    <span>© {year} {site.name}</span>
+    <nav aria-label={ui.footerNav}>
+      <ul>
+        {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+        {
+          site.analytics.provider !== 'none' && (
+            <li>
+              <button type="button" data-consent-open>
+                {ui.cookieSettings}
+              </button>
+            </li>
+          )
+        }
+      </ul>
+    </nav>
+    <a href={telHref(site.phone)}>{site.phone}</a>
+    {
+      site.social.length > 0 && (
+        <ul class="site-footer__social" aria-label={ui.footerSocial}>
+          {site.social.map((s) => (
+            <li>
+              <a href={s.url} rel="noopener" target="_blank">
+                {s.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+    <p class="site-footer__legal">
+      <Fragment set:html={txt(site.legalName)} /> · {address} · {ui.footerVat} <Fragment set:html={txt(site.vatNumber)} />
+    </p>
+  </div>
+</footer>

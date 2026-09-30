@@ -1,0 +1,114 @@
+---
+/* Side gauge that climbs with the scroll (ported from ea-atmosfera).
+   Decorative: aria-hidden, not focusable; the altitudes are also written in
+   the page text. Rendered hidden and shown by the script, so without
+   JavaScript there is no gauge. */
+interface Props {
+  min: number;
+  max: number;
+  start: number;
+  ui: Record<string, string>;
+}
+const { min, max, start, ui } = Astro.props;
+const ticks = [0, 33.333, 66.666, 100];
+---
+
+<div class="altimeter" data-altimeter data-min={min} data-max={max} aria-hidden="true" hidden>
+  <div class="altimeter__scale">
+    {ticks.map((t) => <span class="altimeter__tick" style={`--at:${t}%`} />)}
+    <span class="altimeter__track" data-track><span class="altimeter__marker"></span></span>
+  </div>
+  <div class="altimeter__reading"><span class="altimeter__value" data-value>{start}</span> {ui.altimeterUnit}</div>
+  <div class="altimeter__label">{ui.altimeterLabel}</div>
+</div>
+
+<script>
+  import { onScroll, refresh } from '../scripts/scroll';
+
+  const gauge = document.querySelector<HTMLElement>('[data-altimeter]');
+  const blocks = [...document.querySelectorAll<HTMLElement>('[data-altitude]')];
+
+  if (gauge && blocks.length >= 2) init(gauge, blocks);
+
+  function init(gauge: HTMLElement, blocks: HTMLElement[]) {
+    const min = Number(gauge.dataset.min);
+    const max = Number(gauge.dataset.max);
+    const valueEl = gauge.querySelector<HTMLElement>('[data-value]')!;
+    const track = gauge.querySelector<HTMLElement>('[data-track]')!;
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+    const alt = blocks.map((b) => Number(b.dataset.altitude));
+
+    // Vertical centre of each altitude block, in page coordinates.
+    let mids: number[] = [];
+    const measure = () => {
+      const sy = window.scrollY;
+      mids = blocks.map((b) => {
+        const r = b.getBoundingClientRect();
+        return r.top + sy + r.height / 2;
+      });
+    };
+
+    // The block that holds the viewport centre, reported by an
+    // IntersectionObserver on a one-pixel line across the middle.
+    let current = 0;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) if (e.isIntersecting) current = blocks.indexOf(e.target as HTMLElement);
+        refresh();
+      },
+      { rootMargin: '-50% 0px -50% 0px' },
+    );
+    blocks.forEach((b) => io.observe(b));
+
+    // Altitude at the viewport centre, interpolated between the blocks above and below it.
+    const target = (y: number) => {
+      const c = y + window.innerHeight / 2;
+      let i = current;
+      while (i > 0 && c < mids[i]) i--;
+      while (i < mids.length - 1 && c >= mids[i + 1]) i++;
+      if (c <= mids[0]) return alt[0];
+      if (i >= mids.length - 1) return alt[alt.length - 1];
+      const t = (c - mids[i]) / (mids[i + 1] - mids[i]);
+      return alt[i] + t * (alt[i + 1] - alt[i]);
+    };
+
+    let shown = NaN;
+    let goal = 0;
+    let easing = false;
+
+    // Only the text and a transform change: no layout shift.
+    const paint = (v: number) => {
+      valueEl.textContent = String(Math.round(v));
+      const p = Math.min(1, Math.max(0, (v - min) / (max - min)));
+      track.style.transform = `translateY(${(-p * 100).toFixed(2)}%)`;
+    };
+
+    const ease = () => {
+      shown += (goal - shown) * 0.18;
+      if (Math.abs(goal - shown) < 0.5) shown = goal;
+      paint(shown);
+      if (shown !== goal) requestAnimationFrame(ease);
+      else easing = false;
+    };
+
+    measure();
+    onScroll((y) => {
+      goal = target(y);
+      if (Number.isNaN(shown) || reduced.matches) {
+        // Reduced motion: the number jumps to the value, no easing.
+        shown = goal;
+        paint(shown);
+      } else if (!easing) {
+        easing = true;
+        requestAnimationFrame(ease);
+      }
+    });
+
+    new ResizeObserver(() => {
+      measure();
+      refresh();
+    }).observe(document.body);
+
+    gauge.hidden = false;
+  }
+</script>

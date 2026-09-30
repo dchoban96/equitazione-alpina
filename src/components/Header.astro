@@ -1,0 +1,144 @@
+---
+/* Header ported from the Shopify Horizon header (header-group.json): compact,
+   logo and menu on the left, comes back when scrolling up, transparent over
+   the opening on the home page. Search, cart, account and country selector
+   are dropped: there is no shop. The menu comes from site settings + pages. */
+import type { NavItem } from '../lib/content';
+import { url } from '../lib/content';
+
+interface Props {
+  name: string;
+  menu: NavItem[];
+  current: string;
+  overlay: boolean;
+  ui: Record<string, string>;
+}
+const { name, menu, current, overlay, ui } = Astro.props;
+const isCurrent = (href: string) => (href === current ? 'page' : undefined);
+const inSection = (item: NavItem) => current.startsWith(item.href) && item.href !== url('/');
+---
+
+<header class:list={['site-header', { 'site-header--overlay': overlay }]} data-header>
+  <div class="site-header__bar">
+    <a class="site-header__logo" href={url('/')}>{name}</a>
+
+    <nav class="nav-desktop" aria-label={ui.menuLabel}>
+      <ul>
+        {
+          menu.map((item) => (
+            <li>
+              <a href={item.href} aria-current={isCurrent(item.href) ?? (inSection(item) ? 'true' : undefined)}>
+                {item.label}
+                {item.draft && <span class="draft-badge">{ui.draftBadge}</span>}
+              </a>
+              {item.children.length > 0 && (
+                <ul class="nav-sub">
+                  {item.children.map((c) => (
+                    <li>
+                      <a href={c.href} aria-current={isCurrent(c.href)}>
+                        {c.label}
+                      </a>
+                      {c.children.length > 0 && (
+                        <ul class="nav-sub">
+                          {c.children.map((g) => (
+                            <li>
+                              <a href={g.href} aria-current={isCurrent(g.href)}>
+                                {g.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <details class="nav-drawer" data-drawer>
+      <summary>
+        <svg class="nav-drawer__icon" viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path class="nav-drawer__open" d="M2 5h16M2 10h16M2 15h16"></path>
+          <path class="nav-drawer__close" d="M4 4l12 12M16 4L4 16"></path>
+        </svg>
+        <span class="nav-drawer__open">{ui.menuOpen}</span>
+        <span class="nav-drawer__close">{ui.menuClose}</span>
+      </summary>
+      <nav class="nav-drawer__panel" aria-label={ui.menuLabel}>
+        <ul>
+          {
+            menu.map((item) => (
+              <li>
+                <a href={item.href} aria-current={isCurrent(item.href)}>
+                  {item.label}
+                </a>
+                {item.children.length > 0 && (
+                  <ul>
+                    {item.children.map((c) => (
+                      <li>
+                        <a href={c.href} aria-current={isCurrent(c.href)}>
+                          {c.label}
+                        </a>
+                        {c.children.length > 0 && (
+                          <ul>
+                            {c.children.map((g) => (
+                              <li>
+                                <a href={g.href} aria-current={isCurrent(g.href)}>
+                                  {g.label}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<script>
+  import { onScroll } from '../scripts/scroll';
+
+  const header = document.querySelector<HTMLElement>('[data-header]');
+  const drawer = document.querySelector<HTMLDetailsElement>('[data-drawer]');
+
+  if (header) {
+    // Hide while scrolling down, show again when scrolling up (Horizon "scroll-up").
+    let last = window.scrollY;
+    onScroll((y) => {
+      const down = y > last && y > header.offsetHeight;
+      if (Math.abs(y - last) > 4) {
+        header.classList.toggle('is-hidden', down && !drawer?.open && !header.matches(':focus-within'));
+        last = y;
+      }
+      header.classList.toggle('is-scrolled', y > 8);
+    });
+  }
+
+  if (drawer) {
+    drawer.addEventListener('toggle', () => {
+      document.documentElement.classList.toggle('nav-lock', drawer.open);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.open) {
+        drawer.open = false;
+        drawer.querySelector('summary')?.focus();
+      }
+    });
+    // Close when the viewport grows past the desktop breakpoint.
+    matchMedia('(min-width: 1100px)').addEventListener('change', (m) => {
+      if (m.matches) drawer.open = false;
+    });
+  }
+</script>

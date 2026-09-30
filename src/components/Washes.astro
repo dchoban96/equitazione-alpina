@@ -1,0 +1,51 @@
+---
+/* Watercolour motifs in the page background (ea-atmosfera + ea-motivo),
+   with the positions, sizes and tints of the current home page. Static: the
+   theme's slow floating loop is listed in reference/ANIMATIONS.md as not
+   fitting the three allowed kinds of motion. */
+const washes = [
+  { motif: 'macchia', tint: 'var(--color-wash-sage)', x: 84, y: 22, size: 320, opacity: 0.16 },
+  { motif: 'ferro', tint: 'var(--color-wash-honey)', x: 12, y: 58, size: 180, opacity: 0.14 },
+  { motif: 'erba', tint: 'var(--color-wash-grass)', x: 70, y: 86, size: 220, opacity: 0.15 },
+];
+const shapes: Record<string, string[]> = {
+  macchia: ['M104 30c30-6 58 12 66 40 7 26-6 44-2 64 4 22-16 40-44 42-30 2-56-8-70-28-14-21-10-46 0-66 10-21 22-48 50-52z'],
+  ferro: [
+    'M100 26c-30 0-52 24-52 56 0 26 10 46 10 62 0 10-8 14-8 22h26c0-14-6-22-6-36 0-22-8-34-8-48 0-22 16-38 38-38s38 16 38 38c0 14-8 26-8 48 0 14-6 22-6 36h26c0-8-8-12-8-22 0-16 10-36 10-62 0-32-22-56-52-56z',
+  ],
+  erba: [
+    'M100 178c-4-30-2-58 8-84 2-6 8-4 7 2-6 26-8 52-6 82z',
+    'M100 178c-14-26-24-48-26-74-1-7 6-8 8-2 7 24 14 46 22 74z',
+    'M100 178c14-24 26-42 34-62 3-6 9-3 7 3-8 20-22 38-33 61z',
+    'M100 178c-20-16-34-28-42-44-3-6 3-10 7-5 12 15 24 29 39 47z',
+  ],
+};
+---
+
+<div class="washes" aria-hidden="true">
+  {
+    washes.map((w, i) => (
+      <div class="wash" style={`left:${w.x}%;top:${w.y}%;width:${w.size}px;opacity:${w.opacity};color:${w.tint}`}>
+        <svg viewBox="0 0 200 200" fill="none">
+          <defs>
+            <filter id={`wash-f${i}`} x="-25%" y="-25%" width="150%" height="150%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="4" seed={(i + 1) * 17} result="n" />
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="14" xChannelSelector="R" yChannelSelector="G" result="d" />
+              <feGaussianBlur in="d" stdDeviation="1.6" />
+            </filter>
+            <radialGradient id={`wash-g${i}`} cx="42%" cy="38%">
+              <stop offset="0%" stop-color="currentColor" stop-opacity="0.85" />
+              <stop offset="60%" stop-color="currentColor" stop-opacity="0.55" />
+              <stop offset="100%" stop-color="currentColor" stop-opacity="0.75" />
+            </radialGradient>
+          </defs>
+          <g filter={`url(#wash-f${i})`} fill={`url(#wash-g${i})`}>
+            {shapes[w.motif].map((d) => (
+              <path d={d} />
+            ))}
+          </g>
+        </svg>
+      </div>
+    ))
+  }
+</div>

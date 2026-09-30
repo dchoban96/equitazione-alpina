@@ -1,0 +1,30 @@
+---
+/* Every image goes through astro:assets: AVIF with a WebP fallback, widths
+   480-1600, explicit width and height. Below the fold it is lazy; the hero
+   is eager with high fetch priority. */
+import type { ImageMetadata } from 'astro';
+import { Picture } from 'astro:assets';
+import { widthsFor } from '../lib/images';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  sizes: string;
+  priority?: boolean;
+  class?: string;
+}
+const { src, alt, sizes, priority = false, class: cls } = Astro.props;
+---
+
+<Picture
+  src={src}
+  alt={alt}
+  widths={widthsFor(src)}
+  sizes={sizes}
+  formats={['avif']}
+  fallbackFormat="webp"
+  loading={priority ? 'eager' : 'lazy'}
+  decoding={priority ? 'sync' : 'async'}
+  fetchpriority={priority ? 'high' : 'auto'}
+  class={cls}
+/>
