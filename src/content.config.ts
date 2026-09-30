@@ -203,6 +203,8 @@ const pages = defineCollection({
       title: z.string(),
       section,
       draft: z.boolean(),
+      // Mockup text and illustrations: published, but listed by every build until replaced.
+      mockup: z.boolean().default(false),
       noindex: z.boolean().default(false),
       nav: z
         .object({
@@ -241,6 +243,7 @@ const articles = defineCollection({
       coverAlt: z.string().min(1),
       section,
       draft: z.boolean(),
+      mockup: z.boolean().default(false),
       seoTitle: z.string().max(60).optional(),
     }),
 });

@@ -2,6 +2,7 @@
 //  - Lists every [DA COMPLETARE: ...] marker in src/content/ (drafts included).
 //  - Production build: fails if a published page still shows a marker.
 //    The preview build (`npm run build:preview`) and the dev server only list them.
+//  - Lists every page still marked `mockup: true` (published, but not final).
 //  - Renames host-redirects.txt to _redirects for hosts with real redirects.
 import { readdir, readFile, rename, stat } from 'node:fs/promises';
 import { join, relative } from 'node:path';
@@ -34,6 +35,24 @@ async function sourceMarkers(root) {
   return rows;
 }
 
+async function mockupFiles(root) {
+  const contentDir = fileURLToPath(new URL('src/content/', root));
+  const out = [];
+  for (const file of await walk(contentDir, ['.yaml', '.yml', '.md', '.mdx'])) {
+    if (/^mockup:\s*true\b/m.test(await readFile(file, 'utf8'))) {
+      out.push(relative(fileURLToPath(root), file).replaceAll('\\', '/'));
+    }
+  }
+  return out;
+}
+
+async function reportMockups(logger, root) {
+  const files = await mockupFiles(root);
+  if (files.length) {
+    logger.warn(`${files.length} files still use mockup text and illustrations (mockup: true):\n  ${files.join('\n  ')}`);
+  }
+}
+
 function report(logger, rows) {
   if (!rows.length) {
     logger.info('No [DA COMPLETARE] markers left in src/content/.');
@@ -61,8 +80,14 @@ export default function daCompletare() {
       'astro:config:setup': ({ config }) => {
         root = config.root;
       },
-      'astro:server:start': async ({ logger }) => report(logger, await sourceMarkers(root)),
-      'astro:build:start': async ({ logger }) => report(logger, await sourceMarkers(root)),
+      'astro:server:start': async ({ logger }) => {
+        report(logger, await sourceMarkers(root));
+        await reportMockups(logger, root);
+      },
+      'astro:build:start': async ({ logger }) => {
+        report(logger, await sourceMarkers(root));
+        await reportMockups(logger, root);
+      },
       'astro:build:done': async ({ dir, logger }) => {
         const out = fileURLToPath(dir);
 
