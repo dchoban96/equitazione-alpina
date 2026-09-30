@@ -43,7 +43,6 @@ colors:
   color-wash-sage: "#8aa98f"         # templates/index.json watercolour tints
   color-wash-honey: "#c9a86a"
   color-wash-grass: "#93ab8c"
-  color-header-bg: "#e1e6d7"         # header-group background_color_top (now only the phone altimeter pill; the header uses color-bg)
   color-header-text: "#1d3f00"       # settings_data color_palette.color2 (page and header text)
   color-drawer-bg: "#e9e5dd"         # header-group header-menu background_color
 
