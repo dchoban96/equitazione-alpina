@@ -1,5 +1,43 @@
-# Gallery "Valtellina". Add a photo: put the file in src/assets/valtellina/gallery/
-# and add an entry below (file, alt; caption, place, altitude optional).
-title: "Valtellina"
-section: valtellina
-photos: []
+# Gallery "Galleria paesaggi". MOCKUP: illustrations, to be replaced with real photos.
+# Add a photo: put the file in src/assets/valtellina/gallery/ and add an entry below.
+title: "Galleria paesaggi"
+section: "valtellina"
+mockup: true
+photos:
+  - file: "../../../assets/valtellina/mockup-terrazzamenti.jpg"
+    alt: "Illustrazione di prova: vigneti terrazzati al tramonto"
+    caption: "I terrazzamenti del versante retico"
+  - file: "../../../assets/valtellina/mockup-valle-sondrio.jpg"
+    alt: "Illustrazione di prova: la valle con il fiume e il paese"
+    caption: "Sondrio e l'Adda"
+    place: "Sondrio"
+  - file: "../../../assets/valtellina/mockup-borgo-albosaggia.jpg"
+    alt: "Illustrazione di prova: un borgo in pietra fra i boschi"
+    caption: "Le contrade di Albosaggia"
+    place: "Albosaggia"
+    altitude: 500
+  - file: "../../../assets/equitazione/mockup-alpe-palu-valmalenco.jpg"
+    alt: "Illustrazione di prova: il lago dell'Alpe Palù"
+    caption: "L'Alpe Palù"
+    place: "Valmalenco"
+    altitude: 1950
+  - file: "../../../assets/valtellina/mockup-ghiacciaio.jpg"
+    alt: "Illustrazione di prova: montagne con ghiacciai"
+    caption: "I ghiacciai"
+  - file: "../../../assets/valtellina/mockup-castello.jpg"
+    alt: "Illustrazione di prova: una torre di castello su una collina"
+    caption: "Torri e castelli"
+  - file: "../../../assets/valtellina/mockup-estate.jpg"
+    alt: "Illustrazione di prova: un prato fiorito sotto le montagne"
+    caption: "Estate"
+  - file: "../../../assets/valtellina/mockup-inverno.jpg"
+    alt: "Illustrazione di prova: un bosco innevato"
+    caption: "Inverno"
+  - file: "../../../assets/equitazione/mockup-sentiero-orobie.jpg"
+    alt: "Illustrazione di prova: un sentiero nel bosco"
+    caption: "I boschi delle Orobie"
+    place: "Orobie"
+    altitude: 1300
+  - file: "../../../assets/valtellina/mockup-mappa.jpg"
+    alt: "Illustrazione di prova: mappa della zona"
+    caption: "Dove siamo"

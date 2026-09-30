@@ -1,14 +1,32 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "privacy"
 title: "Privacy"
-section: info
-draft: true
-nav: { order: 100 }
+section: "info"
+draft: false
+mockup: true
+nav:
+  order: 40
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "Informativa sulla privacy · Equitazione Alpina"
+  description: "Informativa sul trattamento dei dati personali raccolti dal sito di Equitazione Alpina."
+  image: "../../../assets/valtellina/mockup-borgo-albosaggia.jpg"
 blocks:
-  - type: hero
-    title: "Privacy"
-    intro: "[DA COMPLETARE: testo di apertura]"
+  - type: "hero"
+    kicker: "Informazioni"
+    title: "Informativa sulla privacy"
+    intro: |
+      Testo di prova. Questa pagina conterrà il testo definitivo, fornito dal titolare del sito.
+    image: "../../../assets/valtellina/mockup-borgo-albosaggia.jpg"
+    imageAlt: "Illustrazione di prova: un borgo in pietra"
+  - type: "text"
+    heading: "Titolare del trattamento"
+    body: |
+      Testo di prova: nome, indirizzo e contatti del titolare.
+  - type: "text"
+    heading: "Quali dati raccogliamo"
+    body: |
+      Testo di prova: i dati inviati con il modulo di contatto (nome, email, telefono facoltativo, messaggio), usati solo per rispondere.
+  - type: "text"
+    heading: "I tuoi diritti"
+    body: |
+      Testo di prova: accesso, rettifica, cancellazione, e come esercitarli.

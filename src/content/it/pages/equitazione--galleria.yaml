@@ -1,19 +1,28 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "equitazione/galleria"
 title: "Galleria equitazione"
-section: equitazione
-draft: true
-nav: { order: 60 }
+section: "equitazione"
+draft: false
+mockup: true
+nav:
+  order: 60
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
-altimeter: { enabled: true, min: 500, max: 1950 }
+  title: "Foto: cavalli e passeggiate · Equitazione Alpina"
+  description: "Le foto di Equitazione Alpina: i cavalli al recinto di Albosaggia, le passeggiate sulle Orobie e in Valmalenco."
+  image: "../../../assets/equitazione/mockup-tramonto-conduzione.jpg"
 blocks:
-  - type: hero
+  - type: "hero"
+    kicker: "Galleria"
     title: "Galleria equitazione"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: gallery
-    gallery: equitazione
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+    intro: |
+      Testo di prova. Un anno al recinto e sui sentieri, dalle Orobie alla Valmalenco.
+    image: "../../../assets/equitazione/mockup-tramonto-conduzione.jpg"
+    imageAlt: "Illustrazione di prova: una persona conduce un cavallo al tramonto"
+  - type: "gallery"
+    gallery: "equitazione"
+  - type: "cta-contact"
+    kicker: "Contatti"
+    heading: "Vieni a vederli dal vivo"
+    body: |
+      Il modo migliore per capire se fa per voi è stare mezz'ora a guardare i cavalli. Ad Albosaggia si arriva in 10 minuti da Sondrio.
+    form: false

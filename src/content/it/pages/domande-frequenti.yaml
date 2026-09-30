@@ -1,18 +1,37 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "domande-frequenti"
 title: "Domande frequenti"
-section: info
-draft: true
-nav: { order: 80 }
+section: "info"
+draft: false
+mockup: true
+nav:
+  order: 20
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "Domande frequenti · Equitazione Alpina"
+  description: "Le risposte alle domande più frequenti: età minima, esperienza, stagione in Valmalenco, buoni regalo, cani e capre."
+  image: "../../../assets/equitazione/mockup-lezione-maneggio.jpg"
 blocks:
-  - type: hero
+  - type: "hero"
+    kicker: "Domande"
     title: "Domande frequenti"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: faq
-    tag: "[DA COMPLETARE: tag]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+    intro: |
+      Testo di prova. Le domande che ci fanno più spesso, prima di venire.
+    image: "../../../assets/equitazione/mockup-lezione-maneggio.jpg"
+    imageAlt: "Illustrazione di prova: un cavaliere lungo lo steccato"
+  - type: "faq"
+    kicker: "Equitazione"
+    heading: "Cavalli e passeggiate"
+    tag: "equitazione"
+  - type: "faq"
+    kicker: "Animali"
+    heading: "Cani e capre"
+    ids:
+      - "cuccioli"
+      - "vedere-cani"
+      - "capra-cosa"
+  - type: "cta-contact"
+    kicker: "Contatti"
+    heading: "Non hai trovato la risposta?"
+    body: |
+      Il modo più veloce è una telefonata: rispondiamo anche da fuori, con il telefono in tasca. Se preferisci scrivere, il modulo qui accanto arriva direttamente a noi.
+    form: true

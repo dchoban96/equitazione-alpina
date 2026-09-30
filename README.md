@@ -14,6 +14,7 @@ files under `src/content/`, so a future CMS only has to read and write them.
 | `npm run build` | Production build into `dist/`. **Fails** if a published page still shows a `[DA COMPLETARE]` marker. |
 | `npm run preview` | Serve the last build locally. |
 | `node scripts/make-placeholder.mjs` | Regenerate the placeholder photo from the theme colours. |
+| `node scripts/make-mockups.mjs` | Regenerate the mockup illustrations (`src/assets/<section>/mockup-*.jpg`). |
 
 The demo page with every block is at `/demo/` (not indexed, not in the menu).
 
@@ -36,6 +37,21 @@ reference/                 Shopify theme export and notes; never used by the sit
 
 Nothing visible is written inside components: text, images, colours and fonts
 all come from the files above.
+
+## Mockup content
+
+Until real texts and photos arrive, every page is published with mockup
+content and carries `mockup: true`:
+
+- Home, "Chi siamo" and the FAQ reuse the copy of the current Shopify site.
+- Everything else is test text ("Testo di prova") and general facts about the
+  valley that the owner must check.
+- Images are generated illustrations (`mockup-*.jpg`), each marked
+  "illustrazione di prova". No stock photos.
+
+Every build lists the files still marked `mockup: true`. To replace a page:
+write the real text, swap the images, remove `mockup: true`. Delete the
+`mockup-*.jpg` files once nothing uses them.
 
 ## Missing content
 
@@ -80,7 +96,7 @@ until it holds at least 10 real photos.
 
 ## Add an article
 
-1. Copy `src/content/it/articles/esempio-articolo.mdx`; the file name becomes the URL (`/curiosita/<file-name>/`).
+1. Copy an article in `src/content/it/articles/`; the file name becomes the URL (`/curiosita/<file-name>/`).
 2. Fill `title`, `date`, `summary` (max 155 characters), `cover`, `coverAlt`, `section`.
 3. Write the text in Markdown, with at least one link to a business section.
 4. Set `draft: false` to publish. It appears in `/curiosita/` and in the sitemap.

@@ -1,16 +1,36 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "valtellina/cosa-fare/inverno"
 title: "Inverno"
-section: valtellina
-draft: true
-nav: { order: 20 }
+section: "valtellina"
+draft: false
+mockup: true
+nav:
+  order: 20
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "Inverno ad Albosaggia e in Valmalenco · Cosa fare"
+  description: "Cosa fare d'inverno fra Albosaggia e la Valmalenco: neve, ciaspole, sci e le passeggiate a cavallo che continuano tutto l'anno."
+  image: "../../../assets/valtellina/mockup-inverno.jpg"
 blocks:
-  - type: hero
+  - type: "hero"
+    kicker: "Guida alla Valtellina"
     title: "Inverno"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+    intro: |
+      Testo di prova. D'inverno la valle rallenta, e la montagna diventa silenziosa.
+    image: "../../../assets/valtellina/mockup-inverno.jpg"
+    imageAlt: "Illustrazione di prova: un bosco innevato sotto le montagne"
+  - type: "text"
+    kicker: "Sulla neve"
+    heading: "Neve e ciaspole"
+    body: |
+      Testo di prova. In Valmalenco si scia e si cammina con le ciaspole nei boschi. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+  - type: "text"
+    kicker: "A cavallo"
+    heading: "A cavallo anche d'inverno"
+    body: |
+      Ad Albosaggia si cavalca tutto l'anno, d'inverno con il fiato che si vede. Vedi le [passeggiate sulle Orobie](/equitazione/passeggiate-orobie/).
+  - type: "cta-contact"
+    kicker: "Equitazione Alpina"
+    heading: "Scoprila a cavallo"
+    body: |
+      Testo di prova. Una mattina d'inverno a cavallo è diversa da tutte le altre: vedi le [passeggiate](/equitazione/passeggiate-orobie/).
+    form: false

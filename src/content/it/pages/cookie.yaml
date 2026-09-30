@@ -1,14 +1,28 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "cookie"
 title: "Cookie"
-section: info
-draft: true
-nav: { order: 110 }
+section: "info"
+draft: false
+mockup: true
+nav:
+  order: 50
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "Informativa sui cookie · Equitazione Alpina"
+  description: "Quali cookie usa il sito di Equitazione Alpina e come gestire le preferenze."
+  image: "../../../assets/valtellina/mockup-borgo-albosaggia.jpg"
 blocks:
-  - type: hero
-    title: "Cookie"
-    intro: "[DA COMPLETARE: testo di apertura]"
+  - type: "hero"
+    kicker: "Informazioni"
+    title: "Informativa sui cookie"
+    intro: |
+      Testo di prova. Questa pagina conterrà il testo definitivo, fornito dal titolare del sito.
+    image: "../../../assets/valtellina/mockup-borgo-albosaggia.jpg"
+    imageAlt: "Illustrazione di prova: un borgo in pietra"
+  - type: "text"
+    heading: "Cookie tecnici"
+    body: |
+      Testo di prova: il sito salva solo la tua scelta sui cookie.
+  - type: "text"
+    heading: "Cookie di statistica"
+    body: |
+      Testo di prova: se attivati, si caricano solo dopo il tuo consenso. Puoi cambiare idea in qualsiasi momento dal fondo della pagina.

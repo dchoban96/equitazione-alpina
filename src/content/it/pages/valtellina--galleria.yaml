@@ -1,18 +1,28 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "valtellina/galleria"
 title: "Galleria paesaggi"
-section: valtellina
-draft: true
-nav: { order: 80 }
+section: "valtellina"
+draft: false
+mockup: true
+nav:
+  order: 80
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "Foto: paesaggi della Valtellina · Equitazione Alpina"
+  description: "Paesaggi della Valtellina: le Orobie, la Valmalenco, i terrazzamenti e la valle in ogni stagione."
+  image: "../../../assets/valtellina/mockup-terrazzamenti.jpg"
 blocks:
-  - type: hero
+  - type: "hero"
+    kicker: "Galleria"
     title: "Galleria paesaggi"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: gallery
-    gallery: valtellina
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+    intro: |
+      Testo di prova. La valle in ogni stagione.
+    image: "../../../assets/valtellina/mockup-terrazzamenti.jpg"
+    imageAlt: "Illustrazione di prova: vigneti terrazzati al tramonto"
+  - type: "gallery"
+    gallery: "valtellina"
+  - type: "cta-contact"
+    kicker: "Equitazione Alpina"
+    heading: "Scoprila a cavallo"
+    body: |
+      Testo di prova. Vedi le [passeggiate a cavallo](/equitazione/passeggiate-orobie/).
+    form: false

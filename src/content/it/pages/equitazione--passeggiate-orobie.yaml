@@ -1,17 +1,67 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "equitazione/passeggiate-orobie"
 title: "Passeggiate sulle Orobie"
-section: equitazione
-draft: true
-nav: { order: 20 }
+section: "equitazione"
+draft: false
+mockup: true
+nav:
+  order: 20
+altimeter:
+  enabled: true
+  min: 500
+  max: 1950
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
-altimeter: { enabled: true, min: 500, max: 1950 }
+  title: "Passeggiate a cavallo in Valtellina · Orobie e Albosaggia"
+  description: "Passeggiate a cavallo sulle Orobie sopra Albosaggia, tutto l'anno: boschi di castagno e faggio, sentieri verso San Bernardo e il Lago Casera."
+  image: "../../../assets/equitazione/mockup-sentiero-orobie.jpg"
 blocks:
-  - type: hero
-    title: "Passeggiate sulle Orobie"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+  - type: "hero"
+    kicker: "Passeggiate"
+    title: "Al passo sulle Orobie, tutto l'anno"
+    intro: |
+      Testo di prova. Si parte dal recinto di Albosaggia e si sale nei boschi del versante orobico, con la Valtellina che si apre sotto.
+    altitude: 500
+    image: "../../../assets/equitazione/mockup-sentiero-orobie.jpg"
+    imageAlt: "Illustrazione di prova: un cavaliere nel bosco di conifere sotto le montagne"
+  - type: "text"
+    kicker: "Le Orobie"
+    heading: "La montagna di casa"
+    body: |
+      È la casa: boschi di castagno e faggio, sentieri che salgono verso San Bernardo e il Lago Casera, la Valtellina che si apre sotto man mano che si guadagna quota. D'inverno con il fiato che si vede, d'autunno con le foglie che scivolano sotto gli zoccoli.
+    altitude: 1300
+    note: "≈ 1300 m"
+  - type: "cards"
+    kicker: "Le stagioni"
+    heading: "Ogni stagione ha il suo sentiero"
+    style: "tiles"
+    items:
+      - title: "Primavera"
+        text: "Testo di prova: i prati che tornano verdi e i torrenti pieni."
+      - title: "Estate"
+        text: "Testo di prova: si esce presto, quando l'aria è ancora fresca."
+      - title: "Autunno"
+        text: "Le foglie che scivolano sotto gli zoccoli."
+      - title: "Inverno"
+        text: "Con il fiato che si vede."
+  - type: "text-image"
+    kicker: "Per chi"
+    heading: "Chi può venire"
+    body: |
+      Testo di prova. Le passeggiate sono pensate per chi ha già un po' di confidenza con il cavallo. Chi comincia adesso parte dalle [lezioni](/equitazione/lezioni/).
+
+      Per conoscere il versante a piedi c'è la nostra guida ad [Albosaggia e le Orobie](/valtellina/albosaggia-e-orobie/).
+    image: "../../../assets/equitazione/mockup-tramonto-conduzione.jpg"
+    alt: "Illustrazione di prova: una persona conduce un cavallo al tramonto"
+    side: "left"
+  - type: "gallery-preview"
+    kicker: "Galleria"
+    heading: "Sui sentieri"
+    gallery: "equitazione"
+    count: 4
+    link: "/equitazione/galleria/"
+  - type: "cta-contact"
+    kicker: "Contatti"
+    heading: "Organizza la tua uscita"
+    body: |
+      Testo di prova. Dicci quando vorresti venire e quanta esperienza hai: ti proponiamo il percorso giusto.
+    form: true

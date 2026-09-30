@@ -1,16 +1,36 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "valtellina/cibo-e-vino/formaggi"
 title: "Formaggi"
-section: valtellina
-draft: true
-nav: { order: 20 }
+section: "valtellina"
+draft: false
+mockup: true
+nav:
+  order: 20
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "Formaggi della Valtellina: Bitto e Valtellina Casera"
+  description: "I formaggi della Valtellina: il Bitto d'alpeggio, il Valtellina Casera e i formaggi di capra delle Orobie."
+  image: "../../../assets/valtellina/mockup-formaggi.jpg"
 blocks:
-  - type: hero
+  - type: "hero"
+    kicker: "Guida alla Valtellina"
     title: "Formaggi"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+    intro: |
+      Testo di prova. D'estate le mandrie salgono agli alpeggi, e lì nascono i formaggi più conosciuti della valle.
+    image: "../../../assets/valtellina/mockup-formaggi.jpg"
+    imageAlt: "Illustrazione di prova: forme di formaggio su un tavolo"
+  - type: "text"
+    kicker: "D'alpeggio"
+    heading: "Bitto"
+    body: |
+      Testo di prova. Formaggio d'alpeggio prodotto d'estate, adatto a lunghe stagionature. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+  - type: "text"
+    kicker: "Di latteria"
+    heading: "Valtellina Casera"
+    body: |
+      Testo di prova. Il formaggio semigrasso che si usa anche nei pizzoccheri. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+  - type: "cta-contact"
+    kicker: "Equitazione Alpina"
+    heading: "Scoprila a cavallo"
+    body: |
+      Testo di prova. Gli alpeggi si raggiungono anche a cavallo: vedi le [passeggiate in Valmalenco](/equitazione/valmalenco/).
+    form: false

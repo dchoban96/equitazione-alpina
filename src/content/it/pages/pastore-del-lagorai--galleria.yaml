@@ -1,18 +1,28 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "pastore-del-lagorai/galleria"
 title: "Galleria cani"
-section: pastore-del-lagorai
-draft: true
-nav: { order: 30 }
+section: "pastore-del-lagorai"
+draft: false
+mockup: true
+nav:
+  order: 30
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "Foto: Pastore del Lagorai · Equitazione Alpina"
+  description: "Le foto dei nostri Pastore del Lagorai al lavoro, sui prati e nella neve di Albosaggia."
+  image: "../../../assets/pastore-del-lagorai/mockup-pastore-gregge.jpg"
 blocks:
-  - type: hero
+  - type: "hero"
+    kicker: "Galleria"
     title: "Galleria cani"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: gallery
-    gallery: pastore-del-lagorai
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+    intro: |
+      Testo di prova. I cani al lavoro, in ogni stagione.
+    image: "../../../assets/pastore-del-lagorai/mockup-pastore-gregge.jpg"
+    imageAlt: "Illustrazione di prova: un cane da pastore accanto a un gregge"
+  - type: "gallery"
+    gallery: "pastore-del-lagorai"
+  - type: "cta-contact"
+    kicker: "Contatti"
+    heading: "Vieni a conoscerli"
+    body: |
+      Il modo migliore per capire se fa per voi è stare mezz'ora a guardare i cavalli. Ad Albosaggia si arriva in 10 minuti da Sondrio.
+    form: false

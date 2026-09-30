@@ -1,16 +1,36 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "valtellina/storia"
 title: "Storia della valle"
-section: valtellina
-draft: true
-nav: { order: 40 }
+section: "valtellina"
+draft: false
+mockup: true
+nav:
+  order: 40
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "Storia della Valtellina · Guida"
+  description: "La storia della Valtellina in breve: castelli, secoli di confine e il lungo periodo sotto i Grigioni, dal 1512 al 1797."
+  image: "../../../assets/valtellina/mockup-castello.jpg"
 blocks:
-  - type: hero
+  - type: "hero"
+    kicker: "Guida alla Valtellina"
     title: "Storia della valle"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+    intro: |
+      Testo di prova. Una valle di passaggio e di confine, fra la Lombardia e le Alpi svizzere.
+    image: "../../../assets/valtellina/mockup-castello.jpg"
+    imageAlt: "Illustrazione di prova: una torre di castello su una collina al tramonto"
+  - type: "text"
+    kicker: "Il confine"
+    heading: "Secoli di confine"
+    body: |
+      Testo di prova. Dal 1512 al 1797 la Valtellina fu governata dalle Tre Leghe dei Grigioni. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+  - type: "text"
+    kicker: "I castelli"
+    heading: "Castelli e torri"
+    body: |
+      Testo di prova. Lungo la valle restano torri e castelli, segni di un territorio conteso. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+  - type: "cta-contact"
+    kicker: "Equitazione Alpina"
+    heading: "Scoprila a cavallo"
+    body: |
+      Testo di prova. Molti dei sentieri storici si percorrono ancora oggi, anche a cavallo: vedi le [passeggiate](/equitazione/passeggiate-orobie/).
+    form: false

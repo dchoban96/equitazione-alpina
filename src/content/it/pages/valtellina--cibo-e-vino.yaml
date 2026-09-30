@@ -1,16 +1,49 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "valtellina/cibo-e-vino"
 title: "Cibo e vino"
-section: valtellina
-draft: true
-nav: { order: 60 }
+section: "valtellina"
+draft: false
+mockup: true
+nav:
+  order: 60
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "Cibo e vino in Valtellina · Guida"
+  description: "Cosa mangiare e bere in Valtellina: i piatti tipici, i formaggi d'alpeggio e i vini dei terrazzamenti."
+  image: "../../../assets/valtellina/mockup-pizzoccheri.jpg"
 blocks:
-  - type: hero
-    title: "Cibo e vino"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+  - type: "hero"
+    kicker: "Guida alla Valtellina"
+    title: "Cibo e vino della Valtellina"
+    intro: |
+      Testo di prova. Una cucina di montagna, fatta di grano saraceno, formaggi d'alpeggio e vini coltivati sui terrazzamenti.
+    image: "../../../assets/valtellina/mockup-pizzoccheri.jpg"
+    imageAlt: "Illustrazione di prova: un piatto di pizzoccheri"
+  - type: "cards"
+    kicker: "La cucina"
+    heading: "Da assaggiare"
+    style: "cards"
+    items:
+      - title: "Piatti tipici"
+        text: "Pizzoccheri, sciatt, polenta."
+        link: "/valtellina/cibo-e-vino/piatti-tipici/"
+        label: "Leggi"
+        image: "../../../assets/valtellina/mockup-pizzoccheri.jpg"
+        alt: "Illustrazione di prova: un piatto di pizzoccheri"
+      - title: "Formaggi"
+        text: "Bitto, Casera e i formaggi d'alpe."
+        link: "/valtellina/cibo-e-vino/formaggi/"
+        label: "Leggi"
+        image: "../../../assets/valtellina/mockup-formaggi.jpg"
+        alt: "Illustrazione di prova: forme di formaggio"
+      - title: "Vini"
+        text: "Il Nebbiolo dei terrazzamenti."
+        link: "/valtellina/cibo-e-vino/vini/"
+        label: "Leggi"
+        image: "../../../assets/valtellina/mockup-vini.jpg"
+        alt: "Illustrazione di prova: una bottiglia e un calice di vino rosso"
+  - type: "cta-contact"
+    kicker: "Equitazione Alpina"
+    heading: "Dopo una giornata a cavallo"
+    body: |
+      Testo di prova. Niente mette più appetito di una mattina al passo: vedi le [passeggiate](/equitazione/passeggiate-orobie/).
+    form: false

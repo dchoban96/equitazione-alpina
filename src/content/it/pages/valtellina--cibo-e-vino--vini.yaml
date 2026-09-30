@@ -1,16 +1,36 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "valtellina/cibo-e-vino/vini"
 title: "Vini"
-section: valtellina
-draft: true
-nav: { order: 30 }
+section: "valtellina"
+draft: false
+mockup: true
+nav:
+  order: 30
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "Vini della Valtellina: Nebbiolo dei terrazzamenti"
+  description: "I vini della Valtellina: il Nebbiolo coltivato sui terrazzamenti del versante retico, il Valtellina Superiore e lo Sforzato."
+  image: "../../../assets/valtellina/mockup-vini.jpg"
 blocks:
-  - type: hero
+  - type: "hero"
+    kicker: "Guida alla Valtellina"
     title: "Vini"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+    intro: |
+      Testo di prova. Sul versante esposto al sole, i vigneti salgono su terrazze sostenute da muretti a secco.
+    image: "../../../assets/valtellina/mockup-vini.jpg"
+    imageAlt: "Illustrazione di prova: una bottiglia e un calice di vino rosso"
+  - type: "text"
+    kicker: "L'uva"
+    heading: "Il Nebbiolo di montagna"
+    body: |
+      Testo di prova. In valle il Nebbiolo si chiama Chiavennasca. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+  - type: "text"
+    kicker: "I vini"
+    heading: "Valtellina Superiore e Sforzato"
+    body: |
+      Testo di prova. Il Valtellina Superiore ha le sue sottozone, come Sassella, Grumello, Inferno e Valgella; lo Sforzato si fa con uve lasciate appassire. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+  - type: "cta-contact"
+    kicker: "Equitazione Alpina"
+    heading: "Scoprila a cavallo"
+    body: |
+      Testo di prova. I terrazzamenti si vedono meglio dall'alto: dal nostro versante, al passo. Vedi le [passeggiate](/equitazione/passeggiate-orobie/).
+    form: false

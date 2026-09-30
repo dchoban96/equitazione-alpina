@@ -1,16 +1,71 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "chi-siamo"
 title: "Chi siamo"
-section: info
-draft: true
-nav: { order: 70 }
+section: "info"
+draft: false
+mockup: true
+nav:
+  order: 10
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "Chi siamo · Equitazione Alpina, Albosaggia"
+  description: "Equitazione Alpina è il maneggio di Simone De Capitani ad Albosaggia: oltre trent'anni con i cavalli, sulle Orobie e in Valmalenco."
+  image: "../../../assets/equitazione/mockup-tramonto-conduzione.jpg"
 blocks:
-  - type: hero
-    title: "Chi siamo"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+  - type: "hero"
+    kicker: "Chi c'è dietro"
+    title: "Trent'anni sugli stessi sentieri"
+    intro: |
+      Simone De Capitani lavora con i cavalli da oltre trent'anni. Ha imparato quando l'equitazione di montagna in Valtellina la praticavano in pochi, e da allora non ha smesso: gli stessi versanti, le stesse stagioni, cavalli che si sono succeduti uno dopo l'altro e che conosce a uno a uno.
+
+      Quello che conta, per chi arriva qui la prima volta, è che qualcuno sappia leggere un cavallo prima che il cavallo debba farsi capire a modo suo.
+    image: "../../../assets/equitazione/mockup-tramonto-conduzione.jpg"
+    imageAlt: "Illustrazione di prova: una persona conduce un cavallo al tramonto"
+  - type: "facts"
+    items:
+      - label: "Dal"
+        value: "1995 ca."
+      - label: "Base"
+        value: "Albosaggia (SO)"
+      - label: "Sede estiva"
+        value: "Valmalenco"
+      - label: "Età minima"
+        value: "3 anni"
+  - type: "text-image"
+    kicker: "Gli animali"
+    heading: "Cavalli che vivono fuori"
+    body: |
+      I nostri cavalli non stanno in box tutto il giorno. Vivono all'aperto, in gruppo, su terreno in pendenza — il che significa zoccoli buoni, muscoli veri e caratteri che non si appiattiscono.
+
+      D'estate ci sono le mosche e il fango dopo i temporali, perché è così che vivono i cavalli quando li si lascia essere cavalli.
+
+      Ogni tanto nasce un puledro, e per qualche settimana tutto il resto passa in secondo piano.
+    image: "../../../assets/equitazione/mockup-cavalli-recinto.jpg"
+    alt: "Illustrazione di prova: due cavalli al pascolo vicino al recinto"
+    side: "right"
+  - type: "cards"
+    kicker: "Dove andare"
+    heading: "Le sezioni del sito"
+    style: "tiles"
+    items:
+      - title: "Equitazione"
+        text: "Lezioni, passeggiate, pensione."
+        link: "/equitazione/"
+        label: "Vai"
+      - title: "Pastore del Lagorai"
+        text: "I nostri cani."
+        link: "/pastore-del-lagorai/"
+        label: "Vai"
+      - title: "Capra Orobica"
+        text: "L'allevamento."
+        link: "/capra-orobica/"
+        label: "Vai"
+      - title: "Valtellina"
+        text: "La guida alla valle."
+        link: "/valtellina/"
+        label: "Vai"
+  - type: "cta-contact"
+    kicker: "Venire a trovarci"
+    heading: "Passate al recinto, senza prenotare niente"
+    body: |
+      Il modo migliore per capire se fa per voi è stare mezz'ora a guardare i cavalli. Ad Albosaggia si arriva in 10 minuti da Sondrio.
+    form: false

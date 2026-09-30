@@ -1,16 +1,41 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "valtellina/cibo-e-vino/piatti-tipici"
 title: "Piatti tipici"
-section: valtellina
-draft: true
-nav: { order: 10 }
+section: "valtellina"
+draft: false
+mockup: true
+nav:
+  order: 10
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "Piatti tipici della Valtellina: pizzoccheri e sciatt"
+  description: "I piatti tipici della Valtellina: pizzoccheri di grano saraceno, sciatt, polenta taragna e bresaola della Valtellina."
+  image: "../../../assets/valtellina/mockup-pizzoccheri.jpg"
 blocks:
-  - type: hero
+  - type: "hero"
+    kicker: "Guida alla Valtellina"
     title: "Piatti tipici"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+    intro: |
+      Testo di prova. Il grano saraceno è la base di molti piatti della valle.
+    image: "../../../assets/valtellina/mockup-pizzoccheri.jpg"
+    imageAlt: "Illustrazione di prova: un piatto di pizzoccheri"
+  - type: "text"
+    kicker: "Il piatto"
+    heading: "Pizzoccheri"
+    body: |
+      Testo di prova. Tagliatelle di grano saraceno con verze, patate, formaggio e burro. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+  - type: "text"
+    kicker: "Gli altri"
+    heading: "Sciatt e polenta taragna"
+    body: |
+      Testo di prova. Frittelle di grano saraceno con il formaggio dentro; polenta con farina di mais e grano saraceno. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+  - type: "text"
+    kicker: "I salumi"
+    heading: "Bresaola della Valtellina"
+    body: |
+      Testo di prova. Il salume della valle, stagionato e tagliato sottile. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+  - type: "cta-contact"
+    kicker: "Equitazione Alpina"
+    heading: "Scoprila a cavallo"
+    body: |
+      Testo di prova. Prima del pranzo, una mattina a cavallo: vedi le [passeggiate sulle Orobie](/equitazione/passeggiate-orobie/).
+    form: false

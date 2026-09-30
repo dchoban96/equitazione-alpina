@@ -1,16 +1,78 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "valtellina"
 title: "Valtellina"
-section: valtellina
-draft: true
-nav: { order: 50 }
+section: "valtellina"
+draft: false
+mockup: true
+nav:
+  order: 10
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "Guida alla Valtellina · Sondrio, Orobie, Valmalenco"
+  description: "Una guida alla Valtellina scritta da chi ci vive: Sondrio, Albosaggia e le Orobie, la Valmalenco, la storia, la cucina e cosa fare in ogni stagione."
+  image: "../../../assets/valtellina/mockup-valle-sondrio.jpg"
 blocks:
-  - type: hero
-    title: "Valtellina"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+  - type: "hero"
+    kicker: "Guida"
+    title: "La Valtellina, vista dal recinto"
+    intro: |
+      Testo di prova. La valle dell'Adda, fra le Alpi Retiche e le Orobie: la conosciamo passo dopo passo, a cavallo. Questa guida raccoglie quello che raccontiamo a chi viene a trovarci.
+    image: "../../../assets/valtellina/mockup-valle-sondrio.jpg"
+    imageAlt: "Illustrazione di prova: la valle con il fiume e il paese sotto le montagne"
+  - type: "cards"
+    kicker: "Dove"
+    heading: "I luoghi"
+    style: "cards"
+    items:
+      - title: "Sondrio e dintorni"
+        text: "Il capoluogo sull'Adda."
+        link: "/valtellina/sondrio/"
+        label: "Leggi"
+        image: "../../../assets/valtellina/mockup-valle-sondrio.jpg"
+        alt: "Illustrazione di prova: la valle di Sondrio"
+      - title: "Albosaggia e le Orobie"
+        text: "Il versante di casa."
+        link: "/valtellina/albosaggia-e-orobie/"
+        label: "Leggi"
+        image: "../../../assets/valtellina/mockup-borgo-albosaggia.jpg"
+        alt: "Illustrazione di prova: un borgo in pietra"
+      - title: "La Valmalenco"
+        text: "La valle a nord di Sondrio."
+        link: "/valtellina/la-valmalenco/"
+        label: "Leggi"
+        image: "../../../assets/equitazione/mockup-alpe-palu-valmalenco.jpg"
+        alt: "Illustrazione di prova: un lago alpino"
+  - type: "cards"
+    kicker: "Temi"
+    heading: "Da leggere"
+    style: "tiles"
+    items:
+      - title: "Storia della valle"
+        text: "Castelli, contrade, secoli di confine."
+        link: "/valtellina/storia/"
+        label: "La storia"
+      - title: "Geologia e paesaggio"
+        text: "Ghiacciai, rocce, terrazzamenti."
+        link: "/valtellina/geologia-e-paesaggio/"
+        label: "Il paesaggio"
+      - title: "Cibo e vino"
+        text: "Piatti, formaggi, vini."
+        link: "/valtellina/cibo-e-vino/"
+        label: "La cucina"
+      - title: "Cosa fare"
+        text: "Estate e inverno."
+        link: "/valtellina/cosa-fare/"
+        label: "Le attività"
+  - type: "map"
+    kicker: "Dove siamo"
+    heading: "Albosaggia, di fronte a Sondrio"
+    label: "Località Ravasciolo, Albosaggia"
+    image: "../../../assets/valtellina/mockup-mappa.jpg"
+    alt: "Illustrazione di prova: mappa con Sondrio, Albosaggia e la Valmalenco"
+  - type: "curiosity"
+    section: "valtellina"
+  - type: "cta-contact"
+    kicker: "Equitazione Alpina"
+    heading: "Scoprila a cavallo"
+    body: |
+      Testo di prova. Il modo più lento, e forse il migliore, per conoscere la valle: le [passeggiate a cavallo](/equitazione/passeggiate-orobie/).
+    form: false

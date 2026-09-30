@@ -1,16 +1,36 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "valtellina/sondrio"
 title: "Sondrio e dintorni"
-section: valtellina
-draft: true
-nav: { order: 10 }
+section: "valtellina"
+draft: false
+mockup: true
+nav:
+  order: 10
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "Sondrio e dintorni · Guida alla Valtellina"
+  description: "Sondrio, capoluogo della Valtellina sull'Adda, e i dintorni: cosa vedere e come raggiungere Albosaggia, a dieci minuti dalla città."
+  image: "../../../assets/valtellina/mockup-valle-sondrio.jpg"
 blocks:
-  - type: hero
+  - type: "hero"
+    kicker: "Guida alla Valtellina"
     title: "Sondrio e dintorni"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+    intro: |
+      Testo di prova. Sondrio è il capoluogo della provincia e sta sull'Adda, dove scende il torrente Mallero dalla Valmalenco.
+    image: "../../../assets/valtellina/mockup-valle-sondrio.jpg"
+    imageAlt: "Illustrazione di prova: la città nella valle sotto le montagne"
+  - type: "text"
+    kicker: "Cosa vedere"
+    heading: "La città"
+    body: |
+      Testo di prova. Il centro storico, i palazzi, il Castel Masegra che domina la città. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+  - type: "text"
+    kicker: "Come arrivare"
+    heading: "Da Sondrio ad Albosaggia"
+    body: |
+      Testo di prova. Si attraversa l'Adda e si sale sul versante orobico: ad Albosaggia si arriva in 10 minuti. Il recinto di [Equitazione Alpina](/equitazione/) è in Località Ravasciolo.
+  - type: "cta-contact"
+    kicker: "Equitazione Alpina"
+    heading: "Scoprila a cavallo"
+    body: |
+      Testo di prova. A dieci minuti dalla città ti aspettano i cavalli: vedi le [lezioni](/equitazione/lezioni/) e le [passeggiate](/equitazione/passeggiate-orobie/).
+    form: false

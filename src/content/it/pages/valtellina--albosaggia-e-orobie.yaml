@@ -1,16 +1,36 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "valtellina/albosaggia-e-orobie"
 title: "Albosaggia e le Orobie"
-section: valtellina
-draft: true
-nav: { order: 20 }
+section: "valtellina"
+draft: false
+mockup: true
+nav:
+  order: 20
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "Albosaggia e le Orobie · Guida alla Valtellina"
+  description: "Albosaggia e il versante orobico sopra Sondrio: boschi di castagno e faggio, sentieri verso San Bernardo e il Lago Casera."
+  image: "../../../assets/valtellina/mockup-borgo-albosaggia.jpg"
 blocks:
-  - type: hero
+  - type: "hero"
+    kicker: "Guida alla Valtellina"
     title: "Albosaggia e le Orobie"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+    intro: |
+      Testo di prova. Albosaggia sta sul versante orobico, di fronte a Sondrio: il lato della valle più ombroso e più verde.
+    image: "../../../assets/valtellina/mockup-borgo-albosaggia.jpg"
+    imageAlt: "Illustrazione di prova: un borgo in pietra fra i boschi"
+  - type: "text"
+    kicker: "Il paese"
+    heading: "Il paese e le contrade"
+    body: |
+      Testo di prova. Case in pietra, contrade sparse sul pendio, sentieri che le collegano. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+  - type: "text"
+    kicker: "I sentieri"
+    heading: "Verso San Bernardo e il Lago Casera"
+    body: |
+      Testo di prova. Dai boschi di castagno e faggio si sale verso i pascoli: sono i sentieri delle nostre [passeggiate sulle Orobie](/equitazione/passeggiate-orobie/).
+  - type: "cta-contact"
+    kicker: "Equitazione Alpina"
+    heading: "Scoprila a cavallo"
+    body: |
+      Testo di prova. Questi sentieri li percorriamo ogni settimana a cavallo: vieni a provarli con le [passeggiate sulle Orobie](/equitazione/passeggiate-orobie/).
+    form: false

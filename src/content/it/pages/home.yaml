@@ -1,19 +1,178 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: ""
 title: "Equitazione Alpina"
-section: home
-draft: true
-nav: { order: 10 }
+section: "home"
+draft: false
+mockup: true
+nav:
+  order: 100
 localBusiness: true
 headerOverlay: true
+altimeter:
+  enabled: true
+  min: 500
+  max: 1950
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
-altimeter: { enabled: true, min: 500, max: 1950 }
+  title: "Equitazione Alpina · Maneggio ad Albosaggia, Sondrio"
+  description: "Passeggiate a cavallo sulle Orobie e in Valmalenco, lezioni e pensione cavalli ad Albosaggia, a 10 minuti da Sondrio."
+  image: "../../../assets/equitazione/mockup-cavallo-crinale.jpg"
 blocks:
-  - type: hero
-    title: "Equitazione Alpina"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+  - type: "hero"
+    title: "I cavalli ci prestano le ali che ci mancano"
+    intro: |
+      Ci sono mattine, alla fine dell'estate, in cui il sole entra fra i tronchi in modo obliquo e tutto il prato sembra sospeso nella polvere. I cavalli aspettano al recinto, il cane corre avanti, e per mezz'ora non succede niente di speciale: si porta il fieno, si controllano gli zoccoli, si parla poco.
+    altitude: 500
+    coordinates: "Albosaggia · Valtellina — 46°16′N 9°84′E"
+    closing: "È da lì che comincia tutto il resto."
+    footnote: "Si sale da 500 a 1950 m"
+    ridges: "section"
+    panelKicker: "Rilevazione"
+    panel:
+      - label: "Ora"
+        value: "06:20"
+      - label: "Quota"
+        value: "500 m"
+      - label: "Stagione"
+        value: "Fine estate"
+      - label: "Luogo"
+        value: "Albosaggia"
+    image: "../../../assets/equitazione/mockup-cavallo-crinale.jpg"
+    imageAlt: "Illustrazione di prova: un cavallo sul crinale all'alba"
+  - type: "text"
+    kicker: "Chi c'è dietro"
+    heading: "Trent'anni sugli stessi sentieri"
+    body: |
+      Simone De Capitani lavora con i cavalli da oltre trent'anni. Ha imparato quando l'equitazione di montagna in Valtellina la praticavano in pochi, e da allora non ha smesso: gli stessi versanti, le stesse stagioni, cavalli che si sono succeduti uno dopo l'altro e che conosce a uno a uno.
+
+      Quello che conta, per chi arriva qui la prima volta, è che qualcuno sappia leggere un cavallo prima che il cavallo debba farsi capire a modo suo.
+    altitude: 500
+    anchor: "dietro"
+  - type: "facts"
+    items:
+      - label: "Dal"
+        value: "1995 ca."
+      - label: "Base"
+        value: "Albosaggia (SO)"
+      - label: "Sede estiva"
+        value: "Valmalenco"
+      - label: "Età minima"
+        value: "3 anni"
+  - type: "text-image"
+    kicker: "Gli animali"
+    heading: "Cavalli che vivono fuori"
+    body: |
+      I nostri cavalli non stanno in box tutto il giorno. Vivono all'aperto, in gruppo, su terreno in pendenza — il che significa zoccoli buoni, muscoli veri e caratteri che non si appiattiscono.
+
+      D'estate ci sono le mosche e il fango dopo i temporali, perché è così che vivono i cavalli quando li si lascia essere cavalli.
+
+      Ogni tanto nasce un puledro, e per qualche settimana tutto il resto passa in secondo piano.
+    image: "../../../assets/equitazione/mockup-cavalli-recinto.jpg"
+    alt: "Illustrazione di prova: due cavalli al pascolo vicino al recinto"
+    side: "right"
+    note: "recinto"
+    anchor: "cavalli"
+  - type: "places"
+    altitude: 1300
+    kicker: "Dove si va"
+    note: "1300 → 1950 m"
+    heading: "Due montagne, due stagioni"
+    items:
+      - name: "Le Orobie, sopra Albosaggia"
+        altitude: 1300
+        approximate: true
+        text: "È la casa: boschi di castagno e faggio, sentieri che salgono verso San Bernardo e il Lago Casera, la Valtellina che si apre sotto man mano che si guadagna quota. D'inverno con il fiato che si vede, d'autunno con le foglie che scivolano sotto gli zoccoli."
+        season: "Tutto l'anno"
+      - name: "La Valmalenco"
+        altitude: 1950
+        approximate: true
+        text: "Quando la neve libera i pascoli alti si sale verso l'Alpe Palù. Sono poche settimane, diverse da tutto il resto dell'anno: pascoli aperti, granito chiaro, silenzio."
+        season: "Da fine giugno a inizio settembre"
+  - type: "text-image"
+    kicker: "Come si va"
+    heading: "Andare al passo"
+    body: |
+      Qui non si corre. Non perché non si possa, ma perché la montagna e i cavalli chiedono un'altra andatura.
+
+      Chi non è mai salito in sella comincia da terra: si conosce l'animale, si impara a stargli accanto, si sale quando si è pronti. Chi monta da anni trova sentieri che meritano la giornata intera.
+
+      I bambini possono avvicinarsi ai cavalli da tre anni, condotti a mano, per il tempo che serve — dieci minuti bastano, se sono i dieci minuti giusti.
+    image: "../../../assets/equitazione/mockup-lezione-maneggio.jpg"
+    alt: "Illustrazione di prova: un cavaliere al passo lungo lo steccato"
+    side: "left"
+    note: "al passo"
+  - type: "text-image"
+    kicker: "Valmalenco"
+    heading: "Verso l'Alpe Palù"
+    image: "../../../assets/equitazione/mockup-alpe-palu-valmalenco.jpg"
+    alt: "Illustrazione di prova: il lago dell'Alpe Palù fra le montagne"
+    side: "overlay"
+    note: "≈ 1950 m"
+    altitude: 1950
+    lead: "Quando la neve libera i pascoli alti si sale verso l'Alpe Palù. Sono poche settimane, diverse da tutto il resto dell'anno: pascoli aperti, granito chiaro, silenzio."
+  - type: "cards"
+    kicker: "Non solo passeggiate"
+    heading: "Scuola, addestramento, pensione"
+    style: "tiles"
+    items:
+      - title: "Scuola di equitazione"
+        text: "Lezioni in struttura, dal primo contatto a terra fino al sentiero."
+        link: "/equitazione/lezioni/"
+        label: "Le lezioni"
+      - title: "Passeggiate"
+        text: "Al passo sulle Orobie tutto l'anno, in Valmalenco d'estate."
+        link: "/equitazione/passeggiate-orobie/"
+        label: "Le passeggiate"
+      - title: "Pensione cavalli"
+        text: "Per cavalli di proprietà, in gruppo e all'aperto come gli altri."
+        link: "/equitazione/pensione-cavalli/"
+        label: "La pensione"
+      - title: "Uscite in carrozza"
+        text: "D'estate, per chi non se la sente di salire in sella."
+        link: "/contatti/"
+        label: "Chiedi informazioni"
+    anchor: "servizi"
+  - type: "reviews"
+    kicker: "Cosa dicono"
+    heading: "Chi è già venuto"
+    rating: "4,8 / 5"
+    count: "su 13 recensioni"
+    sourceLabel: "Recensioni raccolte su Tripadvisor"
+    sourceUrl: "https://www.tripadvisor.it/Attraction_Review-g1096256-d3489629-Reviews-Equitazione_Alpina-Albosaggia_Province_of_Sondrio_Lombardy.html"
+  - type: "gallery-preview"
+    kicker: "Galleria"
+    heading: "Un anno al recinto"
+    gallery: "equitazione"
+    count: 6
+    link: "/equitazione/galleria/"
+  - type: "cards"
+    kicker: "Le altre sezioni"
+    heading: "Non solo cavalli"
+    style: "cards"
+    items:
+      - title: "Pastore del Lagorai"
+        text: "I cani che lavorano accanto ai cavalli e al gregge."
+        label: "Scopri i cani"
+        link: "/pastore-del-lagorai/"
+        image: "../../../assets/pastore-del-lagorai/mockup-pastore-prato.jpg"
+        alt: "Illustrazione di prova: un Pastore del Lagorai sul prato"
+      - title: "Capra Orobica"
+        text: "Una razza delle nostre montagne, dal pelo lungo e le corna ampie."
+        label: "Scopri le capre"
+        link: "/capra-orobica/"
+        image: "../../../assets/capra-orobica/mockup-capra-ritratto.jpg"
+        alt: "Illustrazione di prova: una Capra Orobica davanti alle montagne"
+      - title: "La Valtellina"
+        text: "Sondrio, i versanti, la storia, la cucina: una guida per chi viene a trovarci."
+        label: "Apri la guida"
+        link: "/valtellina/"
+        image: "../../../assets/valtellina/mockup-terrazzamenti.jpg"
+        alt: "Illustrazione di prova: vigneti terrazzati al tramonto"
+  - type: "curiosity"
+    section: "home"
+  - type: "cta-contact"
+    kicker: "Venire a trovarci"
+    heading: "Passate al recinto, senza prenotare niente"
+    body: |
+      Il modo migliore per capire se fa per voi è stare mezz'ora a guardare i cavalli. Ad Albosaggia si arriva in 10 minuti da Sondrio.
+    form: false
+    anchor: "visita"

@@ -1,16 +1,45 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "pastore-del-lagorai/i-nostri-cani"
 title: "I nostri cani"
-section: pastore-del-lagorai
-draft: true
-nav: { order: 20 }
+section: "pastore-del-lagorai"
+draft: false
+mockup: true
+nav:
+  order: 20
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "I nostri Pastore del Lagorai · Equitazione Alpina"
+  description: "I Pastore del Lagorai che vivono al recinto di Albosaggia, accanto ai cavalli. Non sono in vendita e non vendiamo cuccioli."
+  image: "../../../assets/pastore-del-lagorai/mockup-pastore-neve.jpg"
 blocks:
-  - type: hero
+  - type: "hero"
+    kicker: "Pastore del Lagorai"
     title: "I nostri cani"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+    intro: |
+      Testo di prova. Qui presenteremo i cani uno per uno, con le loro abitudini e il loro lavoro.
+
+      I nostri cani non sono in vendita e non vendiamo cuccioli: questa sezione racconta la razza e il lavoro dei cani con gli animali.
+    image: "../../../assets/pastore-del-lagorai/mockup-pastore-neve.jpg"
+    imageAlt: "Illustrazione di prova: un cane da pastore nella neve fra gli abeti"
+  - type: "cards"
+    kicker: "I cani"
+    heading: "Chi vive al recinto"
+    style: "cards"
+    items:
+      - title: "Il più esperto"
+        text: "Testo di prova: nome, età e carattere arriveranno con le foto vere."
+        image: "../../../assets/pastore-del-lagorai/mockup-pastore-prato.jpg"
+        alt: "Illustrazione di prova: un cane sul prato"
+      - title: "Il più giovane"
+        text: "Testo di prova: nome, età e carattere arriveranno con le foto vere."
+        image: "../../../assets/pastore-del-lagorai/mockup-pastore-neve.jpg"
+        alt: "Illustrazione di prova: un cane nella neve"
+      - title: "Al lavoro con il gregge"
+        text: "Testo di prova: nome, età e carattere arriveranno con le foto vere."
+        image: "../../../assets/pastore-del-lagorai/mockup-pastore-gregge.jpg"
+        alt: "Illustrazione di prova: un cane accanto alle pecore"
+  - type: "cta-contact"
+    kicker: "Contatti"
+    heading: "Vieni a conoscerli"
+    body: |
+      Il modo migliore per capire se fa per voi è stare mezz'ora a guardare i cavalli. Ad Albosaggia si arriva in 10 minuti da Sondrio.
+    form: false

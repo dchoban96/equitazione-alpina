@@ -1,16 +1,57 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "capra-orobica"
 title: "Capra Orobica"
-section: capra-orobica
-draft: true
-nav: { order: 40 }
+section: "capra-orobica"
+draft: false
+mockup: true
+nav:
+  order: 10
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "Allevamento Capra Orobica · Albosaggia, Valtellina"
+  description: "Allevamento di Capra Orobica ad Albosaggia: la razza caprina delle Alpi Orobie, dal pelo lungo e dalle corna ampie."
+  image: "../../../assets/capra-orobica/mockup-capra-ritratto.jpg"
 blocks:
-  - type: hero
-    title: "Capra Orobica"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+  - type: "hero"
+    kicker: "Capra Orobica"
+    title: "Capra Orobica, una razza delle nostre montagne"
+    intro: |
+      Testo di prova. Sul versante orobico, accanto ai cavalli, pascolano le capre di una razza nata proprio su queste montagne.
+    image: "../../../assets/capra-orobica/mockup-capra-ritratto.jpg"
+    imageAlt: "Illustrazione di prova: una Capra Orobica davanti alle montagne"
+  - type: "text-image"
+    kicker: "L'allevamento"
+    heading: "Perché la Capra Orobica"
+    body: |
+      Testo di prova. Allevare una razza locale significa tenerla viva dove è nata. Il testo definitivo racconterà l'allevamento e il suo scopo.
+    image: "../../../assets/capra-orobica/mockup-capre-pascolo.jpg"
+    alt: "Illustrazione di prova: capre al pascolo sul pendio"
+    side: "right"
+  - type: "cards"
+    kicker: "La sezione"
+    heading: "Scopri di più"
+    style: "tiles"
+    items:
+      - title: "La razza"
+        text: "Origine e caratteristiche."
+        link: "/capra-orobica/razza/"
+        label: "Leggi"
+      - title: "Galleria"
+        text: "Le capre al pascolo."
+        link: "/capra-orobica/galleria/"
+        label: "Guarda"
+      - title: "Equitazione"
+        text: "I cavalli che vivono accanto a loro."
+        link: "/equitazione/"
+        label: "Vai ai cavalli"
+  - type: "faq"
+    kicker: "Domande"
+    heading: "Domande sulle capre"
+    tag: "capra"
+  - type: "curiosity"
+    section: "capra-orobica"
+  - type: "cta-contact"
+    kicker: "Contatti"
+    heading: "Vuoi saperne di più?"
+    body: |
+      Testo di prova. Chiamaci o scrivici: ti raccontiamo l'allevamento.
+    form: false

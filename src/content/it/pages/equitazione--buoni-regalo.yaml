@@ -1,17 +1,62 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "equitazione/buoni-regalo"
 title: "Regala un'esperienza"
-section: equitazione
-draft: true
-nav: { order: 50 }
+section: "equitazione"
+draft: false
+mockup: true
+nav:
+  order: 50
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
-altimeter: { enabled: true, min: 500, max: 1950 }
+  title: "Buoni regalo a cavallo in Valtellina · Equitazione Alpina"
+  description: "Regala una passeggiata a cavallo sulle Orobie o in Valmalenco: il buono non ha una data fissa, si sceglie insieme quando venire."
+  image: "../../../assets/equitazione/mockup-buono-regalo.jpg"
 blocks:
-  - type: hero
-    title: "Regala un'esperienza"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+  - type: "hero"
+    kicker: "Buoni regalo"
+    title: "Regala un'esperienza a cavallo"
+    intro: |
+      Il buono arriva via email, non ha una data fissa: si sceglie insieme quando venire, in base al tempo e alla stagione.
+    image: "../../../assets/equitazione/mockup-buono-regalo.jpg"
+    imageAlt: "Illustrazione di prova: un pacco regalo con un ferro di cavallo"
+  - type: "cards"
+    kicker: "Le esperienze"
+    heading: "Le esperienze da regalare"
+    style: "cards"
+    items:
+      - title: "Primo incontro con i cavalli"
+        text: "Testo di prova: per chi non è mai salito in sella."
+        image: "../../../assets/equitazione/mockup-lezione-maneggio.jpg"
+        alt: "Illustrazione di prova: un cavaliere lungo lo steccato"
+        link: "/contatti/"
+        label: "Chiedi il buono"
+      - title: "Passeggiata sulle Orobie"
+        text: "Testo di prova: al passo nei boschi sopra Albosaggia."
+        image: "../../../assets/equitazione/mockup-sentiero-orobie.jpg"
+        alt: "Illustrazione di prova: un cavaliere nel bosco"
+        link: "/contatti/"
+        label: "Chiedi il buono"
+      - title: "Giornata in Valmalenco"
+        text: "Testo di prova: d'estate, verso l'Alpe Palù."
+        image: "../../../assets/equitazione/mockup-alpe-palu-valmalenco.jpg"
+        alt: "Illustrazione di prova: il lago dell'Alpe Palù"
+        link: "/contatti/"
+        label: "Chiedi il buono"
+  - type: "text"
+    kicker: "Il buono"
+    heading: "Come funziona"
+    body: |
+      Testo di prova. Scrivici o chiamaci dicendo quale esperienza vuoi regalare: ti mandiamo il buono via email. Chi lo riceve ci chiama e sceglie il giorno.
+
+      Validità 6 mesi dall'acquisto. Per le esperienze in Valmalenco, che si svolgono da fine giugno a inizio settembre, la scadenza si estende fino alla prima stagione utile.
+  - type: "faq"
+    kicker: "Domande"
+    heading: "Domande sui buoni"
+    ids:
+      - "buono-scadenza"
+      - "prenotare"
+  - type: "cta-contact"
+    kicker: "Contatti"
+    heading: "Chiedi il tuo buono"
+    body: |
+      Testo di prova. Ti rispondiamo con le esperienze disponibili e il modo di pagamento.
+    form: true

@@ -1,18 +1,28 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "capra-orobica/galleria"
 title: "Galleria capre"
-section: capra-orobica
-draft: true
-nav: { order: 20 }
+section: "capra-orobica"
+draft: false
+mockup: true
+nav:
+  order: 20
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "Foto: Capra Orobica · Equitazione Alpina"
+  description: "Le foto delle nostre Capre Orobiche al pascolo sul versante orobico della Valtellina."
+  image: "../../../assets/capra-orobica/mockup-capre-pascolo.jpg"
 blocks:
-  - type: hero
+  - type: "hero"
+    kicker: "Galleria"
     title: "Galleria capre"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: gallery
-    gallery: capra-orobica
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+    intro: |
+      Testo di prova. Le capre al pascolo, in ogni stagione.
+    image: "../../../assets/capra-orobica/mockup-capre-pascolo.jpg"
+    imageAlt: "Illustrazione di prova: capre al pascolo sul pendio"
+  - type: "gallery"
+    gallery: "capra-orobica"
+  - type: "cta-contact"
+    kicker: "Contatti"
+    heading: "Vuoi vederle dal vivo?"
+    body: |
+      Testo di prova. Chiamaci per sapere quando passare.
+    form: false

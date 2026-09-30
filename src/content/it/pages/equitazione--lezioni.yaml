@@ -1,17 +1,62 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "equitazione/lezioni"
 title: "Lezioni"
-section: equitazione
-draft: true
-nav: { order: 10 }
+section: "equitazione"
+draft: false
+mockup: true
+nav:
+  order: 10
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
-altimeter: { enabled: true, min: 500, max: 1950 }
+  title: "Lezioni di equitazione vicino a Sondrio · Albosaggia"
+  description: "Lezioni di equitazione ad Albosaggia per adulti e bambini: si comincia da terra, si sale in sella quando si è pronti. A 10 minuti da Sondrio."
+  image: "../../../assets/equitazione/mockup-lezione-maneggio.jpg"
 blocks:
-  - type: hero
-    title: "Lezioni"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+  - type: "hero"
+    kicker: "Lezioni"
+    title: "Lezioni di equitazione, dal primo contatto al sentiero"
+    intro: |
+      Testo di prova. Chi non è mai salito in sella comincia da terra: si conosce l'animale, si impara a stargli accanto, si sale quando si è pronti.
+    image: "../../../assets/equitazione/mockup-lezione-maneggio.jpg"
+    imageAlt: "Illustrazione di prova: un cavaliere al passo lungo lo steccato"
+  - type: "cards"
+    kicker: "Le lezioni"
+    heading: "Come sono organizzate"
+    style: "tiles"
+    items:
+      - title: "Primo approccio"
+        text: "Testo di prova: conoscere il cavallo da terra, pulirlo, condurlo a mano."
+      - title: "Lezioni di base"
+        text: "Testo di prova: equilibrio, andature, comandi, sempre al ritmo del cavallo."
+      - title: "Verso il sentiero"
+        text: "Testo di prova: le prime uscite accompagnate fuori dal recinto."
+      - title: "Bambini"
+        text: "Da tre anni, condotti a mano, per il tempo che serve."
+  - type: "facts"
+    kicker: "In breve"
+    heading: "Le cose da sapere"
+    items:
+      - label: "Età minima"
+        value: "3 anni"
+      - label: "Dove"
+        value: "Albosaggia (SO)"
+      - label: "Quando"
+        value: "Su appuntamento"
+      - label: "Durata e costi"
+        value: "Al telefono"
+  - type: "text"
+    kicker: "Il metodo"
+    heading: "Perché si parte da terra"
+    body: |
+      Testo di prova. Un cavallo si fida di chi sa stargli accanto. Per questo le prime volte si passa più tempo vicino all'animale che in sella: si impara a leggerne i segnali, e la sella arriva quasi da sé.
+
+      Chi monta da anni può saltare questa parte e passare direttamente alle [passeggiate sulle Orobie](/equitazione/passeggiate-orobie/).
+  - type: "faq"
+    kicker: "Domande"
+    heading: "Domande sulle lezioni"
+    tag: "equitazione"
+  - type: "cta-contact"
+    kicker: "Contatti"
+    heading: "Prenota la prima lezione"
+    body: |
+      Testo di prova. Chiamaci o scrivici su WhatsApp: troviamo insieme il giorno e l'ora.
+    form: true

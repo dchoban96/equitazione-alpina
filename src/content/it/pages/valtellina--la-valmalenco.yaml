@@ -1,16 +1,41 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "valtellina/la-valmalenco"
 title: "La Valmalenco"
-section: valtellina
-draft: true
-nav: { order: 30 }
+section: "valtellina"
+draft: false
+mockup: true
+nav:
+  order: 30
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "La Valmalenco · Guida alla Valtellina"
+  description: "La Valmalenco, la valle del Mallero a nord di Sondrio: paesi, pietra, pascoli e l'Alpe Palù. Cosa vedere e quando andare."
+  image: "../../../assets/equitazione/mockup-alpe-palu-valmalenco.jpg"
 blocks:
-  - type: hero
+  - type: "hero"
+    kicker: "Guida alla Valtellina"
     title: "La Valmalenco"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+    intro: |
+      Testo di prova. Risalendo il Mallero da Sondrio si entra in Valmalenco, una valle laterale chiusa dalle montagne del gruppo del Bernina.
+    image: "../../../assets/equitazione/mockup-alpe-palu-valmalenco.jpg"
+    imageAlt: "Illustrazione di prova: un lago alpino fra le montagne innevate"
+  - type: "text"
+    kicker: "La valle"
+    heading: "I paesi della valle"
+    body: |
+      Testo di prova. Chiesa in Valmalenco è il paese principale; tutto intorno frazioni, cave di pietra, alpeggi. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+  - type: "text"
+    kicker: "La pietra"
+    heading: "La pietra"
+    body: |
+      Testo di prova. La valle è conosciuta per le sue pietre, lavorate da secoli per tetti e pavimenti. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+  - type: "text"
+    kicker: "In quota"
+    heading: "L'Alpe Palù"
+    body: |
+      Testo di prova. Un alpeggio con il suo lago, meta d'estate a piedi e d'inverno con gli sci.
+  - type: "cta-contact"
+    kicker: "Equitazione Alpina"
+    heading: "Scoprila a cavallo"
+    body: |
+      Testo di prova. D'estate saliamo in Valmalenco anche con i cavalli: vedi le [passeggiate in Valmalenco](/equitazione/valmalenco/).
+    form: false

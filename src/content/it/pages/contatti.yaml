@@ -1,17 +1,34 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "contatti"
 title: "Contatti"
-section: info
-draft: true
-nav: { order: 90 }
+section: "info"
+draft: false
+mockup: true
+nav:
+  order: 30
 localBusiness: true
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "Contatti · Equitazione Alpina, Albosaggia (SO)"
+  description: "Telefono, WhatsApp, email e indirizzo di Equitazione Alpina: Località Ravasciolo, Albosaggia (SO), a 10 minuti da Sondrio."
+  image: "../../../assets/valtellina/mockup-mappa.jpg"
 blocks:
-  - type: hero
-    title: "Contatti"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+  - type: "hero"
+    kicker: "Parlare con noi"
+    title: "Come raggiungerci"
+    intro: |
+      Il modo più veloce è una telefonata: rispondiamo anche da fuori, con il telefono in tasca. Se preferisci scrivere, il modulo qui accanto arriva direttamente a noi.
+    footnote: "Albosaggia, 500 m"
+    image: "../../../assets/valtellina/mockup-mappa.jpg"
+    imageAlt: "Illustrazione di prova: mappa con Sondrio, Albosaggia e la Valmalenco"
+  - type: "cta-contact"
+    kicker: "Contatti"
+    heading: "Scrivici o chiamaci"
+    body: |
+      Le uscite in Valmalenco si svolgono da fine giugno a inizio settembre. Ad Albosaggia si cavalca tutto l'anno.
+    form: true
+  - type: "map"
+    kicker: "Dove siamo"
+    heading: "Località Ravasciolo, Albosaggia"
+    label: "Località Ravasciolo, Albosaggia"
+    image: "../../../assets/valtellina/mockup-mappa.jpg"
+    alt: "Illustrazione di prova: mappa con Sondrio, Albosaggia e la Valmalenco"

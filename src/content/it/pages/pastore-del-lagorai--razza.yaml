@@ -1,16 +1,42 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "pastore-del-lagorai/razza"
 title: "La razza"
-section: pastore-del-lagorai
-draft: true
-nav: { order: 10 }
+section: "pastore-del-lagorai"
+draft: false
+mockup: true
+nav:
+  order: 10
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "Pastore del Lagorai: razza, carattere e origini"
+  description: "Il Pastore del Lagorai, cane da pastore delle montagne del Trentino: origini, carattere e lavoro con il gregge, raccontati da chi lo vede ogni giorno."
+  image: "../../../assets/pastore-del-lagorai/mockup-pastore-gregge.jpg"
 blocks:
-  - type: hero
-    title: "La razza"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+  - type: "hero"
+    kicker: "La razza"
+    title: "Il Pastore del Lagorai: carattere e origini"
+    intro: |
+      Testo di prova. Un cane da pastore di montagna, nato per condurre le greggi sui pascoli del Lagorai, in Trentino.
+    image: "../../../assets/pastore-del-lagorai/mockup-pastore-gregge.jpg"
+    imageAlt: "Illustrazione di prova: un cane da pastore accanto a un gregge"
+  - type: "facts"
+    items:
+      - label: "Origine"
+        value: "Trentino, catena del Lagorai"
+      - label: "Lavoro"
+        value: "Conduzione del gregge"
+  - type: "text"
+    kicker: "Il carattere"
+    heading: "Carattere"
+    body: |
+      Testo di prova. Attento, resistente, legato al gruppo con cui lavora. Il testo definitivo di questa pagina sarà scritto con fonti verificate sulla razza.
+  - type: "text"
+    kicker: "Il lavoro"
+    heading: "Il lavoro in montagna"
+    body: |
+      Testo di prova. Sui pascoli alti il cane tiene unito il gregge e lo guida lungo i sentieri. Da noi lo stesso istinto si vede con i cavalli: vedi la sezione [Equitazione](/equitazione/).
+  - type: "cta-contact"
+    kicker: "Contatti"
+    heading: "Hai domande sulla razza?"
+    body: |
+      Testo di prova. I nostri cani non sono in vendita e non vendiamo cuccioli: questa sezione racconta la razza e il lavoro dei cani con gli animali.
+    form: false

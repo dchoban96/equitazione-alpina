@@ -1,17 +1,49 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "equitazione/pensione-cavalli"
 title: "Pensione cavalli"
-section: equitazione
-draft: true
-nav: { order: 40 }
+section: "equitazione"
+draft: false
+mockup: true
+nav:
+  order: 40
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
-altimeter: { enabled: true, min: 500, max: 1950 }
+  title: "Pensione cavalli vicino a Sondrio · all'aperto, in gruppo"
+  description: "Pensione per cavalli di proprietà ad Albosaggia, vicino a Sondrio: in gruppo e all'aperto, su terreno in pendenza, come i nostri cavalli."
+  image: "../../../assets/equitazione/mockup-pensione-scuderia.jpg"
 blocks:
-  - type: hero
-    title: "Pensione cavalli"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+  - type: "hero"
+    kicker: "Pensione"
+    title: "Pensione cavalli, in gruppo e all'aperto"
+    intro: |
+      Per cavalli di proprietà, in gruppo e all'aperto come gli altri.
+    image: "../../../assets/equitazione/mockup-pensione-scuderia.jpg"
+    imageAlt: "Illustrazione di prova: la scuderia al tramonto con un cavallo nel recinto"
+  - type: "text-image"
+    kicker: "Come vivono"
+    heading: "Cavalli che vivono fuori"
+    body: |
+      I nostri cavalli non stanno in box tutto il giorno. Vivono all'aperto, in gruppo, su terreno in pendenza — il che significa zoccoli buoni, muscoli veri e caratteri che non si appiattiscono.
+
+      D'estate ci sono le mosche e il fango dopo i temporali, perché è così che vivono i cavalli quando li si lascia essere cavalli.
+
+      Ogni tanto nasce un puledro, e per qualche settimana tutto il resto passa in secondo piano.
+    image: "../../../assets/equitazione/mockup-cavalli-recinto.jpg"
+    alt: "Illustrazione di prova: due cavalli al pascolo vicino al recinto"
+    side: "right"
+  - type: "cards"
+    kicker: "La pensione"
+    heading: "Cosa comprende"
+    style: "tiles"
+    items:
+      - title: "In gruppo"
+        text: "Testo di prova: il cavallo vive in branco, come in natura."
+      - title: "All'aperto"
+        text: "Testo di prova: prati in pendenza e ripari naturali."
+      - title: "Seguiti ogni giorno"
+        text: "Testo di prova: fieno, acqua, controllo degli zoccoli."
+  - type: "cta-contact"
+    kicker: "Contatti"
+    heading: "Chiedi se c'è posto"
+    body: |
+      Testo di prova. Raccontaci del tuo cavallo: età, abitudini, esigenze. Ti diciamo se il gruppo fa per lui.
+    form: true

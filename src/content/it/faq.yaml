@@ -1,10 +1,57 @@
 # Questions and answers. `tags` decides which FAQ blocks show them.
-# The demo entries only exist to show the block on the demo page.
-- id: demo-1
-  question: Domanda dimostrativa numero uno?
-  answer: Risposta dimostrativa. Qui andrà la risposta vera, scritta dal proprietario.
-  tags: [demo]
-- id: demo-2
-  question: Domanda dimostrativa numero due?
-  answer: Seconda risposta dimostrativa, con un [collegamento di prova](/contatti/).
-  tags: [demo]
+# Answers without "Testo di prova" come from the current site.
+- id: "esperienza"
+  question: "Serve esperienza per salire a cavallo?"
+  answer: "No. Chi non è mai salito in sella comincia da terra: si conosce l'animale, si impara a stargli accanto, si sale quando si è pronti."
+  tags:
+    - "equitazione"
+- id: "bambini"
+  question: "Da che età possono venire i bambini?"
+  answer: "I bambini possono avvicinarsi ai cavalli da tre anni, condotti a mano, per il tempo che serve."
+  tags:
+    - "equitazione"
+- id: "valmalenco"
+  question: "Quando si va in Valmalenco?"
+  answer: "Le uscite in Valmalenco si svolgono da fine giugno a inizio settembre. Ad Albosaggia si cavalca tutto l'anno."
+  tags:
+    - "equitazione"
+- id: "prenotare"
+  question: "Bisogna prenotare?"
+  answer: "Per venire a vedere i cavalli no: passate al recinto. Lezioni e uscite si fanno su appuntamento, ci si mette d'accordo al telefono."
+  tags:
+    - "equitazione"
+- id: "arrivare"
+  question: "Come si arriva?"
+  answer: "Ad Albosaggia si arriva in 10 minuti da Sondrio. Il recinto è in Località Ravasciolo: vedi la pagina [Contatti](/contatti/)."
+  tags:
+    - "equitazione"
+- id: "buono-scadenza"
+  question: "Il buono regalo ha una scadenza?"
+  answer: "Validità 6 mesi dall'acquisto. Per le esperienze in Valmalenco, che si svolgono da fine giugno a inizio settembre, la scadenza si estende fino alla prima stagione utile."
+  tags:
+    - "equitazione"
+- id: "cuccioli"
+  question: "Vendete cuccioli di Pastore del Lagorai?"
+  answer: "No. I nostri cani non sono in vendita e non vendiamo cuccioli: questa sezione racconta la razza e il lavoro dei cani con gli animali."
+  tags:
+    - "pastore"
+- id: "vedere-cani"
+  question: "Si possono vedere i cani?"
+  answer: "Testo di prova: sì, i cani vivono al recinto insieme ai cavalli."
+  tags:
+    - "pastore"
+- id: "capra-cosa"
+  question: "Che cos'è la Capra Orobica?"
+  answer: "Una razza caprina autoctona delle Alpi Orobie, chiamata anche capra di Val Gerola. Vedi [La razza](/capra-orobica/razza/)."
+  tags:
+    - "capra"
+- id: "demo-1"
+  question: "Domanda dimostrativa numero uno?"
+  answer: "Risposta dimostrativa. Qui andrà la risposta vera, scritta dal proprietario."
+  tags:
+    - "demo"
+- id: "demo-2"
+  question: "Domanda dimostrativa numero due?"
+  answer: "Seconda risposta dimostrativa, con un [collegamento di prova](/contatti/)."
+  tags:
+    - "demo"

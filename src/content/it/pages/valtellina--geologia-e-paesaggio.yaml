@@ -1,16 +1,48 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "valtellina/geologia-e-paesaggio"
 title: "Geologia e paesaggio"
-section: valtellina
-draft: true
-nav: { order: 50 }
+section: "valtellina"
+draft: false
+mockup: true
+nav:
+  order: 50
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "Geologia e paesaggio della Valtellina · Guida"
+  description: "Come è nata la Valtellina: i ghiacciai che hanno scavato la valle, le rocce dei due versanti e i terrazzamenti costruiti a mano."
+  image: "../../../assets/valtellina/mockup-ghiacciaio.jpg"
 blocks:
-  - type: hero
+  - type: "hero"
+    kicker: "Guida alla Valtellina"
     title: "Geologia e paesaggio"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+    intro: |
+      Testo di prova. Una valle lunga, scavata dai ghiacciai e poi modellata dall'uomo, un muretto alla volta.
+    image: "../../../assets/valtellina/mockup-ghiacciaio.jpg"
+    imageAlt: "Illustrazione di prova: montagne con ghiacciai"
+  - type: "text"
+    kicker: "Ghiacciai"
+    heading: "I ghiacciai"
+    body: |
+      Testo di prova. Durante le glaciazioni i ghiacciai hanno allargato la valle, lasciando pareti ripide e un fondovalle ampio. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+  - type: "text"
+    kicker: "I versanti"
+    heading: "Due versanti diversi"
+    body: |
+      Testo di prova. A nord le Alpi Retiche, esposte al sole; a sud le Orobie, più ombrose e boscose. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+  - type: "text"
+    kicker: "Terrazze"
+    heading: "I terrazzamenti"
+    body: |
+      Testo di prova. Sul versante retico i vigneti crescono su terrazze sostenute da muretti a secco. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+  - type: "text-image"
+    kicker: "Terrazze"
+    heading: "Il versante retico"
+    image: "../../../assets/valtellina/mockup-terrazzamenti.jpg"
+    alt: "Illustrazione di prova: vigneti terrazzati al tramonto"
+    side: "below"
+    caption: "Illustrazione di prova"
+  - type: "cta-contact"
+    kicker: "Equitazione Alpina"
+    heading: "Scoprila a cavallo"
+    body: |
+      Testo di prova. Il paesaggio si legge meglio al passo: vieni a vederlo con le [passeggiate sulle Orobie](/equitazione/passeggiate-orobie/).
+    form: false

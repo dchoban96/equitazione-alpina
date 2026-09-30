@@ -1,18 +1,28 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "curiosita"
 title: "Curiosità"
-section: curiosita
-draft: true
-nav: { order: 60 }
+section: "curiosita"
+draft: false
+mockup: true
+nav:
+  order: 10
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "Curiosità su Valtellina e cavalli · Equitazione Alpina"
+  description: "Piccole storie dalla Valtellina e dal recinto: cavalli, montagna, cucina e tradizioni raccontate da Equitazione Alpina."
+  image: "../../../assets/valtellina/mockup-borgo-albosaggia.jpg"
 blocks:
-  - type: hero
+  - type: "hero"
+    kicker: "Articoli"
     title: "Curiosità"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: article-list
+    intro: |
+      Testo di prova. Piccole storie dal recinto e dalla valle, da leggere in cinque minuti.
+    image: "../../../assets/valtellina/mockup-borgo-albosaggia.jpg"
+    imageAlt: "Illustrazione di prova: un borgo in pietra fra i boschi"
+  - type: "article-list"
     count: 12
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+  - type: "cta-contact"
+    kicker: "Contatti"
+    heading: "Vieni a trovarci"
+    body: |
+      Il modo migliore per capire se fa per voi è stare mezz'ora a guardare i cavalli. Ad Albosaggia si arriva in 10 minuti da Sondrio.
+    form: false

@@ -1,5 +1,24 @@
-# Gallery "Pastore del Lagorai". Add a photo: put the file in src/assets/pastore-del-lagorai/gallery/
-# and add an entry below (file, alt; caption, place, altitude optional).
-title: "Pastore del Lagorai"
-section: pastore-del-lagorai
-photos: []
+# Gallery "Galleria cani". MOCKUP: illustrations, to be replaced with real photos.
+# Add a photo: put the file in src/assets/pastore-del-lagorai/gallery/ and add an entry below.
+title: "Galleria cani"
+section: "pastore-del-lagorai"
+mockup: true
+photos:
+  - file: "../../../assets/pastore-del-lagorai/mockup-pastore-prato.jpg"
+    alt: "Illustrazione di prova: un Pastore del Lagorai sul prato"
+    caption: "Sul prato"
+  - file: "../../../assets/pastore-del-lagorai/mockup-pastore-gregge.jpg"
+    alt: "Illustrazione di prova: un cane accanto a un gregge di pecore"
+    caption: "Con il gregge"
+  - file: "../../../assets/pastore-del-lagorai/mockup-pastore-neve.jpg"
+    alt: "Illustrazione di prova: un cane nella neve fra gli abeti"
+    caption: "Nella neve"
+  - file: "../../../assets/equitazione/mockup-cavalli-recinto.jpg"
+    alt: "Illustrazione di prova: due cavalli al pascolo vicino al recinto"
+    caption: "Al recinto, con i cavalli"
+  - file: "../../../assets/valtellina/mockup-estate.jpg"
+    alt: "Illustrazione di prova: un prato fiorito sotto le montagne"
+    caption: "Estate"
+  - file: "../../../assets/valtellina/mockup-inverno.jpg"
+    alt: "Illustrazione di prova: un bosco innevato"
+    caption: "Inverno"

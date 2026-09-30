@@ -1,16 +1,59 @@
-# Draft stub: title and structure only. Content arrives in its phase.
+# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "pastore-del-lagorai"
 title: "Pastore del Lagorai"
-section: pastore-del-lagorai
-draft: true
-nav: { order: 30 }
+section: "pastore-del-lagorai"
+draft: false
+mockup: true
+nav:
+  order: 10
 seo:
-  title: "[DA COMPLETARE: titolo SEO]"
-  description: "[DA COMPLETARE: descrizione SEO]"
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  title: "Allevamento Pastore del Lagorai · Albosaggia (SO)"
+  description: "I nostri Pastore del Lagorai ad Albosaggia: il cane da pastore del Trentino che lavora accanto a cavalli e greggi. Non vendiamo cuccioli."
+  image: "../../../assets/pastore-del-lagorai/mockup-pastore-prato.jpg"
 blocks:
-  - type: hero
-    title: "Pastore del Lagorai"
-    intro: "[DA COMPLETARE: testo di apertura]"
-  - type: cta-contact
-    heading: "[DA COMPLETARE: titolo di chiusura]"
+  - type: "hero"
+    kicker: "Pastore del Lagorai"
+    title: "Pastore del Lagorai, i cani del recinto"
+    intro: |
+      Testo di prova. Il cane arriva sempre prima di tutti: accompagna i cavalli, controlla il prato, conosce ogni sentiero.
+
+      I nostri cani non sono in vendita e non vendiamo cuccioli: questa sezione racconta la razza e il lavoro dei cani con gli animali.
+    image: "../../../assets/pastore-del-lagorai/mockup-pastore-prato.jpg"
+    imageAlt: "Illustrazione di prova: un Pastore del Lagorai sul prato davanti alle montagne"
+  - type: "text-image"
+    kicker: "Il lavoro"
+    heading: "Un cane da lavoro"
+    body: |
+      Testo di prova. Il Pastore del Lagorai nasce come cane da conduzione del gregge sulle montagne del Trentino. Da noi lavora accanto ai cavalli e agli altri animali, ogni giorno.
+    image: "../../../assets/pastore-del-lagorai/mockup-pastore-gregge.jpg"
+    alt: "Illustrazione di prova: un cane da pastore accanto a un gregge di pecore"
+    side: "right"
+  - type: "cards"
+    kicker: "La sezione"
+    heading: "Scopri di più"
+    style: "tiles"
+    items:
+      - title: "La razza"
+        text: "Origine, carattere, lavoro."
+        link: "/pastore-del-lagorai/razza/"
+        label: "Leggi"
+      - title: "I nostri cani"
+        text: "Chi vive al recinto."
+        link: "/pastore-del-lagorai/i-nostri-cani/"
+        label: "Conoscili"
+      - title: "Galleria"
+        text: "Le foto dei cani al lavoro."
+        link: "/pastore-del-lagorai/galleria/"
+        label: "Guarda"
+  - type: "faq"
+    kicker: "Domande"
+    heading: "Domande sui cani"
+    tag: "pastore"
+  - type: "curiosity"
+    section: "pastore-del-lagorai"
+  - type: "cta-contact"
+    kicker: "Contatti"
+    heading: "Vieni a conoscerli"
+    body: |
+      Testo di prova. I cani si vedono al recinto, insieme ai cavalli. Il modo migliore per capire se fa per voi è stare mezz'ora a guardare i cavalli. Ad Albosaggia si arriva in 10 minuti da Sondrio.
+    form: false

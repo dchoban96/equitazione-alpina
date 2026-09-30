@@ -1,5 +1,50 @@
-# Gallery "Equitazione". Add a photo: put the file in src/assets/equitazione/gallery/
-# and add an entry below (file, alt; caption, place, altitude optional).
-title: "Equitazione"
-section: equitazione
-photos: []
+# Gallery "Galleria equitazione". MOCKUP: illustrations, to be replaced with real photos.
+# Add a photo: put the file in src/assets/equitazione/gallery/ and add an entry below.
+title: "Galleria equitazione"
+section: "equitazione"
+mockup: true
+photos:
+  - file: "../../../assets/equitazione/mockup-cavallo-crinale.jpg"
+    alt: "Illustrazione di prova: un cavallo sul crinale all'alba"
+    caption: "L'alba sopra il recinto"
+    place: "Albosaggia"
+    altitude: 500
+  - file: "../../../assets/equitazione/mockup-cavalli-recinto.jpg"
+    alt: "Illustrazione di prova: due cavalli al pascolo vicino al recinto"
+    caption: "Al pascolo"
+    place: "Albosaggia"
+    altitude: 500
+  - file: "../../../assets/equitazione/mockup-lezione-maneggio.jpg"
+    alt: "Illustrazione di prova: un cavaliere al passo lungo lo steccato"
+    caption: "Una lezione in struttura"
+    place: "Albosaggia"
+    altitude: 500
+  - file: "../../../assets/equitazione/mockup-sentiero-orobie.jpg"
+    alt: "Illustrazione di prova: un cavaliere nel bosco sotto le montagne"
+    caption: "Sui sentieri delle Orobie"
+    place: "Orobie"
+    altitude: 1300
+  - file: "../../../assets/equitazione/mockup-alpe-palu-valmalenco.jpg"
+    alt: "Illustrazione di prova: il lago dell'Alpe Palù"
+    caption: "L'Alpe Palù d'estate"
+    place: "Valmalenco"
+    altitude: 1950
+  - file: "../../../assets/equitazione/mockup-pensione-scuderia.jpg"
+    alt: "Illustrazione di prova: la scuderia al tramonto"
+    caption: "La scuderia"
+    place: "Albosaggia"
+    altitude: 500
+  - file: "../../../assets/equitazione/mockup-tramonto-conduzione.jpg"
+    alt: "Illustrazione di prova: una persona conduce un cavallo al tramonto"
+    caption: "Il rientro"
+  - file: "../../../assets/valtellina/mockup-estate.jpg"
+    alt: "Illustrazione di prova: un prato fiorito sotto le montagne"
+    caption: "Estate in quota"
+    place: "Valmalenco"
+  - file: "../../../assets/valtellina/mockup-inverno.jpg"
+    alt: "Illustrazione di prova: un bosco innevato"
+    caption: "D'inverno si esce lo stesso"
+    place: "Orobie"
+  - file: "../../../assets/equitazione/mockup-buono-regalo.jpg"
+    alt: "Illustrazione di prova: un pacco regalo con un ferro di cavallo"
+    caption: "Un'esperienza da regalare"
