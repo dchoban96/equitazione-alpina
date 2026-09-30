@@ -62,7 +62,7 @@ const [site, ui, themeCss, pages, themeColor] = await Promise.all([
   getUi(),
   getThemeCss(),
   getPages(),
-  getToken('color-header-bg'),
+  getToken('color-bg'),
 ]);
 
 const canonical = absolute(path, site.url);

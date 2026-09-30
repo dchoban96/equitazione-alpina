@@ -48,7 +48,9 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: var(--color-header-bg);
+  /* transparent over the page; once the page scrolls it takes the page
+     colour, so content passing underneath does not show through */
+  background: transparent;
   color: var(--color-header-text);
   font-family: var(--font-ui);
   font-weight: var(--weight-ui);
@@ -56,21 +58,23 @@
   view-transition-name: site-header;
   transition:
     transform var(--duration-fast) var(--easing-standard),
-    background-color var(--duration-fast);
+    background-color var(--duration-fast),
+    box-shadow var(--duration-fast);
 }
 .site-header.is-hidden {
   transform: translateY(-100%);
 }
-/* home: transparent over the opening, solid once the page scrolls */
+.site-header.is-scrolled,
+.site-header:has(.nav-drawer[open]),
+.no-js .site-header {
+  background: var(--color-bg);
+  box-shadow: 0 1px 0 var(--color-border-soft);
+}
+/* home: the header floats over the opening instead of taking room above it */
 .site-header--overlay {
   position: fixed;
   left: 0;
   right: 0;
-  background: transparent;
-}
-.site-header--overlay.is-scrolled,
-.site-header--overlay:focus-within {
-  background: var(--color-header-bg);
 }
 .site-header__bar {
   display: flex;
