@@ -1,0 +1,16 @@
+# Draft stub: title and structure only. Content arrives in its phase.
+slug: "valtellina/la-valmalenco"
+title: "La Valmalenco"
+section: valtellina
+draft: true
+nav: { order: 30 }
+seo:
+  title: "[DA COMPLETARE: titolo SEO]"
+  description: "[DA COMPLETARE: descrizione SEO]"
+  image: ../../../assets/segnaposto/segnaposto.jpg
+blocks:
+  - type: hero
+    title: "La Valmalenco"
+    intro: "[DA COMPLETARE: testo di apertura]"
+  - type: cta-contact
+    heading: "[DA COMPLETARE: titolo di chiusura]"

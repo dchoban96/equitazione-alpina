@@ -1,0 +1,18 @@
+# Draft stub: title and structure only. Content arrives in its phase.
+slug: "pastore-del-lagorai/galleria"
+title: "Galleria cani"
+section: pastore-del-lagorai
+draft: true
+nav: { order: 30 }
+seo:
+  title: "[DA COMPLETARE: titolo SEO]"
+  description: "[DA COMPLETARE: descrizione SEO]"
+  image: ../../../assets/segnaposto/segnaposto.jpg
+blocks:
+  - type: hero
+    title: "Galleria cani"
+    intro: "[DA COMPLETARE: testo di apertura]"
+  - type: gallery
+    gallery: pastore-del-lagorai
+  - type: cta-contact
+    heading: "[DA COMPLETARE: titolo di chiusura]"

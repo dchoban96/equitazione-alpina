@@ -1,0 +1,16 @@
+# Draft stub: title and structure only. Content arrives in its phase.
+slug: "capra-orobica"
+title: "Capra Orobica"
+section: capra-orobica
+draft: true
+nav: { order: 40 }
+seo:
+  title: "[DA COMPLETARE: titolo SEO]"
+  description: "[DA COMPLETARE: descrizione SEO]"
+  image: ../../../assets/segnaposto/segnaposto.jpg
+blocks:
+  - type: hero
+    title: "Capra Orobica"
+    intro: "[DA COMPLETARE: testo di apertura]"
+  - type: cta-contact
+    heading: "[DA COMPLETARE: titolo di chiusura]"

@@ -1,0 +1,17 @@
+# Draft stub: title and structure only. Content arrives in its phase.
+slug: "equitazione/pensione-cavalli"
+title: "Pensione cavalli"
+section: equitazione
+draft: true
+nav: { order: 40 }
+seo:
+  title: "[DA COMPLETARE: titolo SEO]"
+  description: "[DA COMPLETARE: descrizione SEO]"
+  image: ../../../assets/segnaposto/segnaposto.jpg
+altimeter: { enabled: true, min: 500, max: 1950 }
+blocks:
+  - type: hero
+    title: "Pensione cavalli"
+    intro: "[DA COMPLETARE: testo di apertura]"
+  - type: cta-contact
+    heading: "[DA COMPLETARE: titolo di chiusura]"

@@ -1,0 +1,184 @@
+# Phase 0 demo page: every block once, with demonstration text.
+# Not indexed, not in the menu or the sitemap. Altitudes are the ones already
+# published on the current home page (500 m Albosaggia, ~1300 m Orobie,
+# ~1950 m Valmalenco).
+slug: demo
+title: Demo dei blocchi
+section: demo
+draft: false
+noindex: true
+nav: { hidden: true }
+seo:
+  title: Demo dei blocchi · Equitazione Alpina
+  description: Pagina di prova con tutti i blocchi del sito. Non indicizzata.
+  image: ../../../assets/segnaposto/segnaposto.jpg
+altimeter: { enabled: true, min: 500, max: 1950 }
+blocks:
+  - type: hero
+    altitude: 500
+    coordinates: "Albosaggia · Valtellina — 46°16′N 9°84′E"
+    kicker: Blocco hero
+    title: Tutti i blocchi del sito, in una pagina
+    intro: |
+      Testo introduttivo dimostrativo. Ogni pagina del sito è una sequenza di blocchi scritti in un file di contenuto: qui ne compare uno per tipo, nell'ordine in cui si usano più spesso.
+    closing: Scorri la pagina e guarda l'altimetro salire.
+    footnote: Si sale da 500 a 1950 m
+    ridges: section
+    image: ../../../assets/segnaposto/segnaposto.jpg
+    imageAlt: "Segnaposto: foto di apertura in arrivo"
+    panelKicker: Scheda dati
+    panel:
+      - { label: Ora, value: "06:20" }
+      - { label: Quota, value: 500 m }
+      - { label: Stagione, value: Fine estate }
+      - { label: Luogo, value: Albosaggia }
+
+  - type: text
+    anchor: testo
+    altitude: 500
+    kicker: Blocco testo
+    heading: Testo lungo con titolo e sopratitolo
+    body: |
+      Primo paragrafo dimostrativo. Il testo arriva dal file di contenuto in formato Markdown: si possono usare **grassetto**, *corsivo* e [collegamenti](#mappa).
+
+      Secondo paragrafo dimostrativo. La nota accanto al sopratitolo mostra la quota del blocco quando non se ne scrive un'altra.
+
+  - type: facts
+    altitude: 700
+    kicker: Blocco dati
+    heading: Una riga di dati essenziali
+    items:
+      - { label: Etichetta, value: Valore uno }
+      - { label: Etichetta, value: Valore due }
+      - { label: Etichetta, value: Valore tre }
+      - { label: Etichetta, value: Valore quattro }
+
+  - type: text-image
+    altitude: 900
+    kicker: Blocco testo e foto
+    heading: Foto a destra
+    side: right
+    body: |
+      Testo dimostrativo accanto a una foto. La foto può stare a destra, a sinistra, sotto il testo o sotto il testo in sovrapposizione.
+    image: ../../../assets/segnaposto/segnaposto.jpg
+    alt: "Segnaposto: foto in arrivo"
+    caption: Didascalia dimostrativa della foto
+
+  - type: text-image
+    altitude: 1000
+    kicker: Blocco testo e foto
+    heading: Foto a sinistra con scheda
+    side: left
+    body: |
+      Stesso blocco con la foto a sinistra e una scheda dati sotto il testo.
+    image: ../../../assets/segnaposto/segnaposto.jpg
+    alt: "Segnaposto: foto in arrivo"
+    details:
+      - { label: Durata, value: Dato dimostrativo }
+      - { label: Livello, value: Dato dimostrativo }
+
+  - type: text-image
+    altitude: 1100
+    kicker: Blocco testo e foto
+    heading: Testo sopra la foto
+    side: overlay
+    lead: Frase dimostrativa sopra la foto, con la velatura scura che la tiene leggibile.
+    image: ../../../assets/segnaposto/segnaposto.jpg
+    alt: "Segnaposto: foto in arrivo"
+
+  - type: cards
+    altitude: 1200
+    kicker: Blocco schede
+    heading: Riquadri brevi
+    style: tiles
+    items:
+      - { title: Primo riquadro, text: Testo breve dimostrativo. }
+      - { title: Secondo riquadro, text: Testo breve dimostrativo. }
+      - { title: Terzo riquadro, text: Testo breve dimostrativo., link: "#faq", label: Vai alle domande }
+      - { title: Quarto riquadro, text: Testo breve dimostrativo. }
+
+  - type: cards
+    kicker: Blocco schede
+    heading: Cartoline con foto e collegamento
+    style: cards
+    items:
+      - { title: Prima cartolina, text: Testo breve dimostrativo., label: Scopri, link: "#galleria", image: ../../../assets/segnaposto/segnaposto.jpg, alt: "Segnaposto: foto in arrivo" }
+      - { title: Seconda cartolina, text: Testo breve dimostrativo., label: Scopri, link: "#galleria", image: ../../../assets/segnaposto/segnaposto.jpg, alt: "Segnaposto: foto in arrivo" }
+      - { title: Terza cartolina, text: Testo breve dimostrativo., label: Scopri, link: "#galleria", image: ../../../assets/segnaposto/segnaposto.jpg, alt: "Segnaposto: foto in arrivo" }
+
+  - type: places
+    altitude: 1300
+    kicker: Blocco luoghi
+    note: 1300 → 1950 m
+    heading: Due luoghi con quota e stagione
+    items:
+      - name: Le Orobie, sopra Albosaggia
+        altitude: 1300
+        approximate: true
+        text: Testo dimostrativo sul luogo.
+        season: Tutto l'anno
+      - name: La Valmalenco
+        altitude: 1950
+        approximate: true
+        text: Testo dimostrativo sul luogo.
+        season: Da fine giugno a inizio settembre
+
+  - type: quote
+    altitude: 1400
+    text: Citazione dimostrativa, breve, su una o due righe.
+    author: Firma di prova
+
+  - type: gallery-preview
+    altitude: 1500
+    kicker: Blocco anteprima galleria
+    heading: Sei foto che portano alla galleria
+    gallery: demo
+    count: 6
+    link: "#galleria"
+
+  - type: gallery
+    anchor: galleria
+    kicker: Blocco galleria
+    heading: Galleria completa con visore
+    gallery: demo
+
+  - type: reviews
+    altitude: 1600
+    kicker: Blocco recensioni
+    heading: Chi è già venuto
+    rating: 4,8 / 5
+    count: su 13 recensioni
+    sourceLabel: Recensioni raccolte su Tripadvisor
+    sourceUrl: https://www.tripadvisor.it/Attraction_Review-g1096256-d3489629-Reviews-Equitazione_Alpina-Albosaggia_Province_of_Sondrio_Lombardy.html
+
+  - type: faq
+    anchor: faq
+    altitude: 1700
+    kicker: Blocco domande
+    heading: Domande frequenti
+    tag: demo
+
+  - type: curiosity
+    altitude: 1750
+    section: demo
+
+  - type: article-list
+    kicker: Blocco articoli
+    heading: Ultimi articoli
+    count: 3
+
+  - type: map
+    anchor: mappa
+    altitude: 1850
+    kicker: Blocco mappa
+    heading: Mappa statica con indicazioni
+    label: Località Ravasciolo, Albosaggia
+    image: ../../../assets/segnaposto/segnaposto.jpg
+    alt: "Segnaposto: mappa statica in arrivo"
+
+  - type: cta-contact
+    altitude: 1950
+    kicker: Blocco contatto
+    heading: Chiusura con telefono, WhatsApp e modulo
+    body: |
+      Testo dimostrativo di chiusura. Telefono e WhatsApp arrivano dalle impostazioni del sito.

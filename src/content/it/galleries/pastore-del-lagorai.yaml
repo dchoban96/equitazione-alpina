@@ -1,0 +1,5 @@
+# Gallery "Pastore del Lagorai". Add a photo: put the file in src/assets/pastore-del-lagorai/gallery/
+# and add an entry below (file, alt; caption, place, altitude optional).
+title: "Pastore del Lagorai"
+section: pastore-del-lagorai
+photos: []

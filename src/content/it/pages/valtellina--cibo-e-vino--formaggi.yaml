@@ -1,0 +1,16 @@
+# Draft stub: title and structure only. Content arrives in its phase.
+slug: "valtellina/cibo-e-vino/formaggi"
+title: "Formaggi"
+section: valtellina
+draft: true
+nav: { order: 20 }
+seo:
+  title: "[DA COMPLETARE: titolo SEO]"
+  description: "[DA COMPLETARE: descrizione SEO]"
+  image: ../../../assets/segnaposto/segnaposto.jpg
+blocks:
+  - type: hero
+    title: "Formaggi"
+    intro: "[DA COMPLETARE: testo di apertura]"
+  - type: cta-contact
+    heading: "[DA COMPLETARE: titolo di chiusura]"

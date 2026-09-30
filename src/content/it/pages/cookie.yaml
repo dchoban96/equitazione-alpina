@@ -1,0 +1,14 @@
+# Draft stub: title and structure only. Content arrives in its phase.
+slug: "cookie"
+title: "Cookie"
+section: info
+draft: true
+nav: { order: 110 }
+seo:
+  title: "[DA COMPLETARE: titolo SEO]"
+  description: "[DA COMPLETARE: descrizione SEO]"
+  image: ../../../assets/segnaposto/segnaposto.jpg
+blocks:
+  - type: hero
+    title: "Cookie"
+    intro: "[DA COMPLETARE: testo di apertura]"

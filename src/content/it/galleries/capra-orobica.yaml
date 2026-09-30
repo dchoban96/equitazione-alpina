@@ -1,0 +1,5 @@
+# Gallery "Capra Orobica". Add a photo: put the file in src/assets/capra-orobica/gallery/
+# and add an entry below (file, alt; caption, place, altitude optional).
+title: "Capra Orobica"
+section: capra-orobica
+photos: []

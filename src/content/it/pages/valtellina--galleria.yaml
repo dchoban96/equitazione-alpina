@@ -1,0 +1,18 @@
+# Draft stub: title and structure only. Content arrives in its phase.
+slug: "valtellina/galleria"
+title: "Galleria paesaggi"
+section: valtellina
+draft: true
+nav: { order: 80 }
+seo:
+  title: "[DA COMPLETARE: titolo SEO]"
+  description: "[DA COMPLETARE: descrizione SEO]"
+  image: ../../../assets/segnaposto/segnaposto.jpg
+blocks:
+  - type: hero
+    title: "Galleria paesaggi"
+    intro: "[DA COMPLETARE: testo di apertura]"
+  - type: gallery
+    gallery: valtellina
+  - type: cta-contact
+    heading: "[DA COMPLETARE: titolo di chiusura]"

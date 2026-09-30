@@ -1,0 +1,16 @@
+# Draft stub: title and structure only. Content arrives in its phase.
+slug: "valtellina/geologia-e-paesaggio"
+title: "Geologia e paesaggio"
+section: valtellina
+draft: true
+nav: { order: 50 }
+seo:
+  title: "[DA COMPLETARE: titolo SEO]"
+  description: "[DA COMPLETARE: descrizione SEO]"
+  image: ../../../assets/segnaposto/segnaposto.jpg
+blocks:
+  - type: hero
+    title: "Geologia e paesaggio"
+    intro: "[DA COMPLETARE: testo di apertura]"
+  - type: cta-contact
+    heading: "[DA COMPLETARE: titolo di chiusura]"

@@ -1,0 +1,5 @@
+# Short "Lo sapevi?" facts. `sections` lists where each may appear.
+# Only facts with a checked source go here.
+- id: demo
+  text: Testo dimostrativo del riquadro «Lo sapevi?». Qui andrà una curiosità breve, con la sua fonte verificata.
+  sections: [demo]

@@ -1,0 +1,5 @@
+# Gallery "Valtellina". Add a photo: put the file in src/assets/valtellina/gallery/
+# and add an entry below (file, alt; caption, place, altitude optional).
+title: "Valtellina"
+section: valtellina
+photos: []

@@ -1,0 +1,16 @@
+# Draft stub: title and structure only. Content arrives in its phase.
+slug: "pastore-del-lagorai/i-nostri-cani"
+title: "I nostri cani"
+section: pastore-del-lagorai
+draft: true
+nav: { order: 20 }
+seo:
+  title: "[DA COMPLETARE: titolo SEO]"
+  description: "[DA COMPLETARE: descrizione SEO]"
+  image: ../../../assets/segnaposto/segnaposto.jpg
+blocks:
+  - type: hero
+    title: "I nostri cani"
+    intro: "[DA COMPLETARE: testo di apertura]"
+  - type: cta-contact
+    heading: "[DA COMPLETARE: titolo di chiusura]"

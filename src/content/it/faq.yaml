@@ -1,0 +1,10 @@
+# Questions and answers. `tags` decides which FAQ blocks show them.
+# The demo entries only exist to show the block on the demo page.
+- id: demo-1
+  question: Domanda dimostrativa numero uno?
+  answer: Risposta dimostrativa. Qui andrà la risposta vera, scritta dal proprietario.
+  tags: [demo]
+- id: demo-2
+  question: Domanda dimostrativa numero due?
+  answer: Seconda risposta dimostrativa, con un [collegamento di prova](/contatti/).
+  tags: [demo]

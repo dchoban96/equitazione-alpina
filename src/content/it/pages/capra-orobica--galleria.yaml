@@ -1,0 +1,18 @@
+# Draft stub: title and structure only. Content arrives in its phase.
+slug: "capra-orobica/galleria"
+title: "Galleria capre"
+section: capra-orobica
+draft: true
+nav: { order: 20 }
+seo:
+  title: "[DA COMPLETARE: titolo SEO]"
+  description: "[DA COMPLETARE: descrizione SEO]"
+  image: ../../../assets/segnaposto/segnaposto.jpg
+blocks:
+  - type: hero
+    title: "Galleria capre"
+    intro: "[DA COMPLETARE: testo di apertura]"
+  - type: gallery
+    gallery: capra-orobica
+  - type: cta-contact
+    heading: "[DA COMPLETARE: titolo di chiusura]"

@@ -1,0 +1,24 @@
+# Demo gallery: six placeholders, only for the demo page.
+title: Galleria dimostrativa
+section: demo
+photos:
+  - file: ../../../assets/segnaposto/segnaposto.jpg
+    alt: "Segnaposto 1: foto in arrivo"
+    caption: Didascalia dimostrativa 1
+  - file: ../../../assets/segnaposto/segnaposto.jpg
+    alt: "Segnaposto 2: foto in arrivo"
+    caption: Didascalia dimostrativa 2
+    place: Albosaggia
+    altitude: 500
+  - file: ../../../assets/segnaposto/segnaposto.jpg
+    alt: "Segnaposto 3: foto in arrivo"
+    caption: Didascalia dimostrativa 3
+  - file: ../../../assets/segnaposto/segnaposto.jpg
+    alt: "Segnaposto 4: foto in arrivo"
+    caption: Didascalia dimostrativa 4
+  - file: ../../../assets/segnaposto/segnaposto.jpg
+    alt: "Segnaposto 5: foto in arrivo"
+    caption: Didascalia dimostrativa 5
+  - file: ../../../assets/segnaposto/segnaposto.jpg
+    alt: "Segnaposto 6: foto in arrivo"
+    caption: Didascalia dimostrativa 6

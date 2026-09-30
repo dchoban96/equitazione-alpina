@@ -1,0 +1,5 @@
+# Gallery "Equitazione". Add a photo: put the file in src/assets/equitazione/gallery/
+# and add an entry below (file, alt; caption, place, altitude optional).
+title: "Equitazione"
+section: equitazione
+photos: []
