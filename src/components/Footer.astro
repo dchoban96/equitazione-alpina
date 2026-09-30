@@ -17,7 +17,7 @@ const address = `${site.address.street}, ${site.address.postalCode} ${site.addre
 
 <footer class="site-footer">
   <div class="site-footer__in">
-    <span>© {year} {site.name}</span>
+    <span class="site-footer__copy">© {year} {site.name}</span>
     <nav aria-label={ui.footerNav}>
       <ul>
         {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}

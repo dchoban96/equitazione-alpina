@@ -250,20 +250,23 @@
 .crumbs ol {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: var(--space-1) var(--space-2);
   max-width: var(--layout-max);
   margin: 0 auto;
   padding: 0;
   list-style: none;
 }
+/* every item gets the same box, so links and plain text sit on one line */
+.crumbs li {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+}
 .crumbs li + li::before {
   content: '/';
   margin-right: var(--space-2);
   opacity: 0.6;
-}
-.crumbs a {
-  display: inline-block;
-  padding-block: var(--space-2);
 }
 
 /* ---------- footer: ea-footer ---------- */
@@ -282,8 +285,8 @@
 .site-footer__in {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-4) var(--space-6);
-  align-items: flex-start;
+  gap: 0 var(--space-6);
+  align-items: center;
   max-width: var(--layout-max);
   margin: 0 auto;
 }
@@ -314,12 +317,17 @@
 .site-footer button:hover {
   color: var(--color-accent);
 }
+.site-footer__copy {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
 .site-footer__social {
   margin-left: auto;
 }
 .site-footer__legal {
   flex-basis: 100%;
-  margin: 0;
+  margin: var(--space-3) 0 0;
   text-transform: none;
   letter-spacing: 0.06em;
 }
