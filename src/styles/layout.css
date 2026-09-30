@@ -481,23 +481,24 @@
   left: 0;
   bottom: 0;
   height: 100%;
-  width: calc(var(--tile) * 5);
+  width: calc(var(--tile) * 3);
   max-width: none;
   animation: ridge-drift var(--drift) linear infinite;
   will-change: transform;
 }
-/* tile width and loop time per profile, as in ea-racconto.css */
+/* tile width and loop time per profile: twice the theme's tiles, so the
+   random range repeats less often, at the theme's speeds (ea-racconto.css) */
 .ridge.r1 {
-  --tile: 1100px;
-  --drift: 120s;
+  --tile: 2200px;
+  --drift: 240s;
 }
 .ridge.r2 {
-  --tile: 900px;
-  --drift: 80s;
+  --tile: 1800px;
+  --drift: 160s;
 }
 .ridge.r3 {
-  --tile: 750px;
-  --drift: 52s;
+  --tile: 1500px;
+  --drift: 104s;
 }
 @keyframes ridge-drift {
   to {

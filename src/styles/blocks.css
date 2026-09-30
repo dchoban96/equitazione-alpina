@@ -54,6 +54,23 @@
   width: 56px;
   height: 1px;
   background: var(--color-accent);
+  transform-origin: left;
+  animation: foot-pulse 3.2s ease-in-out infinite;
+}
+/* ea-pulsa: the line stretches and shrinks, pointing down the page */
+@keyframes foot-pulse {
+  0%,
+  100% {
+    transform: scaleX(0.4);
+  }
+  50% {
+    transform: scaleX(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__foot::before {
+    animation: none;
+  }
 }
 .hero__media {
   margin-top: var(--space-7);
