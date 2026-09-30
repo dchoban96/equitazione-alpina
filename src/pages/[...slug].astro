@@ -73,6 +73,7 @@ const target = props.kind === 'redirect' ? new URL(props.to, site.url).href : ''
       altimeter={view.altimeter}
       overlay={view.page.data.headerOverlay}
       preload={view.preload}
+      ridges={view.page.data.blocks[0].type === 'hero' && view.page.data.blocks[0].ridges === 'fixed'}
     >
       <BlockRenderer page={view.page} ui={ui} />
     </BaseLayout>

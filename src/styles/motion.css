@@ -58,7 +58,9 @@
   animation-timing-function: var(--easing-standard);
 }
 ::view-transition-group(site-header),
-::view-transition-group(altimeter) {
+::view-transition-group(altimeter),
+::view-transition-group(ridges-back),
+::view-transition-group(ridges-front) {
   animation-duration: 0s;
 }
 

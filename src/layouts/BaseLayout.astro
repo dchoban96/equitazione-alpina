@@ -11,6 +11,7 @@ import Footer from '../components/Footer.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import Altimeter from '../components/Altimeter.astro';
 import Washes from '../components/Washes.astro';
+import Ridges from '../components/Ridges.astro';
 import CookieConsent from '../components/CookieConsent.astro';
 import {
   getSite,
@@ -38,6 +39,8 @@ interface Props {
   altimeter?: { min: number; max: number; start: number } | null;
   overlay?: boolean;
   preload?: { srcset: string; sizes: string; type: string };
+  /** Mountains fixed to the bottom of the screen, front profile over the page. */
+  ridges?: boolean;
   ogType?: 'website' | 'article';
 }
 
@@ -53,6 +56,7 @@ const {
   altimeter = null,
   overlay = false,
   preload,
+  ridges = false,
   ogType = 'website',
 } = Astro.props;
 
@@ -116,15 +120,17 @@ const alternates = site.languages.length > 1 ? site.languages.map((l) => ({ lang
 
     {allJsonLd.map((d) => <script type="application/ld+json" set:html={JSON.stringify(d)} />)}
   </head>
-  <body class:list={{ 'has-altimeter': Boolean(altimeter), 'has-overlay-header': overlay }}>
+  <body class:list={{ 'has-altimeter': Boolean(altimeter), 'has-overlay-header': overlay, 'has-ridges': ridges }}>
     <a class="skip-link" href="#main">{ui.skipLink}</a>
     <Washes />
+    {ridges && <Ridges fixed part="back" />}
     <Header name={site.name} menu={menu} current={url(path)} overlay={overlay} ui={ui} />
     <Breadcrumb crumbs={crumbs} label={ui.breadcrumbLabel} />
     <main id="main" tabindex="-1">
       <slot />
     </main>
     <Footer site={site} links={footerLinks} ui={ui} />
+    {ridges && <Ridges fixed part="front" />}
     {altimeter && <Altimeter min={altimeter.min} max={altimeter.max} start={altimeter.start} ui={ui} />}
     <CookieConsent site={site} ui={ui} />
     <script>

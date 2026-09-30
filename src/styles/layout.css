@@ -443,43 +443,89 @@
 }
 
 /* ---------- mountain ridges: ea-hero .ea-creste ---------- */
+:root {
+  --ridges-height: min(46vh, 420px);
+}
+@media (max-width: 820px) {
+  :root {
+    --ridges-height: min(32vh, 240px);
+  }
+}
 .ridges {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: min(46vh, 420px);
+  height: var(--ridges-height);
   z-index: 0;
+  overflow: hidden;
   pointer-events: none;
 }
+/* Fixed to the bottom of the screen: the far profiles stay behind the page,
+   the nearest one sits in front of it, so content rises from behind the
+   mountain. Header, altimeter and dialogs stay above it. */
 .ridges--fixed {
   position: fixed;
 }
-@media (max-width: 820px) {
-  .ridges {
-    height: min(32vh, 240px);
+.ridges--front {
+  z-index: 30;
+}
+.ridges--back.ridges--fixed {
+  view-transition-name: ridges-back;
+}
+.ridges--front.ridges--fixed {
+  view-transition-name: ridges-front;
+}
+.ridge {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: calc(var(--tile) * 5);
+  max-width: none;
+  animation: ridge-drift var(--drift) linear infinite;
+  will-change: transform;
+}
+/* tile width and loop time per profile, as in ea-racconto.css */
+.ridge.r1 {
+  --tile: 1100px;
+  --drift: 120s;
+}
+.ridge.r2 {
+  --tile: 900px;
+  --drift: 80s;
+}
+.ridge.r3 {
+  --tile: 750px;
+  --drift: 52s;
+}
+@keyframes ridge-drift {
+  to {
+    transform: translateX(calc(var(--tile) * -1));
   }
 }
-.ridges svg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+/* colours are inherited: CSS selectors do not reach inside <use> copies */
+.ridge {
+  color: var(--color-border);
 }
-.ridges .r1 {
+.ridge.r1 {
   fill: var(--color-ridge-1);
 }
-.ridges .r2 {
+.ridge.r2 {
   fill: var(--color-ridge-2);
 }
-.ridges .r3 {
+.ridge.r3 {
   fill: var(--color-ridge-3);
 }
-.ridges .line {
-  fill: none;
-  stroke: var(--color-border);
-  stroke-width: 2;
-  vector-effect: non-scaling-stroke;
+/* the nearest profile covers about the bottom 28 % of the ridges: leave that
+   much room under the footer so the end of the page can scroll clear of it */
+.has-ridges .site-footer {
+  padding-bottom: calc(var(--space-6) + var(--ridges-height) * 0.3);
+}
+@media (prefers-reduced-motion: reduce) {
+  .ridge {
+    animation: none;
+  }
 }
 
 /* ---------- watercolour washes: .ea-acquerelli (static) ---------- */

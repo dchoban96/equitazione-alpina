@@ -1,6 +1,8 @@
 ---
 /* Page opening (ea-hero): coordinates line, H1, intro, closing line, footnote,
-   optional mountain ridges, optional photo with a data panel over it. */
+   optional mountain ridges, optional photo with a data panel over it.
+   Ridges "section" sit at the bottom of this block; "fixed" ridges are drawn
+   by the layout, outside every block, so the front profile can cover them. */
 import type { Block } from '../../lib/content';
 import Img from '../Img.astro';
 import Ridges from '../Ridges.astro';
@@ -17,7 +19,7 @@ const tall = b.ridges !== 'none' && !b.image;
 ---
 
 <section class:list={['blk', 'blk--hero', { 'blk--tall': tall }]} id={b.anchor} data-altitude={b.altitude}>
-  {b.ridges !== 'none' && <Ridges fixed={b.ridges === 'fixed'} />}
+  {b.ridges === 'section' && <Ridges />}
   <div class="blk__in">
     <div class="hero-seq">
       {b.coordinates && <p class="hero__coords" set:html={txt(b.coordinates)} />}

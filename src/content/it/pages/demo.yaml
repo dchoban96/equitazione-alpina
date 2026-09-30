@@ -23,7 +23,7 @@ blocks:
       Testo introduttivo dimostrativo. Ogni pagina del sito è una sequenza di blocchi scritti in un file di contenuto: qui ne compare uno per tipo, nell'ordine in cui si usano più spesso.
     closing: Scorri la pagina e guarda l'altimetro salire.
     footnote: Si sale da 500 a 1950 m
-    ridges: section
+    ridges: fixed
     image: ../../../assets/segnaposto/segnaposto.jpg
     imageAlt: "Segnaposto: foto di apertura in arrivo"
     panelKicker: Scheda dati
