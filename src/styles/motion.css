@@ -1,0 +1,83 @@
+/* The three kinds of motion allowed (see reference/ANIMATIONS.md):
+   scroll reveal, page transition, hero entrance. Opacity and transform only.
+   Content is visible by default: the hidden start state needs the `js` class
+   that the head script puts on <html>, and `reveal-off` (set if the reveal
+   script never starts) shows everything. */
+
+/* ---------- scroll reveal: .ea-rivela, 16 px rise, children staggered by 60 ms ---------- */
+.js:not(.reveal-off) .reveal:not(.is-in) > .blk__in > * {
+  opacity: 0;
+  transform: translateY(16px);
+}
+.js .reveal > .blk__in > * {
+  transition:
+    opacity var(--duration-slow) var(--easing-standard),
+    transform var(--duration-slow) var(--easing-standard);
+}
+.js .reveal.is-in > .blk__in > :nth-child(2) { transition-delay: 60ms; }
+.js .reveal.is-in > .blk__in > :nth-child(3) { transition-delay: 120ms; }
+.js .reveal.is-in > .blk__in > :nth-child(4) { transition-delay: 180ms; }
+.js .reveal.is-in > .blk__in > :nth-child(5) { transition-delay: 240ms; }
+.js .reveal.is-in > .blk__in > :nth-child(n + 6) { transition-delay: 300ms; }
+
+/* ---------- hero entrance: kicker, title, intro in sequence, 700 ms in total ----------
+   The title only moves (no fade), so the main heading is painted at once and
+   never delays Largest Contentful Paint. The hero image is never animated. */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+@keyframes rise {
+  from {
+    transform: translateY(16px);
+  }
+}
+.js .hero-seq > .hero__coords,
+.js .hero-seq > .kicker {
+  animation: rise-in var(--duration-base) var(--easing-standard) both;
+}
+.js .hero-seq > h1 {
+  animation: rise var(--duration-base) var(--easing-standard) 100ms both;
+}
+.js .hero-seq > :is(.hero__intro, .hero__closing, .hero__foot) {
+  animation: rise-in var(--duration-base) var(--easing-standard) 200ms both;
+}
+
+/* ---------- page transition: cross-fade between pages ----------
+   Native cross-document view transitions (as the Shopify theme does). The
+   header and the altimeter have their own names, so they stay put while
+   the page underneath cross-fades. */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--duration-base);
+  animation-timing-function: var(--easing-standard);
+}
+::view-transition-group(site-header),
+::view-transition-group(altimeter) {
+  animation-duration: 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal > .blk__in > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .js .hero-seq > * {
+    animation: none !important;
+  }
+  @view-transition {
+    navigation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
+}
