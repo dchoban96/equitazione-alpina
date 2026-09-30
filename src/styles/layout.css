@@ -541,6 +541,24 @@
   position: absolute;
   transform: translate(-50%, -50%);
 }
+/* ea-galleggia: drift up and to the right while turning a few degrees, then back */
+.wash svg {
+  animation: wash-float var(--float) ease-in-out var(--float-delay) infinite alternate;
+  will-change: transform;
+}
+@keyframes wash-float {
+  from {
+    transform: rotate(-2deg);
+  }
+  to {
+    transform: translate(26px, -34px) rotate(3deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wash svg {
+    animation: none;
+  }
+}
 @media (max-width: 820px) {
   .wash:nth-child(n + 3) {
     display: none;

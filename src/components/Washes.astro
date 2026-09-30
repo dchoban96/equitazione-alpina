@@ -1,12 +1,11 @@
 ---
 /* Watercolour motifs in the page background (ea-atmosfera + ea-motivo),
-   with the positions, sizes and tints of the current home page. Static: the
-   theme's slow floating loop is listed in reference/ANIMATIONS.md as not
-   fitting the three allowed kinds of motion. */
+   with the positions, sizes, tints and float speeds of the current home page.
+   They float slowly (ea-galleggia), each on its own delay. */
 const washes = [
-  { motif: 'macchia', tint: 'var(--color-wash-sage)', x: 84, y: 22, size: 320, opacity: 0.16 },
-  { motif: 'ferro', tint: 'var(--color-wash-honey)', x: 12, y: 58, size: 180, opacity: 0.14 },
-  { motif: 'erba', tint: 'var(--color-wash-grass)', x: 70, y: 86, size: 220, opacity: 0.15 },
+  { motif: 'macchia', tint: 'var(--color-wash-sage)', x: 84, y: 22, size: 320, opacity: 0.16, float: 70 },
+  { motif: 'ferro', tint: 'var(--color-wash-honey)', x: 12, y: 58, size: 180, opacity: 0.14, float: 90 },
+  { motif: 'erba', tint: 'var(--color-wash-grass)', x: 70, y: 86, size: 220, opacity: 0.15, float: 55 },
 ];
 const shapes: Record<string, string[]> = {
   macchia: ['M104 30c30-6 58 12 66 40 7 26-6 44-2 64 4 22-16 40-44 42-30 2-56-8-70-28-14-21-10-46 0-66 10-21 22-48 50-52z'],
@@ -26,7 +25,7 @@ const shapes: Record<string, string[]> = {
   {
     washes.map((w, i) => (
       <div class="wash" style={`left:${w.x}%;top:${w.y}%;width:${w.size}px;opacity:${w.opacity};color:${w.tint}`}>
-        <svg viewBox="0 0 200 200" fill="none">
+        <svg viewBox="0 0 200 200" fill="none" style={`--float:${w.float}s;--float-delay:-${(i + 1) * 7}s`}>
           <defs>
             <filter id={`wash-f${i}`} x="-25%" y="-25%" width="150%" height="150%">
               <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="4" seed={(i + 1) * 17} result="n" />

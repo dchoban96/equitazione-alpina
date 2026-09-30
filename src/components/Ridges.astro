@@ -1,6 +1,6 @@
 ---
 /* Three mountain profiles (ea-hero "creste"), drawn at build time as inline
-   SVG with the theme's wave formula. Each layer draws the periodic wave
+   SVG with pointed peaks (the theme drew soft sine waves). Each layer draws a periodic profile
    across five periods and drifts sideways by exactly one period, so the loop is
    seamless (ea-deriva: 120 s, 80 s, 52 s). Only transform is animated.
 
@@ -16,27 +16,31 @@ const { fixed = false, part = 'all' } = Astro.props;
 const P = 1200; // one wave period, in SVG units
 const H = 900;
 const REPEAT = 5; // periods per layer: covers wide screens while drifting
+// Each profile adds up "peak" waves: (1 - |sin|)^pow has a sharp crest at
+// every zero of the sine, so the mountains get pointed tops and wide valleys.
+// [amplitude, peaks per period, phase, sharpness]; integer peak counts keep
+// the profile periodic, so the drift still loops seamlessly.
 const layers = [
-  { cls: 'r1', base: 0.86, amp: [46, 22, 11], off: 0, front: false },
-  { cls: 'r2', base: 0.93, amp: [62, 26, 13], off: 1.7, front: false },
-  { cls: 'r3', base: 1.0, amp: [80, 30, 16], off: 3.4, front: true },
+  { cls: 'r1', base: 0.86, peaks: [[150, 3, 0.3, 1.6], [45, 7, 1.1, 1], [12, 13, 0.5, 1]], front: false },
+  { cls: 'r2', base: 0.93, peaks: [[170, 2, 1.7, 1.7], [55, 5, 0.4, 1], [14, 11, 2, 1]], front: false },
+  { cls: 'r3', base: 1.0, peaks: [[150, 2, 3.4, 1.5], [50, 5, 2.2, 1], [14, 12, 1, 1]], front: true },
 ].filter((l) => part === 'all' || (part === 'front') === l.front);
 
 // The wave is periodic over P, so drawing it across REPEAT periods in one
 // path gives a seamless strip: drifting by one period loops without a jump.
 const W = P * REPEAT;
-const crest = (base: number, amp: number[], off: number) => {
+const crest = (base: number, peaks: number[][]) => {
   let d = '';
-  for (let x = 0; x <= W; x += 16) {
+  for (let x = 0; x <= W; x += 8) {
     const t = (x / P) * Math.PI * 2;
-    const y =
-      H * base - 120 - amp[0] * Math.sin(t + off) - amp[1] * Math.sin(t * 3 + off * 1.4) - amp[2] * Math.sin(t * 5 + off * 2.1);
+    let y = H * base - 120;
+    for (const [a, n, o, pow] of peaks) y -= a * (Math.pow(1 - Math.abs(Math.sin((n * t) / 2 + o)), pow) - 0.35);
     d += `${x === 0 ? 'M' : 'L'}${x} ${y.toFixed(1)}`;
   }
   return d;
 };
 const shapes = layers.map((l) => {
-  const line = crest(l.base, l.amp, l.off);
+  const line = crest(l.base, l.peaks);
   return { ...l, line, fill: `${line}L${W} ${H}L0 ${H}Z` };
 });
 ---
