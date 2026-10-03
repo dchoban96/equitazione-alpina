@@ -5,11 +5,12 @@
    script never starts) shows everything. */
 
 /* ---------- scroll reveal: .ea-rivela, 16 px rise, children staggered by 60 ms ---------- */
-.js:not(.reveal-off) .reveal:not(.is-in) > .blk__in > * {
+/* dialogs (the gallery lightbox) are never part of the reveal */
+.js:not(.reveal-off) .reveal:not(.is-in) > .blk__in > :not(dialog) {
   opacity: 0;
   transform: translateY(16px);
 }
-.js .reveal > .blk__in > * {
+.js .reveal > .blk__in > :not(dialog) {
   transition:
     opacity var(--duration-slow) var(--easing-standard),
     transform var(--duration-slow) var(--easing-standard);

@@ -58,21 +58,28 @@ const photos = await Promise.all(
           ))}
         </ul>
         <dialog class="lightbox" aria-label={gallery.data.title} data-lightbox data-of={ui.galleryOf}>
-          <div class="lightbox__bar">
-            <span data-lb-count aria-live="polite" />
-            <div class="lightbox__nav">
-              <button type="button" data-lb-prev aria-label={ui.galleryPrev}>←</button>
-              <button type="button" data-lb-next aria-label={ui.galleryNext}>→</button>
-              <button type="button" data-lb-close aria-label={ui.galleryClose}>✕</button>
-            </div>
+          <div class="lightbox__top">
+            <span class="lightbox__count" data-lb-count aria-live="polite" />
+            <button type="button" class="lb-btn" data-lb-close aria-label={ui.galleryClose}>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+            </button>
           </div>
           <div class="lightbox__stage" data-lb-stage>
+            <button type="button" class="lb-btn lightbox__side lightbox__side--prev" data-lb-prev aria-label={ui.galleryPrev}>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+            </button>
             <picture>
               <source type="image/avif" sizes="100vw" data-lb-avif />
               <img alt="" sizes="100vw" data-lb-img />
             </picture>
+            <button type="button" class="lb-btn lightbox__side lightbox__side--next" data-lb-next aria-label={ui.galleryNext}>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+            </button>
           </div>
-          <p class="lightbox__caption" data-lb-caption />
+          <div class="lightbox__bottom">
+            <p class="lightbox__caption" data-lb-caption />
+            <div class="lightbox__thumbs" role="group" aria-label={ui.galleryThumbs} data-lb-thumbs />
+          </div>
         </dialog>
       </>
     )
@@ -89,23 +96,62 @@ const photos = await Promise.all(
     const caption = dialog.querySelector<HTMLElement>('[data-lb-caption]')!;
     const count = dialog.querySelector<HTMLElement>('[data-lb-count]')!;
     const stage = dialog.querySelector<HTMLElement>('[data-lb-stage]')!;
+    const thumbs = dialog.querySelector<HTMLElement>('[data-lb-thumbs]')!;
+    const themeMeta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+    const pageTheme = themeMeta?.content;
     const of = dialog.dataset.of ?? '/';
     let index = 0;
+
+    // thumbnail strip, built from the gallery's own small images
+    const thumbButtons = links.map((a, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'lightbox__thumb';
+      b.setAttribute('aria-label', a.dataset.alt ?? '');
+      const t = document.createElement('img');
+      t.alt = '';
+      t.loading = 'lazy';
+      const small = a.querySelector('img');
+      t.src = small?.currentSrc || small?.src || a.href;
+      b.append(t);
+      b.addEventListener('click', () => show(i));
+      thumbs.append(b);
+      return b;
+    });
+    const preload = (i: number) => {
+      const a = links[(i + links.length) % links.length];
+      const p = new Image();
+      p.srcset = a.dataset.webp ?? '';
+      p.sizes = '100vw';
+      p.src = a.href;
+    };
 
     const show = (i: number) => {
       index = (i + links.length) % links.length;
       const a = links[index];
+      img.classList.remove('is-in');
       avif.srcset = a.dataset.avif ?? '';
       img.srcset = a.dataset.webp ?? '';
       img.src = a.href;
       img.alt = a.dataset.alt ?? '';
+      // fade in once decoded; never leave the photo hidden
+      const reveal = () => img.classList.add('is-in');
+      img.decode().then(reveal, reveal);
+      setTimeout(reveal, 700);
       caption.textContent = a.dataset.caption ?? '';
+      caption.hidden = !a.dataset.caption;
       count.textContent = `${index + 1} ${of} ${links.length}`;
+      thumbButtons.forEach((b, n) => b.toggleAttribute('aria-current', n === index));
+      thumbButtons[index].scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
       history.replaceState(null, '', `#${a.closest('li')!.id}`);
+      preload(index + 1);
+      preload(index - 1);
     };
     const open = (i: number) => {
       show(i);
       if (!dialog.open) dialog.showModal();
+      thumbButtons[index].scrollIntoView({ block: 'nearest', inline: 'center' });
+      if (themeMeta) themeMeta.content = '#0f140e';
     };
 
     links.forEach((a, i) =>
@@ -122,6 +168,7 @@ const photos = await Promise.all(
       if (e.key === 'ArrowRight') show(index + 1);
     });
     dialog.addEventListener('close', () => {
+      if (themeMeta && pageTheme) themeMeta.content = pageTheme;
       history.replaceState(null, '', location.pathname + location.search);
       links[index].focus();
     });
