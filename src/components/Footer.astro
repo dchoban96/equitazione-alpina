@@ -1,53 +1,115 @@
 ---
-/* Footer ported from the theme's own ea-footer: one mono line of links,
-   social links on the right. Links, phone, social and legal data come from
-   site settings. */
+/* Footer: one glass card with the brand and the quick contact buttons, four
+   columns (sections, information pages, contacts, social) and a line with
+   the legal data. Everything comes from site settings and the page menu. */
 import type { NavItem, Site } from '../lib/content';
-import { txt, telHref } from '../lib/text';
+import { txt, telHref, waHref } from '../lib/text';
+import { url } from '../lib/content';
 
 interface Props {
   site: Site;
+  menu: NavItem[];
   links: NavItem[];
   ui: Record<string, string>;
 }
-const { site, links, ui } = Astro.props;
+const { site, menu, links, ui } = Astro.props;
 const year = new Date().getFullYear();
-const address = `${site.address.street}, ${site.address.postalCode} ${site.address.locality} (${site.address.province})`;
+const a = site.address;
+const address = `${a.street}, ${a.postalCode} ${a.locality} (${a.province})`;
 ---
 
 <footer class="site-footer">
-  <div class="site-footer__in">
-    <span class="site-footer__copy">© {year} {site.name}</span>
-    <nav aria-label={ui.footerNav}>
-      <ul>
-        {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+  <div class="site-footer__card">
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <a class="site-footer__name" href={url('/')}>{site.name}</a>
+        <p class="site-footer__tagline" set:html={txt(ui.footerTagline)} />
+        <p class="site-footer__coords">{site.coordinatesText} · {a.locality} ({a.province})</p>
+      </div>
+      <div class="site-footer__actions">
+        <a class="btn" href={telHref(site.phone)}>{ui.contactCall}</a>
         {
-          site.analytics.provider !== 'none' && (
-            <li>
-              <button type="button" data-consent-open>
-                {ui.cookieSettings}
-              </button>
-            </li>
+          site.whatsapp && (
+            <a class="btn btn--ghost" href={waHref(site.whatsapp)}>
+              {ui.contactWhatsapp}
+            </a>
           )
         }
-      </ul>
-    </nav>
-    <a href={telHref(site.phone)}>{site.phone}</a>
-    {
-      site.social.length > 0 && (
-        <ul class="site-footer__social" aria-label={ui.footerSocial}>
-          {site.social.map((s) => (
-            <li>
-              <a href={s.url} rel="noopener" target="_blank">
-                {s.label}
-              </a>
-            </li>
-          ))}
+      </div>
+    </div>
+
+    <div class="site-footer__cols">
+      <nav aria-label={ui.footerExplore}>
+        <p class="site-footer__title">{ui.footerExplore}</p>
+        <ul>
+          {
+            menu.map((l) => (
+              <li>
+                <a href={l.href}>{l.label}</a>
+              </li>
+            ))
+          }
         </ul>
-      )
-    }
+      </nav>
+
+      <nav aria-label={ui.footerNav}>
+        <p class="site-footer__title">{ui.footerNav}</p>
+        <ul>
+          {
+            links.map((l) => (
+              <li>
+                <a href={l.href}>{l.label}</a>
+              </li>
+            ))
+          }
+          {
+            site.analytics.provider !== 'none' && (
+              <li>
+                <button type="button" data-consent-open>
+                  {ui.cookieSettings}
+                </button>
+              </li>
+            )
+          }
+        </ul>
+      </nav>
+
+      <div class="site-footer__contact">
+        <p class="site-footer__title">{ui.footerContact}</p>
+        <ul>
+          <li>
+            <a href={telHref(site.phone)}>{site.phone}</a>
+          </li>
+          <li>
+            <a href={`mailto:${site.email}`}>{site.email}</a>
+          </li>
+          <li class="site-footer__text">{address}</li>
+        </ul>
+      </div>
+
+      {
+        site.social.length > 0 && (
+          <div>
+            <p class="site-footer__title">{ui.footerSocial}</p>
+            <ul class="site-footer__social" aria-label={ui.footerSocial}>
+              {site.social.map((s) => (
+                <li>
+                  <a href={s.url} rel="noopener" target="_blank">
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+    </div>
+
     <p class="site-footer__legal">
-      <Fragment set:html={txt(site.legalName)} /> · {address} · {ui.footerVat} <Fragment set:html={txt(site.vatNumber)} />
+      <span>© {year} {site.name}</span>
+      <span>
+        <Fragment set:html={txt(site.legalName)} /> · {ui.footerVat} <Fragment set:html={txt(site.vatNumber)} />
+      </span>
     </p>
   </div>
 </footer>

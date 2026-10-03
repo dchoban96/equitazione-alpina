@@ -59,13 +59,15 @@ fonts:
   weight-ui: 400
 
 text:
-  text-xs: "clamp(0.625rem, 0.6rem + 0.1vw, 0.6875rem)"    # 10-11px mono labels
-  text-sm: "clamp(0.8125rem, 0.78rem + 0.15vw, 0.9375rem)"  # 13-15px notes, form labels, tiles
-  text-base: "clamp(1rem, 0.95rem + 0.25vw, 1.125rem)"      # ea-sez clamp(16px,1.05vw,18px)
-  text-lg: "clamp(1.0625rem, 0.95rem + 0.55vw, 1.3125rem)"  # hero intro clamp(17px,1.35vw,21px)
-  text-xl: "clamp(1.25rem, 1.05rem + 0.9vw, 1.625rem)"      # h3 clamp(20px,2vw,26px)
-  text-2xl: "clamp(1.75rem, 1.2rem + 2.4vw, 3rem)"          # h2 clamp(28px,3.6vw,48px)
-  text-3xl: "clamp(2.375rem, 1.3rem + 4.8vw, 5.375rem)"     # h1 clamp(38px,7.2vw,86px)
+  # Phone sizes as in the theme; on desktop the type grows further (Oct 2026:
+  # the theme capped body text at 18px, which read small on large screens).
+  text-xs: "clamp(0.625rem, 0.5rem + 0.3vw, 0.8125rem)"     # 10-13px mono labels
+  text-sm: "clamp(0.8125rem, 0.65rem + 0.4vw, 1.0625rem)"   # 13-17px notes, form labels, tiles
+  text-base: "clamp(1rem, 0.8rem + 0.55vw, 1.3125rem)"      # 16-21px body
+  text-lg: "clamp(1.0625rem, 0.8rem + 0.75vw, 1.5rem)"      # 17-24px hero intro, lead
+  text-xl: "clamp(1.25rem, 0.9rem + 1.1vw, 1.875rem)"       # 20-30px h3
+  text-2xl: "clamp(1.75rem, 1rem + 2.8vw, 3.5rem)"          # 28-56px h2
+  text-3xl: "clamp(2.375rem, 1.2rem + 5.2vw, 6rem)"         # 38-96px h1
   leading-body: 1.72                 # ea-sez line-height
   leading-tight: 1.08                # h2
   tracking-label: "0.2em"            # mono labels, letter-spacing .16-.24em
@@ -82,7 +84,7 @@ space:
   space-gutter: "clamp(20px, 5vw, 64px)"   # --ea-gutter
 
 layout:
-  layout-max: "1220px"               # .ea-in max-width
+  layout-max: "1320px"               # .ea-in max-width (theme: 1220px; wider for the larger type)
   layout-rail: "88px"                # --ea-rail (altimeter column)
   layout-header: "64px"              # Horizon header, section_height compact
   layout-measure: "62ch"             # paragraph max-width

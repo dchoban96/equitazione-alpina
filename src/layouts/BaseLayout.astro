@@ -135,7 +135,7 @@ const alternates = site.languages.length > 1 ? site.languages.map((l) => ({ lang
     <main id="main" tabindex="-1">
       <slot />
     </main>
-    <Footer site={site} links={footerLinks} ui={ui} />
+    <Footer site={site} menu={menu} links={footerLinks} ui={ui} />
     {ridges && <Ridges fixed part="front" />}
     {altimeter && <Altimeter min={altimeter.min} max={altimeter.max} start={altimeter.start} ui={ui} />}
     <CookieConsent site={site} ui={ui} />
