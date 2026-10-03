@@ -57,7 +57,7 @@ const photos = await Promise.all(
             </li>
           ))}
         </ul>
-        <dialog class="lightbox" aria-label={gallery.data.title} data-lightbox data-of={ui.galleryOf}>
+        <dialog class="lightbox" aria-label={gallery.data.title} data-lightbox data-of={ui.galleryOf} tabindex="-1">
           <div class="lightbox__top">
             <span class="lightbox__count" data-lb-count aria-live="polite" />
             <button type="button" class="lb-btn" data-lb-close aria-label={ui.galleryClose}>
@@ -149,9 +149,14 @@ const photos = await Promise.all(
     };
     const open = (i: number) => {
       show(i);
-      if (!dialog.open) dialog.showModal();
+      if (!dialog.open) {
+        dialog.showModal();
+        // focus the viewer itself, not the close button (no ring on open);
+        // the arrow keys and Escape still work
+        dialog.focus();
+      }
       thumbButtons[index].scrollIntoView({ block: 'nearest', inline: 'center' });
-      if (themeMeta) themeMeta.content = '#0f140e';
+      if (themeMeta) themeMeta.content = '#10150f';
     };
 
     links.forEach((a, i) =>
@@ -162,16 +167,24 @@ const photos = await Promise.all(
     );
     dialog.querySelector('[data-lb-prev]')!.addEventListener('click', () => show(index - 1));
     dialog.querySelector('[data-lb-next]')!.addEventListener('click', () => show(index + 1));
-    dialog.querySelector('[data-lb-close]')!.addEventListener('click', () => dialog.close());
+    // put the page back: browser bar colour, address, focus on the thumbnail.
+    // Run directly by our own close paths, and on close/cancel for Escape.
+    const restore = () => {
+      if (themeMeta && pageTheme) themeMeta.content = pageTheme;
+      if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+      links[index].focus({ preventScroll: true });
+    };
+    const close = () => {
+      dialog.close();
+      restore();
+    };
+    dialog.querySelector('[data-lb-close]')!.addEventListener('click', close);
     dialog.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowLeft') show(index - 1);
       if (e.key === 'ArrowRight') show(index + 1);
     });
-    dialog.addEventListener('close', () => {
-      if (themeMeta && pageTheme) themeMeta.content = pageTheme;
-      history.replaceState(null, '', location.pathname + location.search);
-      links[index].focus();
-    });
+    dialog.addEventListener('cancel', restore);
+    dialog.addEventListener('close', restore);
 
     // swipe
     let startX: number | null = null;
@@ -184,7 +197,7 @@ const photos = await Promise.all(
     });
     // click on the dark area around the photo closes
     dialog.addEventListener('click', (e) => {
-      if (e.target === stage) dialog.close();
+      if (e.target === stage) close();
     });
 
     // a shared link such as #foto-3 opens that photo
