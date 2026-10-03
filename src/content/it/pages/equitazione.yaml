@@ -13,7 +13,7 @@ altimeter:
 seo:
   title: "Maneggio ad Albosaggia · Equitazione vicino a Sondrio"
   description: "Lezioni, passeggiate a cavallo sulle Orobie e in Valmalenco, pensione cavalli: il maneggio di Equitazione Alpina ad Albosaggia, vicino a Sondrio."
-  image: "../../../assets/equitazione/mockup-cavalli-recinto.jpg"
+  image: "../../../assets/equitazione/cavalli-al-pascolo-albosaggia-orizzontale.jpg"
 blocks:
   - type: "hero"
     kicker: "Equitazione"
@@ -21,8 +21,8 @@ blocks:
     intro: |
       Equitazione Alpina è il maneggio di Simone De Capitani ad Albosaggia, a dieci minuti da Sondrio, dove comincia il Parco delle Orobie Valtellinesi. Qui i cavalli vivono all'aperto e si esce al passo sui sentieri di casa, tutto l'anno. Da fine giugno a inizio settembre ci si sposta in Valmalenco, verso l'Alpe Palù. Simone lavora con i cavalli da oltre trent'anni ed è accompagnatore di turismo equestre SEF Italia – C.O.N.I.
     altitude: 500
-    image: "../../../assets/equitazione/mockup-cavalli-recinto.jpg"
-    imageAlt: "Illustrazione di prova: cavalli al pascolo vicino al recinto"
+    image: "../../../assets/equitazione/cavalli-al-pascolo-albosaggia-orizzontale.jpg"
+    imageAlt: "Due cavalli sauri con la lista bianca e un cavallo grigio liberi sul prato del recinto, sotto il bosco"
   - type: "cards"
     kicker: "Le attività"
     heading: "Cosa si può fare"

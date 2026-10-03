@@ -4,6 +4,9 @@ title: "Galleria equitazione"
 section: "equitazione"
 mockup: true
 photos:
+  - file: "../../../assets/equitazione/cavalli-al-pascolo-albosaggia.jpg"
+    alt: "Due cavalli sauri con la lista bianca e un cavallo grigio liberi sul prato del recinto, sotto il bosco"
+    caption: "Al recinto"
   - file: "../../../assets/equitazione/mockup-cavallo-crinale.jpg"
     alt: "Illustrazione di prova: un cavallo sul crinale all'alba"
     caption: "L'alba sopra il recinto"
