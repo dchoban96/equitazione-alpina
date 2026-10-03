@@ -1,7 +1,7 @@
 # Admin (content management)
 
 The admin is [Decap CMS](https://decapcms.org), in Italian, at `/admin/`
-(preview: `https://dchoban96.github.io/equitazione-alpina/admin/`). There is
+(`https://www.equitazione-alpina.it/admin/`). There is
 no server and no database: every save is a commit to this repository, GitHub
 Actions rebuilds the site, and the change is live in about two minutes.
 
@@ -44,8 +44,8 @@ are not in the admin at all.
 2. **DecapBridge.** Register at <https://decapbridge.com>, add a site:
    - Git provider: GitHub, repository `dchoban96/equitazione-alpina`, branch `main`
    - the access token from step 1
-   - site URL: `https://dchoban96.github.io/equitazione-alpina/` (and the
-     admin URL `.../admin/`)
+   - site URL: `https://www.equitazione-alpina.it/` (and the admin URL
+     `https://www.equitazione-alpina.it/admin/`)
    - login methods: email/password (and Google or Microsoft if wanted)
 3. **Paste the generated config.** DecapBridge shows a `config.yml` snippet.
    Replace the `backend:` block in `public/admin/config.yml` with its

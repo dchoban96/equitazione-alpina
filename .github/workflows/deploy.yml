@@ -1,6 +1,8 @@
-# Publishes the preview build (drafts marked, not indexed) to GitHub Pages.
+# Publishes the production build to GitHub Pages (www.equitazione-alpina.it).
+# The production build fails while a published page still shows a
+# [DA COMPLETARE] marker, so an incomplete edit never goes live.
 # Enable it in the repository: Settings > Pages > Source: GitHub Actions.
-name: Deploy preview to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -31,7 +33,7 @@ jobs:
       - id: pages
         uses: actions/configure-pages@v5
       - run: npm ci
-      - run: npm run build:preview
+      - run: npm run build
         env:
           # project pages live under /<repository>/; empty with a custom domain
           BASE_PATH: ${{ steps.pages.outputs.base_path }}

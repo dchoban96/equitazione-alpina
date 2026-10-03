@@ -125,10 +125,12 @@ live after the next deploy. Setup, login and local testing are in
 
 ## Hosting and redirects
 
-- GitHub Pages for now: `.github/workflows/deploy.yml` publishes the preview build
-  (not indexed). Old Shopify URLs get small forwarding pages there.
-- The launch host must serve real 301s: the build also writes `dist/_redirects`
-  (Netlify / Cloudflare Pages format) from `settings/redirects.yaml`.
+- GitHub Pages at `www.equitazione-alpina.it` (DNS at register.it: `www` CNAME
+  to `dchoban96.github.io`, the bare domain on GitHub's four A records):
+  `.github/workflows/deploy.yml` publishes the production build on every push
+  to `main`. Old Shopify URLs get small forwarding pages there (not real 301s).
+- A host with real 301s (Netlify, Cloudflare Pages) can use `dist/_redirects`,
+  which the build writes from `settings/redirects.yaml`.
 - See `LAUNCH-CHECKLIST.md` before going live.
 
 ## Rules kept by the code

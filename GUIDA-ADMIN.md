@@ -1,8 +1,7 @@
 # Guida alla gestione del sito
 
 Il sito si modifica da una pagina riservata:
-**https://dchoban96.github.io/equitazione-alpina/admin/**
-(dopo il lancio: https://www.equitazione-alpina.it/admin/).
+**https://www.equitazione-alpina.it/admin/**
 
 Ogni modifica pubblicata va online da sola **in circa due minuti**. Se
 qualcosa non va, il sito resta com'era: niente si rompe per un errore.

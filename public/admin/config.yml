@@ -26,9 +26,9 @@ backend:
 # files without logging in (see ADMIN.md).
 local_backend: true
 
-site_url: https://dchoban96.github.io/equitazione-alpina/
-display_url: https://dchoban96.github.io/equitazione-alpina/
-logo_url: https://dchoban96.github.io/equitazione-alpina/favicon.svg
+site_url: https://www.equitazione-alpina.it/
+display_url: https://www.equitazione-alpina.it/
+logo_url: https://www.equitazione-alpina.it/favicon.svg
 
 # All photos live in one folder, src/assets/foto; content refers to them as
 # "@assets/foto/<file>" (an alias the build resolves, so the same path works
