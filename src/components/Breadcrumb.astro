@@ -12,6 +12,7 @@ const { crumbs, label } = Astro.props;
 {
   crumbs.length > 1 && (
     <nav class="crumbs" aria-label={label}>
+      <div class="crumbs__in">
       <ol>
         {crumbs.map((c, i) =>
           i === crumbs.length - 1 ? (
@@ -23,6 +24,7 @@ const { crumbs, label } = Astro.props;
           ),
         )}
       </ol>
+      </div>
     </nav>
   )
 }

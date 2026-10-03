@@ -122,7 +122,15 @@ const alternates = site.languages.length > 1 ? site.languages.map((l) => ({ lang
     <a class="skip-link" href="#main">{ui.skipLink}</a>
     <Washes />
     {ridges && <Ridges fixed part="back" />}
-    <Header name={site.name} menu={menu} current={url(path)} overlay={overlay} ui={ui} />
+    <Header
+      name={site.name}
+      menu={menu}
+      current={url(path)}
+      overlay={overlay}
+      phone={site.phone}
+      whatsapp={site.whatsapp}
+      ui={ui}
+    />
     <Breadcrumb crumbs={crumbs} label={ui.breadcrumbLabel} />
     <main id="main" tabindex="-1">
       <slot />

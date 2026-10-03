@@ -5,15 +5,18 @@
    are dropped: there is no shop. The menu comes from site settings + pages. */
 import type { NavItem } from '../lib/content';
 import { url } from '../lib/content';
+import { telHref, waHref } from '../lib/text';
 
 interface Props {
   name: string;
   menu: NavItem[];
   current: string;
   overlay: boolean;
+  phone: string;
+  whatsapp?: string;
   ui: Record<string, string>;
 }
-const { name, menu, current, overlay, ui } = Astro.props;
+const { name, menu, current, overlay, phone, whatsapp, ui } = Astro.props;
 const isCurrent = (href: string) => (href === current ? 'page' : undefined);
 const inSection = (item: NavItem) => current.startsWith(item.href) && item.href !== url('/');
 ---
@@ -30,6 +33,11 @@ const inSection = (item: NavItem) => current.startsWith(item.href) && item.href 
               <a href={item.href} aria-current={isCurrent(item.href) ?? (inSection(item) ? 'true' : undefined)}>
                 {item.label}
                 {item.draft && <span class="draft-badge">{ui.draftBadge}</span>}
+                {item.children.length > 0 && (
+                  <svg class="nav-desktop__chev" viewBox="0 0 12 12" aria-hidden="true">
+                    <path d="M3 4.5l3 3 3-3" />
+                  </svg>
+                )}
               </a>
               {item.children.length > 0 && (
                 <ul class="nav-sub">
@@ -58,6 +66,13 @@ const inSection = (item: NavItem) => current.startsWith(item.href) && item.href 
         }
       </ul>
     </nav>
+
+    <a class="header-call" href={telHref(phone)} aria-label={`${ui.contactCall} ${phone}`}>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 4h3.5l1.5 4-2 1.5a11 11 0 0 0 5.5 5.5l1.5-2 4 1.5V18a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z" />
+      </svg>
+      <span>{ui.contactCall}</span>
+    </a>
 
     <details class="nav-drawer" data-drawer>
       <summary>
@@ -102,6 +117,14 @@ const inSection = (item: NavItem) => current.startsWith(item.href) && item.href 
             ))
           }
         </ul>
+        <div class="nav-drawer__actions">
+          <a class="btn" href={telHref(phone)}>{ui.contactCall} {phone}</a>
+          {whatsapp && (
+            <a class="btn btn--ghost" href={waHref(whatsapp)}>
+              {ui.contactWhatsapp}
+            </a>
+          )}
+        </div>
       </nav>
     </details>
   </div>
@@ -135,6 +158,10 @@ const inSection = (item: NavItem) => current.startsWith(item.href) && item.href 
         drawer.open = false;
         drawer.querySelector('summary')?.focus();
       }
+    });
+    // A tap outside the open menu closes it.
+    document.addEventListener('click', (e) => {
+      if (drawer.open && !drawer.contains(e.target as Node)) drawer.open = false;
     });
     // Close when the viewport grows past the desktop breakpoint.
     matchMedia('(min-width: 1100px)').addEventListener('change', (m) => {

@@ -43,32 +43,26 @@
   }
 }
 
-/* ---------- header: Horizon header, compact, logo and menu on the left ---------- */
+/* ---------- header: a floating glass capsule ---------- */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
-  /* transparent over the page; once the page scrolls it takes the page
-     colour, so content passing underneath does not show through */
-  background: transparent;
+  padding: 10px clamp(10px, 2.5vw, 24px) 0;
   color: var(--color-header-text);
   font-family: var(--font-ui);
   font-weight: var(--weight-ui);
   font-size: 0.875rem;
-  view-transition-name: site-header;
-  transition:
-    transform var(--duration-fast) var(--easing-standard),
-    background-color var(--duration-fast),
-    box-shadow var(--duration-fast);
+  pointer-events: none;
+  /* no view-transition-name here: it would make the header a backdrop root,
+     and the glass would no longer blur the page behind it */
+  transition: transform var(--duration-base) var(--easing-standard);
+}
+.site-header > * {
+  pointer-events: auto;
 }
 .site-header.is-hidden {
-  transform: translateY(-100%);
-}
-.site-header.is-scrolled,
-.site-header:has(.nav-drawer[open]),
-.no-js .site-header {
-  background: var(--color-bg);
-  box-shadow: 0 1px 0 var(--color-border-soft);
+  transform: translateY(calc(-100% - 12px));
 }
 /* home: the header floats over the opening instead of taking room above it */
 .site-header--overlay {
@@ -77,13 +71,42 @@
   right: 0;
 }
 .site-header__bar {
+  position: relative;
+  isolation: isolate;
   display: flex;
   align-items: center;
-  gap: var(--space-5);
+  gap: var(--space-3);
   min-height: var(--layout-header);
   max-width: calc(var(--layout-max) + 2 * var(--space-gutter));
   margin: 0 auto;
-  padding: 0 var(--space-gutter);
+  padding: 0 10px 0 22px;
+}
+/* the glass lives on a pseudo-element: a backdrop-filter on the bar itself
+   would trap the fixed menu sheet inside it */
+.site-header__bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 252, 246, 0.42);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  backdrop-filter: blur(18px) saturate(1.4);
+  box-shadow: inset 0 1px 0 var(--glass-line);
+  transition:
+    background-color var(--duration-fast),
+    box-shadow var(--duration-fast),
+    border-color var(--duration-fast);
+}
+.site-header.is-scrolled .site-header__bar::before,
+.site-header:has(.nav-drawer[open]) .site-header__bar::before,
+.no-js .site-header .site-header__bar::before {
+  background: var(--glass-strong);
+  border-color: var(--color-border-soft);
+  box-shadow:
+    inset 0 1px 0 var(--glass-line),
+    var(--shadow-md);
 }
 .site-header a {
   color: inherit;
@@ -93,18 +116,20 @@
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  font-size: 1.125rem;
+  margin-right: auto;
+  font-size: 1.0625rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   white-space: nowrap;
 }
 
+/* desktop menu: pill links */
 .nav-desktop {
   display: none;
 }
 .nav-desktop > ul {
   display: flex;
-  gap: var(--space-1);
+  gap: 2px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -115,37 +140,70 @@
 .nav-desktop > ul > li > a {
   display: inline-flex;
   align-items: center;
-  min-height: 44px;
-  padding: 0 var(--space-3);
-  border-radius: var(--radius-sm);
+  gap: 6px;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: var(--radius-pill);
   white-space: nowrap;
+  transition:
+    background-color var(--duration-fast),
+    color var(--duration-fast);
 }
-.nav-desktop a:hover,
-.nav-desktop a[aria-current='page'] {
-  text-decoration: underline;
-  text-underline-offset: 0.35em;
+.nav-desktop > ul > li > a:hover,
+.nav-desktop > ul > li:focus-within > a {
+  background: rgba(var(--color-accent-rgb), 0.08);
+}
+.nav-desktop > ul > li > a[aria-current] {
+  background: rgba(var(--color-accent-rgb), 0.14);
+  color: var(--color-heading);
+  font-weight: 500;
+}
+.nav-desktop__chev {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.6;
+  transition: transform var(--duration-fast) var(--easing-standard);
+}
+.nav-desktop li:hover .nav-desktop__chev,
+.nav-desktop li:focus-within .nav-desktop__chev {
+  transform: rotate(180deg);
 }
 .nav-sub {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 10px);
   left: 0;
-  min-width: 240px;
+  min-width: 250px;
   margin: 0;
-  padding: var(--space-2);
+  padding: 8px;
   list-style: none;
   background: var(--glass-strong);
-  -webkit-backdrop-filter: blur(18px);
-  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  backdrop-filter: blur(18px) saturate(1.4);
   border: 1px solid var(--color-border-soft);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   visibility: hidden;
   opacity: 0;
-  transform: translateY(-4px);
+  transform: translateY(-6px) scale(0.98);
+  transform-origin: top left;
   transition:
     opacity var(--duration-fast),
-    transform var(--duration-fast),
+    transform var(--duration-fast) var(--easing-standard),
     visibility 0s linear var(--duration-fast);
+}
+/* hover bridge across the gap under the pill */
+.nav-sub::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 12px;
 }
 .nav-desktop li:hover > .nav-sub,
 .nav-desktop li:focus-within > .nav-sub {
@@ -158,12 +216,16 @@
   display: flex;
   align-items: center;
   min-height: 40px;
-  padding: 0 var(--space-3);
+  padding: 0 12px;
   border-radius: var(--radius-sm);
-  transition: background var(--duration-fast);
+  transition: background-color var(--duration-fast);
 }
 .nav-sub a:hover {
   background: rgba(var(--color-accent-rgb), 0.08);
+}
+.nav-sub a[aria-current] {
+  background: rgba(var(--color-accent-rgb), 0.12);
+  color: var(--color-heading);
 }
 .nav-sub .nav-sub {
   position: static;
@@ -171,26 +233,88 @@
   opacity: 1;
   transform: none;
   box-shadow: none;
+  min-width: 0;
+  margin: 0 0 4px 12px;
+  padding: 0 0 0 8px;
   border: 0;
-  padding: 0 0 0 var(--space-3);
+  border-left: 1px solid var(--color-border-soft);
+  border-radius: 0;
   background: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.nav-sub .nav-sub::before {
+  display: none;
+}
+.nav-sub .nav-sub a {
+  min-height: 34px;
+  font-size: 0.8125rem;
+  color: var(--color-text);
 }
 
-/* mobile drawer: a <details>, so it also opens without JavaScript */
-.nav-drawer {
-  margin-left: auto;
-}
-.nav-drawer > summary {
+/* call button: a honey pill on desktop, a round icon on phones */
+.header-call {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  min-height: 44px;
-  padding: 0 var(--space-2);
+  justify-content: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  background: var(--color-button);
+  color: var(--color-button-text) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  font-weight: 500;
+  transition:
+    transform var(--duration-fast) var(--easing-standard),
+    box-shadow var(--duration-fast);
+}
+.header-call:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    var(--shadow-sm);
+}
+.header-call svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linejoin: round;
+}
+.header-call span {
+  display: none;
+}
+
+/* mobile menu button: a round glass button */
+.nav-drawer > summary {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(var(--color-accent-rgb), 0.1);
   list-style: none;
   cursor: pointer;
+  transition: background-color var(--duration-fast);
+}
+.nav-drawer > summary:hover,
+.nav-drawer[open] > summary {
+  background: rgba(var(--color-accent-rgb), 0.18);
 }
 .nav-drawer > summary::-webkit-details-marker {
   display: none;
+}
+/* the words "Menu" / "Chiudi" stay for screen readers only */
+.nav-drawer > summary > span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 .nav-drawer__icon {
   width: 20px;
@@ -205,27 +329,58 @@
 .nav-drawer[open] .nav-drawer__open {
   display: none;
 }
+/* dim and blur the page behind the open menu */
+.nav-drawer[open]::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: rgba(34, 48, 31, 0.18);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  animation: drawer-fade var(--duration-fast) var(--easing-standard);
+}
+/* the menu: a rounded glass sheet under the capsule */
 .nav-drawer__panel {
   position: fixed;
-  left: 0;
-  right: 0;
-  top: var(--layout-header);
-  bottom: 0;
+  left: clamp(10px, 2.5vw, 24px);
+  right: clamp(10px, 2.5vw, 24px);
+  top: calc(var(--layout-header) + 20px);
+  max-height: calc(100dvh - var(--layout-header) - 30px - env(safe-area-inset-bottom));
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: var(--space-4) var(--space-gutter) calc(var(--space-6) + env(safe-area-inset-bottom));
-  background: var(--color-drawer-bg);
+  padding: var(--space-4) var(--space-4) var(--space-5);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-lg);
+  background: var(--glass-strong);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  backdrop-filter: blur(24px) saturate(1.4);
+  box-shadow: var(--shadow-md);
   font-size: 1rem;
+  animation: drawer-in var(--duration-base) var(--easing-standard);
+}
+@keyframes drawer-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+}
+@keyframes drawer-fade {
+  from {
+    opacity: 0;
+  }
 }
 .nav-drawer__panel ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.nav-drawer__panel ul ul {
-  padding-left: var(--space-4);
-  border-left: 1px solid var(--color-border);
-  margin-bottom: var(--space-2);
+/* sections: large names, separated by a soft line */
+.nav-drawer__panel > ul > li {
+  padding: 6px 0 12px;
+}
+.nav-drawer__panel > ul > li + li {
+  border-top: 1px solid var(--color-border-soft);
 }
 .nav-drawer__panel a {
   display: flex;
@@ -233,40 +388,107 @@
   min-height: 44px;
 }
 .nav-drawer__panel > ul > li > a {
-  font-size: 1.125rem;
+  font-size: 1.375rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--color-heading);
+}
+.nav-drawer__panel > ul > li > a[aria-current] {
+  color: var(--color-accent);
+}
+/* sub-pages: chips; deeper pages join the same row, outlined */
+.nav-drawer__panel ul ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.nav-drawer__panel ul ul li,
+.nav-drawer__panel ul ul ul {
+  display: contents;
+}
+.nav-drawer__panel ul ul a {
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: var(--radius-pill);
+  background: rgba(var(--color-accent-rgb), 0.08);
+  font-size: 0.875rem;
+  transition: background-color var(--duration-fast);
+}
+.nav-drawer__panel ul ul a:hover {
+  background: rgba(var(--color-accent-rgb), 0.16);
+}
+.nav-drawer__panel ul ul ul a {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--color-border-soft);
+  color: var(--color-text);
+}
+.nav-drawer__panel ul ul a[aria-current] {
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+.nav-drawer__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-soft);
+}
+.nav-drawer__actions .btn {
+  flex: 1 1 auto;
+  justify-content: center;
 }
 .nav-lock {
   overflow: hidden;
 }
 
 @media (min-width: 1100px) {
+  .site-header__logo {
+    margin-right: var(--space-3);
+  }
   .nav-desktop {
     display: block;
+    margin-right: auto;
   }
   .nav-drawer {
     display: none;
   }
+  .header-call {
+    width: auto;
+    padding: 0 18px;
+  }
+  .header-call span {
+    display: inline;
+  }
 }
 
-/* ---------- breadcrumb ---------- */
+/* ---------- breadcrumb: a small glass pill ---------- */
 .crumbs {
   position: relative;
   z-index: 1;
   padding: var(--space-4) var(--space-gutter) 0;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: var(--color-text-muted);
 }
-.crumbs ol {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-1) var(--space-2);
+.crumbs__in {
   max-width: var(--layout-max);
   margin: 0 auto;
-  padding: 0;
+}
+.crumbs ol {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 8px;
+  margin: 0;
+  padding: 2px 16px;
   list-style: none;
+  border: 1px solid var(--color-border-soft);
+  border-radius: 18px;
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }
 /* every item gets the same box, so links and plain text sit on one line */
 .crumbs li {
@@ -274,10 +496,19 @@
   align-items: center;
   min-height: 32px;
 }
+.crumbs a {
+  text-decoration: none;
+}
+.crumbs a:hover {
+  color: var(--color-accent);
+}
 .crumbs li + li::before {
-  content: '/';
-  margin-right: var(--space-2);
-  opacity: 0.6;
+  content: '\203A';
+  margin-right: 8px;
+  opacity: 0.5;
+}
+.crumbs [aria-current] {
+  color: var(--color-heading);
 }
 
 /* ---------- footer: ea-footer ---------- */

@@ -48,8 +48,8 @@
 
 /* ---------- page transition: cross-fade between pages ----------
    Native cross-document view transitions (as the Shopify theme does). The
-   header and the altimeter have their own names, so they stay put while
-   the page underneath cross-fades. */
+   altimeter and the ridges have their own names, so they stay put while
+   the page underneath cross-fades (the header is the same on every page). */
 @view-transition {
   navigation: auto;
 }
@@ -58,7 +58,6 @@
   animation-duration: var(--duration-base);
   animation-timing-function: var(--easing-standard);
 }
-::view-transition-group(site-header),
 ::view-transition-group(altimeter),
 ::view-transition-group(ridges-back),
 ::view-transition-group(ridges-front) {
