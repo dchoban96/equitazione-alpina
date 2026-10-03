@@ -474,6 +474,27 @@
 .ridges--front {
   z-index: 30;
 }
+/* The nearest profile bleeds below the screen edge with its own colour, so
+   browsers that draw the page under a translucent toolbar (Safari on iOS)
+   show green there instead of the page background. */
+.ridges--front.ridges--fixed {
+  --ridges-bleed: 200px;
+  bottom: calc(var(--ridges-bleed) * -1);
+  height: calc(var(--ridges-height) + var(--ridges-bleed));
+}
+.ridges--front.ridges--fixed .ridge {
+  bottom: var(--ridges-bleed);
+  height: calc(100% - var(--ridges-bleed));
+}
+.ridges--front.ridges--fixed::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(var(--ridges-bleed) + 1px);
+  background: var(--color-ridge-3);
+}
 .ridges--back.ridges--fixed {
   view-transition-name: ridges-back;
 }
