@@ -51,6 +51,19 @@ export function localBusinessJsonLd(site: Site, imageUrl: string) {
   };
 }
 
+/** The site as a whole (home page): name, address, language. */
+export function websiteJsonLd(site: Site) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${site.url}/#website`,
+    name: site.name,
+    url: `${site.url}/`,
+    inLanguage: site.languages[0],
+    publisher: { '@id': `${site.url}/#business` },
+  };
+}
+
 export function faqJsonLd(items: { question: string; answer: string }[]) {
   return {
     '@context': 'https://schema.org',

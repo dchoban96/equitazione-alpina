@@ -13,7 +13,7 @@ altimeter:
 seo:
   title: "Maneggio ad Albosaggia · Equitazione vicino a Sondrio"
   description: "Lezioni, passeggiate a cavallo sulle Orobie e in Valmalenco, pensione cavalli: il maneggio di Equitazione Alpina ad Albosaggia, vicino a Sondrio."
-  image: "../../../assets/equitazione/cavalli-al-pascolo-albosaggia-orizzontale.jpg"
+  image: "@assets/foto/cavalli-al-pascolo-albosaggia-orizzontale.jpg"
 blocks:
   - type: "hero"
     kicker: "Equitazione"
@@ -21,7 +21,7 @@ blocks:
     intro: |
       Equitazione Alpina è il maneggio di Simone De Capitani ad Albosaggia, a dieci minuti da Sondrio, dove comincia il Parco delle Orobie Valtellinesi. Qui i cavalli vivono all'aperto e si esce al passo sui sentieri di casa, tutto l'anno. Da fine giugno a inizio settembre ci si sposta in Valmalenco, verso l'Alpe Palù. Simone lavora con i cavalli da oltre trent'anni ed è accompagnatore di turismo equestre SEF Italia – C.O.N.I.
     altitude: 500
-    image: "../../../assets/equitazione/cavalli-al-pascolo-albosaggia-orizzontale.jpg"
+    image: "@assets/foto/cavalli-al-pascolo-albosaggia-orizzontale.jpg"
     imageAlt: "Due cavalli sauri con la lista bianca e un cavallo grigio liberi sul prato del recinto, sotto il bosco"
   - type: "cards"
     kicker: "Le attività"
@@ -57,7 +57,7 @@ blocks:
       Chi non è mai salito in sella comincia da terra: si conosce l'animale, si impara a stargli accanto, si sale quando si è pronti. Chi monta da anni trova sentieri che meritano la giornata intera.
 
       I bambini possono avvicinarsi ai cavalli da tre anni, condotti a mano, per il tempo che serve — dieci minuti bastano, se sono i dieci minuti giusti.
-    image: "../../../assets/equitazione/passeggiata-a-cavallo-sul-sentiero.jpg"
+    image: "@assets/foto/passeggiata-a-cavallo-sul-sentiero.jpg"
     alt: "Due cavalieri al passo su una strada sterrata fra gli abeti, con le montagne sullo sfondo"
     side: "left"
   - type: "places"
@@ -79,7 +79,7 @@ blocks:
   - type: "text-image"
     kicker: "Valmalenco"
     heading: "Verso l'Alpe Palù"
-    image: "../../../assets/equitazione/mockup-alpe-palu-valmalenco.jpg"
+    image: "@assets/foto/mockup-alpe-palu-valmalenco.jpg"
     alt: "Illustrazione di prova: il lago dell'Alpe Palù fra le montagne"
     side: "overlay"
     note: "≈ 1950 m"

@@ -9,14 +9,14 @@ nav:
 seo:
   title: "Curiosità su Valtellina e cavalli · Equitazione Alpina"
   description: "Piccole storie dalla Valtellina e dal recinto: cavalli, montagna, cucina e tradizioni raccontate da Equitazione Alpina."
-  image: "../../../assets/valtellina/mockup-borgo-albosaggia.jpg"
+  image: "@assets/foto/mockup-borgo-albosaggia.jpg"
 blocks:
   - type: "hero"
     kicker: "Articoli"
     title: "Curiosità"
     intro: |
       Testo di prova. Piccole storie dal recinto e dalla valle, da leggere in cinque minuti.
-    image: "../../../assets/valtellina/mockup-borgo-albosaggia.jpg"
+    image: "@assets/foto/mockup-borgo-albosaggia.jpg"
     imageAlt: "Illustrazione di prova: un borgo in pietra fra i boschi"
   - type: "article-list"
     count: 12

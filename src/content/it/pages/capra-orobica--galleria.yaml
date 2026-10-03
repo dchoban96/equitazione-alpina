@@ -9,14 +9,14 @@ nav:
 seo:
   title: "Foto: Capra Orobica · Equitazione Alpina"
   description: "Le foto delle nostre Capre Orobiche al pascolo sul versante orobico della Valtellina."
-  image: "../../../assets/capra-orobica/mockup-capre-pascolo.jpg"
+  image: "@assets/foto/mockup-capre-pascolo.jpg"
 blocks:
   - type: "hero"
     kicker: "Galleria"
     title: "Galleria capre"
     intro: |
       Le capre al pascolo, in ogni stagione.
-    image: "../../../assets/capra-orobica/mockup-capre-pascolo.jpg"
+    image: "@assets/foto/mockup-capre-pascolo.jpg"
     imageAlt: "Illustrazione di prova: capre al pascolo sul pendio"
   - type: "gallery"
     gallery: "capra-orobica"

@@ -1,16 +1,17 @@
 # Reviews entered by hand. Shown as cards; no rating markup is sent to Google.
 # The first two are the reviews already published on the current site.
-- id: raicox-2022
-  title: Esperienza a cavallo piacevole e stupenda!!
-  text: Il posto, anche se situato al termine di una strada un po' sconnessa, è veramente bello. Ci sono tantissimi cavalli e Simone è una persona simpatica e disponibile. Torneremo con una bottiglia di lambrusco Simone!
-  author: Raicox
-  date: giugno 2022
-  stars: 5
-  sourceUrl: https://www.tripadvisor.it/ShowUserReviews-g1096256-d3489629-r846545391-Equitazione_Alpina-Albosaggia_Province_of_Sondrio_Lombardy.html
-- id: clarissa-2022
-  title: A passeggio nel bosco
-  text: Bellissima esperienza, passeggiata nel bosco, Simone ci ha portato a vedere un piccolo borgo in pietra e un punto panoramico. Consigliatissimo!
-  author: 843clarissav
-  date: gennaio 2022
-  stars: 5
-  sourceUrl: https://www.tripadvisor.it/ShowUserReviews-g1096256-d3489629-r823700949-Equitazione_Alpina-Albosaggia_Province_of_Sondrio_Lombardy.html
+items:
+  - id: raicox-2022
+    title: Esperienza a cavallo piacevole e stupenda!!
+    text: Il posto, anche se situato al termine di una strada un po' sconnessa, è veramente bello. Ci sono tantissimi cavalli e Simone è una persona simpatica e disponibile. Torneremo con una bottiglia di lambrusco Simone!
+    author: Raicox
+    date: giugno 2022
+    stars: 5
+    sourceUrl: https://www.tripadvisor.it/ShowUserReviews-g1096256-d3489629-r846545391-Equitazione_Alpina-Albosaggia_Province_of_Sondrio_Lombardy.html
+  - id: clarissa-2022
+    title: A passeggio nel bosco
+    text: Bellissima esperienza, passeggiata nel bosco, Simone ci ha portato a vedere un piccolo borgo in pietra e un punto panoramico. Consigliatissimo!
+    author: 843clarissav
+    date: gennaio 2022
+    stars: 5
+    sourceUrl: https://www.tripadvisor.it/ShowUserReviews-g1096256-d3489629-r823700949-Equitazione_Alpina-Albosaggia_Province_of_Sondrio_Lombardy.html

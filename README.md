@@ -14,7 +14,7 @@ files under `src/content/`, so a future CMS only has to read and write them.
 | `npm run build` | Production build into `dist/`. **Fails** if a published page still shows a `[DA COMPLETARE]` marker. |
 | `npm run preview` | Serve the last build locally. |
 | `node scripts/make-placeholder.mjs` | Regenerate the placeholder photo from the theme colours. |
-| `node scripts/make-mockups.mjs` | Regenerate the mockup illustrations (`src/assets/<section>/mockup-*.jpg`). |
+| `node scripts/make-mockups.mjs` | Regenerate the mockup illustrations (`src/assets/foto/mockup-*.jpg`). |
 
 The demo page with every block is at `/demo/` (not indexed, not in the menu).
 
@@ -30,7 +30,8 @@ src/content/
   it/articles/*.mdx        one file per curiosity article
   it/galleries/*.yaml      one file per gallery
   it/faq.yaml  it/reviews.yaml  it/curiosities.yaml
-src/assets/<section>/      images, referenced from content by relative path
+src/assets/foto/           all photos, referenced from content as "@assets/foto/<file>"
+public/admin/              the admin (Decap CMS), see ADMIN.md
 src/components/blocks/     the 15 section blocks
 reference/                 Shopify theme export and notes; never used by the site
 ```
@@ -77,13 +78,13 @@ the build with a message naming the file and field. The demo page
 
 ## Add a photo to a gallery
 
-1. Put the file in `src/assets/<section>/gallery/`, with a descriptive Italian
+1. Put the file in `src/assets/foto/`, with a descriptive Italian
    name (`passeggiata-cavallo-alpe-palu.jpg`), at most 2400 px on the long side.
 2. Add an entry to `src/content/it/galleries/<section>.yaml`:
 
    ```yaml
    photos:
-     - file: ../../../assets/equitazione/gallery/passeggiata-cavallo-alpe-palu.jpg
+     - file: "@assets/foto/passeggiata-cavallo-alpe-palu.jpg"
        alt: Due cavalli al passo sul sentiero dell'Alpe Palù
        caption: Verso l'Alpe Palù      # optional
        place: Valmalenco               # optional
@@ -100,6 +101,27 @@ until it holds at least 10 real photos.
 2. Fill `title`, `date`, `summary` (max 155 characters), `cover`, `coverAlt`, `section`.
 3. Write the text in Markdown, with at least one link to a business section.
 4. Set `draft: false` to publish. It appears in `/curiosita/` and in the sitemap.
+
+## Admin
+
+The client edits content at `/admin/` (Decap CMS, in Italian; login with
+email and password via DecapBridge): pages and sections, photos, galleries,
+articles, FAQ, reviews and company data. Every save is a commit and goes
+live after the next deploy. Setup, login and local testing are in
+`ADMIN.md`; the client's guide (Italian) is `GUIDA-ADMIN.md`.
+
+## SEO
+
+- Every page: title and description (`seo`), canonical URL, Open Graph and
+  Twitter tags with a 1200x630 share image, `noindex` for drafts and previews.
+- Structured data: LocalBusiness (home, contatti), WebSite (home),
+  BreadcrumbList, FAQPage, Article, ImageGallery. No review stars.
+- `sitemap.xml`: published pages and articles, each with the date of its last
+  commit and the photos it shows (image sitemap).
+- `robots.txt`: allows everything except `/admin/` and names the sitemap;
+  the preview build blocks everything.
+- Search Console / Bing ownership codes: `verification` in `settings/site.yaml`
+  (also in the admin).
 
 ## Hosting and redirects
 

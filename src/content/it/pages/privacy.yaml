@@ -9,14 +9,14 @@ nav:
 seo:
   title: "Informativa sulla privacy · Equitazione Alpina"
   description: "Informativa sul trattamento dei dati personali raccolti dal sito di Equitazione Alpina."
-  image: "../../../assets/valtellina/mockup-borgo-albosaggia.jpg"
+  image: "@assets/foto/mockup-borgo-albosaggia.jpg"
 blocks:
   - type: "hero"
     kicker: "Informazioni"
     title: "Informativa sulla privacy"
     intro: |
       Testo di prova. Questa pagina conterrà il testo definitivo, fornito dal titolare del sito.
-    image: "../../../assets/valtellina/mockup-borgo-albosaggia.jpg"
+    image: "@assets/foto/mockup-borgo-albosaggia.jpg"
     imageAlt: "Illustrazione di prova: un borgo in pietra"
   - type: "text"
     heading: "Titolare del trattamento"

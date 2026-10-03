@@ -9,14 +9,14 @@ nav:
 seo:
   title: "Storia della Valtellina · Guida"
   description: "La storia della Valtellina in breve: castelli, secoli di confine e il lungo periodo sotto i Grigioni, dal 1512 al 1797."
-  image: "../../../assets/valtellina/mockup-castello.jpg"
+  image: "@assets/foto/mockup-castello.jpg"
 blocks:
   - type: "hero"
     kicker: "Guida alla Valtellina"
     title: "Storia della valle"
     intro: |
       Testo di prova. Una valle di passaggio e di confine, fra la Lombardia e le Alpi svizzere.
-    image: "../../../assets/valtellina/mockup-castello.jpg"
+    image: "@assets/foto/mockup-castello.jpg"
     imageAlt: "Illustrazione di prova: una torre di castello su una collina al tramonto"
   - type: "text"
     kicker: "Il confine"

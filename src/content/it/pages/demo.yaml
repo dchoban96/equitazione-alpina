@@ -11,7 +11,7 @@ nav: { hidden: true }
 seo:
   title: Demo dei blocchi · Equitazione Alpina
   description: Pagina di prova con tutti i blocchi del sito. Non indicizzata.
-  image: ../../../assets/segnaposto/segnaposto.jpg
+  image: "@assets/foto/segnaposto.jpg"
 altimeter: { enabled: true, min: 500, max: 1950 }
 blocks:
   - type: hero
@@ -23,7 +23,7 @@ blocks:
       Testo introduttivo dimostrativo. Ogni pagina del sito è una sequenza di blocchi scritti in un file di contenuto: qui ne compare uno per tipo, nell'ordine in cui si usano più spesso.
     closing: Scorri la pagina e guarda l'altimetro salire.
     footnote: Si sale da 500 a 1950 m
-    image: ../../../assets/segnaposto/segnaposto.jpg
+    image: "@assets/foto/segnaposto.jpg"
     imageAlt: "Segnaposto: foto di apertura in arrivo"
     panelKicker: Scheda dati
     panel:
@@ -59,7 +59,7 @@ blocks:
     side: right
     body: |
       Testo dimostrativo accanto a una foto. La foto può stare a destra, a sinistra, sotto il testo o sotto il testo in sovrapposizione.
-    image: ../../../assets/segnaposto/segnaposto.jpg
+    image: "@assets/foto/segnaposto.jpg"
     alt: "Segnaposto: foto in arrivo"
     caption: Didascalia dimostrativa della foto
 
@@ -70,7 +70,7 @@ blocks:
     side: left
     body: |
       Stesso blocco con la foto a sinistra e una scheda dati sotto il testo.
-    image: ../../../assets/segnaposto/segnaposto.jpg
+    image: "@assets/foto/segnaposto.jpg"
     alt: "Segnaposto: foto in arrivo"
     details:
       - { label: Durata, value: Dato dimostrativo }
@@ -82,7 +82,7 @@ blocks:
     heading: Testo sopra la foto
     side: overlay
     lead: Frase dimostrativa sopra la foto, con la velatura scura che la tiene leggibile.
-    image: ../../../assets/segnaposto/segnaposto.jpg
+    image: "@assets/foto/segnaposto.jpg"
     alt: "Segnaposto: foto in arrivo"
 
   - type: cards
@@ -101,9 +101,9 @@ blocks:
     heading: Cartoline con foto e collegamento
     style: cards
     items:
-      - { title: Prima cartolina, text: Testo breve dimostrativo., label: Scopri, link: "#galleria", image: ../../../assets/segnaposto/segnaposto.jpg, alt: "Segnaposto: foto in arrivo" }
-      - { title: Seconda cartolina, text: Testo breve dimostrativo., label: Scopri, link: "#galleria", image: ../../../assets/segnaposto/segnaposto.jpg, alt: "Segnaposto: foto in arrivo" }
-      - { title: Terza cartolina, text: Testo breve dimostrativo., label: Scopri, link: "#galleria", image: ../../../assets/segnaposto/segnaposto.jpg, alt: "Segnaposto: foto in arrivo" }
+      - { title: Prima cartolina, text: Testo breve dimostrativo., label: Scopri, link: "#galleria", image: "@assets/foto/segnaposto.jpg", alt: "Segnaposto: foto in arrivo" }
+      - { title: Seconda cartolina, text: Testo breve dimostrativo., label: Scopri, link: "#galleria", image: "@assets/foto/segnaposto.jpg", alt: "Segnaposto: foto in arrivo" }
+      - { title: Terza cartolina, text: Testo breve dimostrativo., label: Scopri, link: "#galleria", image: "@assets/foto/segnaposto.jpg", alt: "Segnaposto: foto in arrivo" }
 
   - type: places
     altitude: 1300
@@ -172,7 +172,7 @@ blocks:
     kicker: Blocco mappa
     heading: Mappa statica con indicazioni
     label: Località Ravasciolo, Albosaggia
-    image: ../../../assets/segnaposto/segnaposto.jpg
+    image: "@assets/foto/segnaposto.jpg"
     alt: "Segnaposto: mappa statica in arrivo"
 
   - type: cta-contact

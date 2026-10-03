@@ -9,14 +9,14 @@ nav:
 seo:
   title: "Cosa fare ad Albosaggia e sulle Orobie · Guida"
   description: "Cosa fare fra Albosaggia, le Orobie e la Valmalenco in estate e in inverno: sentieri, alpeggi, neve, e i cavalli tutto l'anno."
-  image: "../../../assets/valtellina/mockup-estate.jpg"
+  image: "@assets/foto/mockup-estate.jpg"
 blocks:
   - type: "hero"
     kicker: "Guida alla Valtellina"
     title: "Cosa fare, stagione per stagione"
     intro: |
       Testo di prova. Idee per chi passa qualche giorno fra Albosaggia, le Orobie e la Valmalenco.
-    image: "../../../assets/valtellina/mockup-estate.jpg"
+    image: "@assets/foto/mockup-estate.jpg"
     imageAlt: "Illustrazione di prova: un prato fiorito sotto le montagne"
   - type: "cards"
     kicker: "Le stagioni"
@@ -27,13 +27,13 @@ blocks:
         text: "Sentieri, alpeggi, la Valmalenco."
         link: "/valtellina/cosa-fare/estate/"
         label: "Leggi"
-        image: "../../../assets/valtellina/mockup-estate.jpg"
+        image: "@assets/foto/mockup-estate.jpg"
         alt: "Illustrazione di prova: prato fiorito"
       - title: "Inverno"
         text: "Neve, boschi, i cavalli ad Albosaggia."
         link: "/valtellina/cosa-fare/inverno/"
         label: "Leggi"
-        image: "../../../assets/valtellina/mockup-inverno.jpg"
+        image: "@assets/foto/mockup-inverno.jpg"
         alt: "Illustrazione di prova: bosco innevato"
   - type: "cta-contact"
     kicker: "Equitazione Alpina"

@@ -10,7 +10,7 @@ localBusiness: true
 seo:
   title: "Contatti · Equitazione Alpina, Albosaggia (SO)"
   description: "Telefono, WhatsApp, email e indirizzo di Equitazione Alpina: Località Ravasciolo, Albosaggia (SO), a 10 minuti da Sondrio."
-  image: "../../../assets/valtellina/mockup-mappa.jpg"
+  image: "@assets/foto/mockup-mappa.jpg"
 blocks:
   - type: "hero"
     kicker: "Parlare con noi"
@@ -18,7 +18,7 @@ blocks:
     intro: |
       Il modo più veloce è una telefonata: rispondiamo anche da fuori, con il telefono in tasca. Se preferisci scrivere, il modulo qui accanto arriva direttamente a noi.
     footnote: "Albosaggia, 500 m"
-    image: "../../../assets/valtellina/mockup-mappa.jpg"
+    image: "@assets/foto/mockup-mappa.jpg"
     imageAlt: "Illustrazione di prova: mappa con Sondrio, Albosaggia e la Valmalenco"
   - type: "cta-contact"
     kicker: "Contatti"
@@ -30,5 +30,5 @@ blocks:
     kicker: "Dove siamo"
     heading: "Località Ravasciolo, Albosaggia"
     label: "Località Ravasciolo, Albosaggia"
-    image: "../../../assets/valtellina/mockup-mappa.jpg"
+    image: "@assets/foto/mockup-mappa.jpg"
     alt: "Illustrazione di prova: mappa con Sondrio, Albosaggia e la Valmalenco"

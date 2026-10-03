@@ -2,7 +2,7 @@ import { getCollection, getEntry } from 'astro:content';
 import { getImage } from 'astro:assets';
 import type { Block, Page, Site } from './content';
 import { absolute, pagePath } from './content';
-import { faqJsonLd, galleryJsonLd, localBusinessJsonLd } from './jsonld';
+import { faqJsonLd, galleryJsonLd, localBusinessJsonLd, websiteJsonLd } from './jsonld';
 
 type FaqBlock = Extract<Block, { type: 'faq' }>;
 
@@ -22,6 +22,8 @@ export async function faqFor(b: FaqBlock) {
 export async function pageJsonLd(page: Page, site: Site): Promise<object[]> {
   const out: object[] = [];
   const pageUrl = absolute(pagePath(page.data.slug), site.url);
+
+  if (page.data.slug === '') out.push(websiteJsonLd(site));
 
   if (page.data.localBusiness) {
     const img = await getImage({ src: page.data.seo.image, width: 1200, format: 'jpg' });

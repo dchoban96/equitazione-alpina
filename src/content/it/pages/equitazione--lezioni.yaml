@@ -9,14 +9,14 @@ nav:
 seo:
   title: "Lezioni di equitazione vicino a Sondrio · Albosaggia"
   description: "Lezioni di equitazione ad Albosaggia per adulti e bambini: si comincia da terra, si sale in sella quando si è pronti. A 10 minuti da Sondrio."
-  image: "../../../assets/equitazione/sellare-il-cavallo-orizzontale.jpg"
+  image: "@assets/foto/sellare-il-cavallo-orizzontale.jpg"
 blocks:
   - type: "hero"
     kicker: "Lezioni"
     title: "Lezioni di equitazione, dal primo contatto al sentiero"
     intro: |
       Alla scuola di equitazione di Albosaggia non si comincia dalla sella. Chi non è mai salito a cavallo parte da terra: conosce l'animale, impara a stargli accanto e a condurlo, e sale quando è pronto. Vale per gli adulti come per i bambini, che possono avvicinarsi ai cavalli già da tre anni. Le lezioni si fanno in struttura, su appuntamento, e il ritmo lo decidono insieme chi impara e il cavallo.
-    image: "../../../assets/equitazione/sellare-il-cavallo-orizzontale.jpg"
+    image: "@assets/foto/sellare-il-cavallo-orizzontale.jpg"
     imageAlt: "Un cavallo baio viene sellato con una sella western, accanto al bosco"
   - type: "cards"
     kicker: "Le lezioni"

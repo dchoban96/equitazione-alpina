@@ -9,7 +9,7 @@ nav:
 seo:
   title: "I nostri Pastore del Lagorai · Equitazione Alpina"
   description: "I Pastore del Lagorai che vivono al recinto di Albosaggia, accanto ai cavalli. Non sono in vendita e non vendiamo cuccioli."
-  image: "../../../assets/pastore-del-lagorai/cani-sul-prato-orizzontale.jpg"
+  image: "@assets/foto/cani-sul-prato-orizzontale.jpg"
 blocks:
   - type: "hero"
     kicker: "Pastore del Lagorai"
@@ -18,7 +18,7 @@ blocks:
       Testo di prova. Qui presenteremo i cani uno per uno, con le loro abitudini e il loro lavoro.
 
       I nostri cani non sono in vendita e non vendiamo cuccioli: questa sezione racconta la razza e il lavoro dei cani con gli animali.
-    image: "../../../assets/pastore-del-lagorai/cani-sul-prato-orizzontale.jpg"
+    image: "@assets/foto/cani-sul-prato-orizzontale.jpg"
     imageAlt: "Tre cani sul prato: uno nero seduto, uno fulvo e uno chiaro sdraiato"
   - type: "cards"
     kicker: "I cani"
@@ -27,15 +27,15 @@ blocks:
     items:
       - title: "Il più esperto"
         text: "Testo di prova: nome, età e carattere arriveranno con le foto vere."
-        image: "../../../assets/pastore-del-lagorai/cane-nero-orizzontale.jpg"
+        image: "@assets/foto/cane-nero-orizzontale.jpg"
         alt: "Un cane nero dal pelo lungo in giardino"
       - title: "Il più giovane"
         text: "Testo di prova: nome, età e carattere arriveranno con le foto vere."
-        image: "../../../assets/pastore-del-lagorai/cucciolo-nero-orizzontale.jpg"
+        image: "@assets/foto/cucciolo-nero-orizzontale.jpg"
         alt: "Un cucciolo nero con gli occhi chiari guarda in alto"
       - title: "Al lavoro con il gregge"
         text: "Testo di prova: nome, età e carattere arriveranno con le foto vere."
-        image: "../../../assets/pastore-del-lagorai/mockup-pastore-gregge.jpg"
+        image: "@assets/foto/mockup-pastore-gregge.jpg"
         alt: "Illustrazione di prova: un cane accanto alle pecore"
   - type: "cta-contact"
     kicker: "Contatti"

@@ -87,6 +87,8 @@ const alternates = site.languages.length > 1 ? site.languages.map((l) => ({ lang
     <meta name="description" content={description} />
     <meta name="robots" content={robots} />
     <link rel="canonical" href={canonical} />
+    {site.verification.google && <meta name="google-site-verification" content={site.verification.google} />}
+    {site.verification.bing && <meta name="msvalidate.01" content={site.verification.bing} />}
     {alternates.map((a) => <link rel="alternate" hreflang={a.lang} href={a.href} />)}
     <script is:inline>
       // Content stays visible unless JavaScript runs: animations hide it only under .js.
@@ -137,6 +139,7 @@ const alternates = site.languages.length > 1 ? site.languages.map((l) => ({ lang
     </main>
     <Footer site={site} menu={menu} links={footerLinks} ui={ui} />
     {ridges && <Ridges fixed part="front" />}
+    {ridges && <div class="edge-bottom" aria-hidden="true" />}
     {altimeter && <Altimeter min={altimeter.min} max={altimeter.max} start={altimeter.start} ui={ui} />}
     <CookieConsent site={site} ui={ui} />
     <script>

@@ -9,7 +9,7 @@ nav:
 seo:
   title: "Chi siamo · Equitazione Alpina, Albosaggia"
   description: "Equitazione Alpina è il maneggio di Simone De Capitani ad Albosaggia: oltre trent'anni con i cavalli, sulle Orobie e in Valmalenco."
-  image: "../../../assets/equitazione/selleria-selle-western.jpg"
+  image: "@assets/foto/selleria-selle-western.jpg"
 blocks:
   - type: "hero"
     kicker: "Chi c'è dietro"
@@ -18,7 +18,7 @@ blocks:
       Simone De Capitani lavora con i cavalli da oltre trent'anni. Ha imparato quando l'equitazione di montagna in Valtellina la praticavano in pochi, e da allora non ha smesso: gli stessi versanti, le stesse stagioni, cavalli che si sono succeduti uno dopo l'altro e che conosce a uno a uno.
 
       Quello che conta, per chi arriva qui la prima volta, è che qualcuno sappia leggere un cavallo prima che il cavallo debba farsi capire a modo suo.
-    image: "../../../assets/equitazione/selleria-selle-western.jpg"
+    image: "@assets/foto/selleria-selle-western.jpg"
     imageAlt: "Selle western, briglie e coperte appese nella selleria"
   - type: "facts"
     items:
@@ -39,7 +39,7 @@ blocks:
       D'estate ci sono le mosche e il fango dopo i temporali, perché è così che vivono i cavalli quando li si lascia essere cavalli.
 
       Ogni tanto nasce un puledro, e per qualche settimana tutto il resto passa in secondo piano.
-    image: "../../../assets/equitazione/cavalli-al-pascolo-albosaggia.jpg"
+    image: "@assets/foto/cavalli-al-pascolo-albosaggia.jpg"
     alt: "Due cavalli sauri con la lista bianca e un cavallo grigio liberi sul prato del recinto, sotto il bosco"
     side: "right"
   - type: "cards"

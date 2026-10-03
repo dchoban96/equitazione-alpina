@@ -9,14 +9,14 @@ nav:
 seo:
   title: "Vini della Valtellina: Nebbiolo dei terrazzamenti"
   description: "I vini della Valtellina: il Nebbiolo dei terrazzamenti, le cinque sottozone del Valtellina Superiore e lo Sforzato, fatto con uve appassite."
-  image: "../../../assets/valtellina/mockup-vini.jpg"
+  image: "@assets/foto/mockup-vini.jpg"
 blocks:
   - type: "hero"
     kicker: "Guida alla Valtellina"
     title: "Vini"
     intro: |
       Dal nostro versante le vigne si vedono bene: stanno tutte di fronte, sul lato della valle esposto a sud. Lì la montagna è stata ridisegnata a mano, con oltre 2.500 chilometri di muretti a secco, fatti pietra su pietra e senza malta, che reggono le terrazze. Le vigne corrono così per una cinquantina di chilometri lungo la valle, fino a Tirano. È la più grande area terrazzata d'Italia, e da secoli ci cresce quasi una sola uva.
-    image: "../../../assets/valtellina/mockup-vini.jpg"
+    image: "@assets/foto/mockup-vini.jpg"
     imageAlt: "Illustrazione di prova: una bottiglia e un calice di vino rosso"
   - type: "text"
     kicker: "L'uva"

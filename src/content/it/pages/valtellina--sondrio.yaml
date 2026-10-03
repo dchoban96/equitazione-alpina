@@ -9,14 +9,14 @@ nav:
 seo:
   title: "Sondrio e dintorni · Guida alla Valtellina"
   description: "Sondrio, capoluogo della Valtellina sull'Adda, e i dintorni: cosa vedere e come raggiungere Albosaggia, a dieci minuti dalla città."
-  image: "../../../assets/valtellina/mockup-valle-sondrio.jpg"
+  image: "@assets/foto/mockup-valle-sondrio.jpg"
 blocks:
   - type: "hero"
     kicker: "Guida alla Valtellina"
     title: "Sondrio e dintorni"
     intro: |
       Testo di prova. Sondrio è il capoluogo della provincia e sta sull'Adda, dove scende il torrente Mallero dalla Valmalenco.
-    image: "../../../assets/valtellina/mockup-valle-sondrio.jpg"
+    image: "@assets/foto/mockup-valle-sondrio.jpg"
     imageAlt: "Illustrazione di prova: la città nella valle sotto le montagne"
   - type: "text"
     kicker: "Cosa vedere"

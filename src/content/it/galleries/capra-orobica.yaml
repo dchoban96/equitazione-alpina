@@ -1,24 +1,24 @@
 # Gallery "Galleria capre". MOCKUP: illustrations, to be replaced with real photos.
-# Add a photo: put the file in src/assets/capra-orobica/gallery/ and add an entry below.
+# Add a photo: put the file in src/assets/foto/ and add an entry below (or use the admin).
 title: "Galleria capre"
 section: "capra-orobica"
 mockup: true
 photos:
-  - file: "../../../assets/capra-orobica/mockup-capra-ritratto.jpg"
+  - file: "@assets/foto/mockup-capra-ritratto.jpg"
     alt: "Illustrazione di prova: una Capra Orobica davanti alle montagne"
     caption: "Ritratto"
-  - file: "../../../assets/capra-orobica/mockup-capre-pascolo.jpg"
+  - file: "@assets/foto/mockup-capre-pascolo.jpg"
     alt: "Illustrazione di prova: capre al pascolo sul pendio"
     caption: "Al pascolo"
-  - file: "../../../assets/valtellina/mockup-borgo-albosaggia.jpg"
+  - file: "@assets/foto/mockup-borgo-albosaggia.jpg"
     alt: "Illustrazione di prova: un borgo in pietra fra i boschi"
     caption: "Le contrade"
-  - file: "../../../assets/valtellina/mockup-estate.jpg"
+  - file: "@assets/foto/mockup-estate.jpg"
     alt: "Illustrazione di prova: un prato fiorito sotto le montagne"
     caption: "I pascoli in estate"
-  - file: "../../../assets/valtellina/mockup-ghiacciaio.jpg"
+  - file: "@assets/foto/mockup-ghiacciaio.jpg"
     alt: "Illustrazione di prova: montagne con ghiacciai"
     caption: "Le montagne intorno"
-  - file: "../../../assets/valtellina/mockup-terrazzamenti.jpg"
+  - file: "@assets/foto/mockup-terrazzamenti.jpg"
     alt: "Illustrazione di prova: vigneti terrazzati al tramonto"
     caption: "Il versante di fronte"

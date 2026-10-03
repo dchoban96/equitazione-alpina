@@ -9,14 +9,14 @@ nav:
 seo:
   title: "Geologia e paesaggio della Valtellina · Guida"
   description: "Come è nata la Valtellina: i ghiacciai che hanno scavato la valle, le rocce dei due versanti e i terrazzamenti costruiti a mano."
-  image: "../../../assets/valtellina/mockup-ghiacciaio.jpg"
+  image: "@assets/foto/mockup-ghiacciaio.jpg"
 blocks:
   - type: "hero"
     kicker: "Guida alla Valtellina"
     title: "Geologia e paesaggio"
     intro: |
       Testo di prova. Una valle lunga, scavata dai ghiacciai e poi modellata dall'uomo, un muretto alla volta.
-    image: "../../../assets/valtellina/mockup-ghiacciaio.jpg"
+    image: "@assets/foto/mockup-ghiacciaio.jpg"
     imageAlt: "Illustrazione di prova: montagne con ghiacciai"
   - type: "text"
     kicker: "Ghiacciai"
@@ -36,7 +36,7 @@ blocks:
   - type: "text-image"
     kicker: "Terrazze"
     heading: "Il versante retico"
-    image: "../../../assets/valtellina/mockup-terrazzamenti.jpg"
+    image: "@assets/foto/mockup-terrazzamenti.jpg"
     alt: "Illustrazione di prova: vigneti terrazzati al tramonto"
     side: "below"
     caption: "Illustrazione di prova"

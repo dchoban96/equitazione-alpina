@@ -45,10 +45,14 @@
 
 /* ---------- header: a floating glass capsule ---------- */
 .site-header {
+  /* The header never touches the top edge (10px gap, also when stuck): Safari
+     26 paints its status bar with the background colour of a fixed/sticky
+     element touching the edge, and a transparent one gives a flat band. */
   position: sticky;
-  top: 0;
+  top: 10px;
   z-index: 50;
-  padding: 10px clamp(10px, 2.5vw, 24px) 0;
+  margin-top: 10px;
+  padding: 0 clamp(10px, 2.5vw, 24px);
   color: var(--color-header-text);
   font-family: var(--font-ui);
   font-weight: var(--weight-ui);
@@ -62,13 +66,15 @@
   pointer-events: auto;
 }
 .site-header.is-hidden {
-  transform: translateY(calc(-100% - 12px));
+  transform: translateY(calc(-100% - 14px));
 }
 /* home: the header floats over the opening instead of taking room above it */
 .site-header--overlay {
   position: fixed;
+  top: 10px;
   left: 0;
   right: 0;
+  margin-top: 0;
 }
 .site-header__bar {
   position: relative;
@@ -643,7 +649,7 @@
   gap: 8px;
   padding-top: 4px;
 }
-.site-footer__social a {
+.site-footer .site-footer__social a:not(.btn) {
   padding: 0 14px;
   border-radius: var(--radius-pill);
   background: rgba(var(--color-accent-rgb), 0.08);
@@ -652,7 +658,7 @@
     background-color var(--duration-fast),
     color var(--duration-fast);
 }
-.site-footer__social a:hover {
+.site-footer .site-footer__social a:not(.btn):hover {
   background: var(--color-accent);
   color: var(--color-accent-contrast);
 }
@@ -825,6 +831,19 @@
 .ridges--front.ridges--fixed .ridge {
   bottom: var(--ridges-bleed);
   height: calc(100% - var(--ridges-bleed));
+}
+/* Safari 26 colours its bottom toolbar from the background-color of a fixed
+   element touching the bottom edge (pseudo-elements are ignored): a thin
+   strip in the nearest ridge's colour, hidden behind that ridge, gives it
+   the green. */
+.edge-bottom {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 31;
+  height: 8px;
+  background-color: var(--color-ridge-3);
 }
 .ridges--front.ridges--fixed::after {
   content: '';

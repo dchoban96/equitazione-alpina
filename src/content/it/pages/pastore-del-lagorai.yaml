@@ -9,7 +9,7 @@ nav:
 seo:
   title: "Allevamento Pastore del Lagorai · Albosaggia (SO)"
   description: "I nostri Pastore del Lagorai ad Albosaggia: il cane da pastore del Trentino che lavora accanto a cavalli e greggi. Non vendiamo cuccioli."
-  image: "../../../assets/pastore-del-lagorai/pastore-blue-merle-al-recinto.jpg"
+  image: "@assets/foto/pastore-blue-merle-al-recinto.jpg"
 blocks:
   - type: "hero"
     kicker: "Pastore del Lagorai"
@@ -18,7 +18,7 @@ blocks:
       Al recinto il cane arriva sempre prima di tutti: corre avanti, accompagna i cavalli, conosce ogni sentiero. I nostri sono Pastori del Lagorai, una razza da lavoro delle Alpi del Nord-Est che da sempre segue greggi e mandrie nella transumanza.
 
       I nostri cani non sono in vendita e non vendiamo cuccioli: questa sezione racconta la razza e il lavoro dei cani con gli animali.
-    image: "../../../assets/pastore-del-lagorai/pastore-blue-merle-al-recinto.jpg"
+    image: "@assets/foto/pastore-blue-merle-al-recinto.jpg"
     imageAlt: "Un Pastore del Lagorai blue merle in piedi sul prato, davanti a un muretto di pietra"
   - type: "text-image"
     kicker: "Il lavoro"
@@ -27,7 +27,7 @@ blocks:
       Il Pastore del Lagorai, che di nome completo fa Cane da Pastore della Lessinia e del Lagorai, è un cane da conduzione: il suo mestiere è guidare e custodire il gregge. Lo si usa con pecore e capre, ma anche con animali più difficili da governare, come le mucche e i cavalli. Da noi fa proprio questo, ogni giorno, accanto ai cavalli e alle capre.
 
       Della sua storia e del suo carattere parliamo nella pagina [La razza](/pastore-del-lagorai/razza/).
-    image: "../../../assets/pastore-del-lagorai/pastore-blue-merle-seduto.jpg"
+    image: "@assets/foto/pastore-blue-merle-seduto.jpg"
     alt: "Un Pastore del Lagorai blue merle seduto nel recinto, al sole"
     side: "right"
   - type: "cards"

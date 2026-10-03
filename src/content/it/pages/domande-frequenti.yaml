@@ -9,14 +9,14 @@ nav:
 seo:
   title: "Domande frequenti · Equitazione Alpina"
   description: "Le risposte alle domande più frequenti: età minima, esperienza, stagione in Valmalenco, buoni regalo, cani e capre."
-  image: "../../../assets/equitazione/mockup-lezione-maneggio.jpg"
+  image: "@assets/foto/mockup-lezione-maneggio.jpg"
 blocks:
   - type: "hero"
     kicker: "Domande"
     title: "Domande frequenti"
     intro: |
       Testo di prova. Le domande che ci fanno più spesso, prima di venire.
-    image: "../../../assets/equitazione/mockup-lezione-maneggio.jpg"
+    image: "@assets/foto/mockup-lezione-maneggio.jpg"
     imageAlt: "Illustrazione di prova: un cavaliere lungo lo steccato"
   - type: "faq"
     kicker: "Equitazione"

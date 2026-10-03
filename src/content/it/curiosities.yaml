@@ -1,24 +1,25 @@
 # Short "Lo sapevi?" facts. `sections` lists where each may appear.
 # MOCKUP: general facts, to be checked by the owner before launch.
-- id: "pizzoccheri"
-  text: "I pizzoccheri si fanno con farina di grano saraceno, coltivato in Valtellina da secoli."
-  sections:
-    - "home"
-    - "valtellina"
-- id: "grigioni"
-  text: "Dal 1512 al 1797 la Valtellina fu governata dalle Tre Leghe dei Grigioni."
-  sections:
-    - "valtellina"
-- id: "val-gerola"
-  text: "La Capra Orobica è chiamata anche capra di Val Gerola, da una delle valli delle Orobie."
-  sections:
-    - "capra-orobica"
-    - "home"
-- id: "lagorai"
-  text: "Il Pastore del Lagorai prende il nome da una catena di montagne del Trentino orientale."
-  sections:
-    - "pastore-del-lagorai"
-- id: "demo"
-  text: "Testo dimostrativo del riquadro «Lo sapevi?». Qui andrà una curiosità breve, con la sua fonte verificata."
-  sections:
-    - "demo"
+items:
+  - id: "pizzoccheri"
+    text: "I pizzoccheri si fanno con farina di grano saraceno, coltivato in Valtellina da secoli."
+    sections:
+      - "home"
+      - "valtellina"
+  - id: "grigioni"
+    text: "Dal 1512 al 1797 la Valtellina fu governata dalle Tre Leghe dei Grigioni."
+    sections:
+      - "valtellina"
+  - id: "val-gerola"
+    text: "La Capra Orobica è chiamata anche capra di Val Gerola, da una delle valli delle Orobie."
+    sections:
+      - "capra-orobica"
+      - "home"
+  - id: "lagorai"
+    text: "Il Pastore del Lagorai prende il nome da una catena di montagne del Trentino orientale."
+    sections:
+      - "pastore-del-lagorai"
+  - id: "demo"
+    text: "Testo dimostrativo del riquadro «Lo sapevi?». Qui andrà una curiosità breve, con la sua fonte verificata."
+    sections:
+      - "demo"

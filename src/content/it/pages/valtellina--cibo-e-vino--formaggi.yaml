@@ -9,14 +9,14 @@ nav:
 seo:
   title: "Formaggi della Valtellina: Bitto e Valtellina Casera"
   description: "Bitto e Valtellina Casera, i due formaggi DOP della Valtellina: come nascono, in cosa sono diversi e cosa c'entra la Capra Orobica."
-  image: "../../../assets/valtellina/mockup-formaggi.jpg"
+  image: "@assets/foto/mockup-formaggi.jpg"
 blocks:
   - type: "hero"
     kicker: "Guida alla Valtellina"
     title: "Formaggi"
     intro: |
       In Valtellina il formaggio segue le stagioni. D'estate le mandrie salgono agli alpeggi e il latte si lavora lassù, appena munto: è il tempo del Bitto. Per il resto dell'anno gli animali stanno a valle e il latte di più stalle arriva nelle latterie, dove nasce il Valtellina Casera. Sono due formaggi diversi, figli delle stesse montagne, ed entrambi hanno la Denominazione di Origine Protetta dal 1996.
-    image: "../../../assets/valtellina/mockup-formaggi.jpg"
+    image: "@assets/foto/mockup-formaggi.jpg"
     imageAlt: "Illustrazione di prova: forme di formaggio su un tavolo"
   - type: "text"
     kicker: "D'alpeggio"

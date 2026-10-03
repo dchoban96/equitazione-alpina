@@ -9,14 +9,14 @@ nav:
 seo:
   title: "Foto: Pastore del Lagorai · Equitazione Alpina"
   description: "Le foto dei nostri Pastore del Lagorai al lavoro, sui prati e nella neve di Albosaggia."
-  image: "../../../assets/pastore-del-lagorai/pastore-blue-merle-sul-prato.jpg"
+  image: "@assets/foto/pastore-blue-merle-sul-prato.jpg"
 blocks:
   - type: "hero"
     kicker: "Galleria"
     title: "Galleria cani"
     intro: |
       I cani al lavoro e a riposo, in ogni stagione.
-    image: "../../../assets/pastore-del-lagorai/pastore-blue-merle-sul-prato.jpg"
+    image: "@assets/foto/pastore-blue-merle-sul-prato.jpg"
     imageAlt: "Un Pastore del Lagorai blue merle sul prato, davanti alla casa"
   - type: "gallery"
     gallery: "pastore-del-lagorai"

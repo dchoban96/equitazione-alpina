@@ -13,7 +13,7 @@ altimeter:
 seo:
   title: "Passeggiate a cavallo in Valtellina · Orobie e Albosaggia"
   description: "Passeggiate a cavallo sulle Orobie sopra Albosaggia, tutto l'anno: boschi di castagno e faggio, sentieri verso San Bernardo e il Lago Casera."
-  image: "../../../assets/equitazione/passeggiata-a-cavallo-sul-sentiero-orizzontale.jpg"
+  image: "@assets/foto/passeggiata-a-cavallo-sul-sentiero-orizzontale.jpg"
 blocks:
   - type: "hero"
     kicker: "Passeggiate"
@@ -21,7 +21,7 @@ blocks:
     intro: |
       Si parte dal recinto di Albosaggia e si sale nei boschi del versante orobico, dentro il Parco delle Orobie Valtellinesi, con la valle che si apre sotto man mano che si guadagna quota. Le uscite durano un'ora o più: per chi comincia ci sono i percorsi brevi, per chi ha esperienza i trekking di uno o più giorni.
     altitude: 500
-    image: "../../../assets/equitazione/passeggiata-a-cavallo-sul-sentiero-orizzontale.jpg"
+    image: "@assets/foto/passeggiata-a-cavallo-sul-sentiero-orizzontale.jpg"
     imageAlt: "Due cavalieri al passo su una strada sterrata fra gli abeti, con le montagne sullo sfondo"
   - type: "text"
     kicker: "Le Orobie"
@@ -54,7 +54,7 @@ blocks:
       Chi non è mai salito in sella comincia con una breve introduzione al cavallo, oppure dalle [lezioni](/equitazione/lezioni/).
 
       Per conoscere il versante a piedi c'è la nostra guida ad [Albosaggia e le Orobie](/valtellina/albosaggia-e-orobie/).
-    image: "../../../assets/equitazione/sellare-il-cavallo.jpg"
+    image: "@assets/foto/sellare-il-cavallo.jpg"
     alt: "Un cavallo baio viene sellato con una sella western, accanto al bosco"
     side: "left"
   - type: "gallery-preview"

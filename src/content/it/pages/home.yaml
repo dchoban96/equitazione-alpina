@@ -15,7 +15,7 @@ altimeter:
 seo:
   title: "Equitazione Alpina · Maneggio ad Albosaggia, Sondrio"
   description: "Passeggiate a cavallo sulle Orobie e in Valmalenco, lezioni e pensione cavalli ad Albosaggia, a 10 minuti da Sondrio."
-  image: "../../../assets/equitazione/cavallo-pezzato-al-pascolo.jpg"
+  image: "@assets/foto/cavallo-pezzato-al-pascolo.jpg"
 blocks:
   - type: "hero"
     title: "I cavalli ci prestano le ali che ci mancano"
@@ -35,7 +35,7 @@ blocks:
         value: "Fine estate"
       - label: "Luogo"
         value: "Albosaggia"
-    image: "../../../assets/equitazione/cavallo-pezzato-al-pascolo.jpg"
+    image: "@assets/foto/cavallo-pezzato-al-pascolo.jpg"
     imageAlt: "Un cavallo pezzato bianco e nero bruca l'erba alta di un prato soleggiato"
     video: "/video/intro-cavallo-al-pascolo.mp4"
   - type: "text"
@@ -66,7 +66,7 @@ blocks:
       D'estate ci sono le mosche e il fango dopo i temporali, perché è così che vivono i cavalli quando li si lascia essere cavalli.
 
       Ogni tanto nasce un puledro, e per qualche settimana tutto il resto passa in secondo piano.
-    image: "../../../assets/equitazione/cavalli-al-pascolo-albosaggia.jpg"
+    image: "@assets/foto/cavalli-al-pascolo-albosaggia.jpg"
     alt: "Due cavalli sauri con la lista bianca e un cavallo grigio liberi sul prato del recinto, sotto il bosco"
     side: "right"
     note: "recinto"
@@ -96,14 +96,14 @@ blocks:
       Chi non è mai salito in sella comincia da terra: si conosce l'animale, si impara a stargli accanto, si sale quando si è pronti. Chi monta da anni trova sentieri che meritano la giornata intera.
 
       I bambini possono avvicinarsi ai cavalli da tre anni, condotti a mano, per il tempo che serve — dieci minuti bastano, se sono i dieci minuti giusti.
-    image: "../../../assets/equitazione/passeggiata-a-cavallo-sul-sentiero.jpg"
+    image: "@assets/foto/passeggiata-a-cavallo-sul-sentiero.jpg"
     alt: "Due cavalieri al passo su una strada sterrata fra gli abeti, con le montagne sullo sfondo"
     side: "left"
     note: "al passo"
   - type: "text-image"
     kicker: "Valmalenco"
     heading: "Verso l'Alpe Palù"
-    image: "../../../assets/equitazione/mockup-alpe-palu-valmalenco.jpg"
+    image: "@assets/foto/mockup-alpe-palu-valmalenco.jpg"
     alt: "Illustrazione di prova: il lago dell'Alpe Palù fra le montagne"
     side: "overlay"
     note: "≈ 1950 m"
@@ -153,19 +153,19 @@ blocks:
         text: "I cani che lavorano accanto ai cavalli e al gregge."
         label: "Scopri i cani"
         link: "/pastore-del-lagorai/"
-        image: "../../../assets/pastore-del-lagorai/pastore-blue-merle-al-recinto.jpg"
+        image: "@assets/foto/pastore-blue-merle-al-recinto.jpg"
         alt: "Un Pastore del Lagorai blue merle in piedi sul prato, davanti a un muretto di pietra"
       - title: "Capra Orobica"
         text: "Una razza delle nostre montagne, dal pelo lungo e le corna ampie."
         label: "Scopri le capre"
         link: "/capra-orobica/"
-        image: "../../../assets/capra-orobica/mockup-capra-ritratto.jpg"
+        image: "@assets/foto/mockup-capra-ritratto.jpg"
         alt: "Illustrazione di prova: una Capra Orobica davanti alle montagne"
       - title: "La Valtellina"
         text: "Sondrio, i versanti, la storia, la cucina: una guida per chi viene a trovarci."
         label: "Apri la guida"
         link: "/valtellina/"
-        image: "../../../assets/valtellina/montagne-in-estate.jpg"
+        image: "@assets/foto/montagne-in-estate.jpg"
         alt: "Montagne rocciose e abeti sotto il cielo d'estate"
   - type: "curiosity"
     section: "home"

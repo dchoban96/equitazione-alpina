@@ -36,7 +36,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" 
   <text x="${W / 2}" y="${H * 0.4 + 90}" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="40" letter-spacing="6" fill="${ink}">foto in arrivo</text>
 </svg>`;
 
-const out = new URL('../src/assets/segnaposto/', import.meta.url);
+const out = new URL('../src/assets/foto/', import.meta.url);
 mkdirSync(out, { recursive: true });
 await sharp(Buffer.from(svg)).jpeg({ quality: 82, mozjpeg: true }).toFile(new URL('segnaposto.jpg', out).pathname.replace(/^\/([A-Za-z]:)/, '$1'));
-console.log('src/assets/segnaposto/segnaposto.jpg written');
+console.log('src/assets/foto/segnaposto.jpg written');

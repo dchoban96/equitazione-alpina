@@ -629,7 +629,8 @@
   margin: 0;
   padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
   border: 0;
-  background: transparent;
+  /* solid: Safari takes its bar colours from this element */
+  background-color: #10150f;
   color: #fff;
   overscroll-behavior: contain;
 }
@@ -654,7 +655,7 @@ html:has(.lightbox[open]) body {
   overflow: hidden;
   background: #10150f;
 }
-html:has(.lightbox[open]) .ridges {
+html:has(.lightbox[open]) :is(.ridges, .edge-bottom) {
   display: none;
 }
 

@@ -1,6 +1,7 @@
 import { defineCollection, type SchemaContext } from 'astro:content';
 import { glob, file } from 'astro/loaders';
 import { z } from 'astro/zod';
+import yaml from 'js-yaml';
 
 /*
  * Content model. Everything the site shows lives in src/content/ and is
@@ -24,6 +25,24 @@ export const SECTIONS = [
 ] as const;
 const section = z.enum(SECTIONS);
 
+/**
+ * Optional field that also accepts "" or null as "not set": the admin can
+ * save an emptied field that way, and an empty photo path, link or number
+ * would otherwise stop the build.
+ */
+const opt = <T extends z.ZodType>(schema: T) =>
+  z.preprocess((v) => (v === '' || v === null ? undefined : v), schema.optional());
+
+/**
+ * List files edited in the admin keep their entries under an `items` key.
+ * Entries added in the admin have no id: they get one from their position.
+ */
+const itemsOf = (text: string) =>
+  ((yaml.load(text) as { items?: Record<string, unknown>[] }).items ?? []).map((item, i) => ({
+    ...item,
+    id: item.id ?? `voce-${i + 1}`,
+  }));
+
 /** Markdown text. May contain [DA COMPLETARE: ...] markers. */
 const rich = z.string();
 const labelValue = z.object({ label: z.string(), value: z.string() });
@@ -33,11 +52,8 @@ const labelValue = z.object({ label: z.string(), value: z.string() });
 // Fields every block accepts: an altitude in metres (for the altimeter)
 // and an anchor id for in-page links.
 const common = {
-  altitude: z.number().int().min(0).max(4810).optional(),
-  anchor: z
-    .string()
-    .regex(/^[a-z0-9-]+$/, 'anchor: lowercase letters, digits and dashes only')
-    .optional(),
+  altitude: opt(z.number().int().min(0).max(4810)),
+  anchor: opt(z.string().regex(/^[a-z0-9-]+$/, 'anchor: lowercase letters, digits and dashes only')),
 };
 
 // Small label shown beside the kicker ("500 m", "recinto"). When a block has
@@ -61,15 +77,14 @@ const blocks = ({ image }: SchemaContext) => {
       intro: rich.optional(),
       closing: z.string().optional(),
       footnote: z.string().optional(),
-      image: img.optional(),
+      image: opt(img),
       imageAlt: z.string().optional(),
       // Silent looping clip played over the image (file under public/, e.g.
       // "/video/intro.mp4"). The image stays as poster and as the fallback
       // without JavaScript or with reduced motion.
-      video: z
-        .string()
-        .regex(/^\/[a-z0-9/_-]+\.(mp4|webm)$/, 'video: a path under public/, e.g. "/video/intro.mp4"')
-        .optional(),
+      video: opt(
+        z.string().regex(/^\/[a-z0-9/_-]+\.(mp4|webm)$/, 'video: a path under public/, e.g. "/video/intro.mp4"'),
+      ),
       panelKicker: z.string().optional(),
       panel: z.array(labelValue).optional(),
     }),
@@ -105,7 +120,7 @@ const blocks = ({ image }: SchemaContext) => {
             text: rich.optional(),
             label: z.string().optional(),
             link: z.string().optional(),
-            image: img.optional(),
+            image: opt(img),
             alt: z.string().optional(),
           }),
         )
@@ -119,7 +134,7 @@ const blocks = ({ image }: SchemaContext) => {
         .array(
           z.object({
             name: z.string(),
-            altitude: z.number().int().optional(),
+            altitude: opt(z.number().int()),
             approximate: z.boolean().default(false),
             text: rich.optional(),
             season: z.string().optional(),
@@ -133,7 +148,7 @@ const blocks = ({ image }: SchemaContext) => {
       ...common,
       ...heading,
       gallery: z.string(),
-      count: z.number().int().min(4).max(6).default(6),
+      count: z.preprocess((v) => (v === '' || v === null ? undefined : v), z.number().int().min(4).max(6).default(6)),
       link: z.string().optional(),
     }),
     z.object({ type: z.literal('gallery'), ...common, ...heading, gallery: z.string() }),
@@ -145,7 +160,7 @@ const blocks = ({ image }: SchemaContext) => {
       rating: z.string().optional(),
       count: z.string().optional(),
       sourceLabel: z.string().optional(),
-      sourceUrl: z.url().optional(),
+      sourceUrl: opt(z.url()),
     }),
     z.object({
       type: z.literal('faq'),
@@ -158,14 +173,14 @@ const blocks = ({ image }: SchemaContext) => {
       type: z.literal('curiosity'),
       ...common,
       id: z.string().optional(),
-      section: section.optional(),
+      section: opt(section),
     }),
     z.object({
       type: z.literal('article-list'),
       ...common,
       ...heading,
-      section: section.optional(),
-      count: z.number().int().min(1).max(24).default(3),
+      section: opt(section),
+      count: z.preprocess((v) => (v === '' || v === null ? undefined : v), z.number().int().min(1).max(24).default(3)),
     }),
     z.object({
       type: z.literal('map'),
@@ -205,7 +220,9 @@ const pages = defineCollection({
     z.object({
       slug: z
         .string()
-        .regex(/^([a-z0-9-]+(\/[a-z0-9-]+)*)?$/, 'slug: lowercase path without slashes at the ends'),
+        .regex(/^([a-z0-9-]+(\/[a-z0-9-]+)*)?$/, 'slug: lowercase path without slashes at the ends')
+        // the admin leaves empty fields out: no slug means the home page
+        .default(''),
       title: z.string(),
       section,
       draft: z.boolean(),
@@ -255,7 +272,7 @@ const articles = defineCollection({
 });
 
 const curiosities = defineCollection({
-  loader: file(`${base('')}curiosities.yaml`),
+  loader: file(`${base('')}curiosities.yaml`, { parser: itemsOf }),
   schema: z.object({ id: z.string(), text: z.string(), sections: z.array(section).min(1) }),
 });
 
@@ -271,14 +288,14 @@ const galleries = defineCollection({
           alt: z.string().min(1, 'every gallery photo needs alt text'),
           caption: z.string().optional(),
           place: z.string().optional(),
-          altitude: z.number().int().optional(),
+          altitude: opt(z.number().int()),
         }),
       ),
     }),
 });
 
 const faq = defineCollection({
-  loader: file(`${base('')}faq.yaml`),
+  loader: file(`${base('')}faq.yaml`, { parser: itemsOf }),
   schema: z.object({
     id: z.string(),
     question: z.string(),
@@ -288,15 +305,15 @@ const faq = defineCollection({
 });
 
 const reviews = defineCollection({
-  loader: file(`${base('')}reviews.yaml`),
+  loader: file(`${base('')}reviews.yaml`, { parser: itemsOf }),
   schema: z.object({
     id: z.string(),
     title: z.string().optional(),
     text: z.string(),
     author: z.string(),
     date: z.string(),
-    stars: z.number().int().min(1).max(5).optional(),
-    sourceUrl: z.url().optional(),
+    stars: opt(z.number().int().min(1).max(5)),
+    sourceUrl: opt(z.url()),
   }),
 });
 
@@ -315,8 +332,8 @@ const site = defineCollection({
     url: z.url(),
     languages: z.array(z.string()).min(1),
     phone: z.string(),
-    whatsapp: z.string().optional(),
-    email: z.email().optional(),
+    whatsapp: opt(z.string()),
+    email: opt(z.email()),
     address: z.object({
       street: z.string(),
       postalCode: z.string(),
@@ -325,13 +342,15 @@ const site = defineCollection({
       country: z.string().length(2),
     }),
     coordinatesText: z.string().optional(),
-    geo: z.object({ lat: z.number().nullable(), lng: z.number().nullable() }),
+    geo: z
+      .object({ lat: z.number().nullable().default(null), lng: z.number().nullable().default(null) })
+      .default({ lat: null, lng: null }),
     hours: z.array(z.object({ days: z.string(), hours: z.string() })).default([]),
     social: z.array(z.object({ label: z.string(), url: z.url() })).default([]),
     menu: z.array(z.string()),
     footer: z.array(z.string()),
     contactForm: z.object({
-      action: z.string(),
+      action: z.string().default(''),
       reasons: z.array(z.string()).default([]),
     }),
     // Mountains fixed to the bottom of every page, the front ridge over the content.
@@ -340,6 +359,11 @@ const site = defineCollection({
       provider: z.enum(['none', 'ga4']),
       id: z.string().default(''),
     }),
+    // Ownership codes from Google Search Console and Bing Webmaster Tools
+    // (the content="..." part of their HTML tag). Empty: no tag.
+    verification: z
+      .object({ google: z.string().default(''), bing: z.string().default('') })
+      .default({ google: '', bing: '' }),
   }),
 });
 

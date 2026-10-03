@@ -1,0 +1,494 @@
+# Admin (Decap CMS) for equitazione-alpina.it, in Italian.
+#
+# Every save is a commit to GitHub; the site rebuilds and goes live in about
+# two minutes. The client signs in with email and password (or Google) via
+# DecapBridge: the `backend` block below is replaced by the one DecapBridge
+# generates (see ADMIN.md).
+#
+# Only what the client needs is shown. Technical fields are `hidden`: they
+# stay in the files untouched. The fields mirror src/content.config.ts; when
+# that schema changes, change this file too.
+
+locale: it
+
+backend:
+  name: github
+  repo: dchoban96/equitazione-alpina
+  branch: main
+  commit_messages:
+    create: "Admin: nuovo «{{slug}}» in {{collection}}"
+    update: "Admin: modifica «{{slug}}» in {{collection}}"
+    delete: "Admin: eliminato «{{slug}}» da {{collection}}"
+    uploadMedia: "Admin: foto caricata {{path}}"
+    deleteMedia: "Admin: foto eliminata {{path}}"
+
+# `npx decap-server` + `npm run dev`: the admin on localhost edits the local
+# files without logging in (see ADMIN.md).
+local_backend: true
+
+site_url: https://dchoban96.github.io/equitazione-alpina/
+display_url: https://dchoban96.github.io/equitazione-alpina/
+logo_url: https://dchoban96.github.io/equitazione-alpina/favicon.svg
+
+# All photos live in one folder, src/assets/foto; content refers to them as
+# "@assets/foto/<file>" (an alias the build resolves, so the same path works
+# from every content file). One flat folder is also what Decap's photo
+# previews and media library expect.
+media_folder: src/assets/foto
+public_folder: "@assets/foto"
+
+slug:
+  encoding: ascii
+  clean_accents: true
+
+collections:
+  # ------------------------------------------------------------------ pages
+  - name: pagine
+    label: Pagine
+    label_singular: Pagina
+    description: "Le pagine del sito. Apri una pagina per cambiarne testi, foto e sezioni."
+    folder: src/content/it/pages
+    extension: yaml
+    format: yaml
+    create: true
+    delete: true
+    identifier_field: title
+    slug: "{{title}}"
+    summary: "{{title}}"
+    sortable_fields: [title]
+    editor: { preview: false }
+    fields:
+      - { name: title, label: Titolo della pagina, widget: string, hint: "Nome breve, usato anche nel menu." }
+      - name: slug
+        label: Indirizzo della pagina
+        widget: string
+        required: false
+        pattern: ['^([a-z0-9-]+(/[a-z0-9-]+)*)?$', "Solo lettere minuscole, numeri e trattini; usa «/» per le sottopagine (es. equitazione/lezioni)."]
+        hint: "Es. «equitazione/trekking» diventa equitazione-alpina.it/equitazione/trekking/. Non cambiarlo nelle pagine esistenti."
+      - name: section
+        label: Sezione del sito
+        widget: select
+        options: &sections
+          - { label: Home, value: home }
+          - { label: Equitazione, value: equitazione }
+          - { label: Pastore del Lagorai, value: pastore-del-lagorai }
+          - { label: Capra Orobica, value: capra-orobica }
+          - { label: Valtellina, value: valtellina }
+          - { label: Curiosità, value: curiosita }
+          - { label: Informazioni, value: info }
+          - { label: Prova, value: demo }
+      - { name: draft, label: Bozza (non ancora pubblicata), widget: boolean, default: false }
+      - name: nav
+        label: Menu
+        widget: object
+        collapsed: true
+        required: false
+        fields:
+          - { name: label, label: Nome nel menu (se diverso dal titolo), widget: string, required: false }
+          - { name: order, label: Posizione nel menu, widget: number, value_type: int, default: 100, required: false, hint: "I numeri più bassi vengono prima." }
+          - { name: hidden, widget: hidden, required: false }
+      - name: seo
+        label: Google e condivisione
+        widget: object
+        fields:
+          - { name: title, label: Titolo per Google, widget: string, hint: "Al massimo 60 caratteri." }
+          - { name: description, label: Descrizione per Google, widget: text, hint: "Al massimo 155 caratteri." }
+          - { name: image, label: Foto quando la pagina viene condivisa, widget: image, hint: "Si vede su WhatsApp e Facebook." }
+      - { name: mockup, widget: hidden, required: false }
+      - { name: noindex, widget: hidden, required: false }
+      - { name: localBusiness, widget: hidden, required: false }
+      - { name: headerOverlay, widget: hidden, required: false }
+      - { name: altimeter, widget: hidden, required: false }
+      - name: blocks
+        label: Sezioni della pagina
+        label_singular: Sezione
+        widget: list
+        min: 1
+        hint: "La prima sezione è sempre l'Apertura (con il titolo grande); ce n'è una sola per pagina. Trascina le sezioni per cambiarne l'ordine."
+        types:
+          - name: hero
+            label: Apertura (titolo grande)
+            summary: "{{title}}"
+            fields:
+              - { name: kicker, label: Etichetta piccola sopra il titolo, widget: string, required: false }
+              - { name: title, label: Titolo grande, widget: string }
+              - { name: intro, label: Introduzione, widget: markdown, required: false, buttons: &mdbuttons [bold, italic, link, bulleted-list], editor_components: [] }
+              - { name: closing, label: Frase finale, widget: string, required: false }
+              - { name: image, label: Foto, widget: image, required: false }
+              - { name: imageAlt, label: Descrizione della foto, widget: string, required: false, hint: "Cosa si vede nella foto (serve a chi non vede e a Google)." }
+              - { name: coordinates, widget: hidden, required: false }
+              - { name: footnote, widget: hidden, required: false }
+              - { name: video, widget: hidden, required: false }
+              - { name: panelKicker, widget: hidden, required: false }
+              - { name: panel, widget: hidden, required: false }
+              - &altitude { name: altitude, widget: hidden, required: false }
+              - &anchor { name: anchor, widget: hidden, required: false }
+          - name: text
+            label: Testo
+            summary: "{{heading}}"
+            fields:
+              - &kicker { name: kicker, label: Etichetta piccola, widget: string, required: false }
+              - &heading { name: heading, label: Titolo, widget: string, required: false }
+              - { name: body, label: Testo, widget: markdown, buttons: *mdbuttons, editor_components: [] }
+              - &note { name: note, widget: hidden, required: false }
+              - *altitude
+              - *anchor
+          - name: text-image
+            label: Testo con foto
+            summary: "{{heading}}"
+            fields:
+              - *kicker
+              - *heading
+              - { name: lead, label: Frase in evidenza, widget: text, required: false }
+              - { name: body, label: Testo, widget: markdown, required: false, buttons: *mdbuttons, editor_components: [] }
+              - { name: image, label: Foto, widget: image }
+              - { name: alt, label: Descrizione della foto, widget: string, hint: "Obbligatoria: cosa si vede nella foto." }
+              - name: side
+                label: Dove sta la foto
+                widget: select
+                default: right
+                options:
+                  - { label: A destra del testo, value: right }
+                  - { label: A sinistra del testo, value: left }
+                  - { label: Sotto il testo, value: below }
+                  - { label: Grande, con il testo sopra, value: overlay }
+              - { name: caption, widget: hidden, required: false }
+              - { name: fit, widget: hidden, required: false }
+              - { name: details, widget: hidden, required: false }
+              - *note
+              - *altitude
+              - *anchor
+          - name: cards
+            label: Schede
+            summary: "{{heading}}"
+            fields:
+              - *kicker
+              - *heading
+              - name: style
+                label: Aspetto
+                widget: select
+                default: tiles
+                options:
+                  - { label: Riquadri di solo testo, value: tiles }
+                  - { label: Schede con foto, value: cards }
+              - name: items
+                label: Schede
+                label_singular: Scheda
+                widget: list
+                min: 1
+                summary: "{{title}}"
+                fields:
+                  - { name: title, label: Titolo, widget: string }
+                  - { name: text, label: Testo, widget: markdown, required: false, buttons: *mdbuttons, editor_components: [] }
+                  - { name: image, label: Foto (solo per «Schede con foto»), widget: image, required: false }
+                  - { name: alt, label: Descrizione della foto, widget: string, required: false }
+                  - { name: link, label: Link, widget: string, required: false, hint: "Es. /equitazione/lezioni/" }
+                  - { name: label, label: Testo del link, widget: string, required: false, hint: "Es. Scopri di più" }
+              - *note
+              - *altitude
+              - *anchor
+          - name: facts
+            label: Numeri in evidenza
+            summary: "Numeri in evidenza"
+            fields:
+              - name: items
+                label: Voci
+                widget: list
+                min: 1
+                summary: "{{label}}: {{value}}"
+                fields:
+                  - { name: label, label: Voce (es. Dal), widget: string }
+                  - { name: value, label: Valore (es. 1995), widget: string }
+              - { name: kicker, widget: hidden, required: false }
+              - { name: heading, widget: hidden, required: false }
+              - *note
+              - *altitude
+              - *anchor
+          - name: places
+            label: Luoghi
+            summary: "{{heading}}"
+            fields:
+              - *kicker
+              - *heading
+              - name: items
+                label: Luoghi
+                label_singular: Luogo
+                widget: list
+                min: 1
+                summary: "{{name}}"
+                fields:
+                  - { name: name, label: Nome, widget: string }
+                  - { name: text, label: Testo, widget: markdown, required: false, buttons: *mdbuttons, editor_components: [] }
+                  - { name: season, label: Stagione, widget: string, required: false }
+                  - { name: altitude, label: Quota in metri, widget: number, value_type: int, required: false }
+                  - { name: approximate, widget: hidden, required: false }
+              - *note
+              - *altitude
+              - *anchor
+          - name: quote
+            label: Citazione
+            summary: "{{author}}"
+            fields:
+              - { name: text, label: Citazione, widget: text }
+              - { name: author, label: Autore, widget: string, required: false }
+              - *altitude
+              - *anchor
+          - name: gallery-preview
+            label: Anteprima di una galleria
+            summary: "{{gallery}}"
+            fields:
+              - *kicker
+              - *heading
+              - &gallery { name: gallery, label: Galleria, widget: relation, collection: gallerie, value_field: "{{slug}}", search_fields: [title], display_fields: [title] }
+              - { name: link, label: Link «vedi tutte le foto», widget: string, required: false, hint: "Es. /equitazione/galleria/" }
+              - { name: count, widget: hidden, required: false }
+              - *note
+              - *altitude
+              - *anchor
+          - name: gallery
+            label: Galleria completa
+            summary: "{{gallery}}"
+            fields:
+              - *kicker
+              - *heading
+              - *gallery
+              - *note
+              - *altitude
+              - *anchor
+          - name: reviews
+            label: Recensioni
+            summary: "{{heading}}"
+            fields:
+              - *kicker
+              - *heading
+              - { name: rating, label: "Voto medio (es. 4,8 / 5)", widget: string, required: false }
+              - { name: count, label: Quante recensioni (es. su 13 recensioni), widget: string, required: false }
+              - { name: ids, widget: hidden, required: false }
+              - { name: sourceLabel, widget: hidden, required: false }
+              - { name: sourceUrl, widget: hidden, required: false }
+              - *note
+              - *altitude
+              - *anchor
+          - name: faq
+            label: Domande frequenti
+            summary: "{{heading}}"
+            fields:
+              - *kicker
+              - *heading
+              - { name: tag, label: Quali domande mostrare, widget: select, required: false, options: &faqtopics [{ label: "Equitazione", value: equitazione }, { label: "Pastore del Lagorai", value: pastore }, { label: "Capra Orobica", value: capra }, { label: "Prova", value: demo }], hint: "Vuoto = tutte le domande." }
+              - { name: ids, widget: hidden, required: false }
+              - *note
+              - *altitude
+              - *anchor
+          - name: curiosity
+            label: Lo sapevi?
+            summary: "Lo sapevi?"
+            fields:
+              - { name: section, label: Curiosità della sezione, widget: select, options: *sections, required: false }
+              - { name: id, widget: hidden, required: false }
+              - *altitude
+              - *anchor
+          - name: article-list
+            label: Elenco di articoli
+            summary: "{{heading}}"
+            fields:
+              - *kicker
+              - *heading
+              - { name: section, label: Solo gli articoli della sezione, widget: select, options: *sections, required: false }
+              - { name: count, label: Quanti articoli, widget: number, value_type: int, min: 1, max: 24, default: 3, required: false }
+              - *note
+              - *altitude
+              - *anchor
+          - name: map
+            label: Mappa
+            summary: "{{heading}}"
+            fields:
+              - *kicker
+              - *heading
+              - { name: label, label: Testo sotto la mappa, widget: string }
+              - { name: image, label: Immagine della mappa, widget: image }
+              - { name: alt, label: Descrizione dell'immagine, widget: string }
+              - *note
+              - *altitude
+              - *anchor
+          - name: cta-contact
+            label: Contatti
+            summary: "{{heading}}"
+            fields:
+              - *kicker
+              - *heading
+              - { name: body, label: Testo, widget: markdown, required: false, buttons: *mdbuttons, editor_components: [] }
+              - { name: form, label: Mostra il modulo per scrivere, widget: boolean, default: true, required: false }
+              - *note
+              - *altitude
+              - *anchor
+
+  # -------------------------------------------------------------- galleries
+  - name: gallerie
+    label: Gallerie
+    label_singular: Galleria
+    description: "Le foto delle gallerie. Trascina le foto per cambiarne l'ordine."
+    folder: src/content/it/galleries
+    extension: yaml
+    format: yaml
+    create: true
+    delete: true
+    identifier_field: title
+    slug: "{{title}}"
+    editor: { preview: false }
+    fields:
+      - { name: title, label: Nome della galleria, widget: string }
+      - { name: section, label: Sezione del sito, widget: select, options: *sections }
+      - { name: mockup, widget: hidden, required: false }
+      - name: photos
+        label: Foto
+        label_singular: Foto
+        widget: list
+        summary: "{{alt}}"
+        fields:
+          - { name: file, label: Foto, widget: image }
+          - { name: alt, label: Descrizione della foto, widget: string, hint: "Obbligatoria: cosa si vede nella foto." }
+          - { name: caption, label: Didascalia (facoltativa), widget: string, required: false }
+          - { name: place, widget: hidden, required: false }
+          - { name: altitude, widget: hidden, required: false }
+
+  # --------------------------------------------------------------- articles
+  - name: articoli
+    label: Articoli
+    label_singular: Articolo
+    description: "Gli articoli della sezione Curiosità."
+    folder: src/content/it/articles
+    extension: mdx
+    format: frontmatter
+    create: true
+    delete: true
+    identifier_field: title
+    slug: "{{title}}"
+    summary: "{{title}}"
+    sortable_fields: [title, date]
+    editor: { preview: false }
+    fields:
+      - { name: title, label: Titolo, widget: string }
+      - { name: date, label: Data, widget: datetime, time_format: false, date_format: DD/MM/YYYY, format: YYYY-MM-DD }
+      - { name: summary, label: Riassunto, widget: text, hint: "Al massimo 155 caratteri: si vede anche su Google." }
+      - { name: cover, label: Foto di copertina, widget: image }
+      - { name: coverAlt, label: Descrizione della foto di copertina, widget: string }
+      - { name: section, label: Sezione, widget: select, options: *sections }
+      - { name: draft, label: Bozza (non ancora pubblicato), widget: boolean, default: true }
+      - { name: body, label: Testo, widget: markdown, buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, quote], editor_components: [] }
+      - { name: mockup, widget: hidden, required: false }
+      - { name: seoTitle, widget: hidden, required: false }
+
+  # ----------------------------------------------------------------- lists
+  - name: elenchi
+    label: Domande, recensioni, curiosità
+    editor: { preview: false }
+    files:
+      - name: domande
+        label: Domande frequenti
+        file: src/content/it/faq.yaml
+        fields:
+          - name: items
+            label: Domande
+            label_singular: Domanda
+            widget: list
+            summary: "{{question}}"
+            fields:
+              - { name: question, label: Domanda, widget: string }
+              - { name: answer, label: Risposta, widget: markdown, buttons: *mdbuttons, editor_components: [] }
+              - { name: tags, label: Dove compare, widget: select, multiple: true, required: false, options: *faqtopics }
+              - { name: id, widget: hidden, required: false }
+      - name: recensioni
+        label: Recensioni
+        file: src/content/it/reviews.yaml
+        fields:
+          - name: items
+            label: Recensioni
+            label_singular: Recensione
+            widget: list
+            summary: "{{author}}"
+            fields:
+              - { name: title, label: Titolo, widget: string, required: false }
+              - { name: text, label: Testo, widget: text }
+              - { name: author, label: Nome di chi scrive, widget: string }
+              - { name: date, label: Quando (es. giugno 2022), widget: string }
+              - { name: stars, label: Stelle (da 1 a 5), widget: number, value_type: int, min: 1, max: 5, required: false }
+              - { name: id, widget: hidden, required: false }
+              - { name: sourceUrl, widget: hidden, required: false }
+      - name: curiosita
+        label: Lo sapevi? (frasi brevi)
+        file: src/content/it/curiosities.yaml
+        fields:
+          - name: items
+            label: Curiosità
+            label_singular: Curiosità
+            widget: list
+            summary: "{{text}}"
+            fields:
+              - { name: text, label: Testo, widget: text }
+              - { name: sections, label: Sezioni dove può comparire, widget: select, multiple: true, min: 1, options: *sections }
+              - { name: id, widget: hidden, required: false }
+
+  # ------------------------------------------------------------ company data
+  - name: impostazioni
+    label: Dati aziendali
+    editor: { preview: false }
+    files:
+      - name: azienda
+        label: Dati aziendali
+        file: src/content/settings/site.yaml
+        fields:
+          - { name: name, label: Nome dell'attività, widget: string }
+          - { name: phone, label: Telefono, widget: string }
+          - { name: whatsapp, label: WhatsApp, widget: string, required: false }
+          - { name: email, label: Email, widget: string, required: false }
+          - name: address
+            label: Indirizzo
+            widget: object
+            fields:
+              - { name: street, label: Via o località, widget: string }
+              - { name: postalCode, label: CAP, widget: string }
+              - { name: locality, label: Comune, widget: string }
+              - { name: province, label: Provincia (sigla), widget: string }
+              - { name: country, widget: hidden, default: IT }
+          - name: hours
+            label: Orari
+            widget: list
+            required: false
+            summary: "{{days}}: {{hours}}"
+            fields:
+              - { name: days, label: Giorni, widget: string }
+              - { name: hours, label: Orario, widget: string }
+          - name: social
+            label: Social
+            widget: list
+            required: false
+            summary: "{{label}}"
+            fields:
+              - { name: label, label: Nome (es. Instagram), widget: string }
+              - { name: url, label: Link completo, widget: string, pattern: ['^https?://', "Deve iniziare con https://"] }
+          - { name: legalName, label: Ragione sociale, widget: string }
+          - { name: vatNumber, label: Partita IVA, widget: string }
+          - name: menu
+            label: Menu principale (in ordine)
+            widget: list
+            hint: "Le sottopagine si aggiungono da sole sotto la loro pagina."
+            field: &pagepick { name: page, label: Pagina, widget: relation, collection: pagine, value_field: "slug", search_fields: [title], display_fields: [title] }
+          - name: footer
+            label: Link in fondo alla pagina (in ordine)
+            widget: list
+            field: *pagepick
+          - name: contactForm
+            label: Modulo di contatto
+            widget: object
+            collapsed: true
+            fields:
+              - { name: reasons, label: Motivi tra cui scegliere, widget: list, required: false }
+              - { name: action, widget: hidden, required: false }
+          - { name: coordinatesText, widget: hidden, required: false }
+          - { name: geo, widget: hidden, required: false }
+          - { name: url, widget: hidden }
+          - { name: languages, widget: hidden }
+          - { name: ridges, widget: hidden, required: false }
+          - { name: analytics, widget: hidden }
+          - { name: verification, widget: hidden, required: false }

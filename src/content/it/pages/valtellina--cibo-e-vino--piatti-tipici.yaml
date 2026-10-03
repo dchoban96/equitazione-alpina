@@ -9,14 +9,14 @@ nav:
 seo:
   title: "Piatti tipici della Valtellina: pizzoccheri e sciatt"
   description: "I piatti tipici della Valtellina: pizzoccheri, sciatt, polenta taragna e bresaola. Cosa sono, come si fanno e da dove vengono i loro nomi."
-  image: "../../../assets/valtellina/mockup-pizzoccheri.jpg"
+  image: "@assets/foto/mockup-pizzoccheri.jpg"
 blocks:
   - type: "hero"
     kicker: "Guida alla Valtellina"
     title: "Piatti tipici"
     intro: |
       Molti piatti della valle partono dalla stessa farina scura: quella di grano saraceno. È una pianta rustica, che resiste al freddo e ha un ciclo breve, e fino all'inizio del Novecento è stata uno degli alimenti di base dei contadini valtellinesi. In valle si coltiva da oltre quattro secoli. Oggi i campi sono pochi, soprattutto attorno a Teglio, e molta della farina arriva da fuori; le ricette, però, sono rimaste le stesse.
-    image: "../../../assets/valtellina/mockup-pizzoccheri.jpg"
+    image: "@assets/foto/mockup-pizzoccheri.jpg"
     imageAlt: "Illustrazione di prova: un piatto di pizzoccheri"
   - type: "text"
     kicker: "Il piatto"

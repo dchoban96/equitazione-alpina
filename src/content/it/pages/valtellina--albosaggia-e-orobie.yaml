@@ -9,14 +9,14 @@ nav:
 seo:
   title: "Albosaggia e le Orobie · Guida alla Valtellina"
   description: "Albosaggia e il versante orobico sopra Sondrio: boschi di castagno e faggio, sentieri verso San Bernardo e il Lago Casera."
-  image: "../../../assets/valtellina/mockup-borgo-albosaggia.jpg"
+  image: "@assets/foto/mockup-borgo-albosaggia.jpg"
 blocks:
   - type: "hero"
     kicker: "Guida alla Valtellina"
     title: "Albosaggia e le Orobie"
     intro: |
       Testo di prova. Albosaggia sta sul versante orobico, di fronte a Sondrio: il lato della valle più ombroso e più verde.
-    image: "../../../assets/valtellina/mockup-borgo-albosaggia.jpg"
+    image: "@assets/foto/mockup-borgo-albosaggia.jpg"
     imageAlt: "Illustrazione di prova: un borgo in pietra fra i boschi"
   - type: "text"
     kicker: "Il paese"

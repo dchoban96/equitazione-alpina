@@ -9,14 +9,14 @@ nav:
 seo:
   title: "Pensione cavalli vicino a Sondrio · all'aperto, in gruppo"
   description: "Pensione per cavalli di proprietà ad Albosaggia, vicino a Sondrio: in gruppo e all'aperto, su terreno in pendenza, come i nostri cavalli."
-  image: "../../../assets/equitazione/cavalli-nella-neve.jpg"
+  image: "@assets/foto/cavalli-nella-neve.jpg"
 blocks:
   - type: "hero"
     kicker: "Pensione"
     title: "Pensione cavalli, in gruppo e all'aperto"
     intro: |
       Per cavalli di proprietà, in gruppo e all'aperto come gli altri.
-    image: "../../../assets/equitazione/cavalli-nella-neve.jpg"
+    image: "@assets/foto/cavalli-nella-neve.jpg"
     imageAlt: "Tre cavalli fuori nel recinto innevato, d'inverno"
   - type: "text-image"
     kicker: "Come vivono"
@@ -27,7 +27,7 @@ blocks:
       D'estate ci sono le mosche e il fango dopo i temporali, perché è così che vivono i cavalli quando li si lascia essere cavalli.
 
       Ogni tanto nasce un puledro, e per qualche settimana tutto il resto passa in secondo piano.
-    image: "../../../assets/equitazione/cavalli-al-pascolo-albosaggia.jpg"
+    image: "@assets/foto/cavalli-al-pascolo-albosaggia.jpg"
     alt: "Due cavalli sauri con la lista bianca e un cavallo grigio liberi sul prato del recinto, sotto il bosco"
     side: "right"
   - type: "cards"

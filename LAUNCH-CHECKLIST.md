@@ -22,10 +22,12 @@ Shopify store stays online until Phase 1 has been accepted.
 - [ ] Bare domain `equitazione-alpina.it` redirects (301) to `https://www.equitazione-alpina.it/`.
 - [ ] DNS switched from Shopify to the new host.
 - [ ] Spot-check old URLs: `/pages/contact`, `/collections/voucher`, `/products/<any>`, `/policies/privacy-policy` all answer 301 to the right page.
-- [ ] `https://www.equitazione-alpina.it/robots.txt` allows crawling and names the sitemap.
+- [ ] `https://www.equitazione-alpina.it/robots.txt` allows crawling, blocks `/admin/` and names the sitemap.
+- [ ] Admin on the new domain (see `ADMIN.md`): update the site URL in DecapBridge and `site_url` / `display_url` / `logo_url` in `public/admin/config.yml`, sign in once to check.
 
 ## After launch
 
+- [ ] Verify the domain in Google Search Console (and Bing Webmaster Tools): paste the codes in the admin, Dati aziendali > Verifica Google / Bing.
 - [ ] Submit `https://www.equitazione-alpina.it/sitemap.xml` in Google Search Console.
 - [ ] Update the website link in the Google Business Profile, Tripadvisor, Facebook and Instagram.
 - [ ] Watch Search Console coverage and 404s for two weeks; add missing old URLs to `redirects.yaml`.

@@ -9,14 +9,14 @@ nav:
 seo:
   title: "Informativa sui cookie · Equitazione Alpina"
   description: "Quali cookie usa il sito di Equitazione Alpina e come gestire le preferenze."
-  image: "../../../assets/valtellina/mockup-borgo-albosaggia.jpg"
+  image: "@assets/foto/mockup-borgo-albosaggia.jpg"
 blocks:
   - type: "hero"
     kicker: "Informazioni"
     title: "Informativa sui cookie"
     intro: |
       Testo di prova. Questa pagina conterrà il testo definitivo, fornito dal titolare del sito.
-    image: "../../../assets/valtellina/mockup-borgo-albosaggia.jpg"
+    image: "@assets/foto/mockup-borgo-albosaggia.jpg"
     imageAlt: "Illustrazione di prova: un borgo in pietra"
   - type: "text"
     heading: "Cookie tecnici"

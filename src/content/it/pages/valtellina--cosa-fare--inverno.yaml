@@ -9,14 +9,14 @@ nav:
 seo:
   title: "Inverno ad Albosaggia e in Valmalenco · Cosa fare"
   description: "Cosa fare d'inverno fra Albosaggia e la Valmalenco: neve, ciaspole, sci e le passeggiate a cavallo che continuano tutto l'anno."
-  image: "../../../assets/valtellina/mockup-inverno.jpg"
+  image: "@assets/foto/mockup-inverno.jpg"
 blocks:
   - type: "hero"
     kicker: "Guida alla Valtellina"
     title: "Inverno"
     intro: |
       Testo di prova. D'inverno la valle rallenta, e la montagna diventa silenziosa.
-    image: "../../../assets/valtellina/mockup-inverno.jpg"
+    image: "@assets/foto/mockup-inverno.jpg"
     imageAlt: "Illustrazione di prova: un bosco innevato sotto le montagne"
   - type: "text"
     kicker: "Sulla neve"

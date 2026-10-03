@@ -1,7 +1,7 @@
 // Generates the mockup illustrations used until real photos arrive.
 // Flat scenes drawn in the theme palette, each marked "illustrazione di prova".
 //   node scripts/make-mockups.mjs
-// Output: src/assets/<section>/mockup-*.jpg (2400 x 1600). Replace them with
+// Output: src/assets/foto/mockup-*.jpg (2400 x 1600). Replace them with
 // real photos and delete the mockup files before launch.
 import sharp from 'sharp';
 import { mkdirSync } from 'node:fs';
@@ -387,8 +387,8 @@ S['equitazione/mockup-tramonto-conduzione'] = () => {
 const root = new URL('../src/assets/', import.meta.url);
 for (const [name, draw] of Object.entries(S)) {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${draw()}${label()}</svg>`;
-  const file = new URL(`${name}.jpg`, root);
+  const file = new URL(`foto/${name.split('/').pop()}.jpg`, root);
   mkdirSync(new URL('.', file), { recursive: true });
   await sharp(Buffer.from(svg)).jpeg({ quality: 80, mozjpeg: true }).toFile(fileURLToPath(file));
-  console.log(`src/assets/${name}.jpg`);
+  console.log(`src/assets/foto/${name.split('/').pop()}.jpg`);
 }

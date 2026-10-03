@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Gestione sito · Equitazione Alpina</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <style>
+      /* while the photo library warms up (see below), it stays invisible */
+      html.warming .ReactModalPortal {
+        opacity: 0;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Decap CMS 3.x. The login (email / Google) comes from DecapBridge:
+         see ADMIN.md. -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+      // Decap shows photo previews in the forms only after its media library
+      // has been loaded once, and it loads the library only when "Media" is
+      // opened. So: as soon as that button exists (after signing in), open
+      // the library once, invisibly, and close it again; the loading goes on.
+      (function warmMediaLibrary() {
+        var find = setInterval(function () {
+          var button = Array.prototype.find.call(document.querySelectorAll('button'), function (b) {
+            return b.textContent.trim() === 'Media';
+          });
+          if (!button) return;
+          clearInterval(find);
+          document.documentElement.classList.add('warming');
+          button.click();
+          var started = Date.now();
+          var close = setInterval(function () {
+            var dialog = document.querySelector('.ReactModalPortal [role="dialog"]');
+            if (!dialog) return;
+            // close once the library has loaded (its thumbnails are there),
+            // or after 10 s at most
+            if (!dialog.querySelector('img') && Date.now() - started < 10000) return;
+            clearInterval(close);
+            dialog.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', keyCode: 27, which: 27, bubbles: true }));
+            setTimeout(function () {
+              document.documentElement.classList.remove('warming');
+            }, 300);
+          }, 100);
+        }, 300);
+      })();
+    </script>
+  </body>
+</html>
