@@ -61,13 +61,13 @@ blocks:
     kicker: "Gli animali"
     heading: "Cavalli che vivono fuori"
     body: |
-      I nostri cavalli non stanno chiusi in box. Passano le giornate fuori, nel recinto, in gruppo, con il fieno a disposizione e tutto il tempo per mangiarlo con calma.
+      I nostri cavalli non stanno chiusi in box. Vivono all'aperto, in gruppo, sul prato in pendenza ai piedi del bosco: il che significa zoccoli buoni, muscoli veri e caratteri tranquilli.
 
-      Si muovono, si cercano, si riposano al sole: è così che crescono zoccoli buoni, muscoli veri e caratteri tranquilli, che si avvicinano da soli a chi arriva al recinto.
+      Si muovono, si cercano, si riposano all'ombra degli alberi. È così che vivono i cavalli quando li si lascia essere cavalli.
 
       Ogni tanto nasce un puledro, e per qualche settimana tutto il resto passa in secondo piano.
-    image: "@assets/foto/cavallo-baio-ritratto.jpg"
-    alt: "Un cavallo baio con la lista bianca abbassa il muso sul fieno, nel recinto"
+    image: "@assets/foto/cavalli-sul-prato-in-estate.jpg"
+    alt: "Due cavalli sauri con la lista bianca e un cavallo grigio sul prato verde in pendenza, ai piedi del bosco"
     side: "right"
     note: "recinto"
     anchor: "cavalli"
