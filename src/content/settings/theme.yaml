@@ -88,10 +88,18 @@ layout:
   layout-measure: "62ch"             # paragraph max-width
 
 shape:
-  radius-sm: "2px"                   # .ea-btn, inputs
-  radius-md: "3px"                   # cards, images
-  shadow-sm: "0 6px 18px rgba(141, 92, 28, 0.22)"   # .ea-btn:hover
-  shadow-md: "0 14px 32px rgba(34, 48, 31, 0.10)"   # .ea-card:hover
+  # Modern pass (Oct 2026): rounder corners, layered soft shadows, pill
+  # buttons. The Shopify theme used 2-3px corners and flat hairlines.
+  radius-sm: "12px"                  # inputs, small controls, menus
+  radius-md: "20px"                  # cards, photos
+  radius-lg: "28px"                  # large photos, overlay blocks, forms
+  radius-pill: "999px"               # buttons, chips, labels
+  shadow-sm: "0 10px 24px -8px rgba(141, 92, 28, 0.35)"  # button hover (honey)
+  shadow-soft: "0 1px 2px rgba(34, 48, 31, 0.04), 0 10px 30px -12px rgba(34, 48, 31, 0.14)"  # resting cards
+  shadow-md: "0 2px 4px rgba(34, 48, 31, 0.05), 0 24px 48px -16px rgba(34, 48, 31, 0.24)"  # hover, menus
+  glass: "rgba(255, 252, 246, 0.58)"         # card surface over the paper background
+  glass-strong: "rgba(255, 252, 246, 0.82)"  # menus, captions, form fields
+  glass-line: "rgba(255, 255, 255, 0.7)"     # inner top highlight on glass
 
 motion:
   duration-fast: "250ms"             # hover transitions (.25s-.3s)

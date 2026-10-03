@@ -37,7 +37,7 @@ const photos = await Promise.all(
       <>
         <ul class="gallery" data-gallery>
           {photos.map((p) => (
-            <li id={`foto-${p.n}`}>
+            <li id={`foto-${p.n}`} style={`--ar: ${(p.file.width / p.file.height).toFixed(3)}`}>
               <figure>
                 <a
                   href={p.large.src}
@@ -49,7 +49,7 @@ const photos = await Promise.all(
                   aria-label={`${ui.galleryOpen}: ${p.alt}`}
                 >
                   <div class="frame">
-                    <Img src={p.file} alt={p.alt} sizes="(min-width: 1024px) 300px, (min-width: 750px) 33vw, 50vw" />
+                    <Img src={p.file} alt={p.alt} sizes="(min-width: 1024px) 480px, (min-width: 750px) 45vw, 70vw" />
                   </div>
                 </a>
                 {p.caption && <figcaption set:html={txt(p.caption)} />}

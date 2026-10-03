@@ -30,12 +30,12 @@ const target = (n: number) => (!b.link ? undefined : b.link.includes('#') ? url(
             {target(i + 1) ? (
               <a href={target(i + 1)}>
                 <div class="frame">
-                  <Img src={p.file} alt={p.alt} sizes="(min-width: 1024px) 300px, (min-width: 750px) 33vw, 50vw" />
+                  <Img src={p.file} alt={p.alt} sizes="(min-width: 1024px) 400px, (min-width: 750px) 33vw, 50vw" />
                 </div>
               </a>
             ) : (
               <div class="frame">
-                <Img src={p.file} alt={p.alt} sizes="(min-width: 1024px) 300px, (min-width: 750px) 33vw, 50vw" />
+                <Img src={p.file} alt={p.alt} sizes="(min-width: 1024px) 400px, (min-width: 750px) 33vw, 50vw" />
               </div>
             )}
           </li>
