@@ -21,6 +21,9 @@
 }
 
 html {
+  /* Safari 26 paints its status bar with the page colour: the top of the
+     page is kept flat in exactly this colour (see body) */
+  background-color: var(--color-bg-top);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scroll-padding-top: var(--layout-header);
@@ -35,11 +38,13 @@ body {
   font-family: var(--font-body);
   font-size: var(--text-base);
   line-height: var(--leading-body);
-  /* ea-atmosfera: warm paper with two soft light spots */
-  background-color: var(--color-bg);
+  /* ea-atmosfera: warm paper with two soft light spots. The spots sit low
+     enough that the very top of the page is one flat colour, the same one
+     Safari uses for the status bar above it. */
+  background-color: var(--color-bg-top);
   background-image:
-    radial-gradient(70vw 50vh at 78% -5%, rgba(var(--color-accent-rgb), 0.12), transparent 62%),
-    radial-gradient(60vw 45vh at 6% 10%, rgba(var(--color-honey-rgb), 0.09), transparent 66%),
+    radial-gradient(70vw 50vh at 78% 48vh, rgba(var(--color-accent-rgb), 0.12), transparent 62%),
+    radial-gradient(60vw 45vh at 6% 55vh, rgba(var(--color-honey-rgb), 0.09), transparent 66%),
     linear-gradient(180deg, var(--color-bg-top) 0%, var(--color-bg-mid) 45%, var(--color-bg-bottom) 100%);
 }
 /* background-attachment:fixed jitters on iOS: desktop only (as in ea-atmosfera) */
