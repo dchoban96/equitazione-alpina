@@ -9,15 +9,15 @@ nav:
 seo:
   title: "Pensione cavalli vicino a Sondrio · all'aperto, in gruppo"
   description: "Pensione per cavalli di proprietà ad Albosaggia, vicino a Sondrio: in gruppo e all'aperto, su terreno in pendenza, come i nostri cavalli."
-  image: "../../../assets/equitazione/mockup-pensione-scuderia.jpg"
+  image: "../../../assets/equitazione/cavalli-nella-neve.jpg"
 blocks:
   - type: "hero"
     kicker: "Pensione"
     title: "Pensione cavalli, in gruppo e all'aperto"
     intro: |
       Per cavalli di proprietà, in gruppo e all'aperto come gli altri.
-    image: "../../../assets/equitazione/mockup-pensione-scuderia.jpg"
-    imageAlt: "Illustrazione di prova: la scuderia al tramonto con un cavallo nel recinto"
+    image: "../../../assets/equitazione/cavalli-nella-neve.jpg"
+    imageAlt: "Tre cavalli fuori nel recinto innevato, d'inverno"
   - type: "text-image"
     kicker: "Come vivono"
     heading: "Cavalli che vivono fuori"

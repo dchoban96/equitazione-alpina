@@ -9,15 +9,15 @@ nav:
 seo:
   title: "Pastore del Lagorai: razza, carattere e origini"
   description: "Il Pastore del Lagorai: origini, carattere e lavoro con il gregge del cane da pastore delle Alpi del Nord-Est, riconosciuto dall'ENCI nel 2020."
-  image: "../../../assets/pastore-del-lagorai/mockup-pastore-gregge.jpg"
+  image: "../../../assets/pastore-del-lagorai/pastore-blue-merle-profilo.jpg"
 blocks:
   - type: "hero"
     kicker: "La razza"
     title: "Il Pastore del Lagorai: carattere e origini"
     intro: |
       Il suo nome ufficiale è Cane da Pastore della Lessinia e del Lagorai, ma quasi tutti lo chiamano Pastore del Lagorai, dalla catena di montagne del Trentino orientale. È un cane da gregge di taglia media, agile e resistente, che da secoli accompagna la transumanza fra le montagne e le pianure del Nord-Est. Per molto tempo è stato considerato un semplice meticcio dei pastori; dal 2020 è una razza riconosciuta dall'ENCI, la prima nata in Trentino.
-    image: "../../../assets/pastore-del-lagorai/mockup-pastore-gregge.jpg"
-    imageAlt: "Illustrazione di prova: un cane da pastore accanto a un gregge"
+    image: "../../../assets/pastore-del-lagorai/pastore-blue-merle-profilo.jpg"
+    imageAlt: "Il profilo di un Pastore del Lagorai blue merle"
   - type: "facts"
     items:
       - label: "Origine"

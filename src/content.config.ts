@@ -63,6 +63,13 @@ const blocks = ({ image }: SchemaContext) => {
       footnote: z.string().optional(),
       image: img.optional(),
       imageAlt: z.string().optional(),
+      // Silent looping clip played over the image (file under public/, e.g.
+      // "/video/intro.mp4"). The image stays as poster and as the fallback
+      // without JavaScript or with reduced motion.
+      video: z
+        .string()
+        .regex(/^\/[a-z0-9/_-]+\.(mp4|webm)$/, 'video: a path under public/, e.g. "/video/intro.mp4"')
+        .optional(),
       panelKicker: z.string().optional(),
       panel: z.array(labelValue).optional(),
     }),

@@ -15,7 +15,7 @@ altimeter:
 seo:
   title: "Equitazione Alpina · Maneggio ad Albosaggia, Sondrio"
   description: "Passeggiate a cavallo sulle Orobie e in Valmalenco, lezioni e pensione cavalli ad Albosaggia, a 10 minuti da Sondrio."
-  image: "../../../assets/equitazione/mockup-cavallo-crinale.jpg"
+  image: "../../../assets/equitazione/cavallo-pezzato-al-pascolo.jpg"
 blocks:
   - type: "hero"
     title: "I cavalli ci prestano le ali che ci mancano"
@@ -35,8 +35,9 @@ blocks:
         value: "Fine estate"
       - label: "Luogo"
         value: "Albosaggia"
-    image: "../../../assets/equitazione/mockup-cavallo-crinale.jpg"
-    imageAlt: "Illustrazione di prova: un cavallo sul crinale all'alba"
+    image: "../../../assets/equitazione/cavallo-pezzato-al-pascolo.jpg"
+    imageAlt: "Un cavallo pezzato bianco e nero bruca l'erba alta di un prato soleggiato"
+    video: "/video/intro-cavallo-al-pascolo.mp4"
   - type: "text"
     kicker: "Chi c'è dietro"
     heading: "Trent'anni sugli stessi sentieri"
@@ -95,8 +96,8 @@ blocks:
       Chi non è mai salito in sella comincia da terra: si conosce l'animale, si impara a stargli accanto, si sale quando si è pronti. Chi monta da anni trova sentieri che meritano la giornata intera.
 
       I bambini possono avvicinarsi ai cavalli da tre anni, condotti a mano, per il tempo che serve — dieci minuti bastano, se sono i dieci minuti giusti.
-    image: "../../../assets/equitazione/mockup-lezione-maneggio.jpg"
-    alt: "Illustrazione di prova: un cavaliere al passo lungo lo steccato"
+    image: "../../../assets/equitazione/passeggiata-a-cavallo-sul-sentiero.jpg"
+    alt: "Due cavalieri al passo su una strada sterrata fra gli abeti, con le montagne sullo sfondo"
     side: "left"
     note: "al passo"
   - type: "text-image"
@@ -152,8 +153,8 @@ blocks:
         text: "I cani che lavorano accanto ai cavalli e al gregge."
         label: "Scopri i cani"
         link: "/pastore-del-lagorai/"
-        image: "../../../assets/pastore-del-lagorai/mockup-pastore-prato.jpg"
-        alt: "Illustrazione di prova: un Pastore del Lagorai sul prato"
+        image: "../../../assets/pastore-del-lagorai/pastore-blue-merle-al-recinto.jpg"
+        alt: "Un Pastore del Lagorai blue merle in piedi sul prato, davanti a un muretto di pietra"
       - title: "Capra Orobica"
         text: "Una razza delle nostre montagne, dal pelo lungo e le corna ampie."
         label: "Scopri le capre"
@@ -164,8 +165,8 @@ blocks:
         text: "Sondrio, i versanti, la storia, la cucina: una guida per chi viene a trovarci."
         label: "Apri la guida"
         link: "/valtellina/"
-        image: "../../../assets/valtellina/mockup-terrazzamenti.jpg"
-        alt: "Illustrazione di prova: vigneti terrazzati al tramonto"
+        image: "../../../assets/valtellina/montagne-in-estate.jpg"
+        alt: "Montagne rocciose e abeti sotto il cielo d'estate"
   - type: "curiosity"
     section: "home"
   - type: "cta-contact"

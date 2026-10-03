@@ -4,6 +4,12 @@ title: "Galleria paesaggi"
 section: "valtellina"
 mockup: true
 photos:
+  - file: "../../../assets/valtellina/montagne-in-estate.jpg"
+    alt: "Montagne rocciose e abeti sotto il cielo d'estate"
+    caption: "Estate in montagna"
+  - file: "../../../assets/valtellina/prato-con-vista-sulla-valle.jpg"
+    alt: "Un prato con un gazebo di legno e le montagne della valle sullo sfondo"
+    caption: "Il prato sopra la valle"
   - file: "../../../assets/valtellina/mockup-terrazzamenti.jpg"
     alt: "Illustrazione di prova: vigneti terrazzati al tramonto"
     caption: "I terrazzamenti del versante retico"

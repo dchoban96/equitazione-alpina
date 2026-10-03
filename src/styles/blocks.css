@@ -70,6 +70,18 @@
 .hero__media {
   margin-top: var(--space-7);
 }
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--easing-standard);
+}
+.hero__video.is-playing {
+  opacity: 1;
+}
 
 /* ---------- text + image: ea-blocco ---------- */
 .split {

@@ -9,15 +9,15 @@ nav:
 seo:
   title: "Foto: cavalli e passeggiate · Equitazione Alpina"
   description: "Le foto di Equitazione Alpina: i cavalli al recinto di Albosaggia, le passeggiate sulle Orobie e in Valmalenco."
-  image: "../../../assets/equitazione/mockup-tramonto-conduzione.jpg"
+  image: "../../../assets/equitazione/puledro-al-trotto-nel-maneggio.jpg"
 blocks:
   - type: "hero"
     kicker: "Galleria"
     title: "Galleria equitazione"
     intro: |
       Un anno al recinto e sui sentieri, dalle Orobie alla Valmalenco.
-    image: "../../../assets/equitazione/mockup-tramonto-conduzione.jpg"
-    imageAlt: "Illustrazione di prova: una persona conduce un cavallo al tramonto"
+    image: "../../../assets/equitazione/puledro-al-trotto-nel-maneggio.jpg"
+    imageAlt: "Un puledro sauro trotta nel maneggio di sabbia lungo lo steccato"
   - type: "gallery"
     gallery: "equitazione"
   - type: "cta-contact"
