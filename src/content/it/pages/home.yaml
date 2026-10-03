@@ -56,18 +56,18 @@ blocks:
       - label: "Sede estiva"
         value: "Valmalenco"
       - label: "Età minima"
-        value: "3 anni"
+        value: "12 anni"
   - type: "text-image"
     kicker: "Gli animali"
     heading: "Cavalli che vivono fuori"
     body: |
-      I nostri cavalli non stanno in box tutto il giorno. Vivono all'aperto, in gruppo, su terreno in pendenza — il che significa zoccoli buoni, muscoli veri e caratteri che non si appiattiscono.
+      I nostri cavalli non stanno chiusi in box. Passano le giornate fuori, nel recinto, in gruppo, con il fieno a disposizione e tutto il tempo per mangiarlo con calma.
 
-      D'estate ci sono le mosche e il fango dopo i temporali, perché è così che vivono i cavalli quando li si lascia essere cavalli.
+      Si muovono, si cercano, si riposano al sole: è così che crescono zoccoli buoni, muscoli veri e caratteri tranquilli, che si avvicinano da soli a chi arriva al recinto.
 
       Ogni tanto nasce un puledro, e per qualche settimana tutto il resto passa in secondo piano.
-    image: "@assets/foto/cavalli-al-pascolo-albosaggia.jpg"
-    alt: "Due cavalli sauri con la lista bianca e un cavallo grigio liberi sul prato del recinto, sotto il bosco"
+    image: "@assets/foto/cavallo-baio-ritratto.jpg"
+    alt: "Un cavallo baio con la lista bianca abbassa il muso sul fieno, nel recinto"
     side: "right"
     note: "recinto"
     anchor: "cavalli"
@@ -95,7 +95,7 @@ blocks:
 
       Chi non è mai salito in sella comincia da terra: si conosce l'animale, si impara a stargli accanto, si sale quando si è pronti. Chi monta da anni trova sentieri che meritano la giornata intera.
 
-      I bambini possono avvicinarsi ai cavalli da tre anni, condotti a mano, per il tempo che serve — dieci minuti bastano, se sono i dieci minuti giusti.
+      In sella si sale dai 12 anni in su, e il ritmo lo decide chi impara: la prima volta può bastare stare accanto al cavallo, ed è già un buon inizio.
     image: "@assets/foto/passeggiata-a-cavallo-sul-sentiero.jpg"
     alt: "Due cavalieri al passo su una strada sterrata fra gli abeti, con le montagne sullo sfondo"
     side: "left"
@@ -126,10 +126,6 @@ blocks:
         text: "Per cavalli di proprietà, in gruppo e all'aperto come gli altri."
         link: "/equitazione/pensione-cavalli/"
         label: "La pensione"
-      - title: "Uscite in carrozza"
-        text: "D'estate, per chi non se la sente di salire in sella."
-        link: "/contatti/"
-        label: "Chiedi informazioni"
     anchor: "servizi"
   - type: "reviews"
     kicker: "Cosa dicono"

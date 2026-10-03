@@ -4,10 +4,10 @@
 redirects:
   - { from: /pages/equitazione-alpina, to: /equitazione/ }
   - { from: /pages/contact, to: /contatti/ }
-  - { from: /collections/all, to: /equitazione/buoni-regalo/ }
-  - { from: /collections/voucher, to: /equitazione/buoni-regalo/ }
-  - { from: /collections/buoni-regalo, to: /equitazione/buoni-regalo/ }
-  - { from: /products/*, to: /equitazione/buoni-regalo/ }
+  - { from: /collections/all, to: /equitazione/ }
+  - { from: /collections/voucher, to: /equitazione/ }
+  - { from: /collections/buoni-regalo, to: /equitazione/ }
+  - { from: /products/*, to: /equitazione/ }
   - { from: /policies/privacy-policy, to: /privacy/ }
   - { from: /policies/terms-of-service, to: / }
   - { from: /policies/refund-policy, to: / }

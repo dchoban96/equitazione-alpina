@@ -44,10 +44,6 @@ blocks:
         text: "Per cavalli di proprietà, in gruppo e all'aperto."
         link: "/equitazione/pensione-cavalli/"
         label: "La pensione"
-      - title: "Regala un'esperienza"
-        text: "Un buono senza data fissa: si sceglie insieme quando venire."
-        link: "/equitazione/buoni-regalo/"
-        label: "I buoni regalo"
   - type: "text-image"
     kicker: "Come si va"
     heading: "Andare al passo"
@@ -56,7 +52,7 @@ blocks:
 
       Chi non è mai salito in sella comincia da terra: si conosce l'animale, si impara a stargli accanto, si sale quando si è pronti. Chi monta da anni trova sentieri che meritano la giornata intera.
 
-      I bambini possono avvicinarsi ai cavalli da tre anni, condotti a mano, per il tempo che serve — dieci minuti bastano, se sono i dieci minuti giusti.
+      In sella si sale dai 12 anni in su, e il ritmo lo decide chi impara: la prima volta può bastare stare accanto al cavallo, ed è già un buon inizio.
     image: "@assets/foto/passeggiata-a-cavallo-sul-sentiero.jpg"
     alt: "Due cavalieri al passo su una strada sterrata fra gli abeti, con le montagne sullo sfondo"
     side: "left"

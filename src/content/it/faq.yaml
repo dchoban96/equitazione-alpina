@@ -7,8 +7,8 @@ items:
     tags:
       - "equitazione"
   - id: "bambini"
-    question: "Da che età possono venire i bambini?"
-    answer: "I bambini possono avvicinarsi ai cavalli da tre anni, condotti a mano, per il tempo che serve."
+    question: "Da che età si può salire a cavallo?"
+    answer: "Dai 12 anni in su. Chi non è mai salito in sella comincia da terra, al ritmo di chi impara."
     tags:
       - "equitazione"
   - id: "valmalenco"
@@ -24,11 +24,6 @@ items:
   - id: "arrivare"
     question: "Come si arriva?"
     answer: "Ad Albosaggia si arriva in 10 minuti da Sondrio. Il recinto è in Località Ravasciolo: vedi la pagina [Contatti](/contatti/)."
-    tags:
-      - "equitazione"
-  - id: "buono-scadenza"
-    question: "Il buono regalo ha una scadenza?"
-    answer: "Validità 6 mesi dall'acquisto. Per le esperienze in Valmalenco, che si svolgono da fine giugno a inizio settembre, la scadenza si estende fino alla prima stagione utile."
     tags:
       - "equitazione"
   - id: "cuccioli"
