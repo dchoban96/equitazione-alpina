@@ -9,7 +9,7 @@ nav:
 seo:
   title: "Passeggiate a cavallo in Valmalenco · Alpe Palù"
   description: "Da fine giugno a inizio settembre le passeggiate a cavallo salgono in Valmalenco, verso i pascoli dell'Alpe Palù, con Equitazione Alpina."
-  image: "@assets/foto/mockup-alpe-palu-valmalenco.jpg"
+  image: "@assets/foto/valle-con-pascoli-e-case.jpg"
 blocks:
   - type: "hero"
     kicker: "Valmalenco"
@@ -17,8 +17,8 @@ blocks:
     intro: |
       Da fine giugno a inizio settembre Equitazione Alpina si sposta in Valmalenco, a San Giuseppe, in località Sabbionaccio. Quando la neve libera i pascoli alti si sale verso l'Alpe Palù: poche settimane, diverse da tutto il resto dell'anno, fra pascoli aperti, granito chiaro e silenzio.
     altitude: 1950
-    image: "@assets/foto/mockup-alpe-palu-valmalenco.jpg"
-    imageAlt: "Illustrazione di prova: il lago dell'Alpe Palù fra le montagne"
+    image: "@assets/foto/valle-con-pascoli-e-case.jpg"
+    imageAlt: "Una valle verde con pascoli, boschi e qualche casa, sotto un cielo azzurro, in Valmalenco"
   - type: "facts"
     kicker: "In breve"
     heading: "La stagione in Valmalenco"

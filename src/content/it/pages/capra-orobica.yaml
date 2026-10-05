@@ -9,15 +9,15 @@ nav:
 seo:
   title: "Allevamento Capra Orobica · Albosaggia, Valtellina"
   description: "Allevamento di Capra Orobica ad Albosaggia: la razza caprina delle Alpi Orobie, dal pelo lungo e dalle corna ampie."
-  image: "@assets/foto/mockup-capra-ritratto.jpg"
+  image: "@assets/foto/capra-orobica-con-capretto-nel-bosco.jpg"
 blocks:
   - type: "hero"
     kicker: "Capra Orobica"
     title: "Capra Orobica, una razza delle nostre montagne"
     intro: |
       Sul versante orobico, accanto ai cavalli, pascolano le nostre capre. Sono Orobiche: una razza di queste montagne, con le corna lunghe e ritorte e il pelo lungo, che un tempo ogni famiglia della zona allevava e che oggi è rimasta a pochi.
-    image: "@assets/foto/mockup-capra-ritratto.jpg"
-    imageAlt: "Illustrazione di prova: una Capra Orobica davanti alle montagne"
+    image: "@assets/foto/capra-orobica-con-capretto-nel-bosco.jpg"
+    imageAlt: "Una Capra Orobica bianca con il campanaccio e il suo capretto, nel bosco"
   - type: "text-image"
     kicker: "L'allevamento"
     heading: "Perché la Capra Orobica"
@@ -27,8 +27,8 @@ blocks:
       Si alleva come una volta: al pascolo in primavera e in autunno, in alpeggio d'estate.
 
       Di corna, mantelli e formaggi parliamo nella pagina [La razza](/capra-orobica/razza/).
-    image: "@assets/foto/mockup-capre-pascolo.jpg"
-    alt: "Illustrazione di prova: capre al pascolo sul pendio"
+    image: "@assets/foto/capre-orobiche-al-pascolo-in-quota.jpg"
+    alt: "Un gruppo di Capre Orobiche bianche e nere al pascolo su un pendio erboso, con le montagne sullo sfondo"
     side: "right"
   - type: "cards"
     kicker: "La sezione"

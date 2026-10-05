@@ -9,15 +9,15 @@ nav:
 seo:
   title: "Foto: paesaggi della Valtellina · Equitazione Alpina"
   description: "Paesaggi della Valtellina: le Orobie, la Valmalenco, i terrazzamenti e la valle in ogni stagione."
-  image: "@assets/foto/mockup-terrazzamenti.jpg"
+  image: "@assets/foto/cima-rocciosa-e-abeti.jpg"
 blocks:
   - type: "hero"
     kicker: "Galleria"
     title: "Galleria paesaggi"
     intro: |
       Testo di prova. La valle in ogni stagione.
-    image: "@assets/foto/mockup-terrazzamenti.jpg"
-    imageAlt: "Illustrazione di prova: vigneti terrazzati al tramonto"
+    image: "@assets/foto/cima-rocciosa-e-abeti.jpg"
+    imageAlt: "Una montagna rocciosa sotto un cielo con nuvole bianche, con due abeti in primo piano, in Valmalenco"
   - type: "gallery"
     gallery: "valtellina"
   - type: "cta-contact"

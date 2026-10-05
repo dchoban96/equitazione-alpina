@@ -9,15 +9,15 @@ nav:
 seo:
   title: "Estate sulle Orobie e in Valmalenco · Cosa fare"
   description: "Cosa fare d'estate fra Albosaggia, le Orobie e la Valmalenco: sentieri, alpeggi, il Sentiero Valtellina e le passeggiate a cavallo."
-  image: "@assets/foto/mockup-estate.jpg"
+  image: "@assets/foto/prato-di-epilobi.jpg"
 blocks:
   - type: "hero"
     kicker: "Guida alla Valtellina"
     title: "Estate"
     intro: |
       Testo di prova. D'estate la montagna si apre: i pascoli alti tornano raggiungibili e le giornate sono lunghe.
-    image: "@assets/foto/mockup-estate.jpg"
-    imageAlt: "Illustrazione di prova: un prato fiorito sotto le montagne"
+    image: "@assets/foto/prato-di-epilobi.jpg"
+    imageAlt: "Fiori di epilobio rosa in un prato, con abeti e montagne sullo sfondo, in Valmalenco"
   - type: "text"
     kicker: "A piedi"
     heading: "Sentieri e alpeggi"

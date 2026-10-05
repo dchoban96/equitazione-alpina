@@ -9,15 +9,15 @@ nav:
 seo:
   title: "La Valmalenco · Guida alla Valtellina"
   description: "La Valmalenco, la valle del Mallero a nord di Sondrio: paesi, pietra, pascoli e l'Alpe Palù. Cosa vedere e quando andare."
-  image: "@assets/foto/mockup-alpe-palu-valmalenco.jpg"
+  image: "@assets/foto/lago-in-valmalenco.jpg"
 blocks:
   - type: "hero"
     kicker: "Guida alla Valtellina"
     title: "La Valmalenco"
     intro: |
       Testo di prova. Risalendo il Mallero da Sondrio si entra in Valmalenco, una valle laterale chiusa dalle montagne del gruppo del Bernina.
-    image: "@assets/foto/mockup-alpe-palu-valmalenco.jpg"
-    imageAlt: "Illustrazione di prova: un lago alpino fra le montagne innevate"
+    image: "@assets/foto/lago-in-valmalenco.jpg"
+    imageAlt: "Un lago alpino con prati dorati e pini, sotto una montagna boscosa, in Valmalenco"
   - type: "text"
     kicker: "La valle"
     heading: "I paesi della valle"
