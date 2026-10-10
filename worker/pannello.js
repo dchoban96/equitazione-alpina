@@ -17,7 +17,7 @@
 
 const LINK_TTL = 15 * 60; // seconds a sign-in link stays valid
 const SESSION_DAYS = 30;
-const MAX_LINKS_PER_HOUR = 5;
+const MAX_LINKS_PER_HOUR = 100; // raised while setting up; back to 5 once sign-in works
 
 // The only places the panel may read and write.
 const CONTENT_DIRS = ['src/content/it/pages', 'src/content/it/articles', 'src/content/it/galleries'];
