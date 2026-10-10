@@ -42,16 +42,6 @@ blocks:
     image: "@assets/foto/cavallo-pezzato-al-pascolo.jpg"
     imageAlt: "Un cavallo pezzato bianco e nero bruca l'erba alta di un prato soleggiato"
     video: "/video/intro-cavallo-al-pascolo.mp4"
-  - type: "facts"
-    items:
-      - label: "Dal"
-        value: "1995 ca."
-      - label: "Base"
-        value: "Albosaggia (SO)"
-      - label: "Sede estiva"
-        value: "Valmalenco"
-      - label: Età minima
-        value: 12 anni
   - type: "text-image"
     kicker: "Gli animali"
     heading: "Cavalli che vivono fuori"
@@ -66,6 +56,16 @@ blocks:
     side: "right"
     note: "recinto"
     anchor: "cavalli"
+  - type: "facts"
+    items:
+      - label: "Dal"
+        value: "1995 ca."
+      - label: "Base"
+        value: "Albosaggia (SO)"
+      - label: "Sede estiva"
+        value: "Valmalenco"
+      - label: Età minima
+        value: 12 anni
   - type: "places"
     altitude: 1300
     kicker: "Dove si va"
