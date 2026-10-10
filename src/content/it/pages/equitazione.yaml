@@ -75,8 +75,8 @@ blocks:
   - type: "text-image"
     kicker: "Valmalenco"
     heading: "Verso l'Alpe Palù"
-    image: "@assets/foto/mockup-alpe-palu-valmalenco.jpg"
-    alt: "Illustrazione di prova: il lago dell'Alpe Palù fra le montagne"
+    image: "@assets/foto/lago-palu-valmalenco.jpg"
+    alt: "Il lago Palù in Valmalenco d'estate: acqua verde chiaro, prato asciutto, pini cembri e la montagna sullo sfondo"
     side: "overlay"
     note: "≈ 1950 m"
     altitude: 1950
