@@ -4,6 +4,8 @@
   "exclude": ["dist", "reference"],
   "compilerOptions": {
     "baseUrl": ".",
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
     "paths": {
       "@assets/*": ["src/assets/*"]
     }

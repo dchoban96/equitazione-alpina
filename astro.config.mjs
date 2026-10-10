@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
+import preact from '@astrojs/preact';
 import daCompletare from './integrations/da-completare.mjs';
 
 const base = (process.env.BASE_PATH || '/').replace(/\/$/, '');
@@ -31,5 +32,6 @@ export default defineConfig({
   prefetch: false,
   devToolbar: { enabled: false },
   markdown: { rehypePlugins: [prefixBase] },
-  integrations: [mdx(), daCompletare()],
+  // Preact only for the control panel (src/pannello), the site itself ships no framework.
+  integrations: [mdx(), preact({ include: ['src/pannello/**/*.tsx'] }), daCompletare()],
 });

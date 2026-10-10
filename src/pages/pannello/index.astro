@@ -1,0 +1,26 @@
+---
+// The site's control panel (phase 1: read-only). Never indexed, ships Preact only here.
+import App from '../../pannello/App';
+import '../../pannello/pannello.css';
+import fontUrl from '../../assets/fonts/inter-latin-var.woff2?url';
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="theme-color" content="#f7f2e8" />
+    <title>Pannello · Equitazione Alpina</title>
+    <link rel="preload" href={fontUrl} as="font" type="font/woff2" crossorigin />
+    <style
+      is:inline
+      set:html={`@font-face{font-family:Inter;src:url(${fontUrl}) format('woff2');font-weight:100 900;font-display:swap}`}
+    />
+  </head>
+  <body>
+    <App client:only="preact" />
+  </body>
+</html>
