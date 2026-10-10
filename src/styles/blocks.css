@@ -315,6 +315,32 @@
   color: var(--color-heading);
 }
 
+/* phones: the cards side by side, three to a row, and less air around the block */
+@media (max-width: 749px) {
+  .blk--facts {
+    padding-block: 0 var(--space-5);
+  }
+  .blk--facts .blk__in > .facts:first-child {
+    margin-top: 0;
+  }
+  .facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .facts > div {
+    padding: 12px 8px 14px;
+  }
+  .facts dt {
+    margin-bottom: 6px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+  }
+  .facts dd {
+    font-size: 0.9375rem;
+    overflow-wrap: break-word; /* only a word too long for the card is split */
+  }
+}
+
 /* ---------- grids: .ea-griglia (tiles and places), as card grids ---------- */
 .grid {
   display: grid;
