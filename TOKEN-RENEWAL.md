@@ -1,7 +1,7 @@
 # Renew the GitHub token (once a year)
 
 The control panel writes to GitHub with a fine-grained token that expires after
-one year (created October 2026, so it expires around **October 2027**).
+a set date: it expires on **31 October 2027**.
 GitHub emails a reminder about a week before. If it expires, the panel still
 opens but **Pubblica** fails.
 
@@ -11,7 +11,7 @@ Never paste the token into a file, a chat or this repository.
 
 1. GitHub → avatar → **Settings → Developer settings → Personal access tokens → Fine-grained tokens**.
 2. Open `pannello-equitazione-alpina` → **Regenerate token**.
-3. Expiration: 1 year. Keep the same access: only the `equitazione-alpina`
+3. Expiration: Custom, about one year ahead. Keep the same access: only the `equitazione-alpina`
    repository, **Contents: Read and write**.
 4. Copy the new token. The old one stops working at once.
 
