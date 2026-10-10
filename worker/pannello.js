@@ -19,7 +19,7 @@ const LINK_TTL = 15 * 60; // seconds a sign-in link stays valid
 const SESSION_DAYS = 30;
 const MAX_LINKS_PER_HOUR = 5;
 
-// The only places the panel may read (and, from phase 2, write).
+// The only places the panel may read and write.
 const CONTENT_DIRS = ['src/content/it/pages', 'src/content/it/articles', 'src/content/it/galleries'];
 const CONTENT_FILES = [
   'src/content/it/faq.yaml',
@@ -47,6 +47,7 @@ export default {
         else if (route === 'GET /me') res = json({ email: user.email });
         else if (route === 'GET /content') res = await readContent(env);
         else if (route === 'GET /status') res = await publishStatus(env);
+        else if (route === 'POST /publish') res = await publish(request, env, user);
         else res = json({ error: 'Not found' }, 404);
       }
       for (const [k, v] of Object.entries(cors)) res.headers.set(k, v);
@@ -161,6 +162,43 @@ async function readContent(env) {
   });
 }
 
+// Pubblica: every changed file in one commit. `base` is the commit the panel
+// read; if someone published in the meantime GitHub refuses and the panel
+// reloads before trying again, so nobody overwrites changes they never saw.
+async function publish(request, env, user) {
+  const { base, files, summary } = await request.json().catch(() => ({}));
+  if (!/^[0-9a-f]{40}$/.test(String(base))) return json({ error: 'Richiesta non valida.' }, 400);
+  if (!Array.isArray(files) || !files.length || files.length > 50) return json({ error: 'Nessuna modifica da pubblicare.' }, 400);
+  for (const f of files) {
+    if (!writable(f?.path) || typeof f.text !== 'string' || f.text.length > 500_000)
+      return json({ error: `File non modificabile: ${String(f?.path)}` }, 400);
+  }
+  const headline = `Pannello: ${String(summary || 'modifiche ai testi').slice(0, 100)}`;
+  const query = `mutation($input: CreateCommitOnBranchInput!) { createCommitOnBranch(input: $input) { commit { oid } } }`;
+  const input = {
+    branch: { repositoryNameWithOwner: env.REPO, branchName: env.BRANCH },
+    expectedHeadOid: base,
+    message: { headline, body: files.map((f) => `- ${f.path}`).join('\n') },
+    fileChanges: { additions: files.map((f) => ({ path: f.path, contents: b64utf8(f.text) })) },
+  };
+  const data = await github(env, 'POST', '/graphql', { query, variables: { input } });
+  if (data.errors) {
+    const msg = JSON.stringify(data.errors);
+    if (/expected|STALE_DATA|is at/i.test(msg)) return json({ error: 'conflict' }, 409);
+    throw new Error(msg);
+  }
+  console.log('publish', user.email, data.data.createCommitOnBranch.commit.oid, files.map((f) => f.path).join(' '));
+  return json({ commit: data.data.createCommitOnBranch.commit.oid });
+}
+
+// Existing content files only: the fixed list, or a file directly inside a content folder.
+function writable(path) {
+  if (typeof path !== 'string') return false;
+  if (CONTENT_FILES.includes(path)) return true;
+  const dir = CONTENT_DIRS.find((d) => path.startsWith(`${d}/`));
+  return Boolean(dir) && /^[a-z0-9][a-z0-9-]*\.(ya?ml|mdx?)$/.test(path.slice(dir.length + 1));
+}
+
 async function publishStatus(env) {
   // Needs "Actions: Read-only" on the token; without it the panel just shows no status.
   const res = await githubRaw(env, 'GET', `/repos/${env.REPO}/actions/runs?branch=${env.BRANCH}&per_page=1`);
@@ -215,6 +253,13 @@ const enc = new TextEncoder();
 const b64url = (bytes) =>
   btoa(String.fromCharCode(...new Uint8Array(bytes))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 const unb64url = (s) => Uint8Array.from(atob(s.replace(/-/g, '+').replace(/_/g, '/')), (c) => c.charCodeAt(0));
+
+function b64utf8(text) {
+  const bytes = enc.encode(text);
+  let bin = '';
+  for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+  return btoa(bin);
+}
 
 function randomToken() {
   return b64url(crypto.getRandomValues(new Uint8Array(32)));

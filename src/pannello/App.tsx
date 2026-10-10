@@ -1,8 +1,11 @@
 // The control panel: sign-in, the menu of pages and articles on the left,
 // the selected item on the right. Phase 1 shows everything read-only.
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { api, apiConfigured, ApiError, loadSession, saveSession, type Session } from './api';
 import { buildModel, type Item, type Model, type RawFile } from './content';
+import { allDrafts, useDrafts } from './drafts';
+import { Editor } from './Editor';
+import { PublishDialog } from './Publish';
 import { View } from './Views';
 
 export default function App() {
@@ -136,6 +139,10 @@ function Shell({ session, onSignOut }: { session: Session; onSignOut: () => void
   const [query, setQuery] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
   const [status, setStatus] = useState<Status | null>(null);
+  const [publishing, setPublishing] = useState(false);
+  const pollNow = useRef<(delay?: number) => void>(() => {});
+  const drafts = useDrafts();
+  const changes = Object.keys(drafts).length;
 
   const fail = (e: unknown) => {
     if (e instanceof ApiError && e.status === 401) onSignOut();
@@ -173,6 +180,10 @@ function Shell({ session, onSignOut }: { session: Session; onSignOut: () => void
       if (!stopped) timer = window.setTimeout(poll, running ? 15000 : 60000);
     };
     const onVisible = () => document.visibilityState === 'visible' && poll();
+    pollNow.current = (delay = 0) => {
+      clearTimeout(timer);
+      timer = window.setTimeout(() => poll(true), delay);
+    };
     poll(true);
     document.addEventListener('visibilitychange', onVisible);
     return () => {
@@ -182,7 +193,16 @@ function Shell({ session, onSignOut }: { session: Session; onSignOut: () => void
     };
   }, []);
 
-  useEffect(() => document.querySelector('.p-row--on')?.scrollIntoView({ block: 'nearest' }), [selected, model]);
+  // keep the open item visible in the menu (scrolling only the menu: scrollIntoView
+  // would also pull the hidden phone menu sideways into view)
+  useEffect(() => {
+    const row = document.querySelector('.p-row--on');
+    const nav = row?.closest('.p-nav');
+    if (!row || !nav) return;
+    const r = row.getBoundingClientRect();
+    const n = nav.getBoundingClientRect();
+    if (r.top < n.top || r.bottom > n.bottom) nav.scrollTop += r.top - n.top - n.height / 2;
+  }, [selected, model]);
 
   const open = (id: string) => {
     location.hash = `/${id}`;
@@ -238,6 +258,27 @@ function Shell({ session, onSignOut }: { session: Session; onSignOut: () => void
           </button>
           <span>{item?.title}</span>
         </div>
+        {changes > 0 && model && (
+          <div class="p-pubbar">
+            <span>
+              {changes === 1 ? '1 pagina modificata' : `${changes} pagine modificate`}, non ancora online
+            </span>
+            <button class="p-btn p-btn--primary" type="button" onClick={() => setPublishing(true)}>
+              Pubblica
+            </button>
+          </div>
+        )}
+        {publishing && (
+          <PublishDialog
+            session={session}
+            onClose={() => setPublishing(false)}
+            onPublished={(m) => {
+              setModel(m);
+              setStatus({ status: 'queued' });
+              pollNow.current(8000);
+            }}
+          />
+        )}
         <div class="p-content">
           {error ? (
             <div class="p-card">
@@ -248,6 +289,8 @@ function Shell({ session, onSignOut }: { session: Session; onSignOut: () => void
             </div>
           ) : !model ? (
             <Splash text="Carico i contenuti…" />
+          ) : item && (item.kind === 'page' || item.kind === 'article') ? (
+            <Editor key={item.id} item={item} open={open} />
           ) : item ? (
             <View item={item} open={open} />
           ) : (
@@ -262,6 +305,7 @@ function Shell({ session, onSignOut }: { session: Session; onSignOut: () => void
 const matches = (it: Item, q: string) => it.title.toLowerCase().includes(q) || String(it.data.slug ?? '').includes(q);
 
 function Menu({ model, query, selected, open }: { model: Model; query: string; selected: string; open: (id: string) => void }) {
+  useDrafts();
   const q = query.trim().toLowerCase();
   const groups = useMemo(
     () => model.groups.map((g) => ({ ...g, items: q ? g.items.filter((it) => matches(it, q)) : g.items })).filter((g) => g.items.length),
@@ -280,6 +324,7 @@ function Menu({ model, query, selected, open }: { model: Model; query: string; s
       >
         <span class={`p-dot p-dot--${it.state}`} aria-hidden="true" />
         <span class="p-row__text">{it.title}</span>
+        {allDrafts()[it.id] && <span class="p-row__dirty" title="Modifiche non pubblicate" aria-label="modificata" />}
       </a>
     </li>
   );
@@ -306,7 +351,7 @@ function Welcome({ model, open }: { model: Model; open: (id: string) => void }) 
       <header class="p-head">
         <h1>Benvenuto</h1>
       </header>
-      <p class="p-note">Per ora il pannello mostra i contenuti in sola lettura: la modifica arriva con il prossimo aggiornamento.</p>
+      <p class="p-note">Scegli una pagina o un articolo per modificarne i testi. Le modifiche restano in questo browser finché non premi Pubblica.</p>
       <section class="p-card">
         <p>
           Il sito ha <strong>{count('page')}</strong> pagine, <strong>{count('article')}</strong> articoli,{' '}

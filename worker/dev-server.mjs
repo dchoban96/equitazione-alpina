@@ -5,6 +5,7 @@
 // Settings come from worker/.dev.vars (KEY=value lines, never committed) and the
 // environment. KV is kept in memory. With no RESEND_API_KEY, the sign-in link is
 // returned in the answer and printed here instead of being emailed.
+// Pubblica commits for real: test with BRANCH=some-test-branch, never main.
 import { createServer } from 'node:http';
 import { readFileSync, existsSync } from 'node:fs';
 import worker from './pannello.js';
@@ -44,7 +45,7 @@ const env = {
   SESSION_SECRET: 'local-development-secret-only-for-this-computer',
   ...vars,
   ...Object.fromEntries(
-    ['GITHUB_TOKEN', 'RESEND_API_KEY', 'ALLOWED_EMAILS'].filter((k) => process.env[k]).map((k) => [k, process.env[k]]),
+    ['GITHUB_TOKEN', 'RESEND_API_KEY', 'ALLOWED_EMAILS', 'BRANCH'].filter((k) => process.env[k]).map((k) => [k, process.env[k]]),
   ),
   PANNELLO_KV: kv,
 };

@@ -165,7 +165,7 @@ function Header({ item, children }: { item: Item; children?: ComponentChildren }
 }
 
 const ReadOnly = () => (
-  <p class="p-note">Per ora il pannello mostra i contenuti in sola lettura: la modifica arriva con il prossimo aggiornamento.</p>
+  <p class="p-note">Questa parte si potrà modificare con un prossimo aggiornamento del pannello.</p>
 );
 
 function PageView({ item, open }: { item: Item; open: (id: string) => void }) {
