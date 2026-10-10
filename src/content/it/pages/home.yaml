@@ -37,6 +37,8 @@ blocks:
         value: "Fine estate"
       - label: "Luogo"
         value: "Albosaggia"
+      - label: ->
+        value: È da lì che comincia tutto il resto.
     image: "@assets/foto/cavallo-pezzato-al-pascolo.jpg"
     imageAlt: "Un cavallo pezzato bianco e nero bruca l'erba alta di un prato soleggiato"
     video: "/video/intro-cavallo-al-pascolo.mp4"
