@@ -10,7 +10,9 @@ Never paste the token into a file, a chat or this repository.
 ## 1. New token on GitHub
 
 1. GitHub → avatar → **Settings → Developer settings → Personal access tokens → Fine-grained tokens**.
-2. Open `pannello-equitazione-alpina` → **Regenerate token**.
+2. Open the current token → **Regenerate token**. Today it is `pannello-equitazione-alpina-2027`
+   (the year it expires); if you create a new token instead, name it with its new year, e.g.
+   `pannello-equitazione-alpina-2028`, and delete the old one.
 3. Expiration: Custom, about one year ahead. Keep the same access: only the `equitazione-alpina`
    repository, **Contents: Read and write**.
 4. Copy the new token. The old one stops working at once.
