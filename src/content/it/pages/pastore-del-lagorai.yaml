@@ -8,16 +8,14 @@ nav:
   order: 10
 seo:
   title: "Allevamento Pastore del Lagorai · Albosaggia (SO)"
-  description: "I nostri Pastore del Lagorai ad Albosaggia: il cane da pastore del Trentino che lavora accanto a cavalli e greggi. Non vendiamo cuccioli."
+  description: "I nostri Pastore del Lagorai ad Albosaggia: il cane da pastore del Trentino che lavora accanto a cavalli e greggi."
   image: "@assets/foto/pastore-blue-merle-al-recinto.jpg"
 blocks:
   - type: "hero"
     kicker: "Pastore del Lagorai"
     title: "Pastore del Lagorai, i cani del recinto"
-    intro: |
-      Al recinto il cane arriva sempre prima di tutti: corre avanti, accompagna i cavalli, conosce ogni sentiero. I nostri sono Pastori del Lagorai, una razza da lavoro delle Alpi del Nord-Est che da sempre segue greggi e mandrie nella transumanza.
-
-      I nostri cani non sono in vendita e non vendiamo cuccioli: questa sezione racconta la razza e il lavoro dei cani con gli animali.
+    intro: |-
+      Al recinto il cane arriva sempre prima di tutti: corre avanti, accompagna i cavalli, conosce ogni sentiero. I nostri sono Pastori del Lagorai, una razza, in fase di riconoscimento, da lavoro delle Alpi del Nord-Est che da sempre segue greggi e mandrie nella transumanza.
     image: "@assets/foto/pastore-blue-merle-al-recinto.jpg"
     imageAlt: "Un Pastore del Lagorai blue merle in piedi sul prato, davanti a un muretto di pietra"
   - type: "text-image"
