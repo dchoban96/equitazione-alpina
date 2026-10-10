@@ -42,20 +42,6 @@ blocks:
     image: "@assets/foto/cavallo-pezzato-al-pascolo.jpg"
     imageAlt: "Un cavallo pezzato bianco e nero bruca l'erba alta di un prato soleggiato"
     video: "/video/intro-cavallo-al-pascolo.mp4"
-  - type: "text-image"
-    kicker: "Gli animali"
-    heading: "Cavalli che vivono fuori"
-    body: |
-      I nostri cavalli non stanno chiusi in box. Vivono all'aperto, in gruppo, sul prato in pendenza ai piedi del bosco: il che significa zoccoli buoni, muscoli veri e caratteri tranquilli.
-
-      Si muovono, si cercano, si riposano all'ombra degli alberi. È così che vivono i cavalli quando li si lascia essere cavalli.
-
-      Ogni tanto nasce un puledro, e per qualche settimana tutto il resto passa in secondo piano.
-    image: "@assets/foto/cavalli-sul-prato-in-estate.jpg"
-    alt: "Due cavalli sauri con la lista bianca e un cavallo grigio sul prato verde in pendenza, ai piedi del bosco"
-    side: "right"
-    note: "recinto"
-    anchor: "cavalli"
   - type: "facts"
     items:
       - label: "Dal"
@@ -64,8 +50,6 @@ blocks:
         value: "Albosaggia (SO)"
       - label: "Sede estiva"
         value: "Valmalenco"
-      - label: Età minima
-        value: 12 anni
   - type: "places"
     altitude: 1300
     kicker: "Dove si va"
@@ -82,6 +66,20 @@ blocks:
         approximate: true
         text: "Quando la neve libera i pascoli alti si sale verso l'Alpe Palù. Sono poche settimane, diverse da tutto il resto dell'anno: pascoli aperti, granito chiaro, silenzio."
         season: "Da fine giugno a inizio settembre"
+  - type: "text-image"
+    kicker: "Gli animali"
+    heading: "Cavalli che vivono fuori"
+    body: |
+      I nostri cavalli non stanno chiusi in box. Vivono all'aperto, in gruppo, sul prato in pendenza ai piedi del bosco: il che significa zoccoli buoni, muscoli veri e caratteri tranquilli.
+
+      Si muovono, si cercano, si riposano all'ombra degli alberi. È così che vivono i cavalli quando li si lascia essere cavalli.
+
+      Ogni tanto nasce un puledro, e per qualche settimana tutto il resto passa in secondo piano.
+    image: "@assets/foto/cavalli-sul-prato-in-estate.jpg"
+    alt: "Due cavalli sauri con la lista bianca e un cavallo grigio sul prato verde in pendenza, ai piedi del bosco"
+    side: "right"
+    note: "recinto"
+    anchor: "cavalli"
   - type: "text-image"
     kicker: "Come si va"
     heading: "Andare al passo"
