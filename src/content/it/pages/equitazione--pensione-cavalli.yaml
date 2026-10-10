@@ -30,6 +30,21 @@ blocks:
     image: "@assets/foto/cavalli-sul-prato-in-estate.jpg"
     alt: "Due cavalli sauri con la lista bianca e un cavallo grigio sul prato verde in pendenza, ai piedi del bosco"
     side: "left"
+  - type: "text-image"
+    kicker: "I paddock"
+    heading: "Paddock dedicati e box interni"
+    lead: "I cavalli di proprietà, in paddock dedicati e box interni."
+    body: |
+      Il paddock è un recinto all'aperto riservato al cavallo: uno spazio delimitato dove può muoversi liberamente ogni giorno, al passo che decide lui. Per chi tiene il proprio cavallo in pensione ad Albosaggia, vicino a Sondrio, è l'alternativa alla vita in branco: ogni cavallo di proprietà ha il suo paddock dedicato e il suo box interno.
+
+      I vantaggi si vedono presto. Un cavallo che passa le giornate fuori si muove di più, e il movimento fa bene a zoccoli, articolazioni e digestione. Respira aria aperta invece della polvere della scuderia. Vede e sente gli altri cavalli, e questo lo tiene tranquillo: meno noia, meno stress, meno vizi di scuderia.
+
+      Il paddock dedicato permette anche di seguire ogni cavallo per conto suo: la sua razione di fieno, i suoi tempi, le sue esigenze. Ed è la soluzione giusta per chi non può o non deve stare in gruppo.
+
+      Il box interno completa il quadro: un riparo asciutto per la notte, per il maltempo e per i momenti in cui il cavallo ha bisogno di riposo o di cure.
+    image: "@assets/foto/scuderia-box-interni.jpg"
+    alt: "Il corridoio della scuderia con i box interni in muratura rossa, le porte in legno e i finimenti appesi alla parete"
+    side: "right"
   - type: "cards"
     kicker: "La pensione"
     heading: "Cosa comprende"
