@@ -29,7 +29,7 @@ blocks:
       Ogni tanto nasce un puledro, e per qualche settimana tutto il resto passa in secondo piano.
     image: "@assets/foto/cavalli-sul-prato-in-estate.jpg"
     alt: "Due cavalli sauri con la lista bianca e un cavallo grigio sul prato verde in pendenza, ai piedi del bosco"
-    side: "right"
+    side: "left"
   - type: "cards"
     kicker: "La pensione"
     heading: "Cosa comprende"
