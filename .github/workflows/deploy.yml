@@ -37,6 +37,8 @@ jobs:
         env:
           # project pages live under /<repository>/; empty with a custom domain
           BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          # the control panel's API (worker/pannello.js on Cloudflare); public, not a secret
+          PUBLIC_PANNELLO_API: https://pannello-equitazione-alpina.dchoban96.workers.dev
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

@@ -10,3 +10,4 @@ Thumbs.db
 Articles/
 /foto/
 worker/.dev.vars
+worker/SESSION_SECRET.txt
