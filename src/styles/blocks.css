@@ -104,6 +104,16 @@
 .hero__media {
   margin-top: var(--space-7);
 }
+/* photo first, then the title and text (order only: the H1 is still read first) */
+.blk--hero--photo-first .blk__in {
+  display: flex;
+  flex-direction: column;
+}
+.blk--hero--photo-first .hero__media {
+  order: -1;
+  margin-top: 0;
+  margin-bottom: var(--space-7);
+}
 /* hero data panel: a frosted card in the photo's corner, not a full veil */
 .hero__media.split--overlay > .split__text {
   align-self: end;

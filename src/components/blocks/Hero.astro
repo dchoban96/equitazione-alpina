@@ -15,7 +15,8 @@ const { block: b, draft, ui } = Astro.props;
 const intro = await md(b.intro);
 ---
 
-<section class="blk blk--hero" id={b.anchor} data-altitude={b.altitude}>
+{/* A hero with the readings panel (the home page) opens with the photo; the H1 stays first in the markup. */}
+<section class:list={['blk blk--hero', { 'blk--hero--photo-first': b.image && b.panel }]} id={b.anchor} data-altitude={b.altitude}>
   <div class="blk__in">
     <div class="hero-seq">
       {b.coordinates && <p class="hero__coords" set:html={txt(b.coordinates)} />}
