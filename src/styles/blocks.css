@@ -127,6 +127,12 @@
   -webkit-backdrop-filter: blur(16px) saturate(1.2);
   backdrop-filter: blur(16px) saturate(1.2);
 }
+/* on phones the photo stands alone: the readings panel shows from tablet width up */
+@media (max-width: 749px) {
+  .hero__media.split--overlay > .split__text {
+    display: none;
+  }
+}
 /* the four readings in a compact two-by-two grid, label above value */
 .hero__media .split__text .kicker {
   margin-bottom: var(--space-3);
