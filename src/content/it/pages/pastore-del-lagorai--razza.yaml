@@ -8,7 +8,7 @@ nav:
   order: 10
 seo:
   title: "Pastore del Lagorai: razza, carattere e origini"
-  description: "Il Pastore del Lagorai: origini, carattere e lavoro con il gregge del cane da pastore delle Alpi del Nord-Est, riconosciuto dall'ENCI nel 2020."
+  description: "Il Pastore del Lagorai: origini, carattere e lavoro con il gregge del cane da pastore delle Alpi del Nord-Est, in fase di riconoscimento dall'ENCI"
   image: "@assets/foto/pastore-blue-merle-profilo.jpg"
 blocks:
   - type: "hero"
