@@ -3,7 +3,7 @@ slug: ""
 title: "Equitazione Alpina"
 section: "home"
 draft: false
-mockup: true
+mockup: false
 nav:
   order: 100
 localBusiness: true
