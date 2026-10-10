@@ -838,17 +838,21 @@
   bottom: var(--ridges-bleed);
   height: calc(100% - var(--ridges-bleed));
 }
+/* the nearest mountain is see-through: what passes behind it stays readable */
+.ridges--front .ridge {
+  opacity: 0.6;
+}
 /* Safari 26 colours its bottom toolbar from the background-color of a fixed
    element touching the bottom edge (pseudo-elements are ignored): a thin
-   strip in the nearest ridge's colour, hidden behind that ridge, gives it
-   the green. */
+   strip in the nearest ridge's colour gives it the green. One pixel high,
+   since the see-through ridge no longer hides it. */
 .edge-bottom {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 31;
-  height: 8px;
+  height: 1px;
   background-color: var(--color-ridge-3);
 }
 .ridges--front.ridges--fixed::after {
