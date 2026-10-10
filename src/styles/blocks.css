@@ -200,6 +200,17 @@
     margin-bottom: var(--space-5);
   }
 }
+/* wide screens, with a photo: the heading column is taller than the text, so
+   the title and photo scroll and the text stays in view beside them */
+@media (min-width: 1024px) {
+  .blk--text > .blk__in > header:has(.text__photo) {
+    position: static;
+  }
+  .blk--text > .blk__in:has(> header .text__photo) > .prose {
+    position: sticky;
+    top: calc(var(--layout-header) + 40px);
+  }
+}
 
 /* ---------- text + image: ea-blocco ---------- */
 .split {
