@@ -39,7 +39,8 @@ export default {
       const url = new URL(request.url);
       const route = `${request.method} ${url.pathname}`;
       let res;
-      if (route === 'POST /auth/request') res = await requestLink(request, env);
+      if (route === 'GET /health') res = health(env);
+      else if (route === 'POST /auth/request') res = await requestLink(request, env);
       else if (route === 'POST /auth/verify') res = await verifyLink(request, env);
       else {
         const user = await authenticate(request, env);
@@ -67,7 +68,10 @@ async function requestLink(request, env) {
   // The same answer whether or not the address may sign in, so the list stays private.
   const done = (extra = {}) => json({ ok: true, ...extra });
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return json({ error: 'Indirizzo email non valido.' }, 400);
-  if (!allowed(email, env)) return done();
+  if (!allowed(email, env)) {
+    console.log('sign-in refused: address not in ALLOWED_EMAILS');
+    return done();
+  }
 
   const rlKey = `rl:${email}`;
   const count = Number((await env.PANNELLO_KV.get(rlKey)) || 0);
@@ -118,12 +122,29 @@ async function authenticate(request, env) {
   return allowed(data.email, env) ? data : null;
 }
 
-const allowed = (email, env) =>
-  (env.ALLOWED_EMAILS || '')
-    .split(',')
-    .map((e) => e.trim().toLowerCase())
-    .filter(Boolean)
-    .includes(email);
+// Pasted settings can carry quotes, spaces or invisible characters: keep only what an address can contain.
+const allowList = (env) =>
+  String(env.ALLOWED_EMAILS || '')
+    .split(/[,;\s]+/)
+    .map((e) => e.toLowerCase().replace(/[^a-z0-9@._+-]/g, ''))
+    .filter((e) => e.includes('@'));
+
+const allowed = (email, env) => allowList(env).includes(email);
+
+// Which settings the Worker can see, for setting it up: yes/no and counts only, never a value.
+function health(env) {
+  return json({
+    kv: Boolean(env.PANNELLO_KV),
+    githubToken: Boolean(env.GITHUB_TOKEN),
+    resendKey: Boolean(env.RESEND_API_KEY),
+    sessionSecret: String(env.SESSION_SECRET || '').length >= 32,
+    allowedEmails: allowList(env).length,
+    allowedOrigins: String(env.ALLOWED_ORIGINS || '').split(',').filter((o) => o.trim()).length,
+    panelUrl: Boolean(env.PANEL_URL),
+    mailFrom: Boolean(env.MAIL_FROM),
+    repo: Boolean(env.REPO && env.BRANCH),
+  });
+}
 
 /* ---------- content ---------- */
 
