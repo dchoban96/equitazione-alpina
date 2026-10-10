@@ -95,11 +95,22 @@ function threeWay(base: any, mine: any, theirs: any): any {
     }
     return out;
   }
-  // a list merges entry by entry only if nobody added, removed or moved entries
-  if (Array.isArray(base) && Array.isArray(mine) && Array.isArray(theirs) && order(base) === order(mine) && base.length === theirs.length)
-    return mine.map((m, i) => threeWay(base[i], m, theirs[i]));
+  if (Array.isArray(base) && Array.isArray(mine) && Array.isArray(theirs) && order(base) === order(mine)) {
+    // I only edited entries in place
+    if (base.length === theirs.length) return mine.map((m, i) => threeWay(base[i], m, theirs[i]));
+    // they added, removed or moved entries: keep their list, and carry my edits onto
+    // the entries they left as they were (found by content, since positions moved)
+    const used = new Set<number>();
+    return theirs.map((t) => {
+      const i = base.findIndex((b, k) => !used.has(k) && same(b, t));
+      if (i < 0) return t;
+      used.add(i);
+      return threeWay(base[i], mine[i], t);
+    });
+  }
   return mine;
 }
+export { threeWay as _threeWay }; // for tests
 
 /** After a conflict: carry the edits over to the newer version of the item. */
 export function rebase(item: Item) {
