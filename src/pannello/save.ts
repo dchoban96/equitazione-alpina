@@ -26,7 +26,9 @@ function merge(doc: Document, node: unknown, value: unknown): unknown {
   if (Array.isArray(value) && isSeq(node)) {
     const old = node.items;
     node.items = value.map((v, k) => {
-      const from = v && typeof v === 'object' && ORIGIN in v ? old[(v as any)[ORIGIN]] : old[k];
+      // an entry from the file goes back to its own node; a new entry gets a new node
+      // (reusing the node at its position would turn it into a copy of the entry there)
+      const from = v && typeof v === 'object' ? (ORIGIN in v ? old[(v as any)[ORIGIN]] : undefined) : old[k];
       return from === undefined ? doc.createNode(strip(v)) : merge(doc, from, v);
     }) as typeof node.items;
     return node;

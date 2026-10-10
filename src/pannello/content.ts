@@ -1,6 +1,7 @@
 // Turns the raw content files (as the API returns them) into what the panel
 // shows: one item per page, article, gallery and list, grouped like the site.
 import { parse } from 'yaml';
+import { pendingPreview } from './photos';
 
 export interface RawFile {
   path: string;
@@ -39,11 +40,13 @@ export interface Model {
 export const REPO_RAW = 'https://raw.githubusercontent.com/dchoban96/equitazione-alpina/main/';
 export const SITE_URL = 'https://www.equitazione-alpina.it';
 
-/** "@assets/foto/x.jpg" or "../../../assets/foto/x.jpg" -> a URL that shows the photo. */
+/** "@assets/foto/x.jpg" or "../../../assets/foto/x.jpg" -> a URL that shows the photo
+ *  (a photo chosen in the panel and not yet published shows from this browser). */
 export function photoUrl(ref: unknown): string | null {
   if (typeof ref !== 'string' || !ref) return null;
   const m = ref.match(/assets\/(.+)$/);
-  return m ? `${REPO_RAW}src/assets/${m[1]}` : null;
+  if (!m) return null;
+  return pendingPreview(m[1].replace(/^foto\//, '')) ?? `${REPO_RAW}src/assets/${m[1]}`;
 }
 
 export const pageUrl = (slug: string) => `${SITE_URL}/${slug ? `${slug}/` : ''}`;

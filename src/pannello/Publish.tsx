@@ -4,6 +4,7 @@ import { useEffect, useState } from 'preact/hooks';
 import { api, ApiError, type Session } from './api';
 import { buildModel, type Model, type RawFile } from './content';
 import { discard, rebase, useDrafts } from './drafts';
+import { blobBody, dropPending, getPending, pendingNames, photoRefs } from './photos';
 import { fileText } from './save';
 import { problems } from './validate';
 
@@ -19,6 +20,8 @@ export function PublishDialog({ session, onClose, onPublished }: { session: Sess
   const [phase, setPhase] = useState<Phase>('checking');
   const [fresh, setFresh] = useState<Model | null>(null);
   const [error, setError] = useState('');
+  const [progress, setProgress] = useState('');
+  const [uploaded] = useState(() => new Map<string, string>()); // photo name -> blob sha, kept across a retry
 
   const check = async () => {
     setPhase('checking');
@@ -62,9 +65,41 @@ export function PublishDialog({ session, onClose, onPublished }: { session: Sess
     }));
     const titles = entries.map((e) => e.title);
     const summary = titles.length > 3 ? `${titles.slice(0, 3).join(', ')} e altre ${titles.length - 3}` : titles.join(', ');
+
+    // new photos the edits use, uploaded one by one before the commit
+    const pending = new Set(pendingNames());
+    const used = new Set(entries.flatMap((e) => [...photoRefs(e.draft.data)]));
+    const newPhotos = [...used].filter((n) => pending.has(n));
+
+    // photos the edited pages used before and that no page uses any more are removed from the site
+    const before = new Set(entries.flatMap((e) => [...photoRefs(e.item!.data)]));
+    const after = new Set<string>();
+    for (const [id, it] of m.byId) photoRefs(drafts[id]?.data ?? it.data, after);
+    const existing = new Set(m.photos);
+    const removed = [...before].filter((n) => !after.has(n) && existing.has(n));
+
     try {
-      await api('/publish', { session: session.session, body: { base: m.head, files, summary } });
+      for (const [i, name] of newPhotos.entries()) {
+        if (uploaded.has(name)) continue;
+        setProgress(`Carico le foto… ${i + 1} di ${newPhotos.length}`);
+        const blob = await getPending(name);
+        if (!blob) throw new Error('Una foto nuova non è più in questo browser: aggiungila di nuovo.');
+        const { sha } = await api<{ sha: string }>('/blob', { session: session.session, raw: await blobBody(blob) });
+        uploaded.set(name, sha);
+      }
+      setProgress('Pubblico…');
+      await api('/publish', {
+        session: session.session,
+        body: {
+          base: m.head,
+          files,
+          blobs: newPhotos.map((n) => ({ path: `src/assets/foto/${n}`, sha: uploaded.get(n) })),
+          deletions: removed.map((n) => `src/assets/foto/${n}`),
+          summary,
+        },
+      });
       discard(entries.map((e) => e.id));
+      await dropPending(newPhotos);
       onPublished(await fetchModel(session).catch(() => m));
       setPhase('done');
     } catch (e) {
@@ -76,6 +111,8 @@ export function PublishDialog({ session, onClose, onPublished }: { session: Sess
       }
       setError((e as Error).message);
       setPhase('error');
+    } finally {
+      setProgress('');
     }
   };
 
@@ -134,7 +171,7 @@ export function PublishDialog({ session, onClose, onPublished }: { session: Sess
                 <button type="button" class="p-btn" onClick={check}>Riprova</button>
               ) : (
                 <button type="button" class="p-btn p-btn--primary" disabled={phase !== 'ready' || blocked} onClick={() => send(fresh!)}>
-                  {phase === 'sending' ? 'Pubblico…' : 'Pubblica ora'}
+                  {phase === 'sending' ? progress || 'Pubblico…' : 'Pubblica ora'}
                 </button>
               )}
             </>

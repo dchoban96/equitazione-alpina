@@ -39,17 +39,21 @@ export class ApiError extends Error {
 
 export const apiConfigured = () => Boolean(API);
 
-export async function api<T>(path: string, opts: { method?: string; body?: unknown; session?: string } = {}): Promise<T> {
+export async function api<T>(
+  path: string,
+  opts: { method?: string; body?: unknown; raw?: string; session?: string } = {},
+): Promise<T> {
   if (!API) throw new ApiError('Il pannello non è ancora collegato al suo servizio.', 0);
   let res: Response;
   try {
     res = await fetch(`${API}${path}`, {
-      method: opts.method || (opts.body ? 'POST' : 'GET'),
+      method: opts.method || (opts.body || opts.raw ? 'POST' : 'GET'),
       headers: {
-        ...(opts.body ? { 'Content-Type': 'application/json' } : {}),
+        ...(opts.body || opts.raw ? { 'Content-Type': 'application/json' } : {}),
         ...(opts.session ? { Authorization: `Bearer ${opts.session}` } : {}),
       },
-      body: opts.body ? JSON.stringify(opts.body) : undefined,
+      // raw: a body already in JSON (a photo, sent as is)
+      body: opts.raw ?? (opts.body ? JSON.stringify(opts.body) : undefined),
     });
   } catch {
     throw new ApiError('Nessuna connessione. Controlla la rete e riprova.', 0);

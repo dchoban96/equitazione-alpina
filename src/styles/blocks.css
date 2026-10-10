@@ -864,6 +864,18 @@ html:has(.lightbox[open]) :is(.ridges, .edge-bottom) {
 .lightbox__caption[hidden] {
   display: none;
 }
+/* the photo's description, under its title */
+.lightbox__desc {
+  max-width: min(640px, calc(100% - 28px));
+  margin: -4px 0 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.78);
+}
+.lightbox__desc[hidden] {
+  display: none;
+}
 .lightbox__thumbs {
   display: flex;
   gap: 8px;

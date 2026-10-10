@@ -5,6 +5,7 @@ import { api, apiConfigured, ApiError, loadSession, saveSession, type Session } 
 import { buildModel, type Item, type Model, type RawFile } from './content';
 import { allDrafts, useDrafts } from './drafts';
 import { Editor } from './Editor';
+import { dropPending, loadPending, pendingNames, photoRefs, setKnownPhotos, unusedSince } from './photos';
 import { PublishDialog } from './Publish';
 import { View } from './Views';
 
@@ -151,11 +152,21 @@ function Shell({ session, onSignOut }: { session: Session; onSignOut: () => void
 
   const load = () => {
     setError('');
-    api<{ head: string; files: RawFile[]; photos: string[] }>('/content', { session: session.session })
-      .then((r) => setModel(buildModel(r.head, r.files, r.photos)))
+    Promise.all([loadPending(), api<{ head: string; files: RawFile[]; photos: string[] }>('/content', { session: session.session })])
+      .then(([, r]) => {
+        setKnownPhotos(r.photos);
+        setModel(buildModel(r.head, r.files, r.photos));
+      })
       .catch(fail);
   };
   useEffect(load, []);
+
+  // photos chosen for edits that were then discarded are forgotten
+  useEffect(() => {
+    const used = new Set(Object.values(drafts).flatMap((d) => [...photoRefs(d.data)]));
+    const unused = pendingNames().filter((n) => !used.has(n) && unusedSince(n));
+    if (unused.length) dropPending(unused);
+  }, [drafts]);
 
   // the address bar remembers the open item, so Back and reloading work
   useEffect(() => {
@@ -289,7 +300,7 @@ function Shell({ session, onSignOut }: { session: Session; onSignOut: () => void
             </div>
           ) : !model ? (
             <Splash text="Carico i contenuti…" />
-          ) : item && (item.kind === 'page' || item.kind === 'article') ? (
+          ) : item && (item.kind === 'page' || item.kind === 'article' || item.kind === 'gallery') ? (
             <Editor key={item.id} item={item} open={open} />
           ) : item ? (
             <View item={item} open={open} />

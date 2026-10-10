@@ -49,6 +49,7 @@ export default {
         else if (route === 'GET /content') res = await readContent(env);
         else if (route === 'GET /status') res = await publishStatus(env);
         else if (route === 'POST /publish') res = await publish(request, env, user);
+        else if (route === 'POST /blob') res = await uploadBlob(request, env);
         else res = json({ error: 'Not found' }, 404);
       }
       for (const [k, v] of Object.entries(cors)) res.headers.set(k, v);
@@ -199,34 +200,73 @@ async function readContent(env) {
   });
 }
 
-// Pubblica: every changed file in one commit. `base` is the commit the panel
-// read; if someone published in the meantime GitHub refuses and the panel
-// reloads before trying again, so nobody overwrites changes they never saw.
+// Pubblica: every change in one commit, built with GitHub's Git Data API.
+// `base` is the commit the panel read; the branch only moves forward from
+// it, so if someone published in the meantime GitHub refuses and the panel
+// reloads before trying again: nobody overwrites changes they never saw.
+// Photos arrive beforehand through POST /blob and are referenced by sha.
 async function publish(request, env, user) {
-  const { base, files, summary } = await request.json().catch(() => ({}));
-  if (!/^[0-9a-f]{40}$/.test(String(base))) return json({ error: 'Richiesta non valida.' }, 400);
-  if (!Array.isArray(files) || !files.length || files.length > 50) return json({ error: 'Nessuna modifica da pubblicare.' }, 400);
+  const { base, files = [], blobs = [], deletions = [], summary } = await request.json().catch(() => ({}));
+  const sha = (s) => /^[0-9a-f]{40}$/.test(String(s));
+  if (!sha(base)) return json({ error: 'Richiesta non valida.' }, 400);
+  if (![files, blobs, deletions].every(Array.isArray)) return json({ error: 'Richiesta non valida.' }, 400);
+  if (!files.length && !blobs.length && !deletions.length) return json({ error: 'Nessuna modifica da pubblicare.' }, 400);
+  if (files.length + blobs.length + deletions.length > 150) return json({ error: 'Troppe modifiche in una volta sola.' }, 400);
   for (const f of files) {
     if (!writable(f?.path) || typeof f.text !== 'string' || f.text.length > 500_000)
       return json({ error: `File non modificabile: ${String(f?.path)}` }, 400);
   }
-  const headline = `Pannello: ${String(summary || 'modifiche ai testi').slice(0, 100)}`;
-  const query = `mutation($input: CreateCommitOnBranchInput!) { createCommitOnBranch(input: $input) { commit { oid } } }`;
-  const input = {
-    branch: { repositoryNameWithOwner: env.REPO, branchName: env.BRANCH },
-    expectedHeadOid: base,
-    message: { headline, body: files.map((f) => `- ${f.path}`).join('\n') },
-    fileChanges: { additions: files.map((f) => ({ path: f.path, contents: b64utf8(f.text) })) },
-  };
-  const data = await github(env, 'POST', '/graphql', { query, variables: { input } });
-  if (data.errors) {
-    const msg = JSON.stringify(data.errors);
-    if (/expected|STALE_DATA|is at/i.test(msg)) return json({ error: 'conflict' }, 409);
-    throw new Error(msg);
-  }
-  console.log('publish', user.email, data.data.createCommitOnBranch.commit.oid, files.map((f) => f.path).join(' '));
-  return json({ commit: data.data.createCommitOnBranch.commit.oid });
+  for (const b of blobs) if (!isPhoto(b?.path) || !sha(b.sha)) return json({ error: `Foto non valida: ${String(b?.path)}` }, 400);
+  for (const p of deletions) if (!isPhoto(p)) return json({ error: `File non eliminabile: ${String(p)}` }, 400);
+
+  const repo = `/repos/${env.REPO}/git`;
+  const parent = await github(env, 'GET', `${repo}/commits/${base}`);
+  const tree = await github(env, 'POST', `${repo}/trees`, {
+    base_tree: parent.tree.sha,
+    tree: [
+      ...files.map((f) => ({ path: f.path, mode: '100644', type: 'blob', content: f.text })),
+      ...blobs.map((b) => ({ path: b.path, mode: '100644', type: 'blob', sha: b.sha })),
+      ...deletions.map((p) => ({ path: p, mode: '100644', type: 'blob', sha: null })),
+    ],
+  });
+  const lines = [...files.map((f) => f.path), ...blobs.map((b) => `+ ${b.path}`), ...deletions.map((p) => `- ${p}`)];
+  const commit = await github(env, 'POST', `${repo}/commits`, {
+    message: `Pannello: ${String(summary || 'modifiche').slice(0, 100)}\n\n${lines.join('\n')}`,
+    tree: tree.sha,
+    parents: [base],
+  });
+  const moved = await githubRaw(env, 'PATCH', `${repo}/refs/heads/${env.BRANCH}`, { sha: commit.sha, force: false });
+  if (moved.status === 422) return json({ error: 'conflict' }, 409); // not a fast-forward: someone published first
+  if (!moved.ok) throw new Error(`GitHub ${moved.status}: ${await moved.text()}`);
+  console.log('publish', user.email, commit.sha, lines.join(' '));
+  return json({ commit: commit.sha });
 }
+
+// A photo the panel uploads: the body is GitHub's own blob request,
+// {"content": "<base64>", "encoding": "base64"}, passed through unread so a
+// large photo costs the Worker no processing time. It becomes part of the
+// site only when a publish places it at a photo path.
+async function uploadBlob(request, env) {
+  const size = Number(request.headers.get('Content-Length') || 0);
+  if (!size) return json({ error: 'Foto mancante.' }, 400);
+  if (size > 25_000_000) return json({ error: 'Foto troppo grande.' }, 413);
+  const res = await fetch(`https://api.github.com/repos/${env.REPO}/git/blobs`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+      Accept: 'application/vnd.github+json',
+      'User-Agent': 'pannello-equitazione-alpina',
+      'Content-Type': 'application/json',
+    },
+    body: await request.arrayBuffer(),
+  });
+  if (!res.ok) throw new Error(`GitHub ${res.status}: ${await res.text()}`);
+  const { sha } = await res.json();
+  return json({ sha });
+}
+
+const isPhoto = (path) =>
+  typeof path === 'string' && path.startsWith(`${PHOTO_DIR}/`) && /^[a-z0-9][a-z0-9-]*\.(jpe?g|png|webp)$/.test(path.slice(PHOTO_DIR.length + 1));
 
 // Existing content files only: the fixed list, or a file directly inside a content folder.
 function writable(path) {
@@ -290,13 +330,6 @@ const enc = new TextEncoder();
 const b64url = (bytes) =>
   btoa(String.fromCharCode(...new Uint8Array(bytes))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 const unb64url = (s) => Uint8Array.from(atob(s.replace(/-/g, '+').replace(/_/g, '/')), (c) => c.charCodeAt(0));
-
-function b64utf8(text) {
-  const bytes = enc.encode(text);
-  let bin = '';
-  for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
-  return btoa(bin);
-}
 
 function randomToken() {
   return b64url(crypto.getRandomValues(new Uint8Array(32)));

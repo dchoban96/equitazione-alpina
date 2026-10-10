@@ -884,3 +884,62 @@ div.p-issues {
     border-bottom: 1px solid var(--p-border);
   }
 }
+
+/* ---------- photos ---------- */
+
+.p-picker {
+  display: grid;
+  gap: 0.3rem;
+  justify-items: start;
+  margin-top: 0.5rem;
+}
+.p-picker .p-error {
+  margin: 0;
+  font-size: 0.8rem;
+}
+.p-gedit {
+  display: grid;
+  gap: 0.9rem;
+}
+.p-gedit__item {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 1rem;
+  margin: 0;
+}
+.p-gedit__photo {
+  position: relative;
+  align-self: start;
+}
+.p-gedit__photo img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+  background: var(--p-side);
+}
+.p-gedit__photo .p-num {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  background: var(--p-card);
+}
+.p-gedit__tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+.p-gedit__tools .p-picker {
+  margin: 0;
+}
+.p-gedit .p-input {
+  margin-bottom: 0.6rem;
+}
+@media (max-width: 860px) {
+  .p-gedit__item {
+    grid-template-columns: 1fr;
+  }
+}

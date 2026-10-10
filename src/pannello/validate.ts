@@ -36,6 +36,12 @@ export function problems(item: Item, data: Record<string, any>, body?: string): 
       });
     });
   }
+  if (item.kind === 'gallery') {
+    if (empty(data.title)) out.push('Manca il titolo della galleria.');
+    (data.photos || []).forEach((p: Record<string, any>, i: number) => {
+      if (empty(p.alt)) out.push(`Foto ${i + 1}${p.caption ? ` («${p.caption}»)` : ''}: manca la descrizione.`);
+    });
+  }
   if (item.kind === 'article') {
     if (empty(data.title)) out.push('Manca il titolo.');
     if (!/^\d{4}-\d{2}-\d{2}$/.test(String(data.date ?? ''))) out.push('La data non è valida.');

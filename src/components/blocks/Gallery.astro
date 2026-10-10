@@ -78,6 +78,8 @@ const photos = await Promise.all(
           </div>
           <div class="lightbox__bottom">
             <p class="lightbox__caption" data-lb-caption />
+            {/* the description is the photo's alt text, already read out with the photo: hidden from screen readers here */}
+            <p class="lightbox__desc" data-lb-desc aria-hidden="true" />
             <div class="lightbox__thumbs" role="group" aria-label={ui.galleryThumbs} data-lb-thumbs />
           </div>
         </dialog>
@@ -94,6 +96,7 @@ const photos = await Promise.all(
     const img = dialog.querySelector<HTMLImageElement>('[data-lb-img]')!;
     const avif = dialog.querySelector<HTMLSourceElement>('[data-lb-avif]')!;
     const caption = dialog.querySelector<HTMLElement>('[data-lb-caption]')!;
+    const desc = dialog.querySelector<HTMLElement>('[data-lb-desc]')!;
     const count = dialog.querySelector<HTMLElement>('[data-lb-count]')!;
     const stage = dialog.querySelector<HTMLElement>('[data-lb-stage]')!;
     const thumbs = dialog.querySelector<HTMLElement>('[data-lb-thumbs]')!;
@@ -140,6 +143,8 @@ const photos = await Promise.all(
       setTimeout(reveal, 700);
       caption.textContent = a.dataset.caption ?? '';
       caption.hidden = !a.dataset.caption;
+      desc.textContent = a.dataset.alt ?? '';
+      desc.hidden = !a.dataset.alt;
       count.textContent = `${index + 1} ${of} ${links.length}`;
       thumbButtons.forEach((b, n) => b.toggleAttribute('aria-current', n === index));
       thumbButtons[index].scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });

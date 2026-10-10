@@ -1,8 +1,9 @@
 // Editing a page or an article. Every change is kept as a draft in this
 // browser (drafts.ts) until Pubblica sends all of them in one commit.
 import type { ComponentChildren } from 'preact';
-import { useLayoutEffect, useRef } from 'preact/hooks';
-import { pageUrl, type Item } from './content';
+import { useLayoutEffect, useRef, useState } from 'preact/hooks';
+import { pageUrl, photoUrl, type Item } from './content';
+import { addPhoto } from './photos';
 import { allDrafts, discard, rebase, saveDraft, working } from './drafts';
 import { md } from './md';
 import { ORIGIN } from './save';
@@ -304,7 +305,10 @@ function FieldEdit({ spec, obj, path, set }: { spec: Spec; obj: Data; path: Path
         <div class="p-input">
           <span class="p-input__label">{spec.label}</span>
           <div class="p-photoedit">
-            <Photo src={v} size="s" caption={false} />
+            <div>
+              <Photo src={v} size="s" caption={false} />
+              <PhotoPicker label="Cambia foto" prefix={String(spec.alt === 'coverAlt' ? 'copertina' : 'foto')} onPicked={([f]) => set(here, f)} />
+            </div>
             <Labelled label="Descrizione della foto" hint="Per Google e per chi usa un lettore di schermo: cosa si vede nella foto.">
               <Grow aria-label="Descrizione della foto" value={obj[spec.alt!] ?? ''} onInput={(val) => set([...path, spec.alt!], val)} />
             </Labelled>
@@ -413,6 +417,108 @@ function FieldEdit({ spec, obj, path, set }: { spec: Spec; obj: Data; path: Path
   }
 }
 
+/* ---------- choosing photos ---------- */
+
+/** A button that opens the phone's photos or the computer's files, then prepares the chosen photos. */
+function PhotoPicker({ label, prefix, multiple, onPicked, primary }: { label: string; prefix: string; multiple?: boolean; onPicked: (paths: string[]) => void; primary?: boolean }) {
+  const input = useRef<HTMLInputElement>(null);
+  const [busy, setBusy] = useState('');
+  const [error, setError] = useState('');
+  const pick = async (files: FileList | null) => {
+    if (!files?.length) return;
+    setError('');
+    const paths: string[] = [];
+    try {
+      for (const [i, file] of [...files].entries()) {
+        setBusy(files.length > 1 ? `Preparo le foto… ${i + 1} di ${files.length}` : 'Preparo la foto…');
+        paths.push(await addPhoto(file, prefix));
+      }
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setBusy('');
+      if (input.current) input.current.value = '';
+    }
+    if (paths.length) onPicked(paths);
+  };
+  return (
+    <div class="p-picker">
+      <button type="button" class={`p-btn p-btn--small${primary ? ' p-btn--primary' : ''}`} disabled={Boolean(busy)} onClick={() => input.current?.click()}>
+        {busy || label}
+      </button>
+      <input ref={input} type="file" accept="image/*" multiple={multiple} hidden onChange={(e) => pick((e.target as HTMLInputElement).files)} />
+      {error && <p class="p-error">{error}</p>}
+    </div>
+  );
+}
+
+function GalleryEditor({ item, data, set }: { item: Item; data: Data; set: (p: Path, v: unknown) => void }) {
+  const photos: Data[] = data.photos || [];
+  const name = item.id.split('/').pop()!.replace(/\.ya?ml$/, '');
+  const field = (i: number, key: string, label: string, opts: { req?: boolean; para?: boolean; hint?: string } = {}) => {
+    const v = photos[i][key] ?? '';
+    const put = (val: string) => set(['photos', i, key], val === '' && !opts.req ? undefined : val);
+    return (
+      <Labelled label={label} hint={opts.hint}>
+        {opts.para ? (
+          <Grow aria-label={label} value={v} onInput={put} />
+        ) : (
+          <input type="text" aria-label={label} value={v} onInput={(e) => put((e.target as HTMLInputElement).value)} />
+        )}
+      </Labelled>
+    );
+  };
+  return (
+    <>
+      <section class="p-card">
+        <h2>Galleria</h2>
+        <FieldEdit spec={{ key: 'title', kind: 'line', label: 'Titolo della galleria', req: true }} obj={data} path={[]} set={set} />
+        <p class="p-quiet">
+          {photos.length} foto. Le foto nuove vanno in cima e vengono ridotte a 2400 pixel; la posizione e i dati della fotocamera
+          vengono tolti prima di caricarle.
+        </p>
+        <PhotoPicker
+          primary
+          multiple
+          label="+ Aggiungi foto"
+          prefix={name}
+          onPicked={(paths) => set(['photos'], [...paths.map((file) => ({ file, alt: '' })), ...photos])}
+        />
+      </section>
+      <div class="p-gedit">
+        {photos.map((p, i) => (
+          <section class="p-card p-gedit__item" key={p.__i ?? p.file}>
+            <div class="p-gedit__photo">
+              <img src={photoUrl(p.file) ?? ''} alt="" loading="lazy" />
+              <span class="p-num">{i + 1}</span>
+            </div>
+            <div class="p-gedit__fields">
+              <div class="p-gedit__tools">
+                <PhotoPicker
+                  label="Sostituisci"
+                  prefix={name}
+                  // the old description was about the old photo: a new one is asked for
+                  onPicked={([file]) => set(['photos', i], { ...p, file, alt: '' })}
+                />
+                <Mover
+                  i={i}
+                  n={photos.length}
+                  what="la foto"
+                  onMove={(to) => set(['photos'], move(photos, i, to))}
+                  onRemove={() => confirm('Togliere questa foto dalla galleria?') && set(['photos'], photos.filter((_, k) => k !== i))}
+                />
+              </div>
+              {field(i, 'caption', 'Titolo')}
+              {field(i, 'alt', 'Descrizione', { req: true, para: true, hint: 'Cosa si vede nella foto. Compare sotto il titolo quando la foto si apre.' })}
+              {field(i, 'place', 'Luogo')}
+            </div>
+          </section>
+        ))}
+      </div>
+    </>
+  );
+}
+
 /* ---------- the editor ---------- */
 
 // Unticking writes false only where the file already had the flag, so ticking and unticking is no change.
@@ -460,7 +566,7 @@ export function Editor({ item, open }: { item: Item; open: (id: string) => void 
   const set = (path: Path, value: unknown) => saveDraft(item, setIn(data, path, value), body);
   const setBody = (b: string) => saveDraft(item, data, b);
   const issues = allDrafts()[item.id] ? problems(item, data, body) : [];
-  const live = item.kind === 'article' ? pageUrl(`curiosita/${item.id.split('/').pop()!.replace(/\.mdx?$/, '')}`) : pageUrl(data.slug ?? '');
+  const live = item.kind === 'gallery' ? null : item.kind === 'article' ? pageUrl(`curiosita/${item.id.split('/').pop()!.replace(/\.mdx?$/, '')}`) : pageUrl(data.slug ?? '');
 
   return (
     <>
@@ -468,7 +574,7 @@ export function Editor({ item, open }: { item: Item; open: (id: string) => void 
         <div>
           <h1>{data.title || item.title}</h1>
           <div class="p-head__meta">
-            {!data.draft && (
+            {!data.draft && live && (
               <a class="p-link" href={live} target="_blank" rel="noopener">Vedi sul sito ↗</a>
             )}
           </div>
@@ -482,7 +588,9 @@ export function Editor({ item, open }: { item: Item; open: (id: string) => void 
         </div>
       )}
 
-      {item.kind === 'page' ? (
+      {item.kind === 'gallery' ? (
+        <GalleryEditor item={item} data={data} set={set} />
+      ) : item.kind === 'page' ? (
         <>
           <section class="p-card">
             <h2>Pagina</h2>
@@ -498,6 +606,7 @@ export function Editor({ item, open }: { item: Item; open: (id: string) => void 
             <div class="p-input">
               <span class="p-input__label">Foto quando la pagina viene condivisa</span>
               <Photo src={data.seo?.image} size="s" caption={false} />
+              <PhotoPicker label="Cambia foto" prefix="condivisione" onPicked={([f]) => set(['seo', 'image'], f)} />
             </div>
           </section>
           {(data.blocks || []).map((b: Data, i: number) => {
@@ -529,7 +638,7 @@ export function Editor({ item, open }: { item: Item; open: (id: string) => void 
               </section>
             );
           })}
-          <p class="p-quiet">Nuove sezioni e cambio delle foto arrivano con i prossimi aggiornamenti del pannello.</p>
+          <p class="p-quiet">Le nuove sezioni arrivano con un prossimo aggiornamento del pannello.</p>
         </>
       ) : (
         <>
