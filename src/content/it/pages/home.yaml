@@ -55,8 +55,6 @@ blocks:
         value: "Albosaggia (SO)"
       - label: "Sede estiva"
         value: "Valmalenco"
-      - label: "Età minima"
-        value: "12 anni"
   - type: "text-image"
     kicker: "Gli animali"
     heading: "Cavalli che vivono fuori"
