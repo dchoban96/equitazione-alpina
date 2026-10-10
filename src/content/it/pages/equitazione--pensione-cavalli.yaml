@@ -14,8 +14,8 @@ blocks:
   - type: "hero"
     kicker: "Pensione"
     title: "Pensione cavalli, in gruppo e all'aperto"
-    intro: |
-      Per cavalli di proprietà, in gruppo e all'aperto come gli altri.
+    intro: |-
+      Per cavalli di proprietà, in paddock dedicati e box interni.
     image: "@assets/foto/cavalli-nella-neve.jpg"
     imageAlt: "Tre cavalli fuori nel recinto innevato, d'inverno"
   - type: "text-image"
