@@ -17,7 +17,7 @@ blocks:
     intro: |
       I cani al lavoro e a riposo, in ogni stagione.
     image: "@assets/foto/pastore-blue-merle-sul-prato.jpg"
-    imageAlt: "Un Pastore del Lagorai blue merle sul prato, davanti alla casa"
+    imageAlt: "Zagor, blue merle"
   - type: "gallery"
     gallery: "pastore-del-lagorai"
   - type: "cta-contact"

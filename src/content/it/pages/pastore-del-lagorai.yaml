@@ -8,7 +8,7 @@ nav:
   order: 10
 seo:
   title: "Allevamento Pastore del Lagorai · Albosaggia (SO)"
-  description: "I nostri Pastore del Lagorai ad Albosaggia: il cane da pastore del Trentino che lavora accanto a cavalli e greggi."
+  description: "I nostri Pastori del Lagorai ad Albosaggia: il cane da pastore del Trentino che lavora accanto a cavalli e greggi."
   image: "@assets/foto/pastore-blue-merle-al-recinto.jpg"
 blocks:
   - type: "hero"
@@ -26,7 +26,7 @@ blocks:
 
       Della sua storia e del suo carattere parliamo nella pagina [La razza](/pastore-del-lagorai/razza/).
     image: "@assets/foto/pastore-blue-merle-seduto.jpg"
-    alt: "Un Pastore del Lagorai blue merle seduto nel recinto, al sole"
+    alt: "Kuma, blue merle , una capostipite del nostro allevamento"
     side: "right"
   - type: "cards"
     kicker: "La sezione"

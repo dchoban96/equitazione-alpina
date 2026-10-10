@@ -4,40 +4,53 @@ title: "Galleria cani"
 section: "pastore-del-lagorai"
 photos:
   - file: "@assets/foto/pastore-blue-merle-al-recinto.jpg"
-    alt: "Un Pastore del Lagorai blue merle in piedi sul prato, davanti a un muretto di pietra"
+    alt: "Zagor"
     caption: "Il mantello blue merle"
   - file: "@assets/foto/pastore-blue-merle-profilo.jpg"
-    alt: "Il profilo di un Pastore del Lagorai blue merle"
+    alt: "Zagor"
+    caption: …
   - file: "@assets/foto/pastore-blue-merle-primo-piano.jpg"
-    alt: "Un Pastore del Lagorai blue merle guarda dritto nell'obiettivo"
+    alt: "…"
+    caption: Zagor
   - file: "@assets/foto/pastore-blue-merle-seduto.jpg"
-    alt: "Un Pastore del Lagorai blue merle seduto nel recinto, al sole"
+    alt: "…"
+    caption: Kuma
   - file: "@assets/foto/pastore-blue-merle-sul-prato.jpg"
-    alt: "Un Pastore del Lagorai blue merle sul prato, davanti alla casa"
+    alt: "…"
+    caption: Zagor
   - file: "@assets/foto/cani-sul-prato.jpg"
-    alt: "Tre cani sul prato: uno nero seduto, uno fulvo e uno chiaro sdraiato"
+    alt: "Gill, Zanna e Malga"
     caption: "Tutti insieme"
   - file: "@assets/foto/cane-nero.jpg"
-    alt: "Un cane nero dal pelo lungo in giardino"
+    alt: "…"
+    caption: Falco
   - file: "@assets/foto/cucciolo-nero.jpg"
-    alt: "Un cucciolo nero con gli occhi chiari guarda in alto"
+    alt: "…"
+    caption: Zanna
   - file: "@assets/foto/cane-fulvo-profilo.jpg"
-    alt: "Il profilo di un cane fulvo dal pelo lungo"
+    alt: "…"
+    caption: Freddie
   - file: "@assets/foto/cane-fulvo-di-corsa.jpg"
-    alt: "Un cane fulvo corre sul prato lungo la recinzione"
+    alt: "…"
+    caption: Malga
   - file: "@assets/foto/due-cani-curiosi.jpg"
-    alt: "Due cani, uno fulvo e uno nero, guardano curiosi verso l'obiettivo"
+    alt: "…"
+    caption: Malga e Zanna
   - file: "@assets/foto/due-cani-muso-a-muso.jpg"
-    alt: "Due cani si annusano muso a muso"
+    alt: "Coccole"
+    caption: Malga e Gill
   - file: "@assets/foto/cucciolo-fulvo-nel-fieno.jpg"
-    alt: "Un cucciolo fulvo seduto davanti a un mucchio di fieno"
+    alt: "…"
+    caption: Malga
   - file: "@assets/foto/cucciolo-visto-dall-alto.jpg"
-    alt: "Un cucciolo rosso e bianco con gli occhi azzurri guarda in alto dall'erba"
+    alt: "…"
+    caption: Gill
   - file: "@assets/foto/cane-fulvo-seduto-sul-sentiero.jpg"
-    alt: "Un cane fulvo dal pelo lungo seduto sul sentiero, al sole"
+    alt: "Malga"
     caption: "In posa"
   - file: "@assets/foto/cane-fulvo-tra-l-erba.jpg"
-    alt: "Un cane fulvo dal pelo lungo cammina sull'erba del sentiero"
+    alt: "…"
+    caption: Malga
   - file: "@assets/foto/cane-che-dorme-sul-prato.jpg"
-    alt: "Un cane fulvo dorme sul prato davanti a un gazebo di legno, al sole"
+    alt: "…"
     caption: "Riposo sul prato"
