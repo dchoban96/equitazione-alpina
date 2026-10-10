@@ -39,7 +39,7 @@ colors:
   color-error-line: "#a8342a"
   color-ridge-1: "#dfe7d5"           # ea-racconto.css --ea-cresta-1 (farthest profile)
   color-ridge-2: "#cfdcc4"           # ea-racconto.css --ea-cresta-2
-  color-ridge-3: "#bdcfb2"           # ea-racconto.css --ea-cresta-3 (nearest profile)
+  color-ridge-3: "#c7d6bc"           # nearest profile; lighter than ea-racconto.css --ea-cresta-3 (#bdcfb2), owner request
   color-wash-sage: "#8aa98f"         # templates/index.json watercolour tints
   color-wash-honey: "#c9a86a"
   color-wash-grass: "#93ab8c"
