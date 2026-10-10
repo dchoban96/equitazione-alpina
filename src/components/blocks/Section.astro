@@ -38,6 +38,7 @@ const hasHead = Boolean(kicker || heading);
             </p>
           )}
           {heading && <h2 id={headingId} set:html={txt(heading)} />}
+          <slot name="head" />
         </header>
       )
     }

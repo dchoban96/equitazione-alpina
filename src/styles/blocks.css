@@ -190,6 +190,17 @@
   }
 }
 
+/* optional photo under the heading: in the heading column on wide screens */
+.text__photo {
+  --ratio: 4 / 5;
+  margin-top: var(--space-5);
+}
+@media (max-width: 1023px) {
+  .text__photo {
+    margin-bottom: var(--space-5);
+  }
+}
+
 /* ---------- text + image: ea-blocco ---------- */
 .split {
   display: grid;

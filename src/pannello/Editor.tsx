@@ -50,7 +50,10 @@ const BLOCKS: Record<string, { name: string; fields: Spec[] }> = {
       PAIRS('panel', 'Riquadro'),
     ],
   },
-  text: { name: 'Testo', fields: [...HEADING, { key: 'body', kind: 'md', label: 'Testo', req: true }] },
+  text: {
+    name: 'Testo',
+    fields: [...HEADING, { key: 'image', kind: 'photo', label: 'Foto sotto il titolo', alt: 'alt' }, { key: 'body', kind: 'md', label: 'Testo', req: true }],
+  },
   'text-image': {
     name: 'Testo con foto',
     fields: [

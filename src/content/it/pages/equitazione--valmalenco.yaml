@@ -34,6 +34,8 @@ blocks:
   - type: "text"
     kicker: "La giornata"
     heading: "Com'è una giornata in quota"
+    image: "@assets/foto/valmalenco-strada-verso-la-montagna.jpg"
+    alt: "Un fuoristrada parcheggiato sul prato tra gli abeti, con le pareti rocciose della Valmalenco sullo sfondo"
     body: |
       Gli itinerari sono diversi. Per chi comincia ci sono uscite di un’ora o di qualche ora; chi vuole la giornata intera sale fino alla conca dell’Alpe Palù, con il suo lago, e si ferma a pranzo in quota, in rifugio o in malga, con i piatti della valle. Si va al passo, e ci si ferma quando lo chiedono i cavalli.
 

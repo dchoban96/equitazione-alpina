@@ -88,7 +88,15 @@ const blocks = ({ image }: SchemaContext) => {
       panelKicker: z.string().optional(),
       panel: z.array(labelValue).optional(),
     }),
-    z.object({ type: z.literal('text'), ...common, ...heading, body: rich }),
+    z.object({
+      type: z.literal('text'),
+      ...common,
+      ...heading,
+      body: rich,
+      // optional photo under the heading (beside the text on wide screens)
+      image: opt(img),
+      alt: z.string().optional(),
+    }),
     z.object({
       type: z.literal('text-image'),
       ...common,
