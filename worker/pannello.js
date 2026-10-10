@@ -39,7 +39,7 @@ export default {
       const url = new URL(request.url);
       const route = `${request.method} ${url.pathname}`;
       let res;
-      if (route === 'GET /health') res = health(env);
+      if (route === 'GET /health') res = await health(env);
       else if (route === 'POST /auth/request') res = await requestLink(request, env);
       else if (route === 'POST /auth/verify') res = await verifyLink(request, env);
       else {
@@ -131,9 +131,25 @@ const allowList = (env) =>
 
 const allowed = (email, env) => allowList(env).includes(email);
 
-// Which settings the Worker can see, for setting it up: yes/no and counts only, never a value.
-function health(env) {
+// An address with most letters hidden; characters outside plain ASCII are spelled out as U+XXXX,
+// so a look-alike letter typed on another keyboard layout shows up.
+function mask(raw) {
+  const show = (ch) => (/[!-~]/.test(ch) ? ch : `[U+${ch.codePointAt(0).toString(16).toUpperCase().padStart(4, '0')}]`);
+  const [local = '', domain = ''] = raw.split('@');
+  const chars = [...local];
+  const hidden = chars.map((ch, i) => (i === 0 || i === chars.length - 1 || !/[!-~]/.test(ch) ? show(ch) : '*')).join('');
+  return `${hidden}@${[...domain].map(show).join('')}`;
+}
+
+// Which settings the Worker can see, for setting it up: yes/no and counts only, never a secret.
+async function health(env) {
+  const entries = String(env.ALLOWED_EMAILS || '').split(',').map((e) => e.trim()).filter(Boolean);
+  const links = await Promise.all(
+    allowList(env).map(async (e) => Number((await env.PANNELLO_KV?.get(`rl:${e}`)) || 0)),
+  );
   return json({
+    allowedMasked: entries.map(mask),
+    linksThisHour: links,
     kv: Boolean(env.PANNELLO_KV),
     githubToken: Boolean(env.GITHUB_TOKEN),
     resendKey: Boolean(env.RESEND_API_KEY),
