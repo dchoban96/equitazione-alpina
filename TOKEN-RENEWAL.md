@@ -1,7 +1,7 @@
 # Renew the GitHub token (once a year)
 
-The control panel writes to GitHub with a fine-grained token that expires after
-a set date: it expires on **31 October 2027**.
+The control panel writes to GitHub with a fine-grained token that expires on
+**31 October 2027**.
 GitHub emails a reminder about a week before. If it expires, the panel still
 opens but **Pubblica** fails.
 
