@@ -26,7 +26,6 @@ blocks:
     kicker: "Animali"
     heading: "Cani e capre"
     ids:
-      - "cuccioli"
       - "vedere-cani"
       - "capra-cosa"
   - type: "cta-contact"

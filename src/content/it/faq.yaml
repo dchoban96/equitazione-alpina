@@ -26,11 +26,6 @@ items:
     answer: "Ad Albosaggia si arriva in 10 minuti da Sondrio. Il recinto è in Località Ravasciolo: vedi la pagina [Contatti](/contatti/)."
     tags:
       - "equitazione"
-  - id: "cuccioli"
-    question: "Vendete cuccioli di Pastore del Lagorai?"
-    answer: "No. I nostri cani non sono in vendita e non vendiamo cuccioli: questa sezione racconta la razza e il lavoro dei cani con gli animali."
-    tags:
-      - "pastore"
   - id: "vedere-cani"
     question: "Si possono vedere i cani?"
     answer: "Sì: i cani vivono al recinto insieme ai cavalli, e chi passa a trovarci li incontra."
