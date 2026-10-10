@@ -12,22 +12,24 @@ altimeter:
   max: 1950
 seo:
   title: "Passeggiate a cavallo in Valtellina · Orobie e Albosaggia"
-  description: "Passeggiate a cavallo sulle Orobie sopra Albosaggia, tutto l'anno: boschi di castagno e faggio, sentieri verso San Bernardo e il Lago Casera."
+  description: "Passeggiate a cavallo sulle Orobie sopra Albosaggia, tutto l'anno: boschi di castagno e faggio, sentieri verso San Bernardo e Località Campelli."
   image: "@assets/foto/passeggiata-a-cavallo-sul-sentiero-orizzontale.jpg"
 blocks:
   - type: "hero"
     kicker: "Passeggiate"
     title: "Al passo sulle Orobie, tutto l'anno"
     intro: |
-      Si parte dal recinto di Albosaggia e si sale nei boschi del versante orobico, dentro il Parco delle Orobie Valtellinesi, con la valle che si apre sotto man mano che si guadagna quota. Le uscite durano un'ora o più: per chi comincia ci sono i percorsi brevi, per chi ha esperienza i trekking di uno o più giorni.
+      Si parte dal maneggio di Albosaggia e si sale nei boschi del versante orobico, dentro il Parco delle Orobie Valtellinesi, con la valle che si apre sotto man mano che si guadagna quota. Le uscite durano un'ora o più: per chi comincia ci sono i percorsi brevi, per chi ha esperienza i trekking di uno o più giorni.
     altitude: 500
     image: "@assets/foto/passeggiata-a-cavallo-sul-sentiero-orizzontale.jpg"
     imageAlt: "Due cavalieri al passo su una strada sterrata fra gli abeti, con le montagne sullo sfondo"
   - type: "text"
     kicker: "Le Orobie"
     heading: "La montagna di casa"
-    body: |
-      È la casa: boschi di castagno e faggio, sentieri che salgono verso San Bernardo e il Lago Casera, la Valtellina che si apre sotto man mano che si guadagna quota. D'inverno con il fiato che si vede, d'autunno con le foglie che scivolano sotto gli zoccoli.
+    body: |-
+      È la casa: boschi di castagno e faggio, sentieri che salgono verso San Bernardo e il Lago Casera, la Valtellina che si apre sotto man mano che si guadagna quota. D’inverno con il fiato che si vede, d’autunno con le foglie che scivolano sotto gli zoccoli.
+
+      Siamo alle porte del Parco Regionale delle Orobie Valtellinesi, una delle aree protette più grandi della Lombardia: circa 44.000 ettari di boschi, alpeggi e valli laterali sul versante orobico della provincia di Sondrio. Qui le passeggiate a cavallo ad Albosaggia seguono mulattiere e sentieri storici, tra abeti e larici, pascoli d’alta quota e baite in pietra. Con un po’ di fortuna si incontrano caprioli, cervi e camosci, e sopra le creste vola l’aquila reale. Scoprire il Parco delle Orobie a cavallo significa attraversarlo al passo giusto: lento, silenzioso, rispettoso di un ambiente che in Valtellina è rimasto autentico.
     altitude: 1300
     note: "≈ 1300 m"
   - type: "cards"

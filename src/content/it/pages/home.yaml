@@ -30,7 +30,7 @@ blocks:
     panelKicker: "Rilevazione"
     panel:
       - label: "Ora"
-        value: "06:20"
+        value: "9:00"
       - label: "Quota"
         value: "500 m"
       - label: "Stagione"
