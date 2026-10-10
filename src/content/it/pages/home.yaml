@@ -18,12 +18,14 @@ seo:
   image: "@assets/foto/cavallo-pezzato-al-pascolo.jpg"
 blocks:
   - type: "hero"
-    title: "I cavalli ci prestano le ali che ci mancano"
-    intro: |
-      Ci sono mattine, alla fine dell'estate, in cui il sole entra fra i tronchi in modo obliquo e tutto il prato sembra sospeso nella polvere. I cavalli aspettano al recinto, il cane corre avanti, e per mezz'ora non succede niente di speciale: si porta il fieno, si controllano gli zoccoli, si parla poco.
+    title: "Trent'anni sugli stessi sentieri"
+    intro: |-
+      Simone De Capitani lavora con i cavalli da oltre trent'anni. Ha imparato quando l'equitazione di montagna in Valtellina la praticavano in pochi, e da allora non ha smesso: gli stessi versanti, le stesse stagioni, cavalli che si sono succeduti uno dopo l'altro e che conosce a uno a uno.
+
+      Quello che conta, per chi arriva qui la prima volta, è che qualcuno sappia leggere un cavallo prima che il cavallo debba farsi capire a modo suo.
     altitude: 500
     coordinates: "Albosaggia · Valtellina — 46°16′N 9°84′E"
-    closing: "È da lì che comincia tutto il resto."
+    closing: "I cavalli ci prestano le ali che ci mancano"
     footnote: "Si sale da 500 a 1950 m"
     panelKicker: "Rilevazione"
     panel:
@@ -38,15 +40,6 @@ blocks:
     image: "@assets/foto/cavallo-pezzato-al-pascolo.jpg"
     imageAlt: "Un cavallo pezzato bianco e nero bruca l'erba alta di un prato soleggiato"
     video: "/video/intro-cavallo-al-pascolo.mp4"
-  - type: "text"
-    kicker: "Chi c'è dietro"
-    heading: "Trent'anni sugli stessi sentieri"
-    body: |
-      Simone De Capitani lavora con i cavalli da oltre trent'anni. Ha imparato quando l'equitazione di montagna in Valtellina la praticavano in pochi, e da allora non ha smesso: gli stessi versanti, le stesse stagioni, cavalli che si sono succeduti uno dopo l'altro e che conosce a uno a uno.
-
-      Quello che conta, per chi arriva qui la prima volta, è che qualcuno sappia leggere un cavallo prima che il cavallo debba farsi capire a modo suo.
-    altitude: 500
-    anchor: "dietro"
   - type: "facts"
     items:
       - label: "Dal"
@@ -55,6 +48,8 @@ blocks:
         value: "Albosaggia (SO)"
       - label: "Sede estiva"
         value: "Valmalenco"
+      - label: Età minima
+        value: 12 anni
   - type: "text-image"
     kicker: "Gli animali"
     heading: "Cavalli che vivono fuori"
