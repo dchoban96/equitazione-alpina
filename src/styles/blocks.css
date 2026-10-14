@@ -224,6 +224,19 @@
 .split--left > figure {
   order: -1;
 }
+/* photo beside the text, wide screens: the text starts at the top of the photo
+   and stays in view while the photo scrolls, like the heading of a text block */
+@media (min-width: 821px) {
+  .split--right,
+  .split--left {
+    align-items: start;
+  }
+  .split--right > .split__text,
+  .split--left > .split__text {
+    position: sticky;
+    top: calc(var(--layout-header) + 40px);
+  }
+}
 .split--below {
   grid-template-columns: 1fr;
   align-items: stretch;
