@@ -1,6 +1,7 @@
 // Right-hand side of the panel: a read-only view of the selected item (phase 1).
 import type { ComponentChildren } from 'preact';
 import { md } from './md';
+import { focusLabel } from './focus';
 import { listItems, pageUrl, photoUrl, type Item } from './content';
 
 const BLOCK_LABELS: Record<string, string> = {
@@ -33,6 +34,7 @@ const FIELD_LABELS: Record<string, string> = {
   author: 'Firma',
   caption: 'Didascalia',
   side: 'Posizione della foto',
+  focus: 'Parte della foto da tenere in vista',
   style: 'Stile',
   items: 'Elementi',
   label: 'Etichetta',
@@ -114,6 +116,7 @@ function Value({ k, v, parent }: { k: string; v: unknown; parent: Record<string,
   if (PHOTO.has(k)) return <Photo src={v} alt={parent.imageAlt ?? parent.alt ?? parent.coverAlt} />;
   if (typeof v === 'boolean') return <>{v ? 'Sì' : 'No'}</>;
   if (k === 'side' && typeof v === 'string') return <>{SIDE[v] ?? v}</>;
+  if (k === 'focus' && typeof v === 'string') return <>{focusLabel(v)}</>;
   if (typeof v === 'string') {
     if (MARKDOWN.has(k)) return <div class="p-prose" dangerouslySetInnerHTML={{ __html: md(v) }} />;
     if (/^https?:\/\//.test(v)) return <a href={v} target="_blank" rel="noopener">{v}</a>;

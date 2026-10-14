@@ -8,6 +8,7 @@ import { allDrafts, discard, rebase, saveDraft, working } from './drafts';
 import { md } from './md';
 import { ORIGIN } from './save';
 import { problems } from './validate';
+import { FOCUS } from './focus';
 import { Photo } from './Views';
 
 type Path = (string | number)[];
@@ -15,7 +16,7 @@ type Data = Record<string, any>;
 
 /* ---------- what each section shows, in the site's order ---------- */
 
-type Kind = 'line' | 'para' | 'md' | 'photo' | 'bool' | 'side' | 'style' | 'section' | 'number' | 'pairs' | 'items' | 'chips' | 'url';
+type Kind = 'line' | 'para' | 'md' | 'photo' | 'bool' | 'side' | 'focus' | 'style' | 'section' | 'number' | 'pairs' | 'items' | 'chips' | 'url';
 interface Spec {
   key: string;
   kind: Kind;
@@ -64,6 +65,8 @@ const BLOCKS: Record<string, { name: string; fields: Spec[] }> = {
       { key: 'image', kind: 'photo', label: 'Foto', alt: 'alt' },
       { key: 'caption', kind: 'line', label: 'Didascalia' },
       { key: 'side', kind: 'side', label: 'Posizione della foto', req: true },
+      { key: 'focus', kind: 'focus', label: 'Parte della foto da tenere in vista',
+        hint: 'Quando la foto viene tagliata, questa parte resta visibile (per esempio il muso del cane).' },
       PAIRS('details', 'Dettagli'),
     ],
   },
@@ -330,6 +333,18 @@ function FieldEdit({ spec, obj, path, set }: { spec: Spec; obj: Data; path: Path
             <option value="left">A sinistra del testo</option>
             <option value="below">Sotto il testo</option>
             <option value="overlay">Grande, con il testo sopra</option>
+          </select>
+        </Labelled>
+      );
+    case 'focus':
+      return (
+        <Labelled label={spec.label} hint={spec.hint}>
+          <select aria-label={spec.label} value={v ?? ''} onChange={(e) => set(here, (e.target as HTMLSelectElement).value || undefined)}>
+            <option value="">Centro</option>
+            {FOCUS.map(([value, label]) => (
+              <option value={value} key={value}>{label}</option>
+            ))}
+            {v && !FOCUS.some(([value]) => value === v) && <option value={v}>{v}</option>}
           </select>
         </Labelled>
       );

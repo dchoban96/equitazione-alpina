@@ -46,7 +46,7 @@ const note = b.note ?? (b.altitude !== undefined ? `${b.altitude} m` : undefined
     <figure>
       <div
         class:list={['frame', { 'frame--contain': b.fit === 'contain' }]}
-        style={b.fit === 'contain' ? '--ratio:auto' : undefined}
+        style={[b.fit === 'contain' && '--ratio:auto', b.focus && `--focus:${b.focus}`].filter(Boolean).join(';') || undefined}
       >
         <Img src={b.image} alt={b.alt} sizes={sizes} />
       </div>

@@ -108,6 +108,9 @@ const blocks = ({ image }: SchemaContext) => {
       caption: z.string().optional(),
       side: z.enum(['left', 'right', 'below', 'overlay']).default('right'),
       fit: z.enum(['crop', 'contain']).default('crop'),
+      // Which part of the photo stays in view when it is cropped: "x% y%"
+      // (CSS object-position), e.g. "25% 50%" keeps the left side. Default centre.
+      focus: opt(z.string().regex(/^\d{1,3}% \d{1,3}%$/, 'focus: two percentages, e.g. "25% 50%"')),
       details: z.array(labelValue).optional(),
     }),
     z.object({

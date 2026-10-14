@@ -154,6 +154,20 @@ collections:
                   - { label: Grande, con il testo sopra, value: overlay }
               - { name: caption, widget: hidden, required: false }
               - { name: fit, widget: hidden, required: false }
+              - name: focus
+                label: Parte della foto da tenere in vista
+                widget: select
+                required: false
+                hint: "Quando la foto viene tagliata, questa parte resta visibile. Vuoto = centro."
+                options:
+                  - { label: Tutto a sinistra, value: "0% 50%" }
+                  - { label: Sinistra, value: "25% 50%" }
+                  - { label: Destra, value: "75% 50%" }
+                  - { label: Tutto a destra, value: "100% 50%" }
+                  - { label: In alto, value: "50% 0%" }
+                  - { label: Verso l'alto, value: "50% 25%" }
+                  - { label: Verso il basso, value: "50% 75%" }
+                  - { label: In basso, value: "50% 100%" }
               - { name: details, widget: hidden, required: false }
               - *note
               - *altitude
