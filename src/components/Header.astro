@@ -149,6 +149,47 @@ const inSection = (item: NavItem) => current.startsWith(item.href) && item.href 
     });
   }
 
+  // Desktop sub-menus. Hover alone closed them as soon as the pointer slipped
+  // off the pill on its way down; they now stay open a moment after the
+  // pointer leaves (`is-open`). On touch screens the first tap on a section
+  // opens its menu and a second tap follows the link.
+  const CLOSE_DELAY = 350;
+  const parents = document.querySelectorAll<HTMLLIElement>('.nav-desktop > ul > li:has(> .nav-sub)');
+  const timers = new WeakMap<HTMLLIElement, number>();
+  const closeAll = (except?: HTMLLIElement) =>
+    parents.forEach((li) => {
+      if (li !== except) li.classList.remove('is-open');
+    });
+  parents.forEach((li) => {
+    li.addEventListener('pointerenter', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      clearTimeout(timers.get(li));
+      closeAll(li);
+      li.classList.add('is-open');
+    });
+    li.addEventListener('pointerleave', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      timers.set(li, window.setTimeout(() => li.classList.remove('is-open'), CLOSE_DELAY));
+    });
+    const link = li.querySelector<HTMLAnchorElement>(':scope > a');
+    let lastPointer = 'mouse';
+    link?.addEventListener('pointerdown', (e) => {
+      lastPointer = e.pointerType;
+    });
+    link?.addEventListener('click', (e) => {
+      if (lastPointer === 'mouse' || li.classList.contains('is-open')) return;
+      e.preventDefault();
+      closeAll(li);
+      li.classList.add('is-open');
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (!(e.target as Element).closest?.('.nav-desktop')) closeAll();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeAll();
+  });
+
   if (drawer) {
     drawer.addEventListener('toggle', () => {
       document.documentElement.classList.toggle('nav-lock', drawer.open);
