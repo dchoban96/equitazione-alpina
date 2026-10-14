@@ -1,4 +1,5 @@
-# Testo scritto su fonti e sui contenuti gia presenti nel sito (vedi FONTI.md). Illustrazioni ancora di prova.
+# Testo scritto su fonti e sui contenuti gia presenti nel sito (vedi FONTI.md); il percorso della pagina segue il
+# carosello della SIPaLL "Chi è il Pastore della Lessinia e del Lagorai?" (ottobre 2026). Illustrazioni ancora di prova.
 slug: "pastore-del-lagorai/razza"
 title: "La razza"
 section: "pastore-del-lagorai"
@@ -8,38 +9,79 @@ nav:
   order: 10
 seo:
   title: "Pastore del Lagorai: razza, carattere e origini"
-  description: "Il Pastore del Lagorai: origini, carattere e lavoro con il gregge del cane da pastore delle Alpi del Nord-Est, in fase di riconoscimento dall'ENCI"
+  description: "Il Pastore della Lessinia e del Lagorai: storia, carattere e lavoro con il gregge del cane da pastore del Nord-Est, e perché non è un cane per tutti."
   image: "@assets/foto/pastore-blue-merle-profilo.jpg"
 blocks:
   - type: "hero"
     kicker: "La razza"
-    title: "Il Pastore del Lagorai: carattere e origini"
+    title: "Il Pastore del Lagorai: un cane, una storia, un territorio"
     intro: |
-      Il suo nome ufficiale è Cane da Pastore della Lessinia e del Lagorai, ma quasi tutti lo chiamano Pastore del Lagorai, dalla catena di montagne del Trentino orientale. È un cane da gregge di taglia media, agile e resistente, che da secoli accompagna la transumanza fra le montagne e le pianure del Nord-Est. Per molto tempo è stato considerato un semplice meticcio dei pastori; dal 2020 è una razza riconosciuta dall'ENCI, la prima nata in Trentino.
+      Il suo nome completo è Cane da Pastore della Lessinia e del Lagorai; quasi tutti lo chiamano Pastore del Lagorai, dalla catena di montagne del Trentino orientale. È il cane della tradizione pastorale del Nord-Est: per generazioni ha accompagnato i pastori nel governo degli animali e nella transumanza, da un pascolo all'altro. Conoscerlo vuol dire conoscere anche le persone e le montagne che lo hanno selezionato.
     image: "@assets/foto/pastore-blue-merle-profilo.jpg"
     imageAlt: "Il profilo di un Pastore del Lagorai blue merle"
   - type: "facts"
     items:
       - label: "Origine"
-        value: "Trentino, catena del Lagorai"
+        value: "Alpi e prealpi del Nord-Est"
+      - label: "Tipo"
+        value: "Lupoide, taglia media"
       - label: "Lavoro"
         value: "Conduzione del gregge"
-  - type: "text"
-    kicker: "Il carattere"
-    heading: "Carattere"
+      - label: "Riconoscimento"
+        value: "ENCI, percorso in corso"
+  - type: "text-image"
+    kicker: "L'aspetto"
+    heading: "Più di un bel mantello"
     body: |
-      Lo standard dell'ENCI lo descrive come un cane di tipo lupoide, di taglia media, agile ma con una muscolatura forte. È rustico: lavora con qualunque tempo, su terreni ripidi e pieni di ostacoli, e lo fa con disinvoltura. Ha di solito orecchie erette o semierette e pelo semilungo, e fra i mantelli ce n'è uno che si riconosce subito, il blue merle, grigio marezzato di scuro.
+      Lo standard lo descrive come un cane di tipo lupoide, rustico, agile e muscoloso, con orecchie erette o semierette e pelo semilungo. Il mantello che si nota per primo è il blue merle, grigio marezzato di scuro, ma ce ne sono anche di neri.
 
-      Di carattere è vivace e collaborativo: lavora insieme al pastore, più che per lui. Per questo oggi lo si incontra anche negli sport cinofili, dove serve un cane attento e pronto. C'è chi lo chiama il Border Collie italiano.
+      Chi lo incontra si ferma spesso a guardarlo. Il suo valore però non sta nel colore: sta nelle attitudini che i pastori hanno cercato per generazioni e nella storia della sua selezione.
+    image: "@assets/foto/pastore-blue-merle-primo-piano.jpg"
+    alt: "Primo piano di un Pastore del Lagorai blue merle"
+    side: "right"
   - type: "text"
     kicker: "Il lavoro"
-    heading: "Il lavoro in montagna"
+    heading: "Un cane da lavoro, non un cane qualsiasi"
     body: |
-      Fra i pastori è un cane «paratore»: tiene unito il gregge, lo sposta, lo ferma, seguendo i cenni di chi lo guida. La sua terra sono le montagne e le prealpi del Nord-Est, dalla Lombardia orientale al Trentino-Alto Adige, al Veneto e al Friuli, e le strade della transumanza che da lì scendono in pianura lungo i grandi fiumi: l'Adige, il Brenta, il Piave, il Tagliamento. In questo lavoro è usato ancora oggi.
+      Fra i pastori è un cane «paratore»: tiene unito il gregge, evita che gli animali si disperdano e lo accompagna negli spostamenti. È un lavoro che chiede attenzione continua, capacità di adattarsi al terreno e agli animali, e iniziativa.
 
-      Il riconoscimento è arrivato dopo anni di impegno degli appassionati. I cani vengono censiti nei raduni, valutati dai giudici e iscritti in un registro che l'ENCI ha aperto nel 2020. È un riconoscimento italiano; l'obiettivo dichiarato dagli allevatori è quello internazionale.
+      La sua terra sono le montagne e le prealpi del Nord-Est, dalla Lombardia orientale al Trentino-Alto Adige, al Veneto e al Friuli, e le strade della transumanza che da lì scendono in pianura lungo l'Adige, il Brenta, il Piave e il Tagliamento. Lavora con pecore e capre, ma anche con mucche e cavalli: da noi lo stesso istinto si vede ogni giorno al recinto, vedi la sezione [Equitazione](/equitazione/).
+  - type: "text-image"
+    kicker: "Il carattere"
+    heading: "Collabora, ma sa anche decidere"
+    body: |
+      Un cane da pastore lavora in coppia con chi lo guida: segue i cenni, ma tiene d'occhio l'ambiente e risponde da solo quando la situazione lo richiede. Collaborazione e autonomia, in lui, vanno insieme.
 
-      Non lavora solo con le pecore: lo si usa anche con le mucche e con i cavalli. Da noi lo stesso istinto si vede ogni giorno al recinto: vedi la sezione [Equitazione](/equitazione/).
+      Per questo non basta insegnargli che cosa fare: bisogna imparare a capirlo. Il rapporto si costruisce con calma e consapevolezza, giorno dopo giorno.
+    image: "@assets/foto/pastore-blue-merle-sul-prato.jpg"
+    alt: "Un Pastore del Lagorai blue merle sul prato, attento"
+    side: "left"
+    focus: "25% 50%"
+  - type: "cards"
+    kicker: "Senza gregge"
+    heading: "Non avete un gregge? Si può valorizzare lo stesso"
+    style: "tiles"
+    items:
+      - title: "Esplorazione"
+        text: "Passeggiate ed esplorazioni all'aperto, su terreni sempre diversi."
+      - title: "Ricerca olfattiva"
+        text: "Attività come il mantrailing, la ricerca di una persona seguendone l'odore."
+      - title: "Sport cinofili"
+        text: "Discipline come l'obedience, dove contano attenzione e collaborazione."
+  - type: "text"
+    kicker: "Prima di sceglierlo"
+    heading: "Affascinante, ma non è un cane per tutti"
+    body: |
+      Molti Pastori del Lagorai non fanno il lavoro per cui sono stati selezionati, e va bene così, purché abbiano altro da fare: attività condivise, pensate sul singolo cane, che lo tengano occupato con la testa e con il corpo.
+
+      Vivere con un cane da lavoro chiede tempo, impegno, educazione e una relazione costruita ogni giorno. Prima di sceglierlo per la sua bellezza, conviene chiedersi se il suo modo di essere va d'accordo con il proprio stile di vita: la scelta giusta è quella che rispetta sia la persona sia il cane.
+  - type: "text"
+    kicker: "Conoscere per tutelare"
+    heading: "Il percorso di riconoscimento"
+    body: |
+      Per molto tempo è stato considerato un semplice meticcio dei pastori. Nel 2020 l'ENCI ne ha approvato lo standard, il primo per una razza nata in Trentino; da allora i cani vengono censiti nei raduni, valutati dai giudici e iscritti in un registro aperto. Il percorso verso il riconoscimento ufficiale è ancora in corso.
+
+      A portarlo avanti è la SIPaLL, la Società Italiana Pastore della Lessinia e del Lagorai, che lavora per far conoscere la razza, documentarne le caratteristiche e diffondere una scelta responsabile: [pastorelessinialagorai.it](https://www.pastorelessinialagorai.it).
   - type: "cta-contact"
     kicker: "Contatti"
     heading: "Hai domande sulla razza?"

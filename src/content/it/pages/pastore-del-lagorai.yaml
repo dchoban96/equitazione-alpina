@@ -15,16 +15,16 @@ blocks:
     kicker: "Pastore del Lagorai"
     title: "Pastore del Lagorai, i cani del recinto"
     intro: |-
-      Al recinto il cane arriva sempre prima di tutti: corre avanti, accompagna i cavalli, conosce ogni sentiero. I nostri sono Pastori del Lagorai, una razza, in fase di riconoscimento, da lavoro delle Alpi del Nord-Est che da sempre segue greggi e mandrie nella transumanza.
+      Al recinto il cane arriva sempre prima di tutti: corre avanti, accompagna i cavalli, conosce ogni sentiero. I nostri sono Pastori del Lagorai, cani da lavoro delle Alpi del Nord-Est che da generazioni seguono greggi e mandrie nella transumanza: una razza ancora in fase di riconoscimento.
     image: "@assets/foto/pastore-blue-merle-al-recinto.jpg"
     imageAlt: "Un Pastore del Lagorai blue merle in piedi sul prato, davanti a un muretto di pietra"
   - type: "text-image"
     kicker: "Il lavoro"
     heading: "Un cane da lavoro"
     body: |
-      Il Pastore del Lagorai, che di nome completo fa Cane da Pastore della Lessinia e del Lagorai, è un cane da conduzione: il suo mestiere è guidare e custodire il gregge. Lo si usa con pecore e capre, ma anche con animali più difficili da governare, come le mucche e i cavalli. Da noi fa proprio questo, ogni giorno, accanto ai cavalli e alle capre.
+      Il Pastore del Lagorai, che di nome completo fa Cane da Pastore della Lessinia e del Lagorai, è un cane da conduzione: il suo mestiere è guidare e custodire il gregge. Lo si usa con pecore e capre, ma anche con animali più difficili da governare, come le mucche e i cavalli. Da noi fa proprio questo, ogni giorno, accanto ai cavalli e alle capre: segue chi lo guida, ma sa anche decidere da solo quando serve.
 
-      Della sua storia e del suo carattere parliamo nella pagina [La razza](/pastore-del-lagorai/razza/).
+      Della sua storia, del suo carattere e del perché non è un cane per tutti parliamo nella pagina [La razza](/pastore-del-lagorai/razza/).
     image: "@assets/foto/pastore-blue-merle-seduto.jpg"
     alt: "Kuma, blue merle , una capostipite del nostro allevamento"
     side: "right"
@@ -34,7 +34,7 @@ blocks:
     style: "tiles"
     items:
       - title: "La razza"
-        text: "Origine, carattere, lavoro."
+        text: "Storia, carattere, lavoro."
         link: "/pastore-del-lagorai/razza/"
         label: "Leggi"
       - title: "I nostri cani"
