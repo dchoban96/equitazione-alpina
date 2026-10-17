@@ -1,8 +1,11 @@
-# Publishes the production build to GitHub Pages (www.equitazione-alpina.it).
+# Publishes the production build to Cloudflare Pages (project
+# "equitazione-alpina") and, until the domain has moved there, to GitHub Pages.
+# The Cloudflare step runs once the repository has the CLOUDFLARE_API_TOKEN
+# secret (a Cloudflare API token with Account > Cloudflare Pages > Edit).
 # The production build fails while a published page still shows a
 # [DA COMPLETARE] marker, so an incomplete edit never goes live.
 # Enable it in the repository: Settings > Pages > Source: GitHub Actions.
-name: Deploy to GitHub Pages
+name: Deploy
 
 on:
   push:
@@ -21,6 +24,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: bf8670cc44ccaf2e7fb3ea3a3b90ea64 # not a secret: it is in every dashboard address
     steps:
       - uses: actions/checkout@v4
         with:
@@ -39,6 +45,12 @@ jobs:
           BASE_PATH: ${{ steps.pages.outputs.base_path }}
           # the control panel's API (worker/pannello.js on Cloudflare); public, not a secret
           PUBLIC_PANNELLO_API: https://pannello-equitazione-alpina.dchoban96.workers.dev
+      - name: Deploy to Cloudflare Pages
+        if: env.CLOUDFLARE_API_TOKEN != ''
+        run: |
+          # first run only: create the project (fails harmlessly once it exists)
+          npx --yes wrangler@4 pages project create equitazione-alpina --production-branch=main || true
+          npx --yes wrangler@4 pages deploy dist --project-name=equitazione-alpina --branch=main --commit-hash=${{ github.sha }} --commit-dirty=true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
