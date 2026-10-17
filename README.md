@@ -125,12 +125,14 @@ live after the next deploy. Setup, login and local testing are in
 
 ## Hosting and redirects
 
-- GitHub Pages at `www.equitazione-alpina.it` (DNS at register.it: `www` CNAME
-  to `dchoban96.github.io`, the bare domain on GitHub's four A records):
-  `.github/workflows/deploy.yml` publishes the production build on every push
-  to `main`. Old Shopify URLs get small forwarding pages there (not real 301s).
-- A host with real 301s (Netlify, Cloudflare Pages) can use `dist/_redirects`,
-  which the build writes from `settings/redirects.yaml`.
+- Cloudflare Pages, project `equitazione-alpina`, at `www.equitazione-alpina.it`
+  (DNS on Cloudflare): `.github/workflows/deploy.yml` builds and publishes on
+  every push to `main`, including each Pubblica from the panel. It needs the
+  repository secret `CLOUDFLARE_API_TOKEN` (Account > Cloudflare Pages > Edit).
+- The bare domain `equitazione-alpina.it` redirects to www with a Cloudflare
+  Redirect Rule (its A records are proxied; MX stays on mail.register.it).
+- Old Shopify URLs get real 301s from `dist/_redirects`, which the build writes
+  from `settings/redirects.yaml`; `public/_headers` sets caching for `/_astro/`.
 - See `LAUNCH-CHECKLIST.md` before going live.
 
 ## Rules kept by the code

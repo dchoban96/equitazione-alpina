@@ -1,10 +1,10 @@
-# Publishes the production build to Cloudflare Pages (project
-# "equitazione-alpina") and, until the domain has moved there, to GitHub Pages.
-# The Cloudflare step runs once the repository has the CLOUDFLARE_API_TOKEN
-# secret (a Cloudflare API token with Account > Cloudflare Pages > Edit).
+# Builds the site and publishes it to Cloudflare Pages (project
+# "equitazione-alpina", served at www.equitazione-alpina.it). Runs on every
+# push to main, including each Pubblica from the panel.
 # The production build fails while a published page still shows a
 # [DA COMPLETARE] marker, so an incomplete edit never goes live.
-# Enable it in the repository: Settings > Pages > Source: GitHub Actions.
+# Needs the repository secret CLOUDFLARE_API_TOKEN (Cloudflare API token
+# with Account > Cloudflare Pages > Edit).
 name: Deploy
 
 on:
@@ -14,15 +14,13 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     env:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -36,31 +34,10 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - id: pages
-        uses: actions/configure-pages@v5
       - run: npm ci
       - run: npm run build
         env:
-          # project pages live under /<repository>/; empty with a custom domain
-          BASE_PATH: ${{ steps.pages.outputs.base_path }}
           # the control panel's API (worker/pannello.js on Cloudflare); public, not a secret
           PUBLIC_PANNELLO_API: https://pannello-equitazione-alpina.dchoban96.workers.dev
       - name: Deploy to Cloudflare Pages
-        if: env.CLOUDFLARE_API_TOKEN != ''
-        run: |
-          # first run only: create the project (fails harmlessly once it exists)
-          npx --yes wrangler@4 pages project create equitazione-alpina --production-branch=main || true
-          npx --yes wrangler@4 pages deploy dist --project-name=equitazione-alpina --branch=main --commit-hash=${{ github.sha }} --commit-dirty=true
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+        run: npx --yes wrangler@4 pages deploy dist --project-name=equitazione-alpina --branch=main --commit-hash=${{ github.sha }} --commit-dirty=true
