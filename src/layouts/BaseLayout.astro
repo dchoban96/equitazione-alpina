@@ -101,7 +101,8 @@ const alternates = site.languages.length > 1 ? site.languages.map((l) => ({ lang
     <style set:html={themeCss}></style>
     <link rel="preload" href={fontUrl} as="font" type="font/woff2" crossorigin />
     {preload && <link rel="preload" as="image" imagesrcset={preload.srcset} imagesizes={preload.sizes} type={preload.type} fetchpriority="high" />}
-    <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
+    <link rel="icon" href={url('/favicon.png')} type="image/png" sizes="96x96" />
+    <link rel="apple-touch-icon" href={url('/apple-touch-icon.png')} />
     <meta name="theme-color" content={themeColor} />
 
     <meta property="og:type" content={ogType} />

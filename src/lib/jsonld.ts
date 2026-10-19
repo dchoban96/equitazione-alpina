@@ -29,6 +29,7 @@ export function localBusinessJsonLd(site: Site, imageUrl: string) {
     ...(legal ? { legalName: legal } : {}),
     ...(vat ? { vatID: vat } : {}),
     url: `${site.url}/`,
+    logo: `${site.url}/logo.png`,
     image: imageUrl,
     telephone: site.phone.replace(/[^\d+]/g, ''),
     ...(site.email ? { email: site.email } : {}),

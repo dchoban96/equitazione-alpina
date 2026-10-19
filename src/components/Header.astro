@@ -3,6 +3,8 @@
    logo and menu on the left, comes back when scrolling up, transparent over
    the opening on the home page. Search, cart, account and country selector
    are dropped: there is no shop. The menu comes from site settings + pages. */
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/logo-la-selva.png';
 import type { NavItem } from '../lib/content';
 import { url } from '../lib/content';
 import { telHref, waHref } from '../lib/text';
@@ -23,7 +25,11 @@ const inSection = (item: NavItem) => current.startsWith(item.href) && item.href 
 
 <header class:list={['site-header', { 'site-header--overlay': overlay }]} data-header>
   <div class="site-header__bar">
-    <a class="site-header__logo" href={url('/')}>{name}</a>
+    <a class="site-header__logo" href={url('/')}>
+      {/* the round "La Selva" mark; the name beside it stays as text (the mark's own lettering is too small to read here) */}
+      <Image class="site-header__mark" src={logo} alt="" width={48} height={48} densities={[1, 2, 3]} loading="eager" />
+      <span>{name}</span>
+    </a>
 
     <nav class="nav-desktop" aria-label={ui.menuLabel}>
       <ul>

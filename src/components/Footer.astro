@@ -16,12 +16,15 @@ const { site, menu, links, ui } = Astro.props;
 const year = new Date().getFullYear();
 const a = site.address;
 const address = `${a.street}, ${a.postalCode} ${a.locality} (${a.province})`;
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/logo-la-selva.png';
 ---
 
 <footer class="site-footer">
   <div class="site-footer__card">
     <div class="site-footer__top">
       <div class="site-footer__brand">
+        <Image class="site-footer__mark" src={logo} alt="" width={128} height={128} densities={[1, 2]} />
         <a class="site-footer__name" href={url('/')}>{site.name}</a>
         <p class="site-footer__tagline" set:html={txt(ui.footerTagline)} />
         <p class="site-footer__coords">{site.coordinatesText} · {a.locality} ({a.province})</p>

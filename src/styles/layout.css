@@ -127,6 +127,7 @@
 .site-header__logo {
   display: inline-flex;
   align-items: center;
+  gap: 10px;
   min-height: 44px;
   margin-right: auto;
   font-size: 1.0625rem;
@@ -593,6 +594,19 @@
 }
 .site-footer__brand {
   max-width: 46ch;
+}
+.site-header__mark {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.site-footer__mark {
+  display: block;
+  width: clamp(96px, 20vw, 128px);
+  height: auto;
+  margin-bottom: var(--space-4);
+  border-radius: 50%;
 }
 .site-footer a.site-footer__name {
   min-height: 0;

@@ -28,7 +28,7 @@ local_backend: true
 
 site_url: https://www.equitazione-alpina.it/
 display_url: https://www.equitazione-alpina.it/
-logo_url: https://www.equitazione-alpina.it/favicon.svg
+logo_url: https://www.equitazione-alpina.it/logo.png
 
 # All photos live in one folder, src/assets/foto; content refers to them as
 # "@assets/foto/<file>" (an alias the build resolves, so the same path works
