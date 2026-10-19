@@ -46,3 +46,506 @@ items:
     answer: "Seconda risposta dimostrativa, con un [collegamento di prova](/contatti/)."
     tags:
       - "demo"
+
+# Guida: 100 domande e risposte sui cavalli (storia, cura, maneggio, Valtellina,
+# Valmalenco), dal documento fornito dal proprietario. Tag "guida-<sezione>".
+  - id: "guida-001"
+    question: "Da quanto tempo il cavallo vive accanto all’uomo?"
+    answer: "Il cavallo è stato domesticato migliaia di anni fa e ha accompagnato l’uomo nel lavoro, nei viaggi, in guerra e nello sport."
+    tags:
+      - "guida-storia"
+  - id: "guida-002"
+    question: "Dove furono domesticati i primi cavalli?"
+    answer: "Le prime forme di domesticazione sono legate alle grandi steppe dell’Eurasia."
+    tags:
+      - "guida-storia"
+  - id: "guida-003"
+    question: "Come venivano usati i cavalli nell’antichità?"
+    answer: "Erano impiegati per il trasporto, l’agricoltura, la guerra, la caccia e le cerimonie."
+    tags:
+      - "guida-storia"
+  - id: "guida-004"
+    question: "Quando nacquero le prime scuole di equitazione?"
+    answer: "Le tecniche equestri si svilupparono nell’antichità, mentre le grandi scuole europee si affermarono soprattutto dal Rinascimento."
+    tags:
+      - "guida-storia"
+  - id: "guida-005"
+    question: "Che ruolo ebbe il cavallo nell’agricoltura?"
+    answer: "Per secoli trainò aratri e carri, rendendo più rapidi molti lavori nei campi."
+    tags:
+      - "guida-storia"
+  - id: "guida-006"
+    question: "Perché il cavallo fu importante nei trasporti?"
+    answer: "Prima dei veicoli a motore permetteva di spostare persone e merci su lunghe distanze."
+    tags:
+      - "guida-storia"
+  - id: "guida-007"
+    question: "Quando si diffuse l’equitazione sportiva?"
+    answer: "Le discipline equestri moderne si organizzarono soprattutto tra il XIX e il XX secolo."
+    tags:
+      - "guida-storia"
+  - id: "guida-008"
+    question: "Da quando l’equitazione è presente alle Olimpiadi?"
+    answer: "Le discipline equestri moderne fanno parte del programma olimpico dall’inizio del Novecento."
+    tags:
+      - "guida-storia"
+  - id: "guida-009"
+    question: "Esistono ancora cavalli selvatici?"
+    answer: "Esistono popolazioni libere e inselvatichite; il cavallo di Przewalski è il principale cavallo selvatico oggi esistente."
+    tags:
+      - "guida-storia"
+  - id: "guida-010"
+    question: "Perché esistono tante razze di cavalli?"
+    answer: "Sono state selezionate nel tempo per clima, territorio, lavoro, velocità, resistenza e caratteristiche estetiche."
+    tags:
+      - "guida-storia"
+  - id: "guida-011"
+    question: "Quanto vive mediamente un cavallo?"
+    answer: "In genere vive tra 25 e 30 anni, ma alcuni soggetti superano questa età."
+    tags:
+      - "guida-caratteristiche"
+  - id: "guida-012"
+    question: "Come si misura l’altezza di un cavallo?"
+    answer: "Si misura al garrese, il punto più alto del dorso alla base del collo."
+    tags:
+      - "guida-caratteristiche"
+  - id: "guida-013"
+    question: "Qual è la differenza tra cavallo e pony?"
+    answer: "La distinzione si basa soprattutto sull’altezza, anche se corporatura e razza hanno un ruolo importante."
+    tags:
+      - "guida-caratteristiche"
+  - id: "guida-014"
+    question: "Come si chiamano il maschio e la femmina del cavallo?"
+    answer: "Il maschio è stallone o castrone, a seconda dei casi; la femmina è chiamata giumenta o cavalla."
+    tags:
+      - "guida-caratteristiche"
+  - id: "guida-015"
+    question: "Come si chiama il piccolo del cavallo?"
+    answer: "Si chiama puledro; al femminile, puledra."
+    tags:
+      - "guida-caratteristiche"
+  - id: "guida-016"
+    question: "Quanto dura la gestazione di una cavalla?"
+    answer: "Dura in media circa 11 mesi."
+    tags:
+      - "guida-caratteristiche"
+  - id: "guida-017"
+    question: "Quanto pesa un cavallo adulto?"
+    answer: "Il peso varia molto: un cavallo medio pesa spesso tra 400 e 600 kg, mentre pony e razze da tiro possono essere molto diversi."
+    tags:
+      - "guida-caratteristiche"
+  - id: "guida-018"
+    question: "Quali sono le andature naturali principali?"
+    answer: "Passo, trotto e galoppo sono le tre andature più comuni."
+    tags:
+      - "guida-caratteristiche"
+  - id: "guida-019"
+    question: "I cavalli vedono al buio?"
+    answer: "Vedono in condizioni di poca luce meglio dell’uomo, ma non nell’oscurità completa."
+    tags:
+      - "guida-caratteristiche"
+  - id: "guida-020"
+    question: "I cavalli dormono in piedi?"
+    answer: "Possono riposare in piedi, ma per il sonno profondo hanno bisogno anche di sdraiarsi."
+    tags:
+      - "guida-caratteristiche"
+  - id: "guida-021"
+    question: "Che cos’è una razza equina?"
+    answer: "È un gruppo di cavalli con origini e caratteristiche fisiche e attitudinali riconoscibili."
+    tags:
+      - "guida-razze"
+  - id: "guida-022"
+    question: "Quali sono alcune razze molto conosciute?"
+    answer: "Purosangue Inglese, Arabo, Quarter Horse, Andaluso, Frisone e Haflinger sono tra le più note."
+    tags:
+      - "guida-razze"
+  - id: "guida-023"
+    question: "Quale razza è famosa per la resistenza?"
+    answer: "Il cavallo Arabo è particolarmente noto per resistenza, rusticità ed eleganza."
+    tags:
+      - "guida-razze"
+  - id: "guida-024"
+    question: "Quale razza è associata alle corse al galoppo?"
+    answer: "Il Purosangue Inglese è la razza più legata alle corse di velocità."
+    tags:
+      - "guida-razze"
+  - id: "guida-025"
+    question: "Che cos’è il mantello di un cavallo?"
+    answer: "È l’insieme del colore dei peli, della criniera, della coda e delle estremità."
+    tags:
+      - "guida-razze"
+  - id: "guida-026"
+    question: "Quali sono i mantelli più comuni?"
+    answer: "Baio, sauro, morello e grigio sono tra i mantelli più diffusi."
+    tags:
+      - "guida-razze"
+  - id: "guida-027"
+    question: "Un cavallo grigio nasce già chiaro?"
+    answer: "Spesso nasce scuro e diventa progressivamente più chiaro con l’età."
+    tags:
+      - "guida-razze"
+  - id: "guida-028"
+    question: "Che cos’è una balzana?"
+    answer: "È una macchia bianca presente sulla parte inferiore di una o più zampe."
+    tags:
+      - "guida-razze"
+  - id: "guida-029"
+    question: "Che cos’è una lista sul muso?"
+    answer: "È un segno bianco allungato che scende lungo la fronte e il naso."
+    tags:
+      - "guida-razze"
+  - id: "guida-030"
+    question: "Il colore determina il carattere del cavallo?"
+    answer: "No: il carattere dipende soprattutto da genetica, esperienze, educazione, salute e ambiente."
+    tags:
+      - "guida-razze"
+  - id: "guida-031"
+    question: "Che cosa mangia principalmente un cavallo?"
+    answer: "La sua dieta si basa soprattutto su erba e fieno di buona qualità."
+    tags:
+      - "guida-alimentazione"
+  - id: "guida-032"
+    question: "Perché il foraggio è così importante?"
+    answer: "Fornisce fibra e aiuta il corretto funzionamento dell’apparato digerente."
+    tags:
+      - "guida-alimentazione"
+  - id: "guida-033"
+    question: "Un cavallo deve avere sempre acqua disponibile?"
+    answer: "Sì, deve poter bere acqua pulita e fresca, salvo diverse indicazioni del veterinario."
+    tags:
+      - "guida-alimentazione"
+  - id: "guida-034"
+    question: "Quanto beve un cavallo al giorno?"
+    answer: "La quantità varia con clima, dieta e attività, ma può arrivare a diverse decine di litri."
+    tags:
+      - "guida-alimentazione"
+  - id: "guida-035"
+    question: "I cavalli possono mangiare cereali?"
+    answer: "Sì, se necessari e somministrati in quantità adeguate all’attività e alle condizioni del soggetto."
+    tags:
+      - "guida-alimentazione"
+  - id: "guida-036"
+    question: "È possibile cambiare alimentazione all’improvviso?"
+    answer: "No, i cambiamenti della dieta dovrebbero essere graduali per ridurre i disturbi digestivi."
+    tags:
+      - "guida-alimentazione"
+  - id: "guida-037"
+    question: "Le carote fanno bene ai cavalli?"
+    answer: "Possono essere offerte in piccole quantità come premio, tagliate in modo sicuro."
+    tags:
+      - "guida-alimentazione"
+  - id: "guida-038"
+    question: "Un cavallo può mangiare qualsiasi pianta?"
+    answer: "No, alcune piante sono tossiche; paddock e fieno devono essere controllati con attenzione."
+    tags:
+      - "guida-alimentazione"
+  - id: "guida-039"
+    question: "A che cosa serve il sale?"
+    answer: "Aiuta a integrare sodio e cloro; la modalità di somministrazione va adattata alla dieta e al lavoro."
+    tags:
+      - "guida-alimentazione"
+  - id: "guida-040"
+    question: "Come si stabilisce la razione corretta?"
+    answer: "Si considerano peso, età, salute, lavoro e qualità del foraggio, con il supporto di veterinario o nutrizionista equino."
+    tags:
+      - "guida-alimentazione"
+  - id: "guida-041"
+    question: "Ogni quanto va controllato un cavallo dal veterinario?"
+    answer: "Sono consigliati controlli periodici e una visita immediata quando compaiono sintomi insoliti."
+    tags:
+      - "guida-salute"
+  - id: "guida-042"
+    question: "Quali vaccinazioni servono a un cavallo?"
+    answer: "Dipendono da area, attività e regolamenti; il piano deve essere definito con il veterinario."
+    tags:
+      - "guida-salute"
+  - id: "guida-043"
+    question: "Che cos’è una colica?"
+    answer: "È un dolore addominale che può avere diverse cause e richiede un rapido contatto con il veterinario."
+    tags:
+      - "guida-salute"
+  - id: "guida-044"
+    question: "Quali segnali possono indicare una colica?"
+    answer: "Irrequietezza, sguardi al fianco, sudorazione, rotolamenti e scarso appetito sono possibili segnali."
+    tags:
+      - "guida-salute"
+  - id: "guida-045"
+    question: "Perché si controllano regolarmente i denti?"
+    answer: "Una dentatura efficiente permette di masticare bene e aiuta a mantenere peso e benessere."
+    tags:
+      - "guida-salute"
+  - id: "guida-046"
+    question: "Che cos’è la laminite?"
+    answer: "È una grave infiammazione delle strutture interne dello zoccolo e richiede assistenza veterinaria urgente."
+    tags:
+      - "guida-salute"
+  - id: "guida-047"
+    question: "Come si riconosce un cavallo disidratato?"
+    answer: "Letargia, mucose asciutte e ridotta elasticità della pelle sono possibili segnali da far valutare al veterinario."
+    tags:
+      - "guida-salute"
+  - id: "guida-048"
+    question: "Perché si controlla il peso del cavallo?"
+    answer: "Variazioni di peso possono indicare errori alimentari, problemi dentali, parassiti o malattie."
+    tags:
+      - "guida-salute"
+  - id: "guida-049"
+    question: "I cavalli devono essere trattati contro i parassiti?"
+    answer: "Sì, ma il programma dovrebbe basarsi su controlli e indicazioni veterinarie, evitando trattamenti indiscriminati."
+    tags:
+      - "guida-salute"
+  - id: "guida-050"
+    question: "Quali sono alcuni segnali di buona salute?"
+    answer: "Appetito regolare, occhi vigili, pelo curato, movimento fluido e comportamento abituale sono segnali positivi."
+    tags:
+      - "guida-salute"
+  - id: "guida-051"
+    question: "Che cosa significa governare un cavallo?"
+    answer: "Significa pulirlo e controllarne ogni giorno pelle, arti, criniera, coda e zoccoli."
+    tags:
+      - "guida-cura"
+  - id: "guida-052"
+    question: "Perché si striglia il cavallo?"
+    answer: "Per rimuovere sporco e peli morti, osservare la pelle e favorire il rapporto con l’animale."
+    tags:
+      - "guida-cura"
+  - id: "guida-053"
+    question: "Quanto spesso vanno puliti gli zoccoli?"
+    answer: "Di norma ogni giorno e sempre prima e dopo il lavoro."
+    tags:
+      - "guida-cura"
+  - id: "guida-054"
+    question: "A che cosa serve il nettapiedi?"
+    answer: "Serve a rimuovere terra, pietre e residui dalla parte inferiore dello zoccolo."
+    tags:
+      - "guida-cura"
+  - id: "guida-055"
+    question: "Ogni quanto interviene il maniscalco?"
+    answer: "In genere ogni 6-8 settimane, ma la frequenza varia secondo crescita, terreno e condizioni degli zoccoli."
+    tags:
+      - "guida-cura"
+  - id: "guida-056"
+    question: "Tutti i cavalli devono essere ferrati?"
+    answer: "No, alcuni possono restare scalzi se zoccoli, lavoro e terreno lo consentono."
+    tags:
+      - "guida-cura"
+  - id: "guida-057"
+    question: "Si può lavare spesso un cavallo?"
+    answer: "Sì, quando necessario, usando prodotti adatti e asciugandolo correttamente in base al clima."
+    tags:
+      - "guida-cura"
+  - id: "guida-058"
+    question: "Perché si pulisce il cavallo prima di sellarlo?"
+    answer: "Sporco e sudore sotto l’attrezzatura possono provocare sfregamenti e irritazioni."
+    tags:
+      - "guida-cura"
+  - id: "guida-059"
+    question: "Come si cura la criniera?"
+    answer: "Si sciolgono delicatamente i nodi e si mantiene pulita senza spezzare inutilmente i crini."
+    tags:
+      - "guida-cura"
+  - id: "guida-060"
+    question: "A cosa serve la coperta?"
+    answer: "Può proteggere da freddo, pioggia o insetti, ma deve essere scelta e controllata in base alle reali esigenze."
+    tags:
+      - "guida-cura"
+  - id: "guida-061"
+    question: "Il cavallo è un animale sociale?"
+    answer: "Sì, vive naturalmente in gruppo e beneficia del contatto con altri cavalli."
+    tags:
+      - "guida-comportamento"
+  - id: "guida-062"
+    question: "Come comunica un cavallo?"
+    answer: "Usa postura, movimenti, espressioni, odori e vocalizzazioni."
+    tags:
+      - "guida-comportamento"
+  - id: "guida-063"
+    question: "Che cosa indicano le orecchie rivolte in avanti?"
+    answer: "Spesso segnalano attenzione o interesse verso qualcosa."
+    tags:
+      - "guida-comportamento"
+  - id: "guida-064"
+    question: "Che cosa significa quando appiattisce le orecchie?"
+    answer: "Può indicare fastidio, paura, dolore o una minaccia: è importante osservare tutto il corpo."
+    tags:
+      - "guida-comportamento"
+  - id: "guida-065"
+    question: "Perché un cavallo nitrisce?"
+    answer: "Può richiamare altri cavalli, salutare o esprimere eccitazione e disagio."
+    tags:
+      - "guida-comportamento"
+  - id: "guida-066"
+    question: "I cavalli riconoscono le persone?"
+    answer: "Sì, possono distinguere individui familiari attraverso vista, voce, odore ed esperienze passate."
+    tags:
+      - "guida-comportamento"
+  - id: "guida-067"
+    question: "Un cavallo può spaventarsi facilmente?"
+    answer: "Sì, è una specie predata e può reagire rapidamente a rumori o movimenti improvvisi."
+    tags:
+      - "guida-comportamento"
+  - id: "guida-068"
+    question: "Come ci si avvicina in sicurezza a un cavallo?"
+    answer: "Con calma, facendosi vedere e sentire ed evitando di comparire all’improvviso alle sue spalle."
+    tags:
+      - "guida-comportamento"
+  - id: "guida-069"
+    question: "Perché un cavallo sbadiglia?"
+    answer: "Può farlo per rilassamento, stanchezza, stress o disagio; se accade spesso va osservato con attenzione."
+    tags:
+      - "guida-comportamento"
+  - id: "guida-070"
+    question: "Che cos’è una stereotipia?"
+    answer: "È un comportamento ripetitivo, come il ballo dell’orso, spesso associato a stress o a un ambiente poco adatto."
+    tags:
+      - "guida-comportamento"
+  - id: "guida-071"
+    question: "Che cos’è un maneggio?"
+    answer: "È una struttura in cui si ospitano cavalli e si organizzano lezioni, attività equestri e passeggiate."
+    tags:
+      - "guida-maneggio"
+  - id: "guida-072"
+    question: "Che differenza c’è tra box e paddock?"
+    answer: "Il box è uno spazio coperto; il paddock è un’area esterna dove il cavallo può muoversi."
+    tags:
+      - "guida-maneggio"
+  - id: "guida-073"
+    question: "Perché il paddock è importante?"
+    answer: "Favorisce movimento, socialità, esplorazione e altri comportamenti naturali."
+    tags:
+      - "guida-maneggio"
+  - id: "guida-074"
+    question: "Come scegliere un buon maneggio?"
+    answer: "Valuta benessere dei cavalli, pulizia, sicurezza, competenza del personale e trasparenza dei servizi."
+    tags:
+      - "guida-maneggio"
+  - id: "guida-075"
+    question: "Si può partecipare a una passeggiata senza esperienza?"
+    answer: "Spesso sì, scegliendo un percorso per principianti e affidandosi a una guida qualificata."
+    tags:
+      - "guida-maneggio"
+  - id: "guida-076"
+    question: "Come ci si veste per una passeggiata a cavallo?"
+    answer: "Servono casco omologato, pantaloni lunghi, scarpe chiuse e abbigliamento adatto al meteo."
+    tags:
+      - "guida-maneggio"
+  - id: "guida-077"
+    question: "Si può andare a cavallo nei boschi?"
+    answer: "Sì, dove il transito è consentito e seguendo itinerari adatti, regole locali e indicazioni della guida."
+    tags:
+      - "guida-maneggio"
+  - id: "guida-078"
+    question: "Come si rispetta la natura durante un’escursione?"
+    answer: "Si resta sui percorsi, non si abbandonano rifiuti e non si disturbano animali, piante o altri visitatori."
+    tags:
+      - "guida-maneggio"
+  - id: "guida-079"
+    question: "Cosa fare se si incontrano animali selvatici?"
+    answer: "Mantenere la distanza, restare calmi e seguire le indicazioni dell’accompagnatore."
+    tags:
+      - "guida-maneggio"
+  - id: "guida-080"
+    question: "Si può dare da mangiare ai cavalli incontrati al pascolo?"
+    answer: "No, non senza il permesso del proprietario: anche un alimento comune può creare problemi."
+    tags:
+      - "guida-maneggio"
+  - id: "guida-081"
+    question: "Si possono fare passeggiate a cavallo in Valtellina?"
+    answer: "Sì, diversi centri propongono passeggiate ed esperienze equestri; disponibilità e percorsi vanno verificati in anticipo."
+    tags:
+      - "guida-valtellina"
+  - id: "guida-082"
+    question: "Le attività a cavallo sono adatte alle famiglie?"
+    answer: "Molte strutture offrono esperienze per famiglie e principianti, con modalità diverse secondo età e capacità."
+    tags:
+      - "guida-valtellina"
+  - id: "guida-083"
+    question: "Qual è un’attività semplice per scoprire la natura valtellinese?"
+    answer: "Una passeggiata guidata tra boschi, prati e fondovalle permette di conoscere il paesaggio con gradualità."
+    tags:
+      - "guida-valtellina"
+  - id: "guida-084"
+    question: "Cosa si può fare in Valtellina oltre all’equitazione?"
+    answer: "Trekking, ciclismo, visite a borghi, castelli, vigneti, musei e degustazioni di prodotti tipici."
+    tags:
+      - "guida-valtellina"
+  - id: "guida-085"
+    question: "La Valtellina è adatta alle vacanze attive?"
+    answer: "Sì, offre itinerari di diversa difficoltà per camminatori, ciclisti e amanti della montagna."
+    tags:
+      - "guida-valtellina"
+  - id: "guida-086"
+    question: "Si possono visitare alpeggi e aziende agricole?"
+    answer: "Sì, alcune realtà organizzano visite e attività; è consigliabile controllare aperture e prenotazioni."
+    tags:
+      - "guida-valtellina"
+  - id: "guida-087"
+    question: "Quando è meglio fare attività all’aperto?"
+    answer: "Dipende da quota e attività: primavera e autunno sono miti, mentre l’alta montagna è più accessibile in estate."
+    tags:
+      - "guida-valtellina"
+  - id: "guida-088"
+    question: "Cosa fare in Valtellina con i bambini?"
+    answer: "Passeggiate facili, parchi, fattorie, attività con animali e percorsi ciclabili sono tra le proposte più adatte."
+    tags:
+      - "guida-valtellina"
+  - id: "guida-089"
+    question: "Come prepararsi a un’escursione in montagna?"
+    answer: "Controllare meteo e percorso, usare scarpe adatte e portare acqua, protezione solare e uno strato caldo."
+    tags:
+      - "guida-valtellina"
+  - id: "guida-090"
+    question: "È necessario prenotare un’attività equestre?"
+    answer: "Sì, è sempre consigliato per verificare disponibilità, livello richiesto, durata, prezzo e condizioni meteo."
+    tags:
+      - "guida-valtellina"
+  - id: "guida-091"
+    question: "Cosa rende speciale la Valmalenco?"
+    answer: "Boschi, alpeggi, laghi alpini, rifugi e panorami sui gruppi del Bernina, del Disgrazia e dello Scalino."
+    tags:
+      - "guida-valmalenco"
+  - id: "guida-092"
+    question: "Qual è una passeggiata conosciuta per le famiglie?"
+    answer: "Il Lago Palù è una meta molto apprezzata, raggiungibile con itinerari da scegliere secondo stagione e preparazione."
+    tags:
+      - "guida-valmalenco"
+  - id: "guida-093"
+    question: "Dove si trovano le dighe più note della Valmalenco?"
+    answer: "Nell’area di Campo Moro e Campo Gera, punto di partenza per numerosi percorsi e rifugi."
+    tags:
+      - "guida-valmalenco"
+  - id: "guida-094"
+    question: "Che cos’è l’Alta Via della Valmalenco?"
+    answer: "È un itinerario escursionistico in quota di circa 110 km, articolato in otto tappe e riservato a persone preparate."
+    tags:
+      - "guida-valmalenco"
+  - id: "guida-095"
+    question: "Si può percorrere solo una parte dell’Alta Via?"
+    answer: "Sì, alcuni tratti possono essere organizzati come escursioni o mini itinerari di due o tre giorni."
+    tags:
+      - "guida-valmalenco"
+  - id: "guida-096"
+    question: "Cosa si può fare a Chiareggio?"
+    answer: "Passeggiare lungo itinerari nel fondovalle e raggiungere alpeggi e rifugi ammirando il gruppo del Disgrazia."
+    tags:
+      - "guida-valmalenco"
+  - id: "guida-097"
+    question: "Dove si trovano i laghetti di Sassersa?"
+    answer: "Si trovano sopra Primolo, tra circa 2.300 e 2.400 metri, in un ambiente alpino suggestivo e impegnativo."
+    tags:
+      - "guida-valmalenco"
+  - id: "guida-098"
+    question: "Le escursioni in Valmalenco sono tutte facili?"
+    answer: "No, si va dalle passeggiate per famiglie agli itinerari d’alta quota che richiedono esperienza e attrezzatura adeguata."
+    tags:
+      - "guida-valmalenco"
+  - id: "guida-099"
+    question: "Cosa fare in Valmalenco in caso di tempo incerto?"
+    answer: "Scegliere attività brevi o al coperto e consultare meteo, webcam e informazioni locali prima di partire."
+    tags:
+      - "guida-valmalenco"
+  - id: "guida-100"
+    question: "Qual è la regola principale per vivere la montagna in sicurezza?"
+    answer: "Scegliere un percorso adatto, informarsi sulle condizioni e rinunciare quando meteo o preparazione non sono adeguati."
+    tags:
+      - "guida-valmalenco"
