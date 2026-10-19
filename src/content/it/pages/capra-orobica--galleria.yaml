@@ -22,7 +22,7 @@ blocks:
     gallery: "capra-orobica"
   - type: "cta-contact"
     kicker: "Contatti"
-    heading: "Vuoi vederle dal vivo?"
+    heading: "Vuoi saperne di più?"
     body: |
-      Chiamaci per sapere quando passare.
+      Chiamaci o scrivici: ti raccontiamo l'allevamento, e se passi al recinto le capre le vedi.
     form: false
