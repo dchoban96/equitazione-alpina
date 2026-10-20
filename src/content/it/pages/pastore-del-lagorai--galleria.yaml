@@ -3,7 +3,7 @@ slug: "pastore-del-lagorai/galleria"
 title: "Galleria cani"
 section: "pastore-del-lagorai"
 draft: false
-mockup: true
+mockup: false
 nav:
   order: 30
 seo:

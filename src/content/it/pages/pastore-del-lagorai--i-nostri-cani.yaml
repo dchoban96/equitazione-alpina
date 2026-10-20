@@ -3,7 +3,7 @@ slug: "pastore-del-lagorai/i-nostri-cani"
 title: "I nostri cani"
 section: "pastore-del-lagorai"
 draft: false
-mockup: true
+mockup: false
 nav:
   order: 20
 seo:

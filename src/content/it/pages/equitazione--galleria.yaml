@@ -3,7 +3,7 @@ slug: "equitazione/galleria"
 title: "Galleria equitazione"
 section: "equitazione"
 draft: false
-mockup: true
+mockup: false
 nav:
   order: 60
 seo:
