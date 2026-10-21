@@ -1,28 +1,48 @@
-# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "cookie"
 title: "Cookie"
 section: "info"
 draft: false
-mockup: true
 nav:
   order: 50
 seo:
   title: "Informativa sui cookie · Equitazione Alpina"
-  description: "Quali cookie usa il sito di Equitazione Alpina e come gestire le preferenze."
-  image: "@assets/foto/mockup-borgo-albosaggia.jpg"
+  description: "Il sito di Equitazione Alpina non usa cookie di profilazione né di statistica: ecco cosa usa e come gestire i cookie dal browser."
+  image: "@assets/foto/portone-della-scuderia.jpg"
 blocks:
   - type: "hero"
     kicker: "Informazioni"
     title: "Informativa sui cookie"
     intro: |
-      Testo di prova. Questa pagina conterrà il testo definitivo, fornito dal titolare del sito.
-    image: "@assets/foto/mockup-borgo-albosaggia.jpg"
-    imageAlt: "Illustrazione di prova: un borgo in pietra"
+      Questo sito non usa cookie di profilazione, di pubblicità o di statistica. Per questo non ti chiediamo il consenso con un banner.
+
+      Ultimo aggiornamento: 21 ottobre 2026.
+    image: "@assets/foto/portone-della-scuderia.jpg"
+    imageAlt: "Dal portone della scuderia si vedono il cortile, i recinti e gli abitanti del maneggio"
   - type: "text"
-    heading: "Cookie tecnici"
+    heading: "Che cosa sono i cookie"
     body: |
-      Testo di prova: il sito salva solo la tua scelta sui cookie.
+      I cookie sono piccoli file che un sito salva nel browser per ricordare informazioni da una visita all'altra. Alcuni servono solo a far funzionare il sito (cookie tecnici), altri a misurare le visite o a mostrare pubblicità: questi ultimi richiedono il tuo consenso.
   - type: "text"
-    heading: "Cookie di statistica"
+    heading: "Cosa usa questo sito"
     body: |
-      Testo di prova: se attivati, si caricano solo dopo il tuo consenso. Puoi cambiare idea in qualsiasi momento dal fondo della pagina.
+      **Nessun cookie di profilazione, pubblicità o statistica.** Caratteri, immagini e video sono ospitati sul nostro sito: mentre navighi non carichiamo servizi esterni come Google Fonts, YouTube o mappe incorporate.
+
+      **Un possibile cookie tecnico di sicurezza.** Cloudflare, il servizio che ospita il sito, in casi particolari può impostare il cookie tecnico `__cf_bm`, che serve a distinguere le persone dai programmi automatici. Dura al massimo 30 minuti e non viene usato per seguirti. Essendo un cookie tecnico, non richiede consenso.
+
+      **Area riservata.** Chi aggiorna i contenuti del sito accede a un'area riservata che salva nel browser i dati di accesso e le bozze. Riguarda solo gli amministratori, non i visitatori.
+  - type: "text"
+    heading: "Collegamenti ad altri siti"
+    body: |
+      I pulsanti verso Google Maps (indicazioni stradali), WhatsApp, Facebook, Instagram e Tripadvisor sono semplici collegamenti. Quei servizi possono impostare i propri cookie solo se apri le loro pagine, secondo le rispettive informative.
+  - type: "text"
+    heading: "Come gestire i cookie"
+    body: |
+      Puoi vedere e cancellare i cookie, oppure bloccarli, dalle impostazioni del browser (Chrome, Firefox, Safari, Edge e gli altri lo permettono nella sezione «Privacy» o «Cookie»). Bloccare i cookie tecnici può impedire ad alcune funzioni di lavorare correttamente.
+
+      Se in futuro attiveremo statistiche delle visite, si caricheranno solo dopo il tuo consenso, con un banner che permette di accettare o rifiutare con la stessa facilità. In quel caso aggiorneremo questa pagina.
+  - type: "text"
+    heading: "Titolare e contatti"
+    body: |
+      Azienda Agrituristica «La Selva» di De Capitani Simone, Località Ravasciolo, 23010 Albosaggia (SO). Per domande scrivi a [info@equitazione-alpina.it](mailto:info@equitazione-alpina.it).
+
+      Come trattiamo i dati personali è spiegato nell'[informativa sulla privacy](/privacy/).

@@ -1,32 +1,84 @@
-# MOCKUP: testo e illustrazioni di prova, da sostituire con contenuti verificati.
 slug: "privacy"
 title: "Privacy"
 section: "info"
 draft: false
-mockup: true
 nav:
   order: 40
 seo:
   title: "Informativa sulla privacy · Equitazione Alpina"
-  description: "Informativa sul trattamento dei dati personali raccolti dal sito di Equitazione Alpina."
-  image: "@assets/foto/mockup-borgo-albosaggia.jpg"
+  description: "Come Equitazione Alpina tratta i dati personali di chi visita il sito o chiede informazioni su passeggiate, lezioni e pensione cavalli."
+  image: "@assets/foto/prato-con-vista-sulla-valle.jpg"
 blocks:
   - type: "hero"
     kicker: "Informazioni"
     title: "Informativa sulla privacy"
     intro: |
-      Testo di prova. Questa pagina conterrà il testo definitivo, fornito dal titolare del sito.
-    image: "@assets/foto/mockup-borgo-albosaggia.jpg"
-    imageAlt: "Illustrazione di prova: un borgo in pietra"
+      Come trattiamo i dati personali di chi visita questo sito o ci contatta, ai sensi degli articoli 13 e 14 del Regolamento (UE) 2016/679 (GDPR).
+
+      Ultimo aggiornamento: 21 ottobre 2026.
+    image: "@assets/foto/prato-con-vista-sulla-valle.jpg"
+    imageAlt: "Un prato con un gazebo di legno e le montagne della valle sullo sfondo"
   - type: "text"
-    heading: "Titolare del trattamento"
+    heading: "Chi è il titolare"
     body: |
-      Testo di prova: nome, indirizzo e contatti del titolare.
+      **Azienda Agrituristica «La Selva» di De Capitani Simone**\
+      Località Ravasciolo, 23010 Albosaggia (SO)\
+      P. IVA 00886190149
+
+      Email [info@equitazione-alpina.it](mailto:info@equitazione-alpina.it) · telefono [+39 348 282 1009](tel:+393482821009)
+
+      Per la nostra attività non è obbligatorio nominare un responsabile della protezione dei dati (DPO): per qualsiasi domanda scrivi direttamente all'indirizzo qui sopra.
   - type: "text"
-    heading: "Quali dati raccogliamo"
+    heading: "Quali dati trattiamo"
     body: |
-      Testo di prova: i dati inviati con il modulo di contatto (nome, email, telefono facoltativo, messaggio), usati solo per rispondere.
+      **Dati di navigazione.** Quando apri una pagina, il servizio che ospita il sito riceve i dati tecnici necessari a mostrartela: indirizzo IP, tipo di browser, pagina richiesta, data e ora. Servono solo a far funzionare il sito e a proteggerlo da abusi. Non li usiamo per identificarti né per creare profili.
+
+      **Dati che ci mandi tu.** Quando ci contatti per telefono, WhatsApp, email o con il modulo del sito, riceviamo i dati che scegli di darci: nome, recapiti, il testo del messaggio e le informazioni utili a organizzare l'attività, come date, numero dei partecipanti, età ed esperienza a cavallo.
+
+      **Minori.** In sella si sale dai 12 anni. Per un minore la richiesta va fatta da un genitore o da chi ne ha la responsabilità.
+
+      Il sito non usa cookie di statistica né di pubblicità: i dettagli sono nell'[informativa sui cookie](/cookie/).
+  - type: "text"
+    heading: "Perché li usiamo e su quale base"
+    body: |
+      - **Rispondere alle tue richieste e organizzare passeggiate, lezioni o la pensione del tuo cavallo.** Base giuridica: misure precontrattuali e contratto richiesti da te (art. 6.1.b GDPR).
+      - **Adempiere agli obblighi di legge**, per esempio fiscali e contabili, quando acquisti un servizio. Base giuridica: obbligo legale (art. 6.1.c).
+      - **Far funzionare il sito in sicurezza**, con i soli dati di navigazione. Base giuridica: nostro legittimo interesse (art. 6.1.f).
+
+      Non usiamo i tuoi dati per pubblicità o newsletter, non li vendiamo e non prendiamo decisioni automatizzate che ti riguardano.
+
+      Darci i tuoi dati è facoltativo, ma senza un recapito non possiamo risponderti.
+  - type: "text"
+    heading: "Per quanto tempo li conserviamo"
+    body: |
+      - **Richieste di informazioni:** il tempo necessario a gestirle, e comunque non oltre 24 mesi dall'ultimo contatto.
+      - **Dati legati a un servizio acquistato** (ricevute e fatture): 10 anni, come prevede la legge.
+      - **Dati di navigazione:** per il breve tempo stabilito dal fornitore che ospita il sito.
+  - type: "text"
+    heading: "Chi può vedere i dati"
+    body: |
+      I dati non vengono diffusi. Li trattano, solo per quanto serve, i fornitori che ci aiutano a gestire il sito e la posta, nominati responsabili del trattamento:
+
+      - **Cloudflare, Inc.**: ospita il sito e inoltra la posta del dominio equitazionealpina.it;
+      - **Register.it S.p.A.**: gestisce la casella info@equitazione-alpina.it;
+      - **Google (Gmail)**: casella su cui riceviamo parte della posta inoltrata;
+      - **DCSWEB Digital Solutions di Denys Choban**: realizza e mantiene il sito;
+      - il nostro **consulente fiscale**, per gli adempimenti di legge.
+
+      Se ci scrivi su **WhatsApp**, il servizio è fornito da WhatsApp Ireland Ltd. (gruppo Meta), che tratta i dati come titolare autonomo secondo la propria informativa.
+  - type: "text"
+    heading: "Dati trasferiti fuori dall'Unione europea"
+    body: |
+      Cloudflare e Google sono società con sede negli Stati Uniti. Il trasferimento avviene sulla base della decisione di adeguatezza della Commissione europea (EU-U.S. Data Privacy Framework) e, dove previste, delle clausole contrattuali standard approvate dalla Commissione.
   - type: "text"
     heading: "I tuoi diritti"
     body: |
-      Testo di prova: accesso, rettifica, cancellazione, e come esercitarli.
+      In qualsiasi momento puoi chiederci di accedere ai tuoi dati, correggerli, cancellarli, limitarne l'uso, riceverli in un formato leggibile da un computer oppure opporti al trattamento (articoli 15–21 del GDPR).
+
+      Basta scrivere a [info@equitazione-alpina.it](mailto:info@equitazione-alpina.it): rispondiamo entro un mese.
+
+      Se ritieni che i tuoi dati siano trattati in modo non corretto, puoi presentare reclamo al Garante per la protezione dei dati personali ([www.garanteprivacy.it](https://www.garanteprivacy.it)).
+  - type: "text"
+    heading: "Modifiche a questa informativa"
+    body: |
+      Se cambia qualcosa, per esempio un nuovo fornitore o l'attivazione di statistiche delle visite, aggiorniamo questa pagina e la data in alto.
