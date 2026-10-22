@@ -16,8 +16,8 @@ blocks:
     title: "Domande frequenti"
     intro: |
       Testo di prova. Le domande che ci fanno più spesso, prima di venire.
-    image: "@assets/foto/mockup-lezione-maneggio.jpg"
-    imageAlt: "Illustrazione di prova: un cavaliere lungo lo steccato"
+    image: "@assets/foto/condivisione-whatsapp-image-2026-10-22-at-13-25-47.jpg"
+    imageAlt: "Un cavallo grigio pomellato con la capezza nera, accanto allo steccato del recinto"
   - type: "faq"
     kicker: "Equitazione"
     heading: "Cavalli e passeggiate"
