@@ -6,16 +6,16 @@ nav:
   order: 50
 seo:
   title: "Informativa sui cookie · Equitazione Alpina"
-  description: "Il sito di Equitazione Alpina non usa cookie di profilazione né di statistica: ecco cosa usa e come gestire i cookie dal browser."
+  description: "Cookie del sito di Equitazione Alpina: statistiche di Google Analytics solo se accetti, nessun cookie di pubblicità. Quali sono e come gestirli."
   image: "@assets/foto/portone-della-scuderia.jpg"
 blocks:
   - type: "hero"
     kicker: "Informazioni"
     title: "Informativa sui cookie"
     intro: |
-      Questo sito non usa cookie di profilazione, di pubblicità o di statistica. Per questo non ti chiediamo il consenso con un banner.
+      Questo sito non usa cookie di profilazione né di pubblicità. Usa cookie di statistica (Google Analytics) solo se li accetti dal banner, e puoi cambiare idea in qualsiasi momento.
 
-      Ultimo aggiornamento: 21 ottobre 2026.
+      Ultimo aggiornamento: 24 ottobre 2026.
     image: "@assets/foto/portone-della-scuderia.jpg"
     imageAlt: "Dal portone della scuderia si vedono il cortile, i recinti e gli abitanti del maneggio"
   - type: "text"
@@ -25,9 +25,13 @@ blocks:
   - type: "text"
     heading: "Cosa usa questo sito"
     body: |
-      **Nessun cookie di profilazione, pubblicità o statistica.** Caratteri, immagini e video sono ospitati sul nostro sito: mentre navighi non carichiamo servizi esterni come Google Fonts, YouTube o mappe incorporate.
+      **Nessun cookie di profilazione o pubblicità.** Caratteri, immagini e video sono ospitati sul nostro sito: mentre navighi non carichiamo servizi esterni come Google Fonts, YouTube o mappe incorporate.
+
+      **Cookie di statistica, solo con il tuo consenso.** Se clicchi «Accetta» nel banner, usiamo Google Analytics 4 (fornito da Google Ireland Limited) per contare le visite e capire quali pagine sono più lette. Google Analytics imposta due cookie: `_ga`, che distingue un visitatore dall'altro, e `_ga_26J6PGFTNF`, che tiene il conto della sessione. Durano fino a 2 anni. I dati sono aggregati, Google Analytics 4 non registra l'indirizzo IP e non li usiamo per pubblicità né li incrociamo con altri dati. Se clicchi «Rifiuta», o non scegli, Google Analytics non viene caricato e nessun dato parte verso Google.
 
       **Un possibile cookie tecnico di sicurezza.** Cloudflare, il servizio che ospita il sito, in casi particolari può impostare il cookie tecnico `__cf_bm`, che serve a distinguere le persone dai programmi automatici. Dura al massimo 30 minuti e non viene usato per seguirti. Essendo un cookie tecnico, non richiede consenso.
+
+      **La tua scelta.** Per non riproporti il banner a ogni pagina, il sito ricorda se hai accettato o rifiutato con un'informazione salvata nel browser (`ea-consent`). È uno strumento tecnico e non viene inviato a nessuno.
 
       **Area riservata.** Chi aggiorna i contenuti del sito accede a un'area riservata che salva nel browser i dati di accesso e le bozze. Riguarda solo gli amministratori, non i visitatori.
   - type: "text"
@@ -39,7 +43,7 @@ blocks:
     body: |
       Puoi vedere e cancellare i cookie, oppure bloccarli, dalle impostazioni del browser (Chrome, Firefox, Safari, Edge e gli altri lo permettono nella sezione «Privacy» o «Cookie»). Bloccare i cookie tecnici può impedire ad alcune funzioni di lavorare correttamente.
 
-      Se in futuro attiveremo statistiche delle visite, si caricheranno solo dopo il tuo consenso, con un banner che permette di accettare o rifiutare con la stessa facilità. In quel caso aggiorneremo questa pagina.
+      **Cambiare la tua scelta.** Puoi riaprire il banner in qualsiasi momento con il pulsante «Preferenze cookie» in fondo a ogni pagina. Se ritiri il consenso, Google Analytics smette di raccogliere dati; per eliminare anche i cookie già salvati, cancellali dalle impostazioni del browser.
   - type: "text"
     heading: "Titolare e contatti"
     body: |

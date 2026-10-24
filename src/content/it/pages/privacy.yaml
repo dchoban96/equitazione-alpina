@@ -15,7 +15,7 @@ blocks:
     intro: |
       Come trattiamo i dati personali di chi visita questo sito o ci contatta, ai sensi degli articoli 13 e 14 del Regolamento (UE) 2016/679 (GDPR).
 
-      Ultimo aggiornamento: 21 ottobre 2026.
+      Ultimo aggiornamento: 24 ottobre 2026.
     image: "@assets/foto/prato-con-vista-sulla-valle.jpg"
     imageAlt: "Un prato con un gazebo di legno e le montagne della valle sullo sfondo"
   - type: "text"
@@ -37,13 +37,14 @@ blocks:
 
       **Minori.** In sella si sale dai 12 anni. Per un minore la richiesta va fatta da un genitore o da chi ne ha la responsabilità.
 
-      Il sito non usa cookie di statistica né di pubblicità: i dettagli sono nell'[informativa sui cookie](/cookie/).
+      **Statistiche delle visite.** Solo se lo accetti dal banner dei cookie, Google Analytics raccoglie dati sull'uso del sito (pagine viste, durata della visita, tipo di dispositivo, provenienza approssimativa) in forma aggregata. Il sito non usa cookie di pubblicità: i dettagli sono nell'[informativa sui cookie](/cookie/).
   - type: "text"
     heading: "Perché li usiamo e su quale base"
     body: |
       - **Rispondere alle tue richieste e organizzare passeggiate, lezioni o la pensione del tuo cavallo.** Base giuridica: misure precontrattuali e contratto richiesti da te (art. 6.1.b GDPR).
       - **Adempiere agli obblighi di legge**, per esempio fiscali e contabili, quando acquisti un servizio. Base giuridica: obbligo legale (art. 6.1.c).
       - **Far funzionare il sito in sicurezza**, con i soli dati di navigazione. Base giuridica: nostro legittimo interesse (art. 6.1.f).
+      - **Misurare le visite al sito con Google Analytics**, per capire quali contenuti sono utili e migliorarli. Base giuridica: il tuo consenso (art. 6.1.a), che puoi ritirare in qualsiasi momento dal pulsante «Preferenze cookie» in fondo alle pagine.
 
       Non usiamo i tuoi dati per pubblicità o newsletter, non li vendiamo e non prendiamo decisioni automatizzate che ti riguardano.
 
@@ -54,6 +55,7 @@ blocks:
       - **Richieste di informazioni:** il tempo necessario a gestirle, e comunque non oltre 24 mesi dall'ultimo contatto.
       - **Dati legati a un servizio acquistato** (ricevute e fatture): 10 anni, come prevede la legge.
       - **Dati di navigazione:** per il breve tempo stabilito dal fornitore che ospita il sito.
+      - **Statistiche di Google Analytics:** per il periodo di conservazione impostato in Google Analytics, comunque non oltre 14 mesi.
   - type: "text"
     heading: "Chi può vedere i dati"
     body: |
@@ -62,6 +64,7 @@ blocks:
       - **Cloudflare, Inc.**: ospita il sito e inoltra la posta del dominio equitazionealpina.it;
       - **Register.it S.p.A.**: gestisce la casella info@equitazione-alpina.it;
       - **Google (Gmail)**: casella su cui riceviamo parte della posta inoltrata;
+      - **Google Ireland Limited (Google Analytics)**: statistiche delle visite, solo se hai dato il consenso;
       - **DCSWEB Digital Solutions di Denys Choban**: realizza e mantiene il sito;
       - il nostro **consulente fiscale**, per gli adempimenti di legge.
 
@@ -81,4 +84,4 @@ blocks:
   - type: "text"
     heading: "Modifiche a questa informativa"
     body: |
-      Se cambia qualcosa, per esempio un nuovo fornitore o l'attivazione di statistiche delle visite, aggiorniamo questa pagina e la data in alto.
+      Se cambia qualcosa, per esempio un nuovo fornitore, aggiorniamo questa pagina e la data in alto.

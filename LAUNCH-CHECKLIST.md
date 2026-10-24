@@ -10,7 +10,7 @@ Shopify store stays online until Phase 1 has been accepted.
 - [ ] Legal data in `src/content/settings/site.yaml`: `legalName`, `vatNumber`; privacy and cookie pages written.
 - [ ] Decimal coordinates confirmed in `site.yaml` (`geo.lat`, `geo.lng`).
 - [ ] Form service chosen and its URL set in `site.yaml` (`contactForm.action`); a test message received.
-- [ ] Statistics: tool chosen, `analytics.provider` and `analytics.id` set, cookie page lists the cookies.
+- [x] Statistics: tool chosen, `analytics.provider` and `analytics.id` set, cookie page lists the cookies.
 - [ ] Launch host chosen that serves real 301 redirects (e.g. Netlify or Cloudflare Pages); `dist/_redirects` checked against `settings/redirects.yaml`.
 - [ ] Structured data checked with Google's Rich Results Test on home, contatti, one FAQ page, one gallery page.
 - [ ] Lighthouse (mobile) on home and two inner pages: 95+ in all four categories, LCP < 2.5 s, CLS < 0.1.
