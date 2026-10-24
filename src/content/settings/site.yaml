@@ -74,8 +74,8 @@ ridges: true
 analytics:
   # none | ga4. Statistics load only after consent in the cookie banner;
   # with "none" no banner is shown.
-  provider: none
-  id: ""
+  provider: GA4
+  id: "G-26J6PGFTNF"
 
 # Search engine ownership codes: paste only the content="..." value of the
 # HTML tag that Google Search Console / Bing Webmaster Tools give you.
