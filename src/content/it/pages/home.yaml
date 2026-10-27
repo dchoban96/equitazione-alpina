@@ -81,9 +81,8 @@ blocks:
     body: |
       Qui non si corre. Non perché non si possa, ma perché la montagna e i cavalli chiedono un'altra andatura.
 
-      Chi non è mai salito in sella comincia da terra: si conosce l'animale, si impara a stargli accanto, si sale quando si è pronti. Chi monta da anni trova sentieri che meritano la giornata intera.
-
-      In sella si sale dai 12 anni in su, e il ritmo lo decide chi impara: la prima volta può bastare stare accanto al cavallo, ed è già un buon inizio.
+      Chi non è mai salito in sella comincia da terra: si conosce l'animale, si impara a stargli accanto, si sale quando si è pronti.
+      In sella si sale dai 12 anni in su e il ritmo lo decide chi impara: la prima volta può bastare stare accanto al cavallo, ed è già un buon inizio.
     image: "@assets/foto/foto-img-2616.jpg"
     alt: "In un luogo dove il benessere e il rispetto per la natura sono protagonisti."
     side: "left"
@@ -92,7 +91,7 @@ blocks:
     kicker: "Gli animali"
     heading: "Cavalli che vivono fuori"
     body: |
-      I nostri cavalli non stanno chiusi in box. Vivono all'aperto, in gruppo, sul prato in pendenza ai piedi del bosco: il che significa zoccoli buoni, muscoli veri e caratteri tranquilli.
+      I nostri cavalli non stanno chiusi nei box. Vivono all'aperto in gruppo o singolarmente.
 
       Si muovono, si cercano, si riposano all'ombra degli alberi. È così che vivono i cavalli quando li si lascia essere cavalli.
 
