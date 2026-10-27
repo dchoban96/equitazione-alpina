@@ -72,7 +72,7 @@ blocks:
       - name: "La Valmalenco"
         altitude: 1950
         approximate: true
-        text: "Quando la neve libera i pascoli alti si sale verso l'Alpe Palù. Sono poche settimane, diverse da tutto il resto dell'anno: pascoli aperti, granito chiaro, silenzio."
+        text: "Quando la neve libera i pascoli alti si sale verso l'Alpe Palù. Sono pochi mesi, diversi da tutto il resto dell'anno: pascoli aperti, granito chiaro, silenzio."
         season: "Da fine giugno a inizio settembre"
   - type: "text-image"
     kicker: "Valmalenco"
@@ -82,7 +82,7 @@ blocks:
     side: "overlay"
     note: "≈ 1950 m"
     altitude: 1950
-    lead: "Quando la neve libera i pascoli alti si sale verso l'Alpe Palù. Sono poche settimane, diverse da tutto il resto dell'anno: pascoli aperti, granito chiaro, silenzio."
+    lead: "Quando la neve libera i pascoli alti si sale verso l'Alpe Palù. Sono pochi mesi, diversi da tutto il resto dell'anno: pascoli aperti, granito chiaro, silenzio."
   - type: "reviews"
     kicker: "Cosa dicono"
     heading: "Chi è già venuto"
