@@ -15,9 +15,9 @@ blocks:
     kicker: "Lezioni"
     title: "Lezioni di equitazione, dal primo contatto al sentiero"
     intro: |
-      Alla scuola di equitazione di Albosaggia non si comincia dalla sella. Chi non è mai salito a cavallo parte da terra: conosce l'animale, impara a stargli accanto e a condurlo, e sale quando è pronto. Vale per gli adulti come per i ragazzi, dai 12 anni in su. Le lezioni si fanno in struttura, su appuntamento, e il ritmo lo decidono insieme chi impara e il cavallo.
+      Alla scuola di equitazione di Albosaggia non si comincia dalla sella. Chi non è mai salito a cavallo parte da terra: conosce l'animale, impara a stargli accanto, a condurlo e sale quando è pronto. Vale per gli adulti come per i ragazzi, dai 12 anni in su. Le lezioni si fanno in struttura su appuntamento.
     image: "@assets/foto/sellare-il-cavallo-orizzontale.jpg"
-    imageAlt: "Un cavallo baio viene sellato con una sella western, accanto al bosco"
+    imageAlt: "Un cavallo viene sellato con una sella americana"
   - type: "cards"
     kicker: "Le lezioni"
     heading: "Come sono organizzate"
@@ -49,8 +49,6 @@ blocks:
     body: |
       Un cavallo si fida di chi sa stargli accanto. Per questo le prime volte si passa più tempo vicino all'animale che in sella: lo si osserva, lo si tocca, si impara a leggerne i segnali. Sembra tempo perso e non lo è: quando poi si sale, il cavallo lo si conosce già.
 
-      Quello che conta, per chi arriva qui la prima volta, è che qualcuno sappia leggere un cavallo prima che il cavallo debba farsi capire a modo suo. È il lavoro di Simone da più di trent'anni.
-
       In struttura non c'è solo la scuola: ci si occupa anche dell'addestramento dei cavalli giovani e della rieducazione di quelli che ne hanno bisogno.
 
       Chi monta da anni può saltare questa parte e passare direttamente alle [passeggiate sulle Orobie](/equitazione/passeggiate-orobie/).
@@ -62,5 +60,5 @@ blocks:
     kicker: "Contatti"
     heading: "Prenota la prima lezione"
     body: |
-      Chiamaci o scrivici su WhatsApp: ci diciamo quando venire e da dove cominciare.
+      Chiamaci o scrivici su WhatsApp: decidiamo quando incontrarci e da dove cominciare.
     form: true
