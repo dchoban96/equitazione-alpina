@@ -1,28 +1,28 @@
 # Testo scritto su fonti e sui contenuti gia presenti nel sito (vedi FONTI.md). Illustrazioni ancora di prova.
 slug: "pastore-del-lagorai"
-title: "Pastore del Lagorai"
+title: "Pastore della Lessinia e del Lagorai"
 section: "pastore-del-lagorai"
 draft: false
 mockup: false
 nav:
   order: 10
 seo:
-  title: "Allevamento Pastore del Lagorai · Albosaggia (SO)"
-  description: "I nostri Pastori del Lagorai ad Albosaggia: il cane da pastore del Trentino che lavora accanto a cavalli e greggi."
+  title: "Pastore della Lessinia e del Lagorai · Albosaggia (SO)"
+  description: "I nostri Pastori della Lessinia e del Lagorai ad Albosaggia: il cane da pastore del Trentino che lavora accanto a cavalli e greggi."
   image: "@assets/foto/pastore-blue-merle-al-recinto.jpg"
 blocks:
   - type: "hero"
-    kicker: "Pastore del Lagorai"
-    title: "Pastore del Lagorai, i cani del recinto"
+    kicker: "Pastore della Lessinia e del Lagorai"
+    title: "Pastore della Lessinia e del Lagorai, i cani del recinto"
     intro: |-
-      Al recinto il cane arriva sempre prima di tutti: corre avanti, accompagna i cavalli, conosce ogni sentiero. I nostri sono Pastori del Lagorai, cani da lavoro delle Alpi del Nord-Est che da generazioni seguono greggi e mandrie nella transumanza: una razza ancora in fase di riconoscimento.
+      Al recinto il cane arriva sempre prima di tutti: corre avanti, accompagna i cavalli, conosce ogni sentiero. I nostri sono Pastori della Lessinia e del Lagorai, cani da lavoro delle Alpi del Nord-Est che da generazioni seguono greggi e mandrie nella transumanza: una razza ancora in fase di riconoscimento.
     image: "@assets/foto/pastore-blue-merle-al-recinto.jpg"
-    imageAlt: "Un Pastore del Lagorai blue merle in piedi sul prato, davanti a un muretto di pietra"
+    imageAlt: "Un Pastore della Lessinia e del Lagorai blue merle in piedi sul prato, davanti a un muretto di pietra"
   - type: "text-image"
     kicker: "Il lavoro"
     heading: "Un cane da lavoro"
     body: |
-      Il Pastore del Lagorai, che di nome completo fa Cane da Pastore della Lessinia e del Lagorai, è un cane da conduzione: il suo mestiere è guidare e custodire il gregge. Lo si usa con pecore e capre, ma anche con animali più difficili da governare, come le mucche e i cavalli. Da noi fa proprio questo, ogni giorno, accanto ai cavalli e alle capre: segue chi lo guida, ma sa anche decidere da solo quando serve.
+      Il cane da Pastore della Lessinia e del Lagorai è un cane da conduzione: il suo mestiere è guidare e custodire il gregge. Lo si usa con pecore e capre, ma anche con animali più difficili da governare, come le mucche e i cavalli. Da noi fa proprio questo, ogni giorno, accanto ai cavalli e alle capre: segue chi lo guida, ma sa anche decidere da solo quando serve.
 
       Della sua storia, del suo carattere e del perché non è un cane per tutti parliamo nella pagina [La razza](/pastore-del-lagorai/razza/).
     image: "@assets/foto/pastore-blue-merle-seduto.jpg"

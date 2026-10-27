@@ -72,9 +72,9 @@ blocks:
     kicker: "Prima di sceglierlo"
     heading: "Affascinante, ma non è un cane per tutti"
     body: |
-      Molti Pastori del Lagorai non fanno il lavoro per cui sono stati selezionati, e va bene così, purché abbiano altro da fare: attività condivise, pensate sul singolo cane, che lo tengano occupato con la testa e con il corpo.
+      Molti Pastori del Lagorai non fanno il lavoro per cui sono stati selezionati purché abbiano altro da fare: attività condivise, pensate sul singolo cane, che lo tengano occupato con la testa e con il corpo.
 
-      Vivere con un cane da lavoro chiede tempo, impegno, educazione e una relazione costruita ogni giorno. Prima di sceglierlo per la sua bellezza, conviene chiedersi se il suo modo di essere va d'accordo con il proprio stile di vita: la scelta giusta è quella che rispetta sia la persona sia il cane.
+      Vivere con un cane da lavoro chiede tempo, impegno, educazione e una relazione costruita ogni giorno. Prima di sceglierlo per la sua bellezza, conviene chiedersi se il suo modo di essere va d'accordo con il proprio stile di vita.
   - type: "text"
     kicker: "Conoscere per tutelare"
     heading: "Il percorso di riconoscimento"
@@ -86,5 +86,5 @@ blocks:
     kicker: "Contatti"
     heading: "Hai domande sulla razza?"
     body: |
-      I nostri cani non sono in vendita e non vendiamo cuccioli. Se però la razza ti incuriosisce, chiamaci: ne parliamo volentieri.
+      Se la razza ti incuriosisce, chiamaci: ne parliamo volentieri.
     form: false
