@@ -16,7 +16,7 @@ blocks:
     kicker: "La razza"
     title: "Il Pastore della Lessinia e del Lagorai: un cane, una storia, un territorio"
     intro: |
-      Il suo nome è Cane da Pastore della Lessinia e del Lagorai; dalla catena di montagne del Trentino orientale. È il cane della tradizione pastorale del Nord-Est: per generazioni ha accompagnato i pastori nel governo degli animali e nella transumanza da un pascolo all'altro. Conoscerlo vuol dire conoscere anche le persone e le montagne che lo hanno selezionato.
+      Il suo nome è Cane da Pastore della Lessinia e del Lagorai, dalla catena di montagne del Trentino orientale. È il cane della tradizione pastorale del Nord-Est: per generazioni ha accompagnato i pastori nel governo degli animali e nella transumanza da un pascolo all'altro. Conoscerlo vuol dire conoscere anche le persone e le montagne che lo hanno selezionato.
     image: "@assets/foto/pastore-blue-merle-profilo.jpg"
     imageAlt: "Il profilo di un Pastore della Lessinia e del Lagorai blue merle"
   - type: "facts"
