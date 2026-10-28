@@ -8,17 +8,17 @@ mockup: true
 nav:
   order: 10
 seo:
-  title: "Pastore del Lagorai: razza, carattere e origini"
+  title: "Pastore della Lessinia e Lagorai: razza, carattere e origini"
   description: "Il Pastore della Lessinia e del Lagorai: storia, carattere e lavoro con il gregge del cane da pastore del Nord-Est, e perché non è un cane per tutti."
   image: "@assets/foto/pastore-blue-merle-profilo.jpg"
 blocks:
   - type: "hero"
     kicker: "La razza"
-    title: "Il Pastore del Lagorai: un cane, una storia, un territorio"
+    title: "Il Pastore della Lessinia e del Lagorai: un cane, una storia, un territorio"
     intro: |
-      Il suo nome completo è Cane da Pastore della Lessinia e del Lagorai; quasi tutti lo chiamano Pastore del Lagorai, dalla catena di montagne del Trentino orientale. È il cane della tradizione pastorale del Nord-Est: per generazioni ha accompagnato i pastori nel governo degli animali e nella transumanza, da un pascolo all'altro. Conoscerlo vuol dire conoscere anche le persone e le montagne che lo hanno selezionato.
+      Il suo nome è Cane da Pastore della Lessinia e del Lagorai; dalla catena di montagne del Trentino orientale. È il cane della tradizione pastorale del Nord-Est: per generazioni ha accompagnato i pastori nel governo degli animali e nella transumanza da un pascolo all'altro. Conoscerlo vuol dire conoscere anche le persone e le montagne che lo hanno selezionato.
     image: "@assets/foto/pastore-blue-merle-profilo.jpg"
-    imageAlt: "Il profilo di un Pastore del Lagorai blue merle"
+    imageAlt: "Il profilo di un Pastore della Lessinia e del Lagorai blue merle"
   - type: "facts"
     items:
       - label: "Origine"
@@ -36,8 +36,8 @@ blocks:
       Lo standard lo descrive come un cane di tipo lupoide, rustico, agile e muscoloso, con orecchie erette o semierette e pelo semilungo. Il mantello che si nota per primo è il blue merle, grigio marezzato di scuro, ma ce ne sono anche di neri.
 
       Chi lo incontra si ferma spesso a guardarlo. Il suo valore però non sta nel colore: sta nelle attitudini che i pastori hanno cercato per generazioni e nella storia della sua selezione.
-    image: "@assets/foto/pastore-blue-merle-primo-piano.jpg"
-    alt: "Primo piano di un Pastore del Lagorai blue merle"
+    image: "@assets/foto/foto-be08e1ad-209d-49e9-90af-346e02d65dce.jpg"
+    alt: "Primo piano di un Pastore della Lessinia e del Lagorai nero"
     side: "right"
   - type: "text"
     kicker: "Il lavoro"
