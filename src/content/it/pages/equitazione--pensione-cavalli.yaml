@@ -19,18 +19,6 @@ blocks:
     image: "@assets/foto/cavalli-nella-neve.jpg"
     imageAlt: "Tre cavalli fuori nel recinto innevato, d'inverno"
   - type: "text-image"
-    kicker: "Come vivono"
-    heading: "Cavalli che vivono fuori"
-    body: |
-      I nostri cavalli non stanno in box tutto il giorno. Vivono all'aperto, in gruppo, su terreno in pendenza — il che significa zoccoli buoni, muscoli veri e caratteri che non si appiattiscono.
-
-      D'estate ci sono le mosche e il fango dopo i temporali, perché è così che vivono i cavalli quando li si lascia essere cavalli.
-
-      Ogni tanto nasce un puledro, e per qualche settimana tutto il resto passa in secondo piano.
-    image: "@assets/foto/cavalli-sul-prato-in-estate.jpg"
-    alt: "Due cavalli sauri con la lista bianca e un cavallo grigio sul prato verde in pendenza, ai piedi del bosco"
-    side: "left"
-  - type: "text-image"
     kicker: "I paddock"
     heading: "Paddock dedicati e box interni"
     lead: "I cavalli di proprietà, in paddock dedicati e box interni."
@@ -45,6 +33,18 @@ blocks:
     image: "@assets/foto/scuderia-box-interni.jpg"
     alt: "Il corridoio della scuderia con i box interni in muratura rossa, le porte in legno e i finimenti appesi alla parete"
     side: "right"
+  - type: "text-image"
+    kicker: "Come vivono"
+    heading: "Cavalli che vivono fuori"
+    body: |
+      I nostri cavalli non stanno in box tutto il giorno. Vivono all'aperto, in gruppo, su terreno in pendenza — il che significa zoccoli buoni, muscoli veri e caratteri che non si appiattiscono.
+
+      D'estate ci sono le mosche e il fango dopo i temporali, perché è così che vivono i cavalli quando li si lascia essere cavalli.
+
+      Ogni tanto nasce un puledro, e per qualche settimana tutto il resto passa in secondo piano.
+    image: "@assets/foto/cavalli-sul-prato-in-estate.jpg"
+    alt: "Due cavalli sauri con la lista bianca e un cavallo grigio sul prato verde in pendenza, ai piedi del bosco"
+    side: "left"
   - type: "cards"
     kicker: "La pensione"
     heading: "Cosa comprende"
