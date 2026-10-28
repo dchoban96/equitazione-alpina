@@ -50,10 +50,10 @@ blocks:
     heading: "Cosa comprende"
     style: tiles
     items:
-      - title: In gruppo
-        text: I cavalli in pensione vivono insieme agli altri, in branco.
+      - title: Paddock esterni singoli
+        text: I cavalli in pensione vivono in paddock esterni e box interni dedicati.
       - title: All'aperto
-        text: "Fuori tutto l'anno, su terreno in pendenza: zoccoli buoni e muscoli veri."
+        text: "Fuori tutto l'anno."
       - title: Seguiti ogni giorno
         text: "Il fieno, l'acqua, un'occhiata agli zoccoli: ogni giorno, per tutti."
   - type: "cta-contact"
