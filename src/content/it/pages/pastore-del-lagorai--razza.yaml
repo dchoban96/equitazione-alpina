@@ -33,7 +33,7 @@ blocks:
     kicker: "L'aspetto"
     heading: "Più di un bel mantello"
     body: |
-      Lo standard lo descrive come un cane di tipo lupoide, rustico, agile e muscoloso, con orecchie erette o semierette e pelo semilungo. Il mantello può essere unicolore: nero e marrone, nella varie tonalità (da cannella a castagna) e Sabbia con maschera più scura e/o sella. Poi c'è il mantello pluricolore: grigio merle e red merle (grigio, nero o/e marrone, fegato, camoscio a macchie irregolari, su base grigio porcellana).
+      Lo standard lo descrive come un cane di tipo lupoide, rustico, agile e muscoloso, con orecchie erette o semierette e pelo semilungo. Il mantello può essere unicolore: nero e marrone, nella varie tonalità (da cannella a castagna) e sabbia con maschera più scura e/o sella. Poi c'è il mantello pluricolore: grigio merle e red merle (grigio, nero o/e marrone, fegato, camoscio a macchie irregolari, su base grigio porcellana).
 
       Chi lo incontra si ferma spesso a guardarlo. Il suo valore però non sta nel colore: sta nelle attitudini che i pastori hanno cercato per generazioni e nella storia della sua selezione.
     image: "@assets/foto/foto-be08e1ad-209d-49e9-90af-346e02d65dce.jpg"
@@ -54,7 +54,7 @@ blocks:
 
       Per questo non basta insegnargli che cosa fare: bisogna imparare a capirlo. Il rapporto si costruisce con calma e consapevolezza, giorno dopo giorno.
     image: "@assets/foto/pastore-blue-merle-sul-prato.jpg"
-    alt: "Un Pastore del Lagorai blue merle sul prato, attento"
+    alt: "Un Pastore della Lessinia e del Lagorai blue merle sul prato, attento"
     side: "left"
     focus: "25% 50%"
   - type: "cards"
