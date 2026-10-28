@@ -37,13 +37,13 @@ blocks:
     kicker: "Come vivono"
     heading: "Cavalli che vivono fuori"
     body: |
-      I nostri cavalli non stanno in box tutto il giorno. Vivono all'aperto, in gruppo, su terreno in pendenza — il che significa zoccoli buoni, muscoli veri e caratteri che non si appiattiscono.
+      I nostri cavalli non stanno in box tutto il giorno. Vivono all'aperto circondati da alberi di castagno, in gruppo, su terreni spesso in pendenza — il che significa zoccoli buoni e una musculatura più funzionale e resistente.
 
       D'estate ci sono le mosche e il fango dopo i temporali, perché è così che vivono i cavalli quando li si lascia essere cavalli.
 
       Ogni tanto nasce un puledro, e per qualche settimana tutto il resto passa in secondo piano.
-    image: "@assets/foto/cavalli-sul-prato-in-estate.jpg"
-    alt: "Due cavalli sauri con la lista bianca e un cavallo grigio sul prato verde in pendenza, ai piedi del bosco"
+    image: "@assets/foto/foto-img-3479.jpg"
+    alt: "Tre cavalli sul prato verde, ai piedi del bosco di castagno"
     side: "left"
   - type: "cards"
     kicker: "La pensione"
