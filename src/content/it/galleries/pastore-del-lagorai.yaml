@@ -3,6 +3,9 @@
 title: "Galleria cani"
 section: "pastore-del-lagorai"
 photos:
+  - file: "@assets/foto/pastore-del-lagorai-whatsapp-image-2026-10-27-at-20-52-46.jpg"
+    alt: Zagor al lavoro con un bovino
+    caption: Zagor
   - file: "@assets/foto/pastore-del-lagorai-a7de8764-fd3d-45b9-afd2-994bcda13d86.jpg"
     alt: Occhi
     caption: Kuma
