@@ -3,32 +3,35 @@
 title: "Galleria cani"
 section: "pastore-del-lagorai"
 photos:
+  - file: "@assets/foto/pastore-del-lagorai-whatsapp-image-2026-10-27-at-21-36-11.jpg"
+    alt: Pronti per il lavoro
+    caption: Ibra, Zanna e Zagor
   - file: "@assets/foto/pastore-blue-merle-al-recinto.jpg"
-    alt: "Zagor"
-    caption: "Il mantello blue merle"
-  - file: "@assets/foto/pastore-blue-merle-profilo.jpg"
-    alt: "Zagor"
-    caption: …
+    alt: "Mantello blue merle"
+    caption: "Zagor"
+  - file: "@assets/foto/pastore-del-lagorai-img-2803.jpg"
+    alt: "Mantello \"caramello\""
+    caption: Malga
   - file: "@assets/foto/pastore-blue-merle-primo-piano.jpg"
     alt: "…"
     caption: Zagor
   - file: "@assets/foto/pastore-blue-merle-seduto.jpg"
-    alt: "…"
+    alt: "La \"capa\""
     caption: Kuma
-  - file: "@assets/foto/pastore-blue-merle-sul-prato.jpg"
-    alt: "…"
-    caption: Zagor
+  - file: "@assets/foto/pastore-del-lagorai-be08e1ad-209d-49e9-90af-346e02d65dce.jpg"
+    alt: "Il vecchietto"
+    caption: Falco
   - file: "@assets/foto/cani-sul-prato.jpg"
-    alt: "Gill, Zanna e Malga"
-    caption: "Tutti insieme"
+    alt: "Tutti insieme"
+    caption: "Gill, Zanna e Malga"
   - file: "@assets/foto/cane-nero.jpg"
-    alt: "…"
+    alt: "Il \"capo\""
     caption: Falco
   - file: "@assets/foto/cucciolo-nero.jpg"
-    alt: "…"
+    alt: "Cucciolotta"
     caption: Zanna
   - file: "@assets/foto/cane-fulvo-profilo.jpg"
-    alt: "…"
+    alt: "Focus"
     caption: Freddie
   - file: "@assets/foto/cane-fulvo-di-corsa.jpg"
     alt: "…"
@@ -46,8 +49,8 @@ photos:
     alt: "…"
     caption: Gill
   - file: "@assets/foto/cane-fulvo-seduto-sul-sentiero.jpg"
-    alt: "Malga"
-    caption: "In posa"
+    alt: "In posa"
+    caption: "Malga"
   - file: "@assets/foto/cane-fulvo-tra-l-erba.jpg"
     alt: "…"
     caption: Malga
