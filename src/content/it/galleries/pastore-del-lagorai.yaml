@@ -3,6 +3,12 @@
 title: "Galleria cani"
 section: "pastore-del-lagorai"
 photos:
+  - file: "@assets/foto/pastore-del-lagorai-a7de8764-fd3d-45b9-afd2-994bcda13d86.jpg"
+    alt: Occhi
+    caption: Kuma
+  - file: "@assets/foto/pastore-del-lagorai-img-0675.jpg"
+    alt: In monte
+    caption: Malga
   - file: "@assets/foto/pastore-del-lagorai-whatsapp-image-2026-10-27-at-21-36-11.jpg"
     alt: Pronti per il lavoro
     caption: Ibra, Zanna e Zagor
