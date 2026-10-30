@@ -76,18 +76,6 @@ blocks:
     altitude: 1950
     lead: "Tra le mete più gettonate del periodo estivo troviamo l'Alpe Palù, un oasi che ti porta fuori dal mondo."
   - type: "text-image"
-    kicker: "Come si va"
-    heading: "Andare al passo"
-    body: |
-      Qui non si corre. Non perché non si possa, ma perché la montagna e i cavalli chiedono un'altra andatura.
-
-      Chi non è mai salito in sella comincia da terra: si conosce l'animale, si impara a stargli accanto, si sale quando si è pronti.
-      In sella si sale dai 12 anni in su e il ritmo lo decide chi impara: la prima volta può bastare stare accanto al cavallo, ed è già un buon inizio.
-    image: "@assets/foto/foto-img-2616.jpg"
-    alt: "In un luogo dove il benessere e il rispetto per la natura sono protagonisti."
-    side: "left"
-    note: "al passo"
-  - type: "text-image"
     kicker: "Gli animali"
     heading: "Cavalli che vivono fuori"
     body: |-
