@@ -41,18 +41,18 @@ blocks:
         link: "/equitazione/valmalenco/"
         label: "La Valmalenco"
       - title: "Pensione cavalli"
-        text: "Per cavalli di proprietà, in gruppo e all'aperto."
+        text: "Per cavalli di proprietà: box interni, paddock singoli e all'aperto."
         link: "/equitazione/pensione-cavalli/"
         label: "La pensione"
   - type: "text-image"
     kicker: "Come si va"
     heading: "Andare al passo"
-    body: |
-      Qui non si corre. Non perché non si possa, ma perché la montagna e i cavalli chiedono un'altra andatura.
+    body: |-
+      Qui non si corre. La montagna ha i suoi tempi, e i cavalli chiedono di rispettarli.
 
-      Chi non è mai salito in sella comincia da terra: si conosce l'animale, si impara a stargli accanto, si sale quando si è pronti. Chi monta da anni trova sentieri che meritano la giornata intera.
+      Chi non è mai salito a cavallo comincia da terra: impara a conoscere l’animale, stargli accanto, a sentirsi a proprio agio con lui e in sella si sale quando si è pronti. Chi invece cavalca già da anni può esplorare sentieri che invitano a prendersi un’intera giornata.
 
-      In sella si sale dai 12 anni in su, e il ritmo lo decide chi impara: la prima volta può bastare stare accanto al cavallo, ed è già un buon inizio.
+      Le uscite in sella sono aperte dai 12 anni. Ognuno trova il proprio ritmo: la prima volta può bastare camminare accanto al cavallo. È già un buon inizio.
     image: "@assets/foto/foto-img-2628.jpg"
     alt: |-
       Non è solo un accompagnatore: ogni cavallo è protagonista delle nostre passeggiate in montagna.
