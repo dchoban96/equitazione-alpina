@@ -45,7 +45,7 @@ const env = {
   SESSION_SECRET: 'local-development-secret-only-for-this-computer',
   ...vars,
   ...Object.fromEntries(
-    ['GITHUB_TOKEN', 'RESEND_API_KEY', 'ALLOWED_EMAILS', 'BRANCH'].filter((k) => process.env[k]).map((k) => [k, process.env[k]]),
+    ['GITHUB_TOKEN', 'RESEND_API_KEY', 'ALLOWED_EMAILS', 'BRANCH', 'ALLOWED_ORIGINS', 'PANEL_URL'].filter((k) => process.env[k]).map((k) => [k, process.env[k]]),
   ),
   PANNELLO_KV: kv,
 };

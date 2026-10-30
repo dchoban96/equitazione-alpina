@@ -3,7 +3,8 @@
 import type { ComponentChildren } from 'preact';
 import { useLayoutEffect, useRef, useState } from 'preact/hooks';
 import { pageUrl, photoUrl, type Item } from './content';
-import { addPhoto } from './photos';
+import { addPhoto, addVideo, pendingPreview } from './photos';
+import { REPO_RAW } from './content';
 import { allDrafts, discard, rebase, saveDraft, working } from './drafts';
 import { md } from './md';
 import { ORIGIN } from './save';
@@ -16,7 +17,7 @@ type Data = Record<string, any>;
 
 /* ---------- what each section shows, in the site's order ---------- */
 
-type Kind = 'line' | 'para' | 'md' | 'photo' | 'bool' | 'side' | 'focus' | 'style' | 'section' | 'number' | 'pairs' | 'items' | 'chips' | 'url';
+type Kind = 'line' | 'para' | 'md' | 'photo' | 'video' | 'bool' | 'side' | 'focus' | 'style' | 'section' | 'number' | 'pairs' | 'items' | 'chips' | 'url';
 interface Spec {
   key: string;
   kind: Kind;
@@ -47,6 +48,7 @@ const BLOCKS: Record<string, { name: string; fields: Spec[] }> = {
       { key: 'intro', kind: 'md', label: 'Introduzione' },
       { key: 'closing', kind: 'line', label: 'Frase finale' },
       { key: 'footnote', kind: 'line', label: 'Nota in fondo' },
+      { key: 'video', kind: 'video', label: "Sfondo dell'apertura" },
       { key: 'image', kind: 'photo', label: 'Foto', alt: 'imageAlt' },
       { key: 'panelKicker', kind: 'line', label: 'Titolo del riquadro' },
       PAIRS('panel', 'Riquadro'),
@@ -302,6 +304,8 @@ function FieldEdit({ spec, obj, path, set }: { spec: Spec; obj: Data; path: Path
           <Markdown label={spec.label} value={v ?? ''} onInput={text} />
         </Labelled>
       );
+    case 'video':
+      return <HeroBackground label={spec.label} video={v} set={(val) => set(here, val)} />;
     case 'photo':
       if (!v) return null;
       return (
@@ -435,6 +439,76 @@ function FieldEdit({ spec, obj, path, set }: { spec: Spec; obj: Data; path: Path
 /* ---------- choosing photos ---------- */
 
 /** A button that opens the phone's photos or the computer's files, then prepares the chosen photos. */
+const videoUrl = (ref: string) => {
+  const name = ref.replace(/^\/video\//, '');
+  return pendingPreview(`video/${name}`) ?? `${REPO_RAW}public/video/${name}`;
+};
+
+/** Opening background: the photo alone, or a video over it (the photo then shows while the video loads). */
+function HeroBackground({ label, video, set }: { label: string; video?: string; set: (v: string | undefined) => void }) {
+  const [last, setLast] = useState(video); // the video to bring back when switching from Foto to Video
+  const [wantVideo, setWantVideo] = useState(Boolean(video));
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState('');
+  const input = useRef<HTMLInputElement>(null);
+  const isVideo = Boolean(video) || wantVideo;
+  const choose = (mode: string) => {
+    setError('');
+    if (mode === 'foto') {
+      if (video) setLast(video);
+      setWantVideo(false);
+      set(undefined);
+    } else {
+      setWantVideo(true);
+      if (last) set(last);
+    }
+  };
+  const pick = async (files: FileList | null) => {
+    const file = files?.[0];
+    if (!file) return;
+    setBusy(true);
+    setError('');
+    try {
+      const path = await addVideo(file);
+      setLast(path);
+      set(path);
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setBusy(false);
+      if (input.current) input.current.value = '';
+    }
+  };
+  return (
+    <div class="p-input">
+      <Labelled label={label}>
+        <select aria-label={label} value={isVideo ? 'video' : 'foto'} onChange={(e) => choose((e.target as HTMLSelectElement).value)}>
+          <option value="foto">Foto</option>
+          <option value="video">Video</option>
+        </select>
+      </Labelled>
+      {isVideo ? (
+        <div class="p-videoedit">
+          {video && <video src={videoUrl(video)} muted loop playsInline autoPlay preload="metadata" />}
+          <div class="p-picker">
+            <button type="button" class="p-btn p-btn--small" disabled={busy} onClick={() => input.current?.click()}>
+              {busy ? 'Preparo il video…' : video ? 'Cambia video' : 'Scegli il video'}
+            </button>
+            <input ref={input} type="file" accept="video/mp4,video/webm" hidden onChange={(e) => pick((e.target as HTMLInputElement).files)} />
+            {error && <p class="p-error">{error}</p>}
+          </div>
+          <p class="p-quiet">
+            MP4 o WebM, fino a 20 MB, senza audio (il video gira muto). La foto qui sotto si vede mentre il video si carica e
+            per chi ha disattivato le animazioni.
+          </p>
+        </div>
+      ) : (
+        <p class="p-quiet">Nell'apertura si vede solo la foto qui sotto.</p>
+      )}
+    </div>
+  );
+}
+
 function PhotoPicker({ label, prefix, multiple, onPicked, primary }: { label: string; prefix: string; multiple?: boolean; onPicked: (paths: string[]) => void; primary?: boolean }) {
   const input = useRef<HTMLInputElement>(null);
   const [busy, setBusy] = useState('');

@@ -93,7 +93,7 @@ export function PublishDialog({ session, onClose, onPublished }: { session: Sess
         body: {
           base: m.head,
           files,
-          blobs: newPhotos.map((n) => ({ path: `src/assets/foto/${n}`, sha: uploaded.get(n) })),
+          blobs: newPhotos.map((n) => ({ path: n.startsWith('video/') ? `public/${n}` : `src/assets/foto/${n}`, sha: uploaded.get(n) })),
           deletions: removed.map((n) => `src/assets/foto/${n}`),
           summary,
         },

@@ -104,6 +104,24 @@ export async function addPhoto(file: File, prefix: string): Promise<string> {
   return PHOTO_PREFIX + name;
 }
 
+/** A video for the opening: kept as it is (no re-encoding in the browser), MP4 or WebM up to 20 MB.
+ *  Returns the path the page uses, e.g. "/video/apertura-cavalli-ab12.mp4" (a file in public/video/). */
+export const VIDEO_MAX = 20_000_000;
+export async function addVideo(file: File): Promise<string> {
+  const ext = file.type === 'video/webm' ? 'webm' : file.type === 'video/mp4' ? 'mp4' : '';
+  if (!ext) throw new Error('Il video deve essere un file MP4 o WebM.');
+  if (file.size > VIDEO_MAX)
+    throw new Error(`Il video pesa ${Math.round(file.size / 1e6)} MB: il massimo è 20 MB. Accorcialo o comprimilo e riprova.`);
+  const used = new Set(previews.keys());
+  const stem = `apertura-${slug(file.name)}`.slice(0, 60);
+  let key = `video/${stem}.${ext}`;
+  while (used.has(key)) key = `video/${stem}-${Math.random().toString(36).slice(2, 6)}.${ext}`;
+  await tx('readwrite', (s) => s.put(file, key)).catch(() => undefined);
+  previews.set(key, URL.createObjectURL(file));
+  addedAt.set(key, Date.now());
+  return `/${key}`;
+}
+
 /** The base64 body GitHub's blob endpoint expects. */
 export function blobBody(blob: Blob): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -119,6 +137,8 @@ export function photoRefs(value: unknown, out = new Set<string>()): Set<string> 
   if (typeof value === 'string') {
     const m = value.match(/assets\/foto\/([^/]+)$/);
     if (m) out.add(m[1]);
+    const v = value.match(/^\/video\/([^/]+)$/);
+    if (v) out.add(`video/${v[1]}`); // a video, named like its pending file
   } else if (Array.isArray(value)) value.forEach((v) => photoRefs(v, out));
   else if (value && typeof value === 'object') Object.values(value).forEach((v) => photoRefs(v, out));
   return out;

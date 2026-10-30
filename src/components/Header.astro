@@ -90,37 +90,72 @@ const inSection = (item: NavItem) => current.startsWith(item.href) && item.href 
         <span class="nav-drawer__close">{ui.menuClose}</span>
       </summary>
       <nav class="nav-drawer__panel" aria-label={ui.menuLabel}>
+        {/* Sections open their sub-pages on tap (one at a time: same `name`);
+            the first entry of each list leads to the section page itself.
+            Native <details>: works without JavaScript. */}
         <ul>
           {
-            menu.map((item) => (
-              <li>
-                <a href={item.href} aria-current={isCurrent(item.href)}>
-                  {item.label}
-                </a>
-                {item.children.length > 0 && (
-                  <ul>
-                    {item.children.map((c) => (
+            menu.map((item) =>
+              item.children.length > 0 ? (
+                <li>
+                  <details class="nav-drawer__group" name="drawer-section" open={inSection(item) || isCurrent(item.href) ? true : undefined}>
+                    <summary class:list={{ 'is-current': inSection(item) || isCurrent(item.href) }}>
+                      {item.label}
+                      <svg class="nav-drawer__chev" viewBox="0 0 12 12" aria-hidden="true">
+                        <path d="M3 4.5l3 3 3-3" />
+                      </svg>
+                    </summary>
+                    <ul class="nav-drawer__sub">
                       <li>
-                        <a href={c.href} aria-current={isCurrent(c.href)}>
-                          {c.label}
+                        <a class="nav-drawer__all" href={item.href} aria-current={isCurrent(item.href)}>
+                          {ui.menuAll} {item.label}
                         </a>
-                        {c.children.length > 0 && (
-                          <ul>
-                            {c.children.map((g) => (
-                              <li>
-                                <a href={g.href} aria-current={isCurrent(g.href)}>
-                                  {g.label}
-                                </a>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
                       </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))
+                      {item.children.map((c) =>
+                        c.children.length > 0 ? (
+                          <li>
+                            <details class="nav-drawer__group nav-drawer__group--sub" name={`drawer-${item.href}`} open={current.startsWith(c.href) ? true : undefined}>
+                              <summary class:list={{ 'is-current': current.startsWith(c.href) }}>
+                                {c.label}
+                                <svg class="nav-drawer__chev" viewBox="0 0 12 12" aria-hidden="true">
+                                  <path d="M3 4.5l3 3 3-3" />
+                                </svg>
+                              </summary>
+                              <ul class="nav-drawer__sub">
+                                <li>
+                                  <a class="nav-drawer__all" href={c.href} aria-current={isCurrent(c.href)}>
+                                    {ui.menuAll} {c.label}
+                                  </a>
+                                </li>
+                                {c.children.map((g) => (
+                                  <li>
+                                    <a href={g.href} aria-current={isCurrent(g.href)}>
+                                      {g.label}
+                                    </a>
+                                  </li>
+                                ))}
+                              </ul>
+                            </details>
+                          </li>
+                        ) : (
+                          <li>
+                            <a href={c.href} aria-current={isCurrent(c.href)}>
+                              {c.label}
+                            </a>
+                          </li>
+                        ),
+                      )}
+                    </ul>
+                  </details>
+                </li>
+              ) : (
+                <li>
+                  <a class="nav-drawer__link" href={item.href} aria-current={isCurrent(item.href)}>
+                    {item.label}
+                  </a>
+                </li>
+              ),
+            )
           }
         </ul>
         <div class="nav-drawer__actions">

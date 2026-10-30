@@ -943,3 +943,18 @@ div.p-issues {
     grid-template-columns: 1fr;
   }
 }
+
+/* opening background: the current video, small */
+.p-videoedit {
+  display: grid;
+  gap: 0.4rem;
+  justify-items: start;
+}
+.p-videoedit video {
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+  background: var(--p-side);
+}

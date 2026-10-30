@@ -7,6 +7,7 @@ breadcrumbLabel: Sei qui
 menuLabel: Menu principale
 menuOpen: Menu
 menuClose: Chiudi
+menuAll: Tutto su
 submenuToggle: Pagine della sezione
 draftBadge: Bozza
 
@@ -51,6 +52,9 @@ formPrivacyLink: Leggi l'informativa
 formSubmit: Invia la richiesta
 formReplyNote: Rispondiamo entro 48 ore. Se hai fretta, meglio una telefonata.
 formDisabled: "Il modulo non è ancora attivo: per ora chiamaci o scrivici su WhatsApp."
+formSending: Invio in corso…
+formSent: "Grazie! Il messaggio è arrivato: ti rispondiamo entro 48 ore."
+formError: "Non è stato possibile inviare il messaggio. Riprova tra poco o chiamaci."
 
 footerNav: Informazioni
 footerSocial: Seguici
