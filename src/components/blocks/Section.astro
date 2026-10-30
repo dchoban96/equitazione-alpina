@@ -1,7 +1,9 @@
 ---
 /* Shell shared by every block: anchor id, altitude for the altimeter,
-   scroll reveal, and the optional kicker / note / heading. */
-import { txt } from '../../lib/text';
+   scroll reveal, and the optional kicker / note / heading.
+   An "aside" slot (a photo) puts the content in two columns: the aside on
+   the left, heading and content on the right (see .blk__in--aside). */
+import SectionHead from './SectionHead.astro';
 
 interface Props {
   type: string;
@@ -19,6 +21,8 @@ const { type, altitude, anchor, kicker, note, heading, reveal = true, line = fal
 // With an altitude and no other note, the altitude is written next to the kicker.
 const shownNote = note ?? (altitude !== undefined ? `${altitude} m` : undefined);
 const hasHead = Boolean(kicker || heading);
+const hasAside = Astro.slots.has('aside');
+const head = { kicker, note: shownNote, heading, headingId };
 ---
 
 <section
@@ -27,21 +31,30 @@ const hasHead = Boolean(kicker || heading);
   data-altitude={altitude}
   aria-labelledby={heading ? headingId : undefined}
 >
-  <div class="blk__in">
-    {
-      hasHead && (
-        <header>
-          {kicker && (
-            <p class="kicker">
-              <span set:html={txt(kicker)} />
-              {shownNote && <span class="kicker__note">· {shownNote}</span>}
-            </p>
+  {
+    hasAside ? (
+      <div class="blk__in blk__in--aside">
+        <div class="blk__aside">
+          <slot name="aside" />
+        </div>
+        <div class="blk__copy">
+          {hasHead && (
+            <SectionHead {...head}>
+              <slot name="head" />
+            </SectionHead>
           )}
-          {heading && <h2 id={headingId} set:html={txt(heading)} />}
-          <slot name="head" />
-        </header>
-      )
-    }
-    <slot />
-  </div>
+          <slot />
+        </div>
+      </div>
+    ) : (
+      <div class="blk__in">
+        {hasHead && (
+          <SectionHead {...head}>
+            <slot name="head" />
+          </SectionHead>
+        )}
+        <slot />
+      </div>
+    )
+  }
 </section>

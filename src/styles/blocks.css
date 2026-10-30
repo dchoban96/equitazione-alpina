@@ -190,20 +190,44 @@
   }
 }
 
-/* optional photo under the heading: in the heading column on wide screens */
+/* text with a photo: the photo on the left, heading and text on the right.
+   Phones: heading, photo, text, one under the other. */
 .text__photo {
   --ratio: 4 / 5;
-  margin-top: var(--space-5);
 }
-@media (max-width: 1023px) {
-  .text__photo {
+.blk__in--aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+.blk__in--aside > .blk__copy {
+  display: contents;
+}
+.blk__in--aside > .blk__copy > header {
+  order: -1;
+}
+.blk__in--aside > .blk__copy > header h2 {
+  margin-bottom: 0;
+}
+@media (min-width: 1024px) {
+  .blk__in--aside {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--space-7);
+    align-items: start;
+  }
+  .blk__in--aside > .blk__copy {
+    display: block;
+  }
+  .blk__in--aside > .blk__copy > header {
     margin-bottom: var(--space-5);
   }
-}
-/* wide screens, with a photo: title, photo and text scroll together (no sticky column) */
-@media (min-width: 1024px) {
-  .blk--text > .blk__in > header:has(.text__photo) {
-    position: static;
+  /* columns of different height: the shorter one stays in view while the
+     other scrolls (the taller one fills the row, so it simply scrolls) */
+  .blk__in--aside > .blk__aside,
+  .blk__in--aside > .blk__copy {
+    position: sticky;
+    top: calc(var(--layout-header) + 40px);
   }
 }
 
@@ -224,15 +248,17 @@
 .split--left > figure {
   order: -1;
 }
-/* photo beside the text, wide screens: the text starts at the top of the photo
-   and stays in view while the photo scrolls, like the heading of a text block */
+/* photo beside the text, wide screens: text and photo start at the same height */
 @media (min-width: 821px) {
   .split--right,
   .split--left {
     align-items: start;
   }
+  /* whichever column is shorter (text or photo) stays in view while the other scrolls */
   .split--right > .split__text,
-  .split--left > .split__text {
+  .split--left > .split__text,
+  .split--right > figure,
+  .split--left > figure {
     position: sticky;
     top: calc(var(--layout-header) + 40px);
   }

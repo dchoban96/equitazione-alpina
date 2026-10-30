@@ -1,0 +1,25 @@
+---
+/* The kicker / note / heading of a block (used by Section). */
+import { txt } from '../../lib/text';
+
+interface Props {
+  kicker?: string;
+  note?: string;
+  heading?: string;
+  headingId?: string;
+}
+const { kicker, note, heading, headingId } = Astro.props;
+---
+
+<header>
+  {
+    kicker && (
+      <p class="kicker">
+        <span set:html={txt(kicker)} />
+        {note && <span class="kicker__note">· {note}</span>}
+      </p>
+    )
+  }
+  {heading && <h2 id={headingId} set:html={txt(heading)} />}
+  <slot />
+</header>
