@@ -3,6 +3,9 @@
 title: "Galleria cani"
 section: "pastore-del-lagorai"
 photos:
+  - file: "@assets/foto/pastore-del-lagorai-0b83cbae-4b58-483f-b6ee-f26e30e349a9.jpg"
+    alt: Malga
+    caption: Malga
   - file: "@assets/foto/pastore-del-lagorai-whatsapp-image-2026-10-27-at-20-52-46.jpg"
     alt: Zagor al lavoro con un bovino
     caption: Zagor
