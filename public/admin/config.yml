@@ -71,7 +71,7 @@ collections:
         options: &sections
           - { label: Home, value: home }
           - { label: Equitazione, value: equitazione }
-          - { label: Pastore del Lagorai, value: pastore-del-lagorai }
+          - { label: Pastore della Lessinia e del Lagorai, value: pastore-del-lagorai }
           - { label: Capra Orobica, value: capra-orobica }
           - { label: Valtellina, value: valtellina }
           - { label: Curiosità, value: curiosita }
@@ -289,7 +289,7 @@ collections:
             fields:
               - *kicker
               - *heading
-              - { name: tag, label: Quali domande mostrare, widget: select, required: false, options: &faqtopics [{ label: "Equitazione", value: equitazione }, { label: "Pastore del Lagorai", value: pastore }, { label: "Capra Orobica", value: capra }, { label: "Prova", value: demo }], hint: "Vuoto = tutte le domande." }
+              - { name: tag, label: Quali domande mostrare, widget: select, required: false, options: &faqtopics [{ label: "Equitazione", value: equitazione }, { label: "Pastore della Lessinia e del Lagorai", value: pastore }, { label: "Capra Orobica", value: capra }, { label: "Prova", value: demo }], hint: "Vuoto = tutte le domande." }
               - { name: ids, widget: hidden, required: false }
               - *note
               - *altitude

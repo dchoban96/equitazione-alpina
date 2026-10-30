@@ -1,4 +1,5 @@
-# Testo scritto su fonti e sui contenuti gia presenti nel sito (vedi FONTI.md). Illustrazioni ancora di prova.
+# Informazioni sulla razza prese dal sito della Società Italiana Pastore della Lessinia e del Lagorai.
+# Il nome della razza va sempre scritto per intero: "Pastore della Lessinia e del Lagorai".
 slug: "pastore-del-lagorai"
 title: "Pastore della Lessinia e del Lagorai"
 section: "pastore-del-lagorai"
@@ -7,26 +8,26 @@ mockup: false
 nav:
   order: 10
 seo:
-  title: "Allevamento Pastore della Lessinia e Lagorai · Albosaggia SO"
-  description: "I nostri Pastori della Lessinia e del Lagorai ad Albosaggia: il cane da pastore del Trentino che lavora accanto a cavalli e greggi."
+  title: "Pastore della Lessinia e del Lagorai · Albosaggia (SO)"
+  description: "I nostri Pastori della Lessinia e del Lagorai ad Albosaggia: cani da pastore che lavorano accanto a cavalli e greggi."
   image: "@assets/foto/pastore-blue-merle-al-recinto.jpg"
 blocks:
   - type: "hero"
     kicker: "Pastore della Lessinia e del Lagorai"
     title: "Pastore della Lessinia e del Lagorai, i cani del recinto"
     intro: |-
-      Al recinto il cane arriva sempre prima di tutti: corre avanti, accompagna i cavalli, conosce ogni sentiero. I nostri sono Pastori della Lessinia e del Lagorai, cani da lavoro delle Alpi del Nord-Est che da generazioni seguono greggi e mandrie nella transumanza: una razza ancora in fase di riconoscimento.
+      Al recinto il cane arriva sempre prima di tutti: corre avanti, accompagna i cavalli, conosce ogni sentiero. I nostri sono Pastori della Lessinia e del Lagorai, antica razza da gregge delle montagne del Nord-Est che da generazioni segue greggi e mandrie nella transumanza.
     image: "@assets/foto/pastore-blue-merle-al-recinto.jpg"
-    imageAlt: "Un Pastore della Lessinia e del Lagorai blue merle in piedi sul prato, davanti a un muretto di pietra"
+    imageAlt: "Un Pastore della Lessinia e del Lagorai grigio merle in piedi sul prato, davanti a un muretto di pietra"
   - type: "text-image"
     kicker: "Il lavoro"
     heading: "Un cane da lavoro"
     body: |
       Il cane da Pastore della Lessinia e del Lagorai è un cane da conduzione: il suo mestiere è guidare e custodire il gregge. Lo si usa con pecore e capre, ma anche con animali più difficili da governare, come le mucche e i cavalli. Da noi fa proprio questo, ogni giorno, accanto ai cavalli e alle capre: segue chi lo guida, ma sa anche decidere da solo quando serve.
 
-      Della sua storia, del suo carattere e del perché non è un cane per tutti parliamo nella pagina [La razza](/pastore-del-lagorai/razza/).
+      Della sua storia, del suo carattere e delle colorazioni del mantello parliamo nella pagina [La razza](/pastore-del-lagorai/razza/).
     image: "@assets/foto/pastore-blue-merle-seduto.jpg"
-    alt: "Kuma, blue merle , una capostipite del nostro allevamento"
+    alt: "Kuma, Pastore della Lessinia e del Lagorai grigio merle"
     side: "right"
   - type: "cards"
     kicker: "La sezione"
@@ -34,7 +35,7 @@ blocks:
     style: "tiles"
     items:
       - title: "La razza"
-        text: "Storia, carattere, lavoro."
+        text: "Storia, carattere, colorazioni."
         link: "/pastore-del-lagorai/razza/"
         label: "Leggi"
       - title: "I nostri cani"
@@ -45,6 +46,16 @@ blocks:
         text: "Le foto dei cani al lavoro."
         link: "/pastore-del-lagorai/galleria/"
         label: "Guarda"
+  - type: "text-image"
+    anchor: "associazione"
+    kicker: "L'associazione"
+    heading: "Società Italiana Pastore della Lessinia e del Lagorai"
+    body: |
+      Tutte le informazioni sulla razza vengono dalla Società Italiana Pastore della Lessinia e del Lagorai (S.I.Pa.L.L.), l'associazione che ne cura lo standard e il percorso di riconoscimento. Standard, storia e iscrizione sono sul sito ufficiale: [www.pastorelessinialagorai.it](https://www.pastorelessinialagorai.it/).
+    image: "@assets/foto/logo-societa-italiana-pastore-della-lessinia-e-del-lagorai.jpg"
+    alt: "Logo della Società Italiana Pastore della Lessinia e del Lagorai (S.I.Pa.L.L.)"
+    side: "left"
+    fit: "contain"
   - type: "faq"
     kicker: "Domande"
     heading: "Domande sui cani"

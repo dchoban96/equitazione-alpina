@@ -1,60 +1,91 @@
-# Testo scritto su fonti e sui contenuti gia presenti nel sito (vedi FONTI.md); il percorso della pagina segue il
-# carosello della SIPaLL "Chi è il Pastore della Lessinia e del Lagorai?" (ottobre 2026). Illustrazioni ancora di prova.
+# Testo scritto SOLO sui contenuti del sito della Società Italiana Pastore della Lessinia e del Lagorai
+# (www.pastorelessinialagorai.it: Standard provvisorio, Cenni storici, FAQ) e sulle schede delle colorazioni
+# fornite dall'associazione. Il nome della razza va sempre scritto per intero: "Pastore della Lessinia e del Lagorai".
 slug: "pastore-del-lagorai/razza"
 title: "La razza"
 section: "pastore-del-lagorai"
 draft: false
-mockup: true
+mockup: false
 nav:
   order: 10
 seo:
-  title: "Pastore della Lessinia e Lagorai: razza, carattere e origini"
-  description: "Il Pastore della Lessinia e del Lagorai: storia, carattere e lavoro con il gregge del cane da pastore del Nord-Est, e perché non è un cane per tutti."
+  title: "Pastore della Lessinia e del Lagorai: la razza"
+  description: "Il Pastore della Lessinia e del Lagorai secondo lo standard dell'associazione: storia, carattere, lavoro con il gregge e colorazioni del mantello."
   image: "@assets/foto/pastore-blue-merle-profilo.jpg"
 blocks:
   - type: "hero"
     kicker: "La razza"
     title: "Il Pastore della Lessinia e del Lagorai: un cane, una storia, un territorio"
     intro: |
-      Il suo nome è Cane da Pastore della Lessinia e del Lagorai, dalla catena di montagne del Trentino orientale. È il cane della tradizione pastorale del Nord-Est: per generazioni ha accompagnato i pastori nel governo degli animali e nella transumanza da un pascolo all'altro. Conoscerlo vuol dire conoscere anche le persone e le montagne che lo hanno selezionato.
+      Il Pastore della Lessinia e del Lagorai è un'antica razza da gregge, da sempre al lavoro nelle aree montane e prealpine del Nord-Est d'Italia: Lombardia orientale, Trentino-Alto Adige, Veneto e Friuli Venezia Giulia. Con le greggi transumanti che scendevano dalla montagna verso la pianura e il mare si è diffuso anche nelle regioni vicine.
     image: "@assets/foto/pastore-blue-merle-profilo.jpg"
-    imageAlt: "Il profilo di un Pastore della Lessinia e del Lagorai blue merle"
+    imageAlt: "Il profilo di un Pastore della Lessinia e del Lagorai grigio merle"
   - type: "facts"
     items:
       - label: "Origine"
-        value: "Alpi e prealpi del Nord-Est"
+        value: "Aree montane e prealpine del Nord-Est"
       - label: "Tipo"
         value: "Lupoide, taglia media"
-      - label: "Lavoro"
-        value: "Conduzione del gregge"
-      - label: "Riconoscimento"
-        value: "ENCI, percorso in corso"
+      - label: "Altezza media"
+        value: "58 cm maschi, 54 cm femmine"
+      - label: "Classificazione"
+        value: "Gruppo 1, sezione 1a, n. 907"
+  - type: "text"
+    kicker: "La storia"
+    heading: "Un cane antico quanto la pastorizia delle Alpi"
+    body: |
+      Le prove dell'esistenza di cani paratori, usati per condurre pecore e capre nelle Alpi italiane, risalgono al Neolitico. Le incisioni rupestri e le situle di bronzo degli antichi Veneti mostrano già cani di tipo lupoide al fianco degli uomini che governavano il bestiame.
+
+      Nel Medioevo la lana era una ricchezza del Nord-Est: dal 1285 i documenti d'archivio seguono i pastori lungo le vie della transumanza, con i dazi da pagare ai confini e i permessi per far svernare le pecore in pianura. Spostare greggi di migliaia di capi rispettando i campi coltivati era impossibile senza un cane da conduzione. I pastori dell'alto Veneto e delle valli trentine hanno selezionato e fissato i caratteri della razza, e il territorio, quasi un'isola zootecnica, li ha conservati fino a oggi.
+
+      Il Pastore della Lessinia e del Lagorai lavora ancora nella transumanza stagionale e nelle malghe, con pecore e capre, mucche e cavalli. Ne esistono alcune migliaia di esemplari: un patrimonio zootecnico e culturale da non perdere.
   - type: "text-image"
     kicker: "L'aspetto"
-    heading: "Più di un bel mantello"
+    heading: "Lupoide, rustico, armonioso"
     body: |
-      Lo standard lo descrive come un cane di tipo lupoide, rustico, agile e muscoloso, con orecchie erette o semierette e pelo semilungo. Il mantello può essere unicolore — nero, marrone nelle tonalità che vanno dal cannella al castagna, oppure sabbia, con maschera più scura e/o sella — o pluricolore, nei tipi grigio merle e red merle. In questi ultimi, macchie irregolari grigie, nere e/o marroni, color fegato o camoscio si distribuiscono su una base grigio porcellana.
+      Lo standard lo descrive di aspetto tipicamente lupoide, di taglia media, ben proporzionato e armonioso nei movimenti: agile, ma con muscolatura forte. È rustico, capace di lavorare con climi estremi e su terreni impervi o pieni di ostacoli naturali. Lo sguardo è amichevole, pronto e intelligente.
 
-      Chi lo incontra spesso si ferma ad ammirarlo. Ma il suo valore non si misura dal colore del mantello: risiede nelle attitudini selezionate dai pastori nel corso delle generazioni e nella storia della razza.
-    image: "@assets/foto/foto-be08e1ad-209d-49e9-90af-346e02d65dce.jpg"
-    alt: "Primo piano di un Pastore della Lessinia e del Lagorai mantello unicolore nero"
+      Le orecchie sono triangolari, inserite alte, portate preferibilmente erette o semi erette. Il pelo è semi lungo, duro e caprino specie sul dorso, con un folto sottopelo: lo protegge dal maltempo senza appesantirsi di fango e ghiaccio.
+    image: "@assets/foto/pastore-della-lessinia-e-del-lagorai-nero-profilo.jpg"
+    alt: "Un Pastore della Lessinia e del Lagorai nero di profilo sul prato, davanti a una staccionata di legno"
     side: "right"
+  - type: "cards"
+    anchor: "colorazioni"
+    kicker: "Il mantello"
+    heading: "Le colorazioni"
+    style: "cards"
+    items:
+      - title: "Unicolore: nero"
+        text: "Mantello interamente nero, con tartufo nero."
+        image: "@assets/foto/pastore-della-lessinia-e-del-lagorai-nero-profilo.jpg"
+        alt: "Pastore della Lessinia e del Lagorai dal mantello nero, di profilo"
+      - title: "Marrone"
+        text: "Nelle varie tonalità, dalle più scure alle più chiare: da cannella a castagna. Nei mantelli marroni il tartufo è marrone-fegato."
+        image: "@assets/foto/cane-fulvo-profilo.jpg"
+        alt: "Pastore della Lessinia e del Lagorai dal mantello marrone, di profilo"
+      - title: "Sabbia con maschera più scura e/o sella"
+        text: "Colore uniforme sabbia, con una maschera più scura sul muso e/o una sella più scura sul dorso."
+        image: "@assets/foto/pastore-del-lagorai-0b83cbae-4b58-483f-b6ee-f26e30e349a9.jpg"
+        alt: "Pastore della Lessinia e del Lagorai sabbia con la maschera più scura, seduto al sole"
+      - title: "Pluricolore: grigio merle e red merle"
+        text: "Chiazze irregolari di diverse dimensioni (merle): grigio, nero e/o marrone, fegato e camoscio, screziate o macchiate, su una base grigio porcellana, bluastra o cannella."
+        image: "@assets/foto/pastore-blue-merle-al-recinto.jpg"
+        alt: "Pastore della Lessinia e del Lagorai grigio merle in piedi sul prato, davanti a un muretto di pietra"
   - type: "text"
-    kicker: "Il lavoro"
-    heading: "Un cane da lavoro, non un cane qualsiasi"
+    heading: "Da sapere sui colori"
     body: |
-      Tra i cani da pastore, è un «paratore»: mantiene unito il gregge, impedisce che gli animali si disperdano e li accompagna negli spostamenti. Un compito che richiede attenzione costante, capacità di leggere il terreno e il comportamento degli animali, oltre a prontezza d’iniziativa.
+      Tutti i colori possono avere focature accennate, poco estese. Sono ammesse piccole macchie bianche sulle estremità del corpo (punta della coda, del muso, dei piedi, petto, collo), ma il bianco non deve superare il 20% del mantello. Il colore grigio lupo e i mantelli prevalentemente bianchi non appartengono alla razza.
 
-      La sua terra è quella delle montagne e delle Prealpi del Nord-Est: dalla Lombardia orientale al Trentino-Alto Adige, al Veneto e al Friuli. Il suo territorio comprende anche le vie della transumanza che scendono verso la pianura lungo l’Adige, il Brenta, il Piave e il Tagliamento. Lavora con pecore e capre, ma anche con bovini e cavalli. Da noi, questa attitudine si manifesta ogni giorno in maneggio, vedi la sezione [Equitazione](/equitazione/).
+      Il colore da solo non basta: anche altre razze da pastore possono essere merle. Un Pastore della Lessinia e del Lagorai nasce solo da due genitori entrambi della razza, e sono i giudici ENCI a valutarne la tipicità durante i raduni. Due cani merle non vanno mai accoppiati tra loro, perché metterebbero a rischio la salute dei cuccioli.
   - type: "text-image"
     kicker: "Il carattere"
-    heading: "Collabora, ma sa anche decidere"
+    heading: "Intelligente, equilibrato, instancabile"
     body: |-
-      Il cane da pastore collabora con chi lo guida: ne coglie i segnali, osserva ciò che accade nell'ambiente intorno e sa prendere iniziative quando serve. In lui, ascolto e autonomia convivono.
+      È un cane intelligente ed equilibrato, all'occorrenza deciso e temerario. Il suo lavoro è condurre il bestiame, spostarlo e spingerlo anche su lunghe distanze e su ogni terreno, e tenere la linea del gregge per proteggere i campi coltivati. Ha innate le doti di conduzione e di vigilanza.
 
-      Per questo educarlo non significa soltanto insegnargli cosa fare, ma anche imparare a comprenderlo. La relazione si costruisce giorno dopo giorno, con pazienza e consapevolezza.
+      Crea con l'uomo un legame stretto e impara con grande facilità. È amichevole con le persone, con gli altri cani e con gli animali: non deve essere né aggressivo né pauroso, al massimo circospetto. Camminatore infaticabile, salta con agilità gli ostacoli naturali.
     image: "@assets/foto/pastore-blue-merle-sul-prato.jpg"
-    alt: "Un Pastore della Lessinia e del Lagorai blue merle sul prato, attento"
+    alt: "Un Pastore della Lessinia e del Lagorai grigio merle sul prato, attento"
     side: "left"
     focus: "25% 50%"
   - type: "cards"
@@ -67,21 +98,26 @@ blocks:
       - title: "Ricerca olfattiva"
         text: "Attività come il mantrailing, la ricerca di una persona seguendone l'odore."
       - title: "Sport cinofili"
-        text: "Discipline come l'agility dog e l'obedience, dove contano attenzione e collaborazione."
+        text: "Discipline che richiedono addestramento in obbedienza, dove contano attenzione e collaborazione."
   - type: "text"
     kicker: "Prima di sceglierlo"
     heading: "Affascinante, ma non è un cane per tutti"
     body: |
-      Molti Pastori della Lessinia e del Lagorai oggi non svolgono più il lavoro per cui sono stati selezionati. È quindi importante proporre loro attività da fare insieme, pensate su misura per ciascun cane e capaci di tenerlo impegnato sia mentalmente sia fisicamente.
+      Il Pastore della Lessinia e del Lagorai è un cane da lavoro: rustico e generalmente in ottima salute, ma con un temperamento vivace che chiede di essere impegnato ogni giorno, nel corpo e nella mente. È molto attaccato a tutta la famiglia e non va lasciato solo ed escluso, per esempio in giardino: chi sta fuori casa molte ore farebbe bene a dargli la compagnia di un altro cane.
 
-      Vivere con un cane da lavoro richiede tempo, impegno e un percorso educativo, oltre a una relazione da costruire giorno dopo giorno. Prima di sceglierlo per il suo aspetto, è importante chiedersi se il suo temperamento e le sue esigenze siano compatibili con il proprio stile di vita.
-  - type: "text"
-    kicker: "Conoscere per tutelare"
-    heading: "Il percorso di riconoscimento"
+      Prima di sceglierlo per il suo aspetto, conviene chiedersi se le sue esigenze sono compatibili con il proprio stile di vita.
+  - type: "text-image"
+    anchor: "associazione"
+    kicker: "L'associazione"
+    heading: "Società Italiana Pastore della Lessinia e del Lagorai"
     body: |
-      Per molto tempo è stato considerato un semplice meticcio dei pastori. Nel 2021 l'ENCI ne ha approvato lo standard, il primo per una razza nata in Trentino; da allora i cani vengono censiti nei raduni, valutati dai giudici e iscritti in un registro aperto. Il percorso verso il riconoscimento ufficiale è ancora in corso.
+      La Società Italiana Pastore della Lessinia e del Lagorai (S.I.Pa.L.L.) lavora per la tutela e il riconoscimento della razza: ne ha redatto lo standard e un regolamento per l'allevamento e la selezione che i soci si impegnano a rispettare. La razza è oggi ammessa al Registro Supplementare Aperto (RSA) italiano.
 
-      A portarlo avanti è la SIPaLL, la Società Italiana Pastore della Lessinia e del Lagorai, che lavora per far conoscere la razza, documentarne le caratteristiche e diffondere una scelta responsabile: [pastorelessinialagorai.it](https://www.pastorelessinialagorai.it).
+      Standard, storia, domande frequenti e iscrizione all'associazione sono sul sito ufficiale: [www.pastorelessinialagorai.it](https://www.pastorelessinialagorai.it/).
+    image: "@assets/foto/logo-societa-italiana-pastore-della-lessinia-e-del-lagorai.jpg"
+    alt: "Logo della Società Italiana Pastore della Lessinia e del Lagorai (S.I.Pa.L.L.)"
+    side: "left"
+    fit: "contain"
   - type: "cta-contact"
     kicker: "Contatti"
     heading: "Hai domande sulla razza?"

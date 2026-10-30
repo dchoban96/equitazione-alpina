@@ -7,7 +7,7 @@ mockup: false
 nav:
   order: 30
 seo:
-  title: "Foto: Pastore della Lessinia e Lagorai · Equitazione Alpina"
+  title: "Foto · Pastore della Lessinia e del Lagorai"
   description: "Le foto dei nostri Pastori della Lessinia e del Lagorai al lavoro, sui prati e nella neve di Albosaggia."
   image: "@assets/foto/pastore-blue-merle-sul-prato.jpg"
 blocks:
@@ -17,7 +17,7 @@ blocks:
     intro: |
       I cani al lavoro e a riposo, in ogni stagione.
     image: "@assets/foto/pastore-blue-merle-sul-prato.jpg"
-    imageAlt: "Zagor, blue merle"
+    imageAlt: "Zagor, Pastore della Lessinia e del Lagorai grigio merle"
   - type: "gallery"
     gallery: "pastore-del-lagorai"
   - type: "cta-contact"

@@ -16,7 +16,7 @@ items:
       - "capra-orobica"
       - "home"
   - id: "lagorai"
-    text: "Il Pastore del Lagorai prende il nome da una catena di montagne del Trentino orientale."
+    text: "Già dal 1285 i documenti d'archivio seguono i pastori del Nord-Est lungo le vie della transumanza: per muovere greggi di migliaia di capi senza danneggiare i campi, il cane da conduzione era insostituibile."
     sections:
       - "pastore-del-lagorai"
   - id: "demo"

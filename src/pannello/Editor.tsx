@@ -169,7 +169,7 @@ const BLOCKS: Record<string, { name: string; fields: Spec[] }> = {
 const SECTIONS: Record<string, string> = {
   home: 'Home',
   equitazione: 'Equitazione',
-  'pastore-del-lagorai': 'Pastore del Lagorai',
+  'pastore-del-lagorai': 'Pastore della Lessinia e del Lagorai',
   'capra-orobica': 'Capra Orobica',
   valtellina: 'Valtellina',
   curiosita: 'Curiosità',
