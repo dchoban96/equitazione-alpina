@@ -90,12 +90,11 @@ blocks:
   - type: "text-image"
     kicker: "Gli animali"
     heading: "Cavalli che vivono fuori"
-    body: |
-      I nostri cavalli non stanno chiusi nei box. Vivono all'aperto in gruppo o singolarmente.
+    body: |-
+      I nostri cavalli vivono all’aperto, in gruppo o in paddock singoli.
+      Si muovono, si cercano e si riposano all’ombra degli alberi, seguendo i ritmi che appartengono alla loro natura.
 
-      Si muovono, si cercano, si riposano all'ombra degli alberi. È così che vivono i cavalli quando li si lascia essere cavalli.
-
-      Ogni tanto nasce un puledro, e per qualche settimana tutto il resto passa in secondo piano.
+      Di tanto in tanto nasce un puledro e, per qualche settimana, tutto il resto passa in secondo piano.
     image: "@assets/foto/cavalli-sul-prato-in-estate.jpg"
     alt: "Due cavalli sauri con la lista bianca e un cavallo grigio sul prato verde in pendenza, ai piedi del bosco"
     side: "right"
