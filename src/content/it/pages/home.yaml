@@ -39,8 +39,8 @@ blocks:
         value: "Albosaggia"
       - label: ->
         value: È da lì che comincia tutto il resto.
-    image: "@assets/foto/cavallo-pezzato-al-pascolo.jpg"
-    imageAlt: "Un cavallo pezzato bianco e nero bruca l'erba alta di un prato soleggiato"
+    image: "@assets/foto/foto-img-3906.jpg"
+    imageAlt: "Cavalli che mangiano"
     video: "/video/intro-cavallo-al-pascolo.mp4"
   - type: "facts"
     items:
