@@ -1,0 +1,54 @@
+# Publishes a demo branch (demo-...) as a Cloudflare Pages preview, to show
+# work to the owner before it goes live: https://<branch>.equitazione-alpina.pages.dev
+# The live site (www.equitazione-alpina.it) is the production branch, main,
+# and is never touched by this workflow. Preview build: drafts included and
+# marked, every page noindex.
+name: Preview
+
+on:
+  push:
+    branches: ['demo-**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: preview-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  # The build runs the site's code and its npm packages, so it gets no secrets.
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build:preview
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          include-hidden-files: true
+          retention-days: 1
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+      - name: Deploy as a preview (never the production branch)
+        if: github.ref_name != 'main'
+        run: npx --yes wrangler@4 pages deploy dist --project-name=equitazione-alpina --branch=${{ github.ref_name }} --commit-hash=${{ github.sha }} --commit-dirty=true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: bf8670cc44ccaf2e7fb3ea3a3b90ea64
