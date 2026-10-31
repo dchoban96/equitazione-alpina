@@ -1,7 +1,9 @@
 ---
 /* Opening, layout "mosaic": the photo panel with the title on it, and under
-   it, still on the first screen, a row of tiles: photos, a quote, a card with
-   a link. Phones: the panel, then the tiles two by two. */
+   it, still on the first screen, a row of tiles: photos, a statement on the
+   dark tile, a card with a link. The breadcrumb above already names the
+   section, so the kicker is not repeated on the photo. Phones: the panel,
+   then the tiles two by two. */
 import type { Block } from '../../lib/content';
 import { url } from '../../lib/content';
 import Img from '../Img.astro';
@@ -22,7 +24,6 @@ const tiles = b.tiles ?? [];
     <div class="hero-mosaic__panel">
       <Img src={b.image!} alt={b.imageAlt ?? ''} focus={b.focus} sizes="(min-width: 1320px) 1220px, 100vw" priority />
       <div class="hero-mosaic__text hero-seq">
-        {b.kicker && <p class="kicker" set:html={txt(b.kicker)} />}
         <h1>
           <Fragment set:html={txt(b.title)} />
           {draft && <span class="draft-badge">{ui.draftBadge}</span>}
@@ -60,18 +61,16 @@ const tiles = b.tiles ?? [];
                 <Img src={t.image} alt={t.alt ?? ''} focus={t.focus} sizes="(min-width: 1024px) 360px, 50vw" />
                 {t.label && <span class="mtile__label" set:html={txt(t.label)} />}
               </li>
-            ) : t.quote ? (
-              <li class="mtile mtile--quote">
-                <span class="mtile__mark" aria-hidden="true">“</span>
-                {t.text && <p set:html={txt(t.text)} />}
-              </li>
+            ) : t.highlight ? (
+              <li class="mtile mtile--highlight">{t.text && <p set:html={txt(t.text)} />}</li>
             ) : (
               <li class="mtile mtile--card">
                 {t.title && <p class="mtile__title" set:html={txt(t.title)} />}
                 {t.text && <p class="mtile__text" set:html={txt(t.text)} />}
                 {t.link && (
                   <a class="mtile__link" href={url(t.link)}>
-                    <Fragment set:html={txt(t.label ?? '')} /> <span aria-hidden="true">↗</span>
+                    <Fragment set:html={txt(t.label ?? '')} />
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" /></svg>
                   </a>
                 )}
               </li>

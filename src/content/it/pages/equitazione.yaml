@@ -34,7 +34,7 @@ blocks:
     tiles:
       - image: "@assets/foto/sellare-il-cavallo.jpg"
         alt: "Si prepara il cavallo per l’uscita"
-      - quote: true
+      - highlight: true
         text: "Simone lavora con i cavalli da oltre trent’anni ed è accompagnatore di turismo equestre SEF Italia–C.O.N.I."
       - image: "@assets/foto/lago-palu-valmalenco.jpg"
         alt: "Il lago Palù in Valmalenco d’estate"

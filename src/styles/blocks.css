@@ -298,11 +298,17 @@
   animation-delay: 1.6s;
 }
 
-/* ---------- hero, layout "mosaic": the photo panel, then a row of tiles ---------- */
+/* ---------- hero, layout "mosaic": the photo panel, then a row of tiles ----------
+   Panel and tiles share the first screen and end above the nearest ridge,
+   which rises about a third of --ridges-height over the bottom edge. */
+.blk--hero--mosaic {
+  --mosaic-tiles: clamp(150px, 22svh, 240px);
+  --mosaic-panel: clamp(320px, calc(100svh - 160px - var(--ridges-height) * 0.32 - 12px - var(--mosaic-tiles)), 620px);
+}
 .hero-mosaic__panel {
   position: relative;
   display: flex;
-  height: clamp(380px, 50svh, 600px);
+  height: var(--mosaic-panel);
   overflow: hidden;
   border-radius: var(--radius-lg);
   color: var(--color-on-overlay);
@@ -311,36 +317,46 @@
   position: absolute;
   inset: 0;
 }
-/* the left side darker, under the title */
+/* darker on the left (title) and along the bottom (buttons, figures) */
 .hero-mosaic__panel::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(18, 26, 16, 0.66) 0%, rgba(18, 26, 16, 0.28) 45%, rgba(18, 26, 16, 0) 72%);
+  background:
+    linear-gradient(0deg, rgba(18, 26, 16, 0.58) 0%, rgba(18, 26, 16, 0) 42%),
+    linear-gradient(90deg, rgba(18, 26, 16, 0.62) 0%, rgba(18, 26, 16, 0.24) 46%, rgba(18, 26, 16, 0) 72%);
+}
+.hero-mosaic__panel :focus-visible {
+  outline-color: var(--color-on-overlay);
 }
 .hero-mosaic__text {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
   max-width: 860px;
-  padding: clamp(24px, 3.5vw, 48px);
-}
-.hero-mosaic__text .kicker {
-  color: rgba(255, 255, 255, 0.85);
+  padding: clamp(24px, 3vw, 44px);
 }
 .blk--hero--mosaic h1 {
-  max-width: 26ch;
+  max-width: 24ch;
   margin: 0;
   font-weight: 300;
-  font-size: clamp(2.25rem, 1rem + 2.8vw, 3.75rem);
+  font-size: clamp(2.25rem, 1rem + 2.4vw, 3.5rem);
   line-height: 1.02;
   letter-spacing: -0.035em;
   color: var(--color-on-overlay);
+  text-wrap: balance;
 }
 .hero-mosaic__text .hero__intro {
-  max-width: 40ch;
-  margin-top: var(--space-4);
+  max-width: 42ch;
+  margin-top: var(--space-3);
   font-size: var(--text-lg);
+  line-height: 1.5;
   color: rgba(255, 255, 255, 0.92);
+}
+.hero-mosaic__text .hero__actions {
+  margin-top: auto;
+  padding-top: var(--space-5);
 }
 .hero-mosaic__figures {
   position: absolute;
@@ -350,8 +366,7 @@
   display: flex;
   gap: var(--space-6);
   margin: 0;
-  padding: clamp(24px, 3vw, 40px);
-  text-shadow: 0 1px 12px rgba(18, 26, 16, 0.4);
+  padding: clamp(24px, 3vw, 44px);
 }
 .hero-mosaic__figures > div {
   display: flex;
@@ -359,20 +374,21 @@
 }
 .hero-mosaic__figures dt {
   font-size: 0.9375rem;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.9);
 }
 .hero-mosaic__figures dd {
   margin: 0;
   font-family: var(--font-heading);
   font-weight: 300;
   font-size: clamp(1.75rem, 1.2rem + 1vw, 2.25rem);
+  font-variant-numeric: tabular-nums;
   letter-spacing: -0.02em;
 }
 .hero-mosaic__tiles {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1.5fr) minmax(0, 1.3fr);
   gap: 12px;
-  height: clamp(180px, 24svh, 260px);
+  height: var(--mosaic-tiles);
   margin: 12px 0 0;
   padding: 0;
   list-style: none;
@@ -385,35 +401,28 @@
 .mtile__label {
   position: absolute;
   left: 12px;
-  bottom: 12px;
-  padding: 6px 12px;
+  top: 12px;
+  padding: 5px 12px;
   border-radius: var(--radius-pill);
-  background: rgba(255, 252, 246, 0.85);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  background: rgba(255, 252, 246, 0.9);
   font-family: var(--font-ui);
   font-size: 0.875rem;
   color: var(--color-heading);
 }
-.mtile--quote {
+/* the dark tile: one sentence, set like the site's long-form text */
+.mtile--highlight {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  align-items: flex-end;
   padding: clamp(18px, 2vw, 28px);
   background: var(--color-heading);
   color: #f5efe3;
 }
-.mtile__mark {
-  font-family: var(--font-body);
-  font-size: 3.5rem;
-  line-height: 0.8;
-  color: var(--color-wash-honey);
-}
-.mtile--quote p {
+.mtile--highlight p {
   margin: 0;
   font-family: var(--font-body);
-  font-size: clamp(1rem, 0.9rem + 0.3vw, 1.125rem);
+  font-size: clamp(1rem, 0.9rem + 0.35vw, 1.1875rem);
   line-height: 1.45;
+  text-wrap: pretty;
 }
 .mtile--card {
   display: flex;
@@ -431,6 +440,7 @@
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--color-heading);
+  text-wrap: balance;
 }
 .mtile__text {
   margin: 0;
@@ -438,14 +448,31 @@
   color: var(--color-text-muted);
 }
 .mtile__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
   margin-top: auto;
   font-family: var(--font-ui);
   font-weight: 500;
   color: var(--color-accent);
   text-decoration: none;
 }
+.mtile__link svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform var(--duration-fast) var(--easing-standard);
+}
 .mtile__link:hover {
-  text-decoration: underline;
+  color: var(--color-heading);
+}
+.mtile__link:hover svg {
+  transform: translate(2px, -2px);
 }
 .js .hero-mosaic__tiles > .mtile {
   animation: rise-in var(--duration-slow) var(--easing-standard) both;
@@ -454,22 +481,52 @@
 .js .hero-mosaic__tiles > .mtile:nth-child(2) { animation-delay: 330ms; }
 .js .hero-mosaic__tiles > .mtile:nth-child(3) { animation-delay: 410ms; }
 .js .hero-mosaic__tiles > .mtile:nth-child(n + 4) { animation-delay: 490ms; }
+/* laptop screens (768 px tall and less): a smaller title and sentence, so the
+   panel and the tiles still fit above the ridges */
+@media (min-width: 821px) and (max-height: 820px) {
+  .hero-mosaic__text {
+    padding: 28px 32px;
+  }
+  .blk--hero--mosaic h1 {
+    font-size: clamp(2rem, 1rem + 2vw, 2.75rem);
+  }
+  .hero-mosaic__text .hero__intro {
+    font-size: 1.0625rem;
+  }
+  .hero-mosaic__text .hero__actions {
+    padding-top: var(--space-4);
+  }
+}
 @media (max-width: 820px) {
   .hero-mosaic__panel {
     height: auto;
-    min-height: 70svh;
+    min-height: 68svh;
     align-items: flex-end;
   }
   .hero-mosaic__panel::after {
-    background: linear-gradient(180deg, rgba(18, 26, 16, 0) 25%, rgba(18, 26, 16, 0.7) 100%);
+    background: linear-gradient(180deg, rgba(18, 26, 16, 0) 22%, rgba(18, 26, 16, 0.72) 100%);
+  }
+  .hero-mosaic__text .hero__actions {
+    margin-top: 0;
   }
   .hero-mosaic__figures {
     display: none;
   }
   .hero-mosaic__tiles {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: 170px;
+    grid-auto-rows: minmax(170px, auto);
     height: auto;
+  }
+  .mtile__label {
+    font-size: 0.8125rem;
+    white-space: nowrap;
+  }
+  .mtile--highlight p {
+    font-size: 0.9375rem;
+  }
+  .mtile__title {
+    font-size: 1.25rem;
+    text-wrap: pretty;
   }
 }
 @media (prefers-reduced-motion: reduce) {
