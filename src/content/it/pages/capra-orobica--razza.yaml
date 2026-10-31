@@ -3,7 +3,7 @@ slug: "capra-orobica/razza"
 title: "La razza"
 section: "capra-orobica"
 draft: false
-mockup: true
+mockup: false
 nav:
   order: 10
 seo:
