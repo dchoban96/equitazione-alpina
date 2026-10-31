@@ -23,16 +23,22 @@ blocks:
     heading: "I paesi della valle"
     body: |
       Testo di prova. Chiesa in Valmalenco è il paese principale; tutto intorno frazioni, cave di pietra, alpeggi. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+    image: "@assets/foto/mockup-foto-in-arrivo.jpg"
+    alt: "Illustrazione di prova: foto in arrivo"
   - type: "text"
     kicker: "La pietra"
     heading: "La pietra"
     body: |
       Testo di prova. La valle è conosciuta per le sue pietre, lavorate da secoli per tetti e pavimenti. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+    image: "@assets/foto/mockup-foto-in-arrivo.jpg"
+    alt: "Illustrazione di prova: foto in arrivo"
   - type: "text"
     kicker: "In quota"
     heading: "L'Alpe Palù"
     body: |
       Testo di prova. Un alpeggio con il suo lago, meta d'estate a piedi e d'inverno con gli sci.
+    image: "@assets/foto/mockup-alpe-palu-valmalenco.jpg"
+    alt: "Illustrazione di prova: il lago dell’Alpe Palù"
   - type: "cta-contact"
     kicker: "Equitazione Alpina"
     heading: "Scoprila a cavallo"

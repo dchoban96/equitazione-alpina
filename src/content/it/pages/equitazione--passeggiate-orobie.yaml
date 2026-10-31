@@ -32,6 +32,8 @@ blocks:
       Siamo alle porte del Parco Regionale delle Orobie Valtellinesi, una delle aree protette più grandi della Lombardia: circa 44.000 ettari di boschi, alpeggi e valli laterali sul versante orobico della provincia di Sondrio. Qui le passeggiate a cavallo ad Albosaggia seguono mulattiere e sentieri storici, tra abeti e larici, pascoli d’alta quota e baite in pietra. Con un po’ di fortuna si incontrano caprioli, cervi e camosci, e sopra le creste vola l’aquila reale. Scoprire il Parco delle Orobie a cavallo significa attraversarlo al passo giusto: lento, silenzioso, rispettoso di un ambiente che in Valtellina è rimasto autentico.
     altitude: 1300
     note: "≈ 1300 m"
+    image: "@assets/foto/mockup-sentiero-orobie.jpg"
+    alt: "Illustrazione di prova: un sentiero sulle Orobie"
   - type: "cards"
     kicker: "Le stagioni"
     heading: "Ogni stagione ha il suo sentiero"

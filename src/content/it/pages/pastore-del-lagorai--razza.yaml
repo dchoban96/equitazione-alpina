@@ -39,6 +39,8 @@ blocks:
       Nel Medioevo la lana era una ricchezza del Nord-Est: dal 1285 i documenti d'archivio seguono i pastori lungo le vie della transumanza, con i dazi da pagare ai confini e i permessi per far svernare le pecore in pianura. Spostare greggi di migliaia di capi rispettando i campi coltivati era impossibile senza un cane da conduzione. I pastori dell'alto Veneto e delle valli trentine hanno selezionato e fissato i caratteri della razza, e il territorio, quasi un'isola zootecnica, li ha conservati fino a oggi.
 
       Il Pastore della Lessinia e del Lagorai lavora ancora nella transumanza stagionale e nelle malghe, con pecore e capre, mucche e cavalli. Ne esistono alcune migliaia di esemplari: un patrimonio zootecnico e culturale da non perdere.
+    image: "@assets/foto/mockup-foto-in-arrivo.jpg"
+    alt: "Illustrazione di prova: foto in arrivo"
   - type: "text-image"
     kicker: "L'aspetto"
     heading: "Lupoide, rustico, armonioso"
@@ -77,6 +79,8 @@ blocks:
       Tutti i colori possono avere focature accennate, poco estese. Sono ammesse piccole macchie bianche sulle estremità del corpo (punta della coda, del muso, dei piedi, petto, collo), ma il bianco non deve superare il 20% del mantello. Il colore grigio lupo e i mantelli prevalentemente bianchi non appartengono alla razza.
 
       Il colore da solo non basta: anche altre razze da pastore possono essere merle. Un Pastore della Lessinia e del Lagorai nasce solo da due genitori entrambi della razza, e sono i giudici ENCI a valutarne la tipicità durante i raduni. Due cani merle non vanno mai accoppiati tra loro, perché metterebbero a rischio la salute dei cuccioli.
+    image: "@assets/foto/mockup-foto-in-arrivo.jpg"
+    alt: "Illustrazione di prova: foto in arrivo"
   - type: "text-image"
     kicker: "Il carattere"
     heading: "Intelligente, equilibrato, instancabile"
@@ -106,6 +110,8 @@ blocks:
       Il Pastore della Lessinia e del Lagorai è un cane da lavoro: rustico e generalmente in ottima salute, ma con un temperamento vivace che chiede di essere impegnato ogni giorno, nel corpo e nella mente. È molto attaccato a tutta la famiglia e non va lasciato solo ed escluso, per esempio in giardino: chi sta fuori casa molte ore farebbe bene a dargli la compagnia di un altro cane.
 
       Prima di sceglierlo per il suo aspetto, conviene chiedersi se le sue esigenze sono compatibili con il proprio stile di vita.
+    image: "@assets/foto/mockup-foto-in-arrivo.jpg"
+    alt: "Illustrazione di prova: foto in arrivo"
   - type: "text-image"
     anchor: "associazione"
     kicker: "L'associazione"

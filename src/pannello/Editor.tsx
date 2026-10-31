@@ -59,7 +59,7 @@ const BLOCKS: Record<string, { name: string; fields: Spec[] }> = {
   },
   text: {
     name: 'Testo',
-    fields: [...HEADING, { key: 'image', kind: 'photo', label: 'Foto sotto il titolo', alt: 'alt', focus: 'focus' }, { key: 'body', kind: 'md', label: 'Testo', req: true }],
+    fields: [...HEADING, { key: 'image', kind: 'photo', label: 'Foto accanto al testo', alt: 'alt', focus: 'focus' }, { key: 'body', kind: 'md', label: 'Testo', req: true }],
   },
   'text-image': {
     name: 'Testo con foto',

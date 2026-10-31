@@ -12,13 +12,32 @@ seo:
   image: "@assets/foto/mockup-valle-sondrio.jpg"
 blocks:
   - type: "hero"
+    layout: mosaic
     kicker: "Guida"
     title: "La Valtellina, vista dal recinto"
-    intro: |
-      Testo di prova. La valle dell'Adda, fra le Alpi Retiche e le Orobie: la conosciamo passo dopo passo, a cavallo. Questa guida raccoglie quello che raccontiamo a chi viene a trovarci.
+    intro: |-
+      Testo di prova. La valle dell'Adda, fra le Alpi Retiche e le Orobie: la conosciamo passo dopo passo, a cavallo.
     image: "@assets/foto/mockup-valle-sondrio.jpg"
     imageAlt: "Illustrazione di prova: la valle con il fiume e il paese sotto le montagne"
+    actions:
+      - label: I luoghi
+        link: "#luoghi"
+      - label: Da leggere
+        link: "#da-leggere"
+    tiles:
+      - image: "@assets/foto/lago-palu-valmalenco.jpg"
+        alt: Il lago Palù in Valmalenco d’estate
+        label: La Valmalenco
+      - highlight: true
+        text: Questa guida raccoglie quello che raccontiamo a chi viene a trovarci.
+      - image: "@assets/foto/valle-con-pascoli-e-case.jpg"
+        alt: Valle verde della Valmalenco con pascoli, boschi di abeti e baite, sotto un cielo azzurro d'estate
+      - title: Cibo e vino
+        text: Piatti, formaggi, vini.
+        link: /valtellina/cibo-e-vino/
+        label: La cucina
   - type: "cards"
+    anchor: luoghi
     kicker: "Dove"
     heading: "I luoghi"
     style: "cards"
@@ -42,6 +61,7 @@ blocks:
         image: "@assets/foto/mockup-alpe-palu-valmalenco.jpg"
         alt: "Illustrazione di prova: un lago alpino"
   - type: "cards"
+    anchor: da-leggere
     kicker: "Temi"
     heading: "Da leggere"
     style: "tiles"

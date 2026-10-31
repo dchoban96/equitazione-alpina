@@ -12,12 +12,29 @@ seo:
   image: "@assets/foto/capra-orobica-con-capretto-nel-bosco.jpg"
 blocks:
   - type: "hero"
+    layout: mosaic
     kicker: "Capra Orobica"
     title: "Capra Orobica, una razza delle nostre montagne"
-    intro: |
-      Sul versante orobico, accanto ai cavalli, pascolano le nostre capre. Sono Orobiche: una razza di queste montagne, con le corna lunghe e ritorte e il pelo lungo, che un tempo ogni famiglia della zona allevava e che oggi è rimasta a pochi.
+    intro: |-
+      Sul versante orobico, accanto ai cavalli, pascolano le nostre capre.
     image: "@assets/foto/capra-orobica-con-capretto-nel-bosco.jpg"
     imageAlt: "Una Capra Orobica bianca con il campanaccio e il suo capretto, nel bosco"
+    actions:
+      - label: La razza
+        link: /capra-orobica/razza/
+      - label: Galleria
+        link: /capra-orobica/galleria/
+    tiles:
+      - image: "@assets/foto/capra-orobica-corna-lunghe.jpg"
+        alt: Capra Orobica dalle corna lunghe e ritorte che guarda dritto nell'obiettivo, sul pascolo di montagna
+      - highlight: true
+        text: "Sono Orobiche: una razza di queste montagne, con le corna lunghe e ritorte e il pelo lungo, che un tempo ogni famiglia della zona allevava e che oggi è rimasta a pochi."
+      - image: "@assets/foto/capretto-orobico-nel-bosco.jpg"
+        alt: Capretto di Capra Orobica bianco e grigio accanto a una capra dal pelo lungo e scuro, nel bosco
+      - title: Equitazione
+        text: I cavalli che vivono accanto a loro.
+        link: /equitazione/
+        label: Vai ai cavalli
   - type: "text-image"
     kicker: "L'allevamento"
     heading: "Perché la Capra Orobica"

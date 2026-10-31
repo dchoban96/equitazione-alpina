@@ -23,11 +23,15 @@ blocks:
     heading: "La città"
     body: |
       Testo di prova. Il centro storico, i palazzi, il Castel Masegra che domina la città. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+    image: "@assets/foto/mockup-valle-sondrio.jpg"
+    alt: "Illustrazione di prova: Sondrio e la valle"
   - type: "text"
     kicker: "Come arrivare"
     heading: "Da Sondrio ad Albosaggia"
     body: |
       Testo di prova. Si attraversa l'Adda e si sale sul versante orobico: ad Albosaggia si arriva in 10 minuti. Il recinto di [Equitazione Alpina](/equitazione/) è in Località Ravasciolo.
+    image: "@assets/foto/mockup-borgo-albosaggia.jpg"
+    alt: "Illustrazione di prova: il borgo di Albosaggia"
   - type: "cta-contact"
     kicker: "Equitazione Alpina"
     heading: "Scoprila a cavallo"

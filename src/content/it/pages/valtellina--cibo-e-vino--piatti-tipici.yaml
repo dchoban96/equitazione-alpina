@@ -29,6 +29,8 @@ blocks:
       Sull'origine del nome non c'è accordo, e le spiegazioni in giro sono più d'una. Sul modo di mangiarli, invece, sì: caldi, appena conditi, mescolati dal basso verso l'alto.
 
       Del Casera e del Bitto parliamo nella pagina dei [formaggi](/valtellina/cibo-e-vino/formaggi/).
+    image: "@assets/foto/mockup-pizzoccheri.jpg"
+    alt: "Illustrazione di prova: un piatto di pizzoccheri"
   - type: "text"
     kicker: "Gli altri"
     heading: "Sciatt e polenta taragna"
@@ -36,6 +38,8 @@ blocks:
       Sciatt, in dialetto, vuol dire rospi, e il nome viene dalla forma: frittelle tonde e irregolari di pastella al grano saraceno, con un cubetto di formaggio che fonde all'interno. Sono gli stessi due ingredienti dei pizzoccheri, messi insieme in un altro modo. Si servono caldi, di solito su un letto di cicorino tagliato fine, che rinfresca la bocca tra uno e l'altro.
 
       La polenta taragna è la polenta scura della valle: farina di mais e farina di grano saraceno insieme, e a fine cottura burro e formaggio mescolati dentro finché filano. Il nome viene dal bastone di legno con cui si rimesta nel paiolo. Un tempo era ancora più scura, fatta quasi solo di grano saraceno. La si trova anche nelle valli bergamasche e bresciane, dall'altra parte delle Orobie.
+    image: "@assets/foto/mockup-foto-in-arrivo.jpg"
+    alt: "Illustrazione di prova: foto in arrivo"
   - type: "text"
     kicker: "I salumi"
     heading: "Bresaola della Valtellina"
@@ -45,6 +49,8 @@ blocks:
       Il consorzio che la tutela spiega così il legame con la valle: l'aria fresca e asciutta che scende dalle Alpi permette una stagionatura lenta e una salatura leggera, e per questo la bresaola resta morbida e poco salata. Le prime testimonianze scritte risalgono al Quattrocento. Anche il nome, secondo il consorzio, è locale: verrebbe da «brisa», una parola del dialetto legata alla carne molto salata.
 
       Una cosa che pochi sanno: le regole non chiedono che la carne venga dalla valle. Chiedono che sia lavorata e stagionata qui.
+    image: "@assets/foto/mockup-foto-in-arrivo.jpg"
+    alt: "Illustrazione di prova: foto in arrivo"
   - type: "cta-contact"
     kicker: "Equitazione Alpina"
     heading: "Scoprila a cavallo"

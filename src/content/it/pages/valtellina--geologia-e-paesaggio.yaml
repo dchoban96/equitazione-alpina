@@ -23,16 +23,22 @@ blocks:
     heading: "I ghiacciai"
     body: |
       Testo di prova. Durante le glaciazioni i ghiacciai hanno allargato la valle, lasciando pareti ripide e un fondovalle ampio. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+    image: "@assets/foto/mockup-ghiacciaio.jpg"
+    alt: "Illustrazione di prova: un ghiacciaio"
   - type: "text"
     kicker: "I versanti"
     heading: "Due versanti diversi"
     body: |
       Testo di prova. A nord le Alpi Retiche, esposte al sole; a sud le Orobie, più ombrose e boscose. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+    image: "@assets/foto/mockup-valle-sondrio.jpg"
+    alt: "Illustrazione di prova: la valle vista dall’alto"
   - type: "text"
     kicker: "Terrazze"
     heading: "I terrazzamenti"
     body: |
       Testo di prova. Sul versante retico i vigneti crescono su terrazze sostenute da muretti a secco. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+    image: "@assets/foto/mockup-terrazzamenti.jpg"
+    alt: "Illustrazione di prova: i terrazzamenti"
   - type: "text-image"
     kicker: "Terrazze"
     heading: "Il versante retico"

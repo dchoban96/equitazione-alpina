@@ -23,11 +23,15 @@ blocks:
     heading: "Il paese e le contrade"
     body: |
       Testo di prova. Case in pietra, contrade sparse sul pendio, sentieri che le collegano. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+    image: "@assets/foto/mockup-borgo-albosaggia.jpg"
+    alt: "Illustrazione di prova: il borgo di Albosaggia"
   - type: "text"
     kicker: "I sentieri"
     heading: "Verso San Bernardo e il Lago Casera"
     body: |
       Testo di prova. Dai boschi di castagno e faggio si sale verso i pascoli: sono i sentieri delle nostre [passeggiate sulle Orobie](/equitazione/passeggiate-orobie/).
+    image: "@assets/foto/mockup-sentiero-orobie.jpg"
+    alt: "Illustrazione di prova: un sentiero sulle Orobie"
   - type: "cta-contact"
     kicker: "Equitazione Alpina"
     heading: "Scoprila a cavallo"

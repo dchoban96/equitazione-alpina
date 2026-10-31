@@ -23,11 +23,15 @@ blocks:
     heading: "Neve e ciaspole"
     body: |
       Testo di prova. In Valmalenco si scia e si cammina con le ciaspole nei boschi. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+    image: "@assets/foto/mockup-inverno.jpg"
+    alt: "Illustrazione di prova: la valle d’inverno"
   - type: "text"
     kicker: "A cavallo"
     heading: "A cavallo anche d'inverno"
     body: |
       Ad Albosaggia si cavalca tutto l'anno, d'inverno con il fiato che si vede. Vedi le [passeggiate sulle Orobie](/equitazione/passeggiate-orobie/).
+    image: "@assets/foto/mockup-inverno.jpg"
+    alt: "Illustrazione di prova: la valle d’inverno"
   - type: "cta-contact"
     kicker: "Equitazione Alpina"
     heading: "Scoprila a cavallo"

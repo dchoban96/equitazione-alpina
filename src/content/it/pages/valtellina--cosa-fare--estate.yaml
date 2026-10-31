@@ -23,11 +23,15 @@ blocks:
     heading: "Sentieri e alpeggi"
     body: |
       Testo di prova. Dai boschi delle Orobie ai pascoli della Valmalenco, sentieri per tutte le gambe. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+    image: "@assets/foto/mockup-estate.jpg"
+    alt: "Illustrazione di prova: un alpeggio d’estate"
   - type: "text"
     kicker: "In bici"
     heading: "In bicicletta"
     body: |
       Testo di prova. Il Sentiero Valtellina segue l'Adda lungo il fondovalle. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+    image: "@assets/foto/mockup-foto-in-arrivo.jpg"
+    alt: "Illustrazione di prova: foto in arrivo"
   - type: "cta-contact"
     kicker: "Equitazione Alpina"
     heading: "Scoprila a cavallo"

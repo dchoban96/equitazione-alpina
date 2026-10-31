@@ -25,6 +25,8 @@ blocks:
       Quell'uva è il Nebbiolo, che in valle si chiama Chiavennasca. È lo stesso vitigno dei grandi rossi piemontesi, ma qui cresce in montagna e dà vini diversi: più freschi, con tannini più morbidi e profumi di frutti di bosco, come li descrive il consorzio dei produttori.
 
       I pendii sono molto ripidi, e per lavorarli serve tanta fatica a mano: per questo si parla di viticoltura eroica. I produttori, a dire il vero, non amano troppo la parola: dicono di non essere eroi, ma gente che fa il proprio mestiere in un posto difficile.
+    image: "@assets/foto/mockup-vini.jpg"
+    alt: "Illustrazione di prova: vigneti terrazzati"
   - type: "text"
     kicker: "I vini"
     heading: "Valtellina Superiore e Sforzato"
@@ -34,6 +36,8 @@ blocks:
       Poi c'è lo Sforzato, in dialetto Sfursat. Dopo la vendemmia i grappoli migliori vengono lasciati appassire in locali asciutti e ventilati, finché perdono circa un terzo del peso. Quello che resta è più concentrato, e ne viene un rosso asciutto e potente, che prima di arrivare in tavola invecchia almeno venti mesi.
 
       A tavola stanno bene con i piatti della valle: vedi i [piatti tipici](/valtellina/cibo-e-vino/piatti-tipici/).
+    image: "@assets/foto/mockup-vini.jpg"
+    alt: "Illustrazione di prova: vigneti terrazzati"
   - type: "cta-contact"
     kicker: "Equitazione Alpina"
     heading: "Scoprila a cavallo"

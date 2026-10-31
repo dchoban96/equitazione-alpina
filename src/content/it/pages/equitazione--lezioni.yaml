@@ -52,6 +52,8 @@ blocks:
       In struttura non c'è solo la scuola: ci si occupa anche dell'addestramento dei cavalli giovani e della rieducazione di quelli che ne hanno bisogno.
 
       Chi monta da anni può saltare questa parte e passare direttamente alle [passeggiate sulle Orobie](/equitazione/passeggiate-orobie/).
+    image: "@assets/foto/mockup-lezione-maneggio.jpg"
+    alt: "Illustrazione di prova: una lezione in maneggio"
   - type: "faq"
     kicker: "Domande"
     heading: "Domande sulle lezioni"

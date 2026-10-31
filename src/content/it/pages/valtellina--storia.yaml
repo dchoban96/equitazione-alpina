@@ -23,11 +23,15 @@ blocks:
     heading: "Secoli di confine"
     body: |
       Testo di prova. Dal 1512 al 1797 la Valtellina fu governata dalle Tre Leghe dei Grigioni. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+    image: "@assets/foto/mockup-foto-in-arrivo.jpg"
+    alt: "Illustrazione di prova: foto in arrivo"
   - type: "text"
     kicker: "I castelli"
     heading: "Castelli e torri"
     body: |
       Testo di prova. Lungo la valle restano torri e castelli, segni di un territorio conteso. Testo di prova: i fatti di questa pagina saranno verificati prima della pubblicazione definitiva.
+    image: "@assets/foto/mockup-castello.jpg"
+    alt: "Illustrazione di prova: un castello"
   - type: "cta-contact"
     kicker: "Equitazione Alpina"
     heading: "Scoprila a cavallo"

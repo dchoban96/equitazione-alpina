@@ -29,6 +29,8 @@ blocks:
       La cagliata viene cotta, messa nelle fascere che danno alla forma il suo bordo concavo e salata a secco. Le forme pesano da 8 a 25 chili e stagionano almeno 70 giorni: cominciano nelle casere d'alpe e finiscono a fondovalle. Da giovane il Bitto è dolce e delicato; con il tempo diventa più intenso, e alcune forme vengono lasciate maturare per anni.
 
       Nelle valli di Gerola e di Albaredo alcuni produttori seguono regole ancora più strette. Il loro formaggio si chiama Storico Ribelle, è un Presidio Slow Food, e il latte di capra è obbligatorio: deve venire da capre di razza Orobica. È la stessa razza che alleviamo noi: vedi la sezione [Capra Orobica](/capra-orobica/).
+    image: "@assets/foto/mockup-formaggi.jpg"
+    alt: "Illustrazione di prova: forme di formaggio"
   - type: "text"
     kicker: "Di latteria"
     heading: "Valtellina Casera"
@@ -40,6 +42,8 @@ blocks:
       Da giovane è dolce e sa di latte; stagionando prende note di frutta secca e un profumo di fieno. Il nome viene dalla casera, il locale dove i formaggi si lavorano e si lasciano maturare.
 
       In cucina è il formaggio dei pizzoccheri e degli sciatt: ne parliamo nella pagina dei [piatti tipici](/valtellina/cibo-e-vino/piatti-tipici/).
+    image: "@assets/foto/mockup-formaggi.jpg"
+    alt: "Illustrazione di prova: forme di formaggio"
   - type: "cta-contact"
     kicker: "Equitazione Alpina"
     heading: "Scoprila a cavallo"

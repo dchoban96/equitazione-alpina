@@ -41,6 +41,8 @@ blocks:
       Dei formaggi parliamo nella pagina [Formaggi](/valtellina/cibo-e-vino/formaggi/).
 
       Accanto alle capre vivono i nostri cavalli: vedi la sezione [Equitazione](/equitazione/).
+    image: "@assets/foto/mockup-capre-pascolo.jpg"
+    alt: "Illustrazione di prova: capre al pascolo"
   - type: "cta-contact"
     kicker: "Contatti"
     heading: "Vuoi saperne di più?"

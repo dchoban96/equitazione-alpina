@@ -13,12 +13,30 @@ seo:
   image: "@assets/foto/pastore-blue-merle-al-recinto.jpg"
 blocks:
   - type: "hero"
+    layout: mosaic
     kicker: "Pastore della Lessinia e del Lagorai"
     title: "Pastore della Lessinia e del Lagorai, i cani del recinto"
     intro: |-
-      Al recinto il cane arriva sempre prima di tutti: corre avanti, accompagna i cavalli, conosce ogni sentiero. I nostri sono Pastori della Lessinia e del Lagorai, antica razza da gregge delle montagne del Nord-Est che da generazioni segue greggi e mandrie nella transumanza.
+      Al recinto il cane arriva sempre prima di tutti: corre avanti, accompagna i cavalli, conosce ogni sentiero.
     image: "@assets/foto/pastore-blue-merle-al-recinto.jpg"
     imageAlt: "Un Pastore della Lessinia e del Lagorai grigio merle in piedi sul prato, davanti a un muretto di pietra"
+    focus: "50% 12%"
+    actions:
+      - label: I nostri cani
+        link: /pastore-del-lagorai/i-nostri-cani/
+      - label: La razza
+        link: /pastore-del-lagorai/razza/
+    tiles:
+      - image: "@assets/foto/cane-fulvo-di-corsa.jpg"
+        alt: Malga, Pastore della Lessinia e del Lagorai fulvo, corre felice sul prato lungo la recinzione
+      - highlight: true
+        text: I nostri sono Pastori della Lessinia e del Lagorai, antica razza da gregge delle montagne del Nord-Est che da generazioni segue greggi e mandrie nella transumanza.
+      - image: "@assets/foto/pastore-blue-merle-primo-piano.jpg"
+        alt: Primo piano di Zagor, Pastore della Lessinia e del Lagorai merle dagli occhi ambrati, sul selciato del cortile
+      - title: Galleria
+        text: Le foto dei cani al lavoro.
+        link: /pastore-del-lagorai/galleria/
+        label: Guarda
   - type: "text-image"
     kicker: "Il lavoro"
     heading: "Un cane da lavoro"

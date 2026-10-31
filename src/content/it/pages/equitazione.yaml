@@ -54,6 +54,8 @@ blocks:
       Equitazione Alpina è il nome del maneggio di Simone De Capitani ad Albosaggia, a dieci minuti da Sondrio. Qui ci troviamo alle porte del Parco delle Orobie Valtellinesi dove i cavalli vivono all’aperto e le escursioni portano sui sentieri di casa, in ogni stagione. Da fine giugno a inizio settembre, l’attività si sposta in Valmalenco, nei dintorni di San Giuseppe.
 
       Simone lavora con i cavalli da oltre trent’anni ed è accompagnatore di turismo equestre SEF Italia–C.O.N.I.
+    image: "@assets/foto/mockup-lezione-maneggio.jpg"
+    alt: "Illustrazione di prova: un cavaliere in maneggio"
   - type: "cards"
     anchor: "attivita"
     kicker: "Le attività"
