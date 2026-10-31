@@ -1,7 +1,7 @@
 ---
 /* Turns a page's ordered list of blocks into sections. Page templates only
    loop over blocks; adding a page never needs new code. */
-import type { Crumb, Page } from '../../lib/content';
+import type { Page } from '../../lib/content';
 import Hero from './Hero.astro';
 import Text from './Text.astro';
 import TextImage from './TextImage.astro';
@@ -21,9 +21,8 @@ import CtaContact from './CtaContact.astro';
 interface Props {
   page: Page;
   ui: Record<string, string>;
-  crumbs?: Crumb[]; // shown inside a full-screen opening
 }
-const { page, ui, crumbs = [] } = Astro.props;
+const { page, ui } = Astro.props;
 const { blocks, slug, section, draft } = page.data;
 ---
 
@@ -32,7 +31,7 @@ const { blocks, slug, section, draft } = page.data;
     const id = block.anchor ? `${block.anchor}-titolo` : `b${i}-titolo`;
     switch (block.type) {
       case 'hero':
-        return <Hero block={block} draft={draft} ui={ui} crumbs={crumbs} />;
+        return <Hero block={block} draft={draft} ui={ui} />;
       case 'text':
         return <Text block={block} id={id} />;
       case 'text-image':

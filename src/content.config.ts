@@ -96,10 +96,6 @@ const blocks = ({ image }: SchemaContext) => {
       ),
       panelKicker: z.string().optional(),
       panel: z.array(labelValue).optional(),
-      // "cover": the photo fills the screen, with the title, the intro, the
-      // buttons (actions) and the panel as figures on it. Default: text, then photo.
-      layout: z.enum(['standard', 'cover']).optional(),
-      actions: z.array(z.object({ label: z.string(), link: z.string() })).optional(),
     }),
     z.object({
       type: z.literal('text'),

@@ -38,7 +38,6 @@ interface Props {
   jsonLd?: object[];
   altimeter?: { min: number; max: number; start: number } | null;
   overlay?: boolean;
-  cover?: boolean; // the page opens with a full-screen photo (the hero shows the breadcrumb)
   preload?: { srcset: string; sizes: string; type: string };
   ogType?: 'website' | 'article';
 }
@@ -54,7 +53,6 @@ const {
   jsonLd = [],
   altimeter = null,
   overlay = false,
-  cover = false,
   preload,
   ogType = 'website',
 } = Astro.props;
@@ -123,7 +121,7 @@ const alternates = site.languages.length > 1 ? site.languages.map((l) => ({ lang
 
     {allJsonLd.map((d) => <script type="application/ld+json" set:html={JSON.stringify(d)} />)}
   </head>
-  <body class:list={{ 'has-altimeter': Boolean(altimeter), 'has-overlay-header': overlay, 'has-cover': cover, 'has-ridges': ridges }}>
+  <body class:list={{ 'has-altimeter': Boolean(altimeter), 'has-overlay-header': overlay, 'has-ridges': ridges }}>
     <a class="skip-link" href="#main">{ui.skipLink}</a>
     <Washes />
     {ridges && <Ridges fixed part="back" />}
@@ -136,7 +134,7 @@ const alternates = site.languages.length > 1 ? site.languages.map((l) => ({ lang
       whatsapp={site.whatsapp}
       ui={ui}
     />
-    {!cover && <Breadcrumb crumbs={crumbs} label={ui.breadcrumbLabel} />}
+    <Breadcrumb crumbs={crumbs} label={ui.breadcrumbLabel} />
     <main id="main" tabindex="-1">
       <slot />
     </main>

@@ -52,12 +52,10 @@ if (props.kind === 'page') {
     altimeter: altimeterFor(page),
     preload:
       hero.type === 'hero' && hero.image
-        ? await preloadFor(hero.image, hero.layout === 'cover' ? '100vw' : '(min-width: 1320px) 1220px, 100vw')
+        ? await preloadFor(hero.image, '(min-width: 1320px) 1220px, 100vw')
         : undefined,
   };
 }
-const opening = view?.page.data.blocks[0];
-const cover = opening?.type === 'hero' && opening.layout === 'cover';
 const target = props.kind === 'redirect' ? new URL(props.to, site.url).href : '';
 ---
 
@@ -73,11 +71,10 @@ const target = props.kind === 'redirect' ? new URL(props.to, site.url).href : ''
       crumbs={view.crumbs}
       jsonLd={view.jsonLd}
       altimeter={view.altimeter}
-      overlay={view.page.data.headerOverlay || cover}
-      cover={cover}
+      overlay={view.page.data.headerOverlay}
       preload={view.preload}
     >
-      <BlockRenderer page={view.page} ui={ui} crumbs={view.crumbs} />
+      <BlockRenderer page={view.page} ui={ui} />
     </BaseLayout>
   ) : (
     <html lang={site.languages[0]}>

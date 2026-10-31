@@ -19,7 +19,7 @@ type Data = Record<string, any>;
 
 /* ---------- what each section shows, in the site's order ---------- */
 
-type Kind = 'line' | 'para' | 'md' | 'photo' | 'video' | 'bool' | 'side' | 'style' | 'layout' | 'section' | 'number' | 'pairs' | 'items' | 'chips' | 'url';
+type Kind = 'line' | 'para' | 'md' | 'photo' | 'video' | 'bool' | 'side' | 'style' | 'section' | 'number' | 'pairs' | 'items' | 'chips' | 'url';
 interface Spec {
   key: string;
   kind: Kind;
@@ -46,7 +46,6 @@ const BLOCKS: Record<string, { name: string; fields: Spec[] }> = {
   hero: {
     name: 'Apertura',
     fields: [
-      { key: 'layout', kind: 'layout', label: "Aspetto dell'apertura" },
       { key: 'kicker', kind: 'line', label: 'Etichetta sopra il titolo' },
       { key: 'title', kind: 'line', label: 'Titolo principale', req: true },
       { key: 'intro', kind: 'md', label: 'Introduzione' },
@@ -54,18 +53,8 @@ const BLOCKS: Record<string, { name: string; fields: Spec[] }> = {
       { key: 'footnote', kind: 'line', label: 'Nota in fondo' },
       { key: 'video', kind: 'video', label: "Sfondo dell'apertura" },
       { key: 'image', kind: 'photo', label: 'Foto', alt: 'imageAlt', focus: 'focus' },
-      {
-        key: 'actions',
-        kind: 'items',
-        label: 'Pulsanti (solo con la foto a tutto schermo)',
-        blank: { label: '', link: '' },
-        item: [
-          { key: 'label', kind: 'line', label: 'Scritta', req: true },
-          { key: 'link', kind: 'url', label: 'Collegamento', req: true, hint: 'Una pagina del sito, es. /contatti/' },
-        ],
-      },
       { key: 'panelKicker', kind: 'line', label: 'Titolo del riquadro' },
-      PAIRS('panel', 'Riquadro (con la foto a tutto schermo: i numeri accanto al testo)'),
+      PAIRS('panel', 'Riquadro'),
     ],
   },
   text: {
@@ -355,15 +344,6 @@ function FieldEdit({ spec, obj, path, set }: { spec: Spec; obj: Data; path: Path
             <option value="left">A sinistra del testo</option>
             <option value="below">Sotto il testo</option>
             <option value="overlay">Grande, con il testo sopra</option>
-          </select>
-        </Labelled>
-      );
-    case 'layout':
-      return (
-        <Labelled label={spec.label}>
-          <select aria-label={spec.label} value={v ?? 'standard'} onChange={(e) => set(here, (e.target as HTMLSelectElement).value === 'cover' ? 'cover' : undefined)}>
-            <option value="standard">Testo, poi la foto</option>
-            <option value="cover">Foto a tutto schermo, con il testo sopra</option>
           </select>
         </Labelled>
       );
