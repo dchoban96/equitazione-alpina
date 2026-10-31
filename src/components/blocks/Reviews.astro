@@ -33,7 +33,11 @@ if (b.ids && reviews.length !== b.ids.length) throw new Error(`reviews block: un
           <figure class="review">
             {r.stars && (
               <p class="review__stars">
-                <span aria-hidden="true">{'★'.repeat(r.stars) + '☆'.repeat(5 - r.stars)}</span>
+                {[1, 2, 3, 4, 5].map((n) => (
+                  <svg class:list={{ 'is-empty': n > r.stars! }} viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M8 1.6l1.9 4 4.3.5-3.2 3 .9 4.3L8 11.2l-3.9 2.2.9-4.3-3.2-3 4.3-.5z" />
+                  </svg>
+                ))}
                 <span class="visually-hidden">
                   {r.stars} {ui.reviewsStars}
                 </span>

@@ -61,7 +61,7 @@ fonts:
 text:
   # Phone sizes as in the theme; on desktop the type grows further (Oct 2026:
   # the theme capped body text at 18px, which read small on large screens).
-  text-xs: "clamp(0.625rem, 0.5rem + 0.3vw, 0.8125rem)"     # 10-13px mono labels
+  text-xs: "clamp(0.8125rem, 0.76rem + 0.12vw, 0.875rem)"   # 13-14px mono labels (nothing read goes under 13px)
   text-sm: "clamp(0.8125rem, 0.65rem + 0.4vw, 1.0625rem)"   # 13-17px notes, form labels, tiles
   text-base: "clamp(1rem, 0.8rem + 0.55vw, 1.3125rem)"      # 16-21px body
   text-lg: "clamp(1.0625rem, 0.8rem + 0.75vw, 1.5rem)"      # 17-24px hero intro, lead
@@ -106,5 +106,5 @@ shape:
 motion:
   duration-fast: "250ms"             # hover transitions (.25s-.3s)
   duration-base: "500ms"             # hero entrance steps
-  duration-slow: "900ms"             # scroll reveal (.ea-rivela .9s)
+  duration-slow: "600ms"             # scroll reveal (seen on every section: kept short)
   easing-standard: "cubic-bezier(0.2, 0.7, 0.3, 1)"  # .ea-rivela

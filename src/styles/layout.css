@@ -66,7 +66,7 @@
   pointer-events: none;
   /* no view-transition-name here: it would make the header a backdrop root,
      and the glass would no longer blur the page behind it */
-  transition: transform var(--duration-base) var(--easing-standard);
+  transition: transform 240ms var(--easing-standard); /* shown or hidden at every change of scroll direction */
 }
 .site-header > * {
   pointer-events: auto;
@@ -287,7 +287,6 @@
     box-shadow var(--duration-fast);
 }
 .header-call:hover {
-  transform: translateY(-1px);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.45),
     var(--shadow-sm);
@@ -742,7 +741,7 @@
   display: none;
 }
 .altimeter__reading {
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   letter-spacing: 0.12em;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;

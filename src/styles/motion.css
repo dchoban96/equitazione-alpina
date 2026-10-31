@@ -67,6 +67,39 @@
   animation-duration: 0s;
 }
 
+/* ---------- pointer feedback ----------
+   Lifts and zooms on hover only with a mouse: on a touch screen a tap would
+   leave them stuck. A press shrinks buttons a little, at once (Emil Kowalski's
+   rules: feedback within ~120ms, never a lift on touch). */
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  .header-call:hover {
+    transform: translateY(-1px);
+  }
+  /* linked photos lean in slightly */
+  a:hover .frame img,
+  .card:has(a:hover) .frame img {
+    transform: scale(1.045);
+  }
+  .tile:has(a:hover) {
+    transform: translateY(-4px);
+  }
+  .card:has(a:hover) {
+    transform: translateY(-6px);
+  }
+  .mtile__link:hover svg {
+    transform: translate(2px, -2px);
+  }
+}
+.btn:active,
+.header-call:active,
+.nav-drawer > summary:active {
+  transform: scale(0.97);
+  transition-duration: 120ms;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .js .reveal > .blk__in > * {
     opacity: 1 !important;
