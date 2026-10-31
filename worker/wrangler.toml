@@ -6,6 +6,7 @@ name = "pannello-equitazione-alpina"
 main = "pannello.js"
 compatibility_date = "2025-09-01"
 workers_dev = true
+preview_urls = false # no extra public address per version
 keep_vars = true
 
 [[kv_namespaces]]

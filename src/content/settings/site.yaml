@@ -58,9 +58,10 @@ footer:
   - cookie
 
 contactForm:
-  # URL of the form service that receives the messages. Not chosen yet:
-  # while empty, the form is shown but sending is disabled.
-  action: ""
+  # Where the form sends: the panel's Worker (worker/pannello.js, POST /contact),
+  # which emails each message to info@equitazione-alpina.it through Resend.
+  # Empty: the form is shown but sending is disabled.
+  action: "https://pannello-equitazione-alpina.dchoban96.workers.dev/contact"
   reasons:
     - Passeggiata a cavallo
     - Primo approccio al cavallo
