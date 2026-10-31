@@ -12,6 +12,7 @@
 //   ALLOWED_ORIGINS  text    where the panel is served, comma separated
 //   PANEL_URL        text    the panel address the email links open
 //   MAIL_FROM        text    sender, e.g. "Pannello <pannello@equitazione-alpina.it>"
+//   CONTACT_TO       text    optional: where contact form messages go (default info@equitazione-alpina.it)
 //   REPO, BRANCH     text    dchoban96/equitazione-alpina, main
 // Binding: PANNELLO_KV (a KV namespace) for one-time sign-in codes and rate limits.
 
@@ -40,6 +41,7 @@ export default {
       const route = `${request.method} ${url.pathname}`;
       let res;
       if (route === 'GET /health') res = await health(env);
+      else if (route === 'POST /contact') res = await contact(request, env);
       else if (route === 'POST /auth/request') res = await requestLink(request, env);
       else if (route === 'POST /auth/verify') res = await verifyLink(request, env);
       else {
@@ -132,25 +134,10 @@ const allowList = (env) =>
 
 const allowed = (email, env) => allowList(env).includes(email);
 
-// An address with most letters hidden; characters outside plain ASCII are spelled out as U+XXXX,
-// so a look-alike letter typed on another keyboard layout shows up.
-function mask(raw) {
-  const show = (ch) => (/[!-~]/.test(ch) ? ch : `[U+${ch.codePointAt(0).toString(16).toUpperCase().padStart(4, '0')}]`);
-  const [local = '', domain = ''] = raw.split('@');
-  const chars = [...local];
-  const hidden = chars.map((ch, i) => (i === 0 || i === chars.length - 1 || !/[!-~]/.test(ch) ? show(ch) : '*')).join('');
-  return `${hidden}@${[...domain].map(show).join('')}`;
-}
-
-// Which settings the Worker can see, for setting it up: yes/no and counts only, never a secret.
+// Which settings the Worker can see, for setting it up: yes/no and counts only,
+// never a secret, an address or how often someone signed in.
 async function health(env) {
-  const entries = String(env.ALLOWED_EMAILS || '').split(',').map((e) => e.trim()).filter(Boolean);
-  const links = await Promise.all(
-    allowList(env).map(async (e) => Number((await env.PANNELLO_KV?.get(`rl:${e}`)) || 0)),
-  );
   return json({
-    allowedMasked: entries.map(mask),
-    linksThisHour: links,
     kv: Boolean(env.PANNELLO_KV),
     githubToken: Boolean(env.GITHUB_TOKEN),
     resendKey: Boolean(env.RESEND_API_KEY),
@@ -162,6 +149,87 @@ async function health(env) {
     repo: Boolean(env.REPO && env.BRANCH),
   });
 }
+
+/* ---------- contact form ---------- */
+
+// The site's contact form. Each message is emailed to CONTACT_TO (default
+// the address shown on the site) through Resend; "Reply" answers the sender.
+// Spam: a hidden field people never fill, submissions only from the site,
+// and at most 5 messages an hour from one connection.
+const CONTACT_PER_HOUR = 5;
+
+async function contact(request, env) {
+  const wantsJson = (request.headers.get('Accept') || '').includes('application/json');
+  const answer = (ok, error = '') =>
+    wantsJson
+      ? json(ok ? { ok: true } : { error }, ok ? 200 : 400)
+      : new Response(
+          `<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Equitazione Alpina</title>` +
+            `<body style="font:18px/1.5 system-ui;max-width:32rem;margin:15vh auto;padding:0 1rem;color:#22301f;background:#f7f2e8">` +
+            `<p>${ok ? 'Grazie! Il messaggio è arrivato: ti rispondiamo entro 48 ore.' : esc(error)}</p>` +
+            `<p><a href="https://www.equitazione-alpina.it/contatti/" style="color:#4a6b52">Torna al sito</a></p>`,
+          { status: ok ? 200 : 400, headers: { 'Content-Type': 'text/html; charset=utf-8' } },
+        );
+
+  const origin = request.headers.get('Origin') || '';
+  const origins = (env.ALLOWED_ORIGINS || '').split(',').map((o) => o.trim());
+  if (origin && !origins.includes(origin)) return answer(false, 'Richiesta non valida.');
+
+  let form;
+  try {
+    form = await request.formData();
+  } catch {
+    return answer(false, 'Richiesta non valida.');
+  }
+  const field = (k, max) => String(form.get(k) || '').trim().slice(0, max);
+  if (field('_gotcha', 200)) return answer(true); // a bot filled the hidden field: pretend it worked
+  const nome = field('nome', 120);
+  const email = field('email', 200);
+  const telefono = field('telefono', 40);
+  const richiesta = field('richiesta', 120);
+  const messaggio = field('messaggio', 5000);
+  if (!nome || !messaggio) return answer(false, 'Scrivi il tuo nome e il messaggio.');
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return answer(false, "L'indirizzo email non sembra valido.");
+  if (field('consenso_privacy', 10) !== 'si') return answer(false, "Serve il consenso all'informativa sulla privacy.");
+
+  const ip = request.headers.get('CF-Connecting-IP') || 'local';
+  const key = `contact:${await sha256(ip)}`;
+  const count = Number((await env.PANNELLO_KV.get(key)) || 0);
+  if (count >= CONTACT_PER_HOUR) return answer(false, 'Hai già inviato diversi messaggi: riprova più tardi o chiamaci.');
+  await env.PANNELLO_KV.put(key, String(count + 1), { expirationTtl: 3600 });
+
+  const sender = (String(env.MAIL_FROM || '').match(/<([^>]+)>/) || [])[1] || 'pannello@equitazione-alpina.it';
+  const rows = [
+    ['Nome', nome],
+    ['Email', email],
+    ['Telefono', telefono || '—'],
+    ['Richiesta', richiesta || '—'],
+  ];
+  const sent = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      from: `Sito Equitazione Alpina <${sender}>`,
+      to: [env.CONTACT_TO || 'info@equitazione-alpina.it'],
+      reply_to: email,
+      subject: `Richiesta dal sito: ${richiesta || 'messaggio'} · ${nome}`,
+      text: `${rows.map(([k, v]) => `${k}: ${v}`).join('\n')}\n\n${messaggio}\n\n— Inviato dal modulo di contatto di www.equitazione-alpina.it. Rispondi a questa email per scrivere a ${nome}.`,
+      html:
+        `<table style="font:15px/1.5 system-ui;border-collapse:collapse">${rows
+          .map(([k, v]) => `<tr><td style="padding:2px 12px 2px 0;color:#666">${k}</td><td>${esc(v)}</td></tr>`)
+          .join('')}</table>` +
+        `<p style="font:15px/1.6 system-ui;white-space:pre-wrap">${esc(messaggio)}</p>` +
+        `<p style="font:13px system-ui;color:#888">Inviato dal modulo di contatto di www.equitazione-alpina.it. Rispondi a questa email per scrivere a ${esc(nome)}.</p>`,
+    }),
+  });
+  if (!sent.ok) {
+    console.error('contact', sent.status, await sent.text());
+    return answer(false, 'Non è stato possibile inviare il messaggio. Riprova tra poco o chiamaci.');
+  }
+  return answer(true);
+}
+
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 
 /* ---------- content ---------- */
 
@@ -215,8 +283,10 @@ async function publish(request, env, user) {
   for (const f of files) {
     if (!writable(f?.path) || typeof f.text !== 'string' || f.text.length > 500_000)
       return json({ error: `File non modificabile: ${String(f?.path)}` }, 400);
+    if (f.path.endsWith('.mdx') && !plainMdx(f.text))
+      return json({ error: `Nel testo dell'articolo non si possono usare { } < né righe import / export: ${f.path}` }, 400);
   }
-  for (const b of blobs) if (!isPhoto(b?.path) || !sha(b.sha)) return json({ error: `Foto non valida: ${String(b?.path)}` }, 400);
+  for (const b of blobs) if (!(isPhoto(b?.path) || isVideo(b?.path)) || !sha(b.sha)) return json({ error: `File non valido: ${String(b?.path)}` }, 400);
   for (const p of deletions) if (!isPhoto(p)) return json({ error: `File non eliminabile: ${String(p)}` }, 400);
 
   const repo = `/repos/${env.REPO}/git`;
@@ -249,7 +319,7 @@ async function publish(request, env, user) {
 async function uploadBlob(request, env) {
   const size = Number(request.headers.get('Content-Length') || 0);
   if (!size) return json({ error: 'Foto mancante.' }, 400);
-  if (size > 25_000_000) return json({ error: 'Foto troppo grande.' }, 413);
+  if (size > 30_000_000) return json({ error: 'File troppo grande.' }, 413); // a 20 MB video is about 27 MB in base64
   const res = await fetch(`https://api.github.com/repos/${env.REPO}/git/blobs`, {
     method: 'POST',
     headers: {
@@ -265,6 +335,9 @@ async function uploadBlob(request, env) {
   return json({ sha });
 }
 
+// opening videos, served as they are from the site's public folder
+const isVideo = (path) => typeof path === 'string' && /^public\/video\/[a-z0-9][a-z0-9-]*\.(mp4|webm)$/.test(path);
+
 const isPhoto = (path) =>
   typeof path === 'string' && path.startsWith(`${PHOTO_DIR}/`) && /^[a-z0-9][a-z0-9-]*\.(jpe?g|png|webp)$/.test(path.slice(PHOTO_DIR.length + 1));
 
@@ -276,9 +349,17 @@ function writable(path) {
   return Boolean(dir) && /^[a-z0-9][a-z0-9-]*\.(ya?ml|mdx?)$/.test(path.slice(dir.length + 1));
 }
 
+// MDX runs the code it contains when the site is built (import / export lines,
+// {expressions}, components), so an article from the panel must be plain
+// Markdown after its front matter: the panel checks the same in the browser.
+function plainMdx(text) {
+  const body = text.replace(/^---\r?\n[\s\S]*?\r?\n---(?:\r?\n|$)/, '');
+  return !/[{}<]/.test(body) && !/^\s*(import|export)\b/m.test(text);
+}
+
 async function publishStatus(env) {
   // Needs "Actions: Read-only" on the token; without it the panel just shows no status.
-  const res = await githubRaw(env, 'GET', `/repos/${env.REPO}/actions/runs?branch=${env.BRANCH}&per_page=1`);
+  const res = await githubRaw(env, 'GET', `/repos/${env.REPO}/actions/workflows/deploy.yml/runs?branch=${env.BRANCH}&per_page=1`);
   if (!res.ok) return json({ status: 'unknown' });
   const run = (await res.json()).workflow_runs?.[0];
   if (!run) return json({ status: 'unknown' });

@@ -1,0 +1,13 @@
+# Deploy settings for the panel's API (worker/pannello.js), used by the
+# GitHub workflow .github/workflows/worker.yml. Plain-text settings and
+# secrets stay as set in the Cloudflare dashboard (keep_vars; secrets are
+# never touched by a deploy).
+name = "pannello-equitazione-alpina"
+main = "pannello.js"
+compatibility_date = "2025-09-01"
+workers_dev = true
+keep_vars = true
+
+[[kv_namespaces]]
+binding = "PANNELLO_KV"
+id = "688d8cb01bbc487bac5526d143d1f97b"

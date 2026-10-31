@@ -1,0 +1,24 @@
+# Deploys the panel's API (worker/pannello.js) to Cloudflare Workers when it
+# changes, so its code never has to be pasted into the dashboard by hand.
+# Uses the CLOUDFLARE_API_TOKEN secret, which needs
+# Account > Workers Scripts > Edit (besides Cloudflare Pages > Edit).
+name: Worker
+
+on:
+  push:
+    branches: [main]
+    paths: [worker/pannello.js, worker/wrangler.toml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npx --yes wrangler@4 deploy --config worker/wrangler.toml
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: bf8670cc44ccaf2e7fb3ea3a3b90ea64
