@@ -16,16 +16,46 @@ seo:
   image: "@assets/foto/condivisione-img-0356.jpg"
 blocks:
   - type: "hero"
+    layout: "mosaic"
     kicker: "Equitazione"
     title: "Il maneggio di Albosaggia, a dieci minuti da Sondrio"
     intro: |
-      Equitazione Alpina è il nome del maneggio di Simone De Capitani ad Albosaggia, a dieci minuti da Sondrio. Qui ci troviamo alle porte del Parco delle Orobie Valtellinesi dove i cavalli vivono all’aperto e le escursioni portano sui sentieri di casa, in ogni stagione. Da fine giugno a inizio settembre, l’attività si sposta in Valmalenco, nei dintorni di San Giuseppe.
-
-      Simone lavora con i cavalli da oltre trent’anni ed è accompagnatore di turismo equestre SEF Italia–C.O.N.I.
+      Cavalli che vivono all’aperto, alle porte del Parco delle Orobie. Si esce tutto l’anno; d’estate si sale in Valmalenco.
+    actions:
+      - label: "Prenota una passeggiata"
+        link: "/contatti/"
+      - label: "Le attività"
+        link: "#attivita"
+    panel:
+      - label: "Albosaggia, tutto l’anno"
+        value: "500 m"
+      - label: "Valmalenco, d’estate"
+        value: "1950 m"
+    tiles:
+      - image: "@assets/foto/sellare-il-cavallo.jpg"
+        alt: "Si prepara il cavallo per l’uscita"
+      - quote: true
+        text: "Simone lavora con i cavalli da oltre trent’anni ed è accompagnatore di turismo equestre SEF Italia–C.O.N.I."
+      - image: "@assets/foto/lago-palu-valmalenco.jpg"
+        alt: "Il lago Palù in Valmalenco d’estate"
+        label: "Valmalenco, d’estate"
+      - title: "Passeggiate in Valmalenco"
+        text: "Da fine giugno a inizio settembre, nei dintorni di San Giuseppe."
+        link: "/equitazione/valmalenco/"
+        label: "Scopri"
     altitude: 500
     image: "@assets/foto/foto-img-3906.jpg"
     imageAlt: "Tre cavalli che mangiano il fieno"
+    focus: "30% 70%"
+  - type: "text"
+    kicker: "Il maneggio"
+    heading: "Il maneggio di Simone De Capitani"
+    body: |
+      Equitazione Alpina è il nome del maneggio di Simone De Capitani ad Albosaggia, a dieci minuti da Sondrio. Qui ci troviamo alle porte del Parco delle Orobie Valtellinesi dove i cavalli vivono all’aperto e le escursioni portano sui sentieri di casa, in ogni stagione. Da fine giugno a inizio settembre, l’attività si sposta in Valmalenco, nei dintorni di San Giuseppe.
+
+      Simone lavora con i cavalli da oltre trent’anni ed è accompagnatore di turismo equestre SEF Italia–C.O.N.I.
   - type: "cards"
+    anchor: "attivita"
     kicker: "Le attività"
     heading: "Cosa si può fare"
     style: "tiles"

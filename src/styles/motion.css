@@ -45,6 +45,9 @@
 .js .hero-seq > :is(.hero__intro, .hero__closing, .hero__foot) {
   animation: rise-in var(--duration-base) var(--easing-standard) 200ms both;
 }
+.js .hero-seq > .hero__actions {
+  animation: rise-in var(--duration-base) var(--easing-standard) 300ms both;
+}
 
 /* ---------- page transition: cross-fade between pages ----------
    Native cross-document view transitions (as the Shopify theme does). The

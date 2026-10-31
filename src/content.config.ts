@@ -96,6 +96,26 @@ const blocks = ({ image }: SchemaContext) => {
       ),
       panelKicker: z.string().optional(),
       panel: z.array(labelValue).optional(),
+      // "intro": the photo grows from a small tilted print into a large panel,
+      // the title on it. "mosaic": the photo panel, then a row of tiles.
+      layout: z.enum(['standard', 'intro', 'mosaic']).optional(),
+      // buttons under the intro, e.g. "Prenota una passeggiata" -> /contatti/
+      actions: z.array(z.object({ label: z.string(), link: z.string() })).optional(),
+      // "mosaic" only: a photo (image), a quote (quote: true, text) or a card (title, text, link)
+      tiles: z
+        .array(
+          z.object({
+            image: opt(img),
+            alt: z.string().optional(),
+            focus,
+            quote: z.boolean().optional(),
+            title: z.string().optional(),
+            text: z.string().optional(),
+            link: z.string().optional(),
+            label: z.string().optional(),
+          }),
+        )
+        .optional(),
     }),
     z.object({
       type: z.literal('text'),

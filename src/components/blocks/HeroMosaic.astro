@@ -1,0 +1,84 @@
+---
+/* Opening, layout "mosaic": the photo panel with the title on it, and under
+   it, still on the first screen, a row of tiles: photos, a quote, a card with
+   a link. Phones: the panel, then the tiles two by two. */
+import type { Block } from '../../lib/content';
+import { url } from '../../lib/content';
+import Img from '../Img.astro';
+import { txt, md } from '../../lib/text';
+
+interface Props {
+  block: Extract<Block, { type: 'hero' }>;
+  draft: boolean;
+  ui: Record<string, string>;
+}
+const { block: b, draft, ui } = Astro.props;
+const intro = await md(b.intro);
+const tiles = b.tiles ?? [];
+---
+
+<section class="blk blk--hero blk--hero--mosaic" id={b.anchor} data-altitude={b.altitude}>
+  <div class="blk__in">
+    <div class="hero-mosaic__panel">
+      <Img src={b.image!} alt={b.imageAlt ?? ''} focus={b.focus} sizes="(min-width: 1320px) 1220px, 100vw" priority />
+      <div class="hero-mosaic__text hero-seq">
+        {b.kicker && <p class="kicker" set:html={txt(b.kicker)} />}
+        <h1>
+          <Fragment set:html={txt(b.title)} />
+          {draft && <span class="draft-badge">{ui.draftBadge}</span>}
+        </h1>
+        {intro && <div class="hero__intro prose" set:html={intro} />}
+        {
+          b.actions?.length ? (
+            <p class="hero__actions">
+              {b.actions.map((a, i) => (
+                <a class:list={['btn', { 'btn--ghost': i > 0 }]} href={url(a.link)} set:html={txt(a.label)} />
+              ))}
+            </p>
+          ) : null
+        }
+      </div>
+      {
+        b.panel?.length ? (
+          <dl class="hero-mosaic__figures">
+            {b.panel.map((r) => (
+              <div>
+                <dt set:html={txt(r.label)} />
+                <dd set:html={txt(r.value)} />
+              </div>
+            ))}
+          </dl>
+        ) : null
+      }
+    </div>
+    {
+      tiles.length > 0 && (
+        <ul class="hero-mosaic__tiles" role="list">
+          {tiles.map((t) =>
+            t.image ? (
+              <li class="mtile mtile--photo">
+                <Img src={t.image} alt={t.alt ?? ''} focus={t.focus} sizes="(min-width: 1024px) 360px, 50vw" />
+                {t.label && <span class="mtile__label" set:html={txt(t.label)} />}
+              </li>
+            ) : t.quote ? (
+              <li class="mtile mtile--quote">
+                <span class="mtile__mark" aria-hidden="true">“</span>
+                {t.text && <p set:html={txt(t.text)} />}
+              </li>
+            ) : (
+              <li class="mtile mtile--card">
+                {t.title && <p class="mtile__title" set:html={txt(t.title)} />}
+                {t.text && <p class="mtile__text" set:html={txt(t.text)} />}
+                {t.link && (
+                  <a class="mtile__link" href={url(t.link)}>
+                    <Fragment set:html={txt(t.label ?? '')} /> <span aria-hidden="true">↗</span>
+                  </a>
+                )}
+              </li>
+            ),
+          )}
+        </ul>
+      )
+    }
+  </div>
+</section>

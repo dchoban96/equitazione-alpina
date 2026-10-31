@@ -173,6 +173,315 @@
   opacity: 1;
 }
 
+/* buttons under an opening's intro: the first one filled, the others outlined */
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: var(--space-6) 0 0;
+}
+.blk--hero :is(.hero-intro, .hero-mosaic__panel) .btn--ghost {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--color-on-overlay);
+}
+.blk--hero :is(.hero-intro, .hero-mosaic__panel) .btn--ghost:hover {
+  border-color: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.22);
+  color: var(--color-on-overlay);
+}
+
+/* ---------- hero, layout "intro": a print that opens into the panel ---------- */
+.blk--hero--intro,
+.blk--hero--mosaic {
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-7);
+}
+.hero-intro {
+  position: relative;
+  height: clamp(440px, calc(100svh - var(--layout-header) - 130px), 820px);
+}
+.hero-intro__photo {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+.hero-intro__photo :is(picture, img),
+.hero-mosaic__panel > picture,
+.hero-mosaic__panel > picture img,
+.mtile--photo :is(picture, img) {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--focus, 50% 50%);
+}
+/* a veil at the bottom, under the title */
+.hero-intro__photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18, 26, 16, 0) 40%, rgba(18, 26, 16, 0.66) 100%);
+}
+.hero-intro__text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(24px, 4vw, 56px);
+  text-align: center;
+  color: var(--color-on-overlay);
+}
+.hero-intro__text .kicker {
+  color: rgba(255, 255, 255, 0.85);
+}
+.blk--hero--intro h1 {
+  max-width: 18ch;
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 1rem + 5vw, 5.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-on-overlay);
+  text-wrap: balance;
+}
+.hero-intro__text .hero__intro {
+  max-width: 52ch;
+  margin-top: var(--space-4);
+  font-size: var(--text-lg);
+  color: rgba(255, 255, 255, 0.9);
+}
+.hero-intro__text .hero__actions {
+  justify-content: center;
+}
+@keyframes intro-open {
+  0%,
+  18% {
+    clip-path: polygon(40% 34%, 61% 31%, 60% 63%, 39% 66%);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+@keyframes intro-zoom {
+  0%,
+  18% {
+    transform: scale(1.3);
+  }
+}
+@keyframes intro-fade {
+  from {
+    opacity: 0;
+  }
+}
+.js .hero-intro__photo {
+  animation: intro-open 1.7s cubic-bezier(0.65, 0, 0.25, 1) both;
+}
+.js .hero-intro__photo img {
+  animation: intro-zoom 1.7s cubic-bezier(0.65, 0, 0.25, 1) both;
+}
+.js .hero-intro__photo::after {
+  animation: intro-fade 0.6s ease 1.2s both;
+}
+.js .hero-intro__text > * {
+  animation: rise-in var(--duration-slow) var(--easing-standard) 1.35s both;
+}
+.js .hero-intro__text > h1 {
+  animation-delay: 1.45s;
+}
+.js .hero-intro__text > :is(.hero__intro, .hero__actions) {
+  animation-delay: 1.6s;
+}
+
+/* ---------- hero, layout "mosaic": the photo panel, then a row of tiles ---------- */
+.hero-mosaic__panel {
+  position: relative;
+  display: flex;
+  height: clamp(380px, 50svh, 600px);
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  color: var(--color-on-overlay);
+}
+.hero-mosaic__panel > picture {
+  position: absolute;
+  inset: 0;
+}
+/* the left side darker, under the title */
+.hero-mosaic__panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(18, 26, 16, 0.66) 0%, rgba(18, 26, 16, 0.28) 45%, rgba(18, 26, 16, 0) 72%);
+}
+.hero-mosaic__text {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  padding: clamp(24px, 3.5vw, 48px);
+}
+.hero-mosaic__text .kicker {
+  color: rgba(255, 255, 255, 0.85);
+}
+.blk--hero--mosaic h1 {
+  max-width: 26ch;
+  margin: 0;
+  font-weight: 300;
+  font-size: clamp(2.25rem, 1rem + 2.8vw, 3.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  color: var(--color-on-overlay);
+}
+.hero-mosaic__text .hero__intro {
+  max-width: 40ch;
+  margin-top: var(--space-4);
+  font-size: var(--text-lg);
+  color: rgba(255, 255, 255, 0.92);
+}
+.hero-mosaic__figures {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  gap: var(--space-6);
+  margin: 0;
+  padding: clamp(24px, 3vw, 40px);
+  text-shadow: 0 1px 12px rgba(18, 26, 16, 0.4);
+}
+.hero-mosaic__figures > div {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.hero-mosaic__figures dt {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.88);
+}
+.hero-mosaic__figures dd {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 300;
+  font-size: clamp(1.75rem, 1.2rem + 1vw, 2.25rem);
+  letter-spacing: -0.02em;
+}
+.hero-mosaic__tiles {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1.5fr) minmax(0, 1.3fr);
+  gap: 12px;
+  height: clamp(180px, 24svh, 260px);
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.mtile {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+.mtile__label {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 252, 246, 0.85);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  color: var(--color-heading);
+}
+.mtile--quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(18px, 2vw, 28px);
+  background: var(--color-heading);
+  color: #f5efe3;
+}
+.mtile__mark {
+  font-family: var(--font-body);
+  font-size: 3.5rem;
+  line-height: 0.8;
+  color: var(--color-wash-honey);
+}
+.mtile--quote p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 0.9rem + 0.3vw, 1.125rem);
+  line-height: 1.45;
+}
+.mtile--card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: clamp(18px, 2vw, 28px);
+  border: 1px solid var(--color-border-soft);
+  background: var(--glass-strong);
+}
+.mtile__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 300;
+  font-size: clamp(1.375rem, 1.1rem + 0.6vw, 1.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-heading);
+}
+.mtile__text {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+}
+.mtile__link {
+  margin-top: auto;
+  font-family: var(--font-ui);
+  font-weight: 500;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.mtile__link:hover {
+  text-decoration: underline;
+}
+.js .hero-mosaic__tiles > .mtile {
+  animation: rise-in var(--duration-slow) var(--easing-standard) both;
+}
+.js .hero-mosaic__tiles > .mtile:nth-child(1) { animation-delay: 250ms; }
+.js .hero-mosaic__tiles > .mtile:nth-child(2) { animation-delay: 330ms; }
+.js .hero-mosaic__tiles > .mtile:nth-child(3) { animation-delay: 410ms; }
+.js .hero-mosaic__tiles > .mtile:nth-child(n + 4) { animation-delay: 490ms; }
+@media (max-width: 820px) {
+  .hero-mosaic__panel {
+    height: auto;
+    min-height: 70svh;
+    align-items: flex-end;
+  }
+  .hero-mosaic__panel::after {
+    background: linear-gradient(180deg, rgba(18, 26, 16, 0) 25%, rgba(18, 26, 16, 0.7) 100%);
+  }
+  .hero-mosaic__figures {
+    display: none;
+  }
+  .hero-mosaic__tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 170px;
+    height: auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .hero-intro__photo,
+  .js .hero-intro__photo img,
+  .js .hero-intro__photo::after,
+  .js .hero-intro__text > *,
+  .js .hero-mosaic__tiles > .mtile {
+    animation: none !important;
+  }
+}
+
 /* ---------- text: heading on the left (stays in view), text on the right ---------- */
 @media (min-width: 1024px) {
   .blk--text > .blk__in:has(> header) {

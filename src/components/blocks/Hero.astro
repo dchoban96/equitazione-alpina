@@ -4,6 +4,8 @@
    the layout on every page (site setting `ridges`). */
 import type { Block } from '../../lib/content';
 import Img from '../Img.astro';
+import HeroIntro from './HeroIntro.astro';
+import HeroMosaic from './HeroMosaic.astro';
 import { txt, md } from '../../lib/text';
 
 interface Props {
@@ -15,7 +17,12 @@ const { block: b, draft, ui } = Astro.props;
 const intro = await md(b.intro);
 ---
 
-{/* A hero with the readings panel (the home page) opens with the photo; the H1 stays first in the markup. */}
+{
+  b.image && b.layout === 'intro' ? (
+    <HeroIntro block={b} draft={draft} ui={ui} />
+  ) : b.image && b.layout === 'mosaic' ? (
+    <HeroMosaic block={b} draft={draft} ui={ui} />
+  ) : (
 <section class:list={['blk blk--hero', { 'blk--hero--photo-first': b.image && b.panel }]} id={b.anchor} data-altitude={b.altitude}>
   <div class="blk__in">
     <div class="hero-seq">
@@ -64,6 +71,8 @@ const intro = await md(b.intro);
     }
   </div>
 </section>
+  )
+}
 
 <script>
   /* The hero clip loads only when motion is welcome and data is not being
