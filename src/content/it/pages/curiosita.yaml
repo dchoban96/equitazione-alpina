@@ -2,7 +2,7 @@
 slug: "curiosita"
 title: "Curiosità"
 section: "curiosita"
-draft: false
+draft: true
 mockup: true
 nav:
   order: 10

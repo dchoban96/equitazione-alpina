@@ -41,6 +41,7 @@ blocks:
         value: È da lì che comincia tutto il resto.
     image: "@assets/foto/foto-img-3906.jpg"
     imageAlt: "Cavalli che mangiano"
+    focus: 36% 38%
   - type: "facts"
     items:
       - label: "Dal"
