@@ -2,14 +2,16 @@
 // browser (drafts.ts) until Pubblica sends all of them in one commit.
 import type { ComponentChildren } from 'preact';
 import { useLayoutEffect, useRef, useState } from 'preact/hooks';
-import { pageUrl, photoUrl, type Item } from './content';
+import { pageUrl, photoUrl, type Item, type Model } from './content';
+import { ancestors, canHide, isHidden, setHidden, subpages } from './visibility';
 import { addPhoto, addVideo, pendingPreview } from './photos';
 import { REPO_RAW } from './content';
 import { allDrafts, discard, rebase, saveDraft, working } from './drafts';
 import { md } from './md';
 import { ORIGIN } from './save';
 import { problems } from './validate';
-import { FOCUS } from './focus';
+import { focusLabel } from './focus';
+import { FocusPicker } from './FocusPicker';
 import { Photo } from './Views';
 
 type Path = (string | number)[];
@@ -17,13 +19,14 @@ type Data = Record<string, any>;
 
 /* ---------- what each section shows, in the site's order ---------- */
 
-type Kind = 'line' | 'para' | 'md' | 'photo' | 'video' | 'bool' | 'side' | 'focus' | 'style' | 'section' | 'number' | 'pairs' | 'items' | 'chips' | 'url';
+type Kind = 'line' | 'para' | 'md' | 'photo' | 'video' | 'bool' | 'side' | 'style' | 'section' | 'number' | 'pairs' | 'items' | 'chips' | 'url';
 interface Spec {
   key: string;
   kind: Kind;
   label: string;
   req?: boolean; // the site needs it: cleared fields stay as "" instead of being removed
   alt?: string; // photo: the key of its description
+  focus?: string; // photo: the key of the point kept in view when the site crops it
   min?: number;
   max?: number;
   item?: Spec[]; // items: the fields of one entry
@@ -49,14 +52,14 @@ const BLOCKS: Record<string, { name: string; fields: Spec[] }> = {
       { key: 'closing', kind: 'line', label: 'Frase finale' },
       { key: 'footnote', kind: 'line', label: 'Nota in fondo' },
       { key: 'video', kind: 'video', label: "Sfondo dell'apertura" },
-      { key: 'image', kind: 'photo', label: 'Foto', alt: 'imageAlt' },
+      { key: 'image', kind: 'photo', label: 'Foto', alt: 'imageAlt', focus: 'focus' },
       { key: 'panelKicker', kind: 'line', label: 'Titolo del riquadro' },
       PAIRS('panel', 'Riquadro'),
     ],
   },
   text: {
     name: 'Testo',
-    fields: [...HEADING, { key: 'image', kind: 'photo', label: 'Foto sotto il titolo', alt: 'alt' }, { key: 'body', kind: 'md', label: 'Testo', req: true }],
+    fields: [...HEADING, { key: 'image', kind: 'photo', label: 'Foto sotto il titolo', alt: 'alt', focus: 'focus' }, { key: 'body', kind: 'md', label: 'Testo', req: true }],
   },
   'text-image': {
     name: 'Testo con foto',
@@ -64,11 +67,9 @@ const BLOCKS: Record<string, { name: string; fields: Spec[] }> = {
       ...HEADING,
       { key: 'lead', kind: 'para', label: 'Frase in evidenza' },
       { key: 'body', kind: 'md', label: 'Testo' },
-      { key: 'image', kind: 'photo', label: 'Foto', alt: 'alt' },
+      { key: 'image', kind: 'photo', label: 'Foto', alt: 'alt', focus: 'focus' },
       { key: 'caption', kind: 'line', label: 'Didascalia' },
       { key: 'side', kind: 'side', label: 'Posizione della foto', req: true },
-      { key: 'focus', kind: 'focus', label: 'Parte della foto da tenere in vista',
-        hint: 'Quando la foto viene tagliata, questa parte resta visibile (per esempio il muso del cane).' },
       PAIRS('details', 'Dettagli'),
     ],
   },
@@ -89,7 +90,7 @@ const BLOCKS: Record<string, { name: string; fields: Spec[] }> = {
           { key: 'label', kind: 'line', label: 'Etichetta' },
           { key: 'text', kind: 'md', label: 'Testo' },
           { key: 'link', kind: 'url', label: 'Collegamento', hint: 'Una pagina del sito, es. /equitazione/lezioni/' },
-          { key: 'image', kind: 'photo', label: 'Foto', alt: 'alt' },
+          { key: 'image', kind: 'photo', label: 'Foto', alt: 'alt', focus: 'focus' },
         ],
       },
     ],
@@ -314,12 +315,18 @@ function FieldEdit({ spec, obj, path, set }: { spec: Spec; obj: Data; path: Path
           <div class="p-photoedit">
             <div>
               <Photo src={v} size="s" caption={false} />
-              <PhotoPicker label="Cambia foto" prefix={String(spec.alt === 'coverAlt' ? 'copertina' : 'foto')} onPicked={([f]) => set(here, f)} />
+              <PhotoPicker
+                label="Cambia foto"
+                prefix={String(spec.alt === 'coverAlt' ? 'copertina' : 'foto')}
+                // the point chosen on the old photo means nothing on the new one
+                onPicked={([f]) => set(path, { ...obj, [spec.key]: f, ...(spec.focus ? { [spec.focus]: undefined } : {}) })}
+              />
             </div>
             <Labelled label="Descrizione della foto" hint="Per Google e per chi usa un lettore di schermo: cosa si vede nella foto.">
               <Grow aria-label="Descrizione della foto" value={obj[spec.alt!] ?? ''} onInput={(val) => set([...path, spec.alt!], val)} />
             </Labelled>
           </div>
+          {spec.focus && <FocusPicker src={v} value={obj[spec.focus]} onChange={(val) => set([...path, spec.focus!], val)} />}
         </div>
       );
     case 'bool':
@@ -337,18 +344,6 @@ function FieldEdit({ spec, obj, path, set }: { spec: Spec; obj: Data; path: Path
             <option value="left">A sinistra del testo</option>
             <option value="below">Sotto il testo</option>
             <option value="overlay">Grande, con il testo sopra</option>
-          </select>
-        </Labelled>
-      );
-    case 'focus':
-      return (
-        <Labelled label={spec.label} hint={spec.hint}>
-          <select aria-label={spec.label} value={v ?? ''} onChange={(e) => set(here, (e.target as HTMLSelectElement).value || undefined)}>
-            <option value="">Centro</option>
-            {FOCUS.map(([value, label]) => (
-              <option value={value} key={value}>{label}</option>
-            ))}
-            {v && !FOCUS.some(([value]) => value === v) && <option value={v}>{v}</option>}
           </select>
         </Labelled>
       );
@@ -578,7 +573,7 @@ function GalleryEditor({ item, data, set }: { item: Item; data: Data; set: (p: P
         {photos.map((p, i) => (
           <section class="p-card p-gedit__item" key={p.__i ?? p.file}>
             <div class="p-gedit__photo">
-              <img src={photoUrl(p.file) ?? ''} alt="" loading="lazy" />
+              <img src={photoUrl(p.file) ?? ''} alt="" loading="lazy" style={p.focus ? { objectPosition: p.focus } : undefined} />
               <span class="p-num">{i + 1}</span>
             </div>
             <div class="p-gedit__fields">
@@ -587,7 +582,7 @@ function GalleryEditor({ item, data, set }: { item: Item; data: Data; set: (p: P
                   label="Sostituisci"
                   prefix={name}
                   // the old description was about the old photo: a new one is asked for
-                  onPicked={([file]) => set(['photos', i], { ...p, file, alt: '' })}
+                  onPicked={([file]) => set(['photos', i], { ...p, file, alt: '', focus: undefined })}
                 />
                 <Mover
                   i={i}
@@ -600,6 +595,12 @@ function GalleryEditor({ item, data, set }: { item: Item; data: Data; set: (p: P
               {field(i, 'caption', 'Titolo')}
               {field(i, 'alt', 'Descrizione', { req: true, para: true, hint: 'Cosa si vede nella foto. Compare sotto il titolo quando la foto si apre.' })}
               {field(i, 'place', 'Luogo')}
+              <details class="p-focus__fold">
+                <summary>
+                  Punto da tenere in vista: <strong>{focusLabel(p.focus)}</strong>
+                </summary>
+                <FocusPicker src={p.file} value={p.focus} onChange={(val) => set(['photos', i, 'focus'], val)} />
+              </details>
             </div>
           </section>
         ))}
@@ -621,6 +622,78 @@ function Mockup({ item, data, set }: { item: Item; data: Data; set: (p: Path, v:
       />
       Ha ancora testi o foto di prova
     </label>
+  );
+}
+
+/** Visibile sul sito / Nascosta. Hiding writes `draft: true`; the home page is always visible. */
+function Visibility({ item, data, model }: { item: Item; data: Data; model: Model }) {
+  const hidden = data.draft === true;
+  const what = item.kind === 'article' ? 'questo articolo' : 'questa pagina';
+  const kids = subpages(model, item);
+  const kidsShown = kids.filter((k) => !isHidden(k));
+  const kidsHidden = kids.filter(isHidden);
+  const parentsHidden = ancestors(model, item).filter(isHidden);
+  const pending = Boolean(item.data.draft) !== hidden;
+  const n = (list: Item[]) => (list.length === 1 ? 'la sottopagina' : `le ${list.length} sottopagine`);
+
+  if (!canHide(item))
+    return (
+      <div class="p-vis">
+        <span class="p-vis__state">
+          <span class="p-dot p-dot--live" aria-hidden="true" /> Sempre visibile
+        </span>
+        <p class="p-quiet">La pagina iniziale è il sito stesso: non si può nascondere.</p>
+      </div>
+    );
+
+  return (
+    <div class={`p-vis${hidden ? ' p-vis--off' : ''}`}>
+      <label class="p-switch">
+        <input type="checkbox" role="switch" checked={!hidden} onChange={(e) => setHidden(item, !(e.target as HTMLInputElement).checked)} />
+        <span class="p-switch__track" aria-hidden="true" />
+        <span class="p-switch__text">
+          <strong>{hidden ? 'Nascosta' : 'Visibile sul sito'}</strong>
+          <span class="p-quiet">
+            {hidden
+              ? `Chi visita il sito non vede ${what}: non compare nel menu né su Google, e i collegamenti delle altre pagine verso di lei vengono disattivati. Qui nel pannello puoi continuare a lavorarci.`
+              : `Chi visita il sito vede ${what}.`}
+            {pending && ' Diventa effettivo quando premi Pubblica.'}
+          </span>
+        </span>
+      </label>
+      {hidden && kidsShown.length > 0 && (
+        <div class="p-vis__more">
+          <span>
+            {kidsShown.length === 1 ? 'Una sottopagina resta' : `${kidsShown.length} sottopagine restano`} online, ma fuori dal menu:{' '}
+            {kidsShown.map((k) => k.title).join(', ')}.
+          </span>
+          <button type="button" class="p-btn p-btn--small" onClick={() => kidsShown.forEach((k) => setHidden(k, true))}>
+            Nascondi anche {n(kidsShown)}
+          </button>
+        </div>
+      )}
+      {!hidden && kidsHidden.length > 0 && (
+        <div class="p-vis__more p-vis__more--quiet">
+          <span>
+            {kidsHidden.length === 1 ? 'Una sottopagina è nascosta' : `${kidsHidden.length} sottopagine sono nascoste`}:{' '}
+            {kidsHidden.map((k) => k.title).join(', ')}.
+          </span>
+          <button type="button" class="p-btn p-btn--small" onClick={() => kidsHidden.forEach((k) => setHidden(k, false))}>
+            Mostra anche {n(kidsHidden)}
+          </button>
+        </div>
+      )}
+      {!hidden && parentsHidden.length > 0 && (
+        <div class="p-vis__more">
+          <span>
+            La pagina superiore «{parentsHidden[parentsHidden.length - 1].title}» è nascosta: {what} sarà online ma non comparirà nel menu.
+          </span>
+          <button type="button" class="p-btn p-btn--small" onClick={() => parentsHidden.forEach((p) => setHidden(p, false))}>
+            Rendi visibile anche «{parentsHidden[parentsHidden.length - 1].title}»
+          </button>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -650,7 +723,7 @@ function DraftBar({ item }: { item: Item }) {
   );
 }
 
-export function Editor({ item, open }: { item: Item; open: (id: string) => void }) {
+export function Editor({ item, model, open }: { item: Item; model: Model; open: (id: string) => void }) {
   const { data, body } = working(item);
   const set = (path: Path, value: unknown) => saveDraft(item, setIn(data, path, value), body);
   const setBody = (b: string) => saveDraft(item, data, b);
@@ -663,7 +736,8 @@ export function Editor({ item, open }: { item: Item; open: (id: string) => void 
         <div>
           <h1>{data.title || item.title}</h1>
           <div class="p-head__meta">
-            {!data.draft && live && (
+            {item.kind !== 'gallery' && data.draft === true && <span class="p-pill">Nascosta</span>}
+            {!data.draft && !item.data.draft && live && (
               <a class="p-link" href={live} target="_blank" rel="noopener">Vedi sul sito ↗</a>
             )}
           </div>
@@ -683,6 +757,7 @@ export function Editor({ item, open }: { item: Item; open: (id: string) => void 
         <>
           <section class="p-card">
             <h2>Pagina</h2>
+            <Visibility item={item} data={data} model={model} />
             <FieldEdit spec={{ key: 'title', kind: 'line', label: 'Titolo della pagina', req: true, hint: 'Compare nel percorso in cima alla pagina e negli elenchi.' }} obj={data} path={[]} set={set} />
             <FieldEdit spec={{ key: 'label', kind: 'line', label: 'Nome nel menu', hint: 'Se vuoto si usa il titolo della pagina.' }} obj={data.nav ?? {}} path={['nav']} set={set} />
             <Mockup item={item} data={data} set={set} />
@@ -733,6 +808,7 @@ export function Editor({ item, open }: { item: Item; open: (id: string) => void 
         <>
           <section class="p-card">
             <h2>Articolo</h2>
+            <Visibility item={item} data={data} model={model} />
             <FieldEdit spec={{ key: 'title', kind: 'line', label: 'Titolo', req: true }} obj={data} path={[]} set={set} />
             <Labelled label="Data">
               <input type="date" aria-label="Data" value={String(data.date ?? '')} onInput={(e) => set(['date'], (e.target as HTMLInputElement).value)} />
@@ -745,7 +821,7 @@ export function Editor({ item, open }: { item: Item; open: (id: string) => void 
                 ))}
               </select>
             </Labelled>
-            <FieldEdit spec={{ key: 'cover', kind: 'photo', label: 'Copertina', alt: 'coverAlt' }} obj={data} path={[]} set={set} />
+            <FieldEdit spec={{ key: 'cover', kind: 'photo', label: 'Copertina', alt: 'coverAlt', focus: 'coverFocus' }} obj={data} path={[]} set={set} />
             <Mockup item={item} data={data} set={set} />
           </section>
           <section class="p-card">

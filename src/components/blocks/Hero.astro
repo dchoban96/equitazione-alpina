@@ -33,7 +33,7 @@ const intro = await md(b.intro);
       b.image && (
         <div class="hero__media split split--overlay">
           <div class="frame">
-            <Img src={b.image} alt={b.imageAlt ?? ''} sizes="(min-width: 1320px) 1220px, 100vw" priority />
+            <Img src={b.image} alt={b.imageAlt ?? ''} focus={b.focus} sizes="(min-width: 1320px) 1220px, 100vw" priority />
             {b.video && (
               <video
                 class="hero__video"

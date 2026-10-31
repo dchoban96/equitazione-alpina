@@ -58,6 +58,28 @@ export async function getArticles() {
   return all.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 }
 
+/**
+ * Addresses of the pages and articles hidden in the control panel (`draft: true`),
+ * e.g. "/valtellina/". Empty when drafts are built (dev server, preview build).
+ * Cards pointing to them are left out; any other link to them is turned into
+ * plain text after the build (integrations/link-nascosti.mjs).
+ */
+export async function hiddenPaths(): Promise<Set<string>> {
+  if (INCLUDE_DRAFTS) return new Set();
+  const [pages, articles] = await Promise.all([getCollection('pages'), getCollection('articles')]);
+  return new Set([
+    ...pages.filter((p) => p.data.draft).map((p) => pagePath(p.data.slug)),
+    ...articles.filter((a) => a.data.draft).map((a) => `/curiosita/${a.id}/`),
+  ]);
+}
+
+/** True when an internal link ("/valtellina/", "/valtellina/#mappa") leads to a hidden page. */
+export function leadsToHidden(link: string | undefined, hidden: Set<string>): boolean {
+  if (!link || !link.startsWith('/') || !hidden.size) return false;
+  const path = link.replace(/[?#].*$/, '');
+  return hidden.has(path.endsWith('/') ? path : `${path}/`);
+}
+
 /* ---------- URLs ---------- */
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');

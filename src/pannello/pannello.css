@@ -958,3 +958,251 @@ div.p-issues {
   border-radius: 8px;
   background: var(--p-side);
 }
+
+/* ---------- visible on the site / hidden ---------- */
+
+.p-vis {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0 0 1.1rem;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--p-border);
+  border-radius: 8px;
+  background: var(--p-accent-soft);
+}
+.p-vis--off {
+  border-color: rgba(137, 89, 27, 0.35);
+  background: rgba(211, 155, 58, 0.12);
+}
+.p-vis__state {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--p-heading);
+}
+.p-vis .p-quiet {
+  margin: 0;
+}
+.p-vis__more {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--p-border);
+  color: var(--p-honey);
+  font-size: 0.875rem;
+}
+.p-vis__more--quiet {
+  color: var(--p-muted);
+}
+
+.p-switch {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+.p-switch input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.p-switch__track {
+  flex: none;
+  position: relative;
+  width: 2.6rem;
+  height: 1.5rem;
+  margin-top: 0.05rem;
+  border-radius: 999px;
+  background: #b9b3a6;
+  transition: background 150ms ease;
+}
+.p-switch__track::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: calc(1.5rem - 6px);
+  height: calc(1.5rem - 6px);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  transition: transform 150ms ease;
+}
+.p-switch input:checked + .p-switch__track {
+  background: var(--p-accent);
+}
+.p-switch input:checked + .p-switch__track::after {
+  transform: translateX(1.1rem);
+}
+.p-switch input:focus-visible + .p-switch__track {
+  outline: 2px solid var(--p-accent);
+  outline-offset: 2px;
+}
+.p-switch input:disabled + .p-switch__track {
+  opacity: 0.5;
+}
+.p-switch__text {
+  display: grid;
+  gap: 0.15rem;
+  color: var(--p-heading);
+}
+.p-switch--small {
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+.p-switch--small .p-switch__text {
+  min-width: 4.6rem;
+  color: var(--p-muted);
+}
+
+.p-pill {
+  display: inline-block;
+  padding: 0.05rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(211, 155, 58, 0.18);
+  color: var(--p-honey);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.p-vislist {
+  margin: 0.75rem 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+.p-vislist li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--p-border);
+}
+.p-vislist li:last-child {
+  border-bottom: 0;
+}
+.p-vislist a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+/* ---------- point of a photo kept in view ---------- */
+
+.p-focus {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+}
+.p-focus__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.p-focus__body {
+  display: grid;
+  grid-template-columns: minmax(0, 340px) 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+.p-focus__pick {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--p-side);
+  cursor: crosshair;
+  touch-action: none; /* dragging moves the point, not the page */
+  user-select: none;
+  -webkit-user-select: none;
+}
+.p-focus__pick img {
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+.p-focus__dot {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1.5px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+.p-focus__dot::after {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border-radius: 50%;
+  background: #fff;
+}
+.p-focus__crops {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+.p-focus__crops figure {
+  margin: 0;
+}
+.p-focus__crop {
+  height: 96px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--p-side);
+  box-shadow: inset 0 0 0 1px var(--p-border);
+}
+.p-focus__crop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.p-focus__crops figcaption {
+  margin-top: 0.25rem;
+  color: var(--p-muted);
+  font-size: 0.75rem;
+  text-align: center;
+}
+.p-focus .p-quiet {
+  margin: 0;
+}
+.p-focus__fold {
+  margin-top: 0.2rem;
+}
+.p-focus__fold > summary {
+  cursor: pointer;
+  color: var(--p-accent);
+  font-size: 0.875rem;
+}
+.p-focus__fold > summary strong {
+  color: var(--p-heading);
+  font-weight: 600;
+}
+.p-focus__fold .p-focus__body {
+  grid-template-columns: 1fr;
+  max-width: 420px;
+}
+.p-focus__fold .p-focus {
+  margin-top: 0.5rem;
+}
+/* the summary already names it */
+.p-focus__fold .p-focus__head .p-input__label {
+  visibility: hidden;
+}
+@media (max-width: 860px) {
+  .p-focus__body {
+    grid-template-columns: 1fr;
+  }
+  .p-focus__crop {
+    height: 80px;
+  }
+}

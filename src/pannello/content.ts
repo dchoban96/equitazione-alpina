@@ -53,7 +53,7 @@ export const pageUrl = (slug: string) => `${SITE_URL}/${slug ? `${slug}/` : ''}`
 
 const SECTION_GROUPS = ['equitazione', 'pastore-del-lagorai', 'capra-orobica', 'valtellina'];
 
-function stateOf(d: Record<string, any>): State {
+export function stateOf(d: Record<string, any>): State {
   if (d.draft) return 'draft';
   if (d.mockup) return 'mock';
   if (d.nav?.hidden) return 'hidden';

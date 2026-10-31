@@ -45,6 +45,14 @@ const itemsOf = (text: string) =>
 
 /** Markdown text. May contain [DA COMPLETARE: ...] markers. */
 const rich = z.string();
+
+/**
+ * The point of a photo that must stay in view when the photo is cropped (narrow
+ * phone screens, square thumbnails): "x% y%" from the top-left corner, set in
+ * the control panel by tapping the photo. Used as CSS object-position. No value
+ * means the centre.
+ */
+const focus = opt(z.string().regex(/^\d{1,3}% \d{1,3}%$/, 'focus: two percentages, e.g. "25% 50%"'));
 const labelValue = z.object({ label: z.string(), value: z.string() });
 
 /* ---------- blocks ---------- */
@@ -79,6 +87,7 @@ const blocks = ({ image }: SchemaContext) => {
       footnote: z.string().optional(),
       image: opt(img),
       imageAlt: z.string().optional(),
+      focus,
       // Silent looping clip played over the image (file under public/, e.g.
       // "/video/intro.mp4"). The image stays as poster and as the fallback
       // without JavaScript or with reduced motion.
@@ -96,6 +105,7 @@ const blocks = ({ image }: SchemaContext) => {
       // optional photo under the heading (beside the text on wide screens)
       image: opt(img),
       alt: z.string().optional(),
+      focus,
     }),
     z.object({
       type: z.literal('text-image'),
@@ -108,9 +118,7 @@ const blocks = ({ image }: SchemaContext) => {
       caption: z.string().optional(),
       side: z.enum(['left', 'right', 'below', 'overlay']).default('right'),
       fit: z.enum(['crop', 'contain']).default('crop'),
-      // Which part of the photo stays in view when it is cropped: "x% y%"
-      // (CSS object-position), e.g. "25% 50%" keeps the left side. Default centre.
-      focus: opt(z.string().regex(/^\d{1,3}% \d{1,3}%$/, 'focus: two percentages, e.g. "25% 50%"')),
+      focus,
       details: z.array(labelValue).optional(),
     }),
     z.object({
@@ -133,6 +141,7 @@ const blocks = ({ image }: SchemaContext) => {
             link: z.string().optional(),
             image: opt(img),
             alt: z.string().optional(),
+            focus,
           }),
         )
         .min(1),
@@ -275,6 +284,7 @@ const articles = defineCollection({
       summary: z.string().max(155, 'summary: at most 155 characters (used as meta description)'),
       cover: image(),
       coverAlt: z.string().min(1),
+      coverFocus: focus,
       section,
       draft: z.boolean(),
       mockup: z.boolean().default(false),
@@ -300,6 +310,7 @@ const galleries = defineCollection({
           caption: z.string().optional(),
           place: z.string().optional(),
           altitude: opt(z.number().int()),
+          focus,
         }),
       ),
     }),

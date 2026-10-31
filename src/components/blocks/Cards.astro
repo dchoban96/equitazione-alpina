@@ -5,16 +5,21 @@ import type { Block } from '../../lib/content';
 import Section from './Section.astro';
 import Img from '../Img.astro';
 import { md, txt } from '../../lib/text';
-import { url } from '../../lib/content';
+import { hiddenPaths, leadsToHidden, url } from '../../lib/content';
 
 interface Props {
   block: Extract<Block, { type: 'cards' }>;
   id: string;
 }
 const { block: b, id } = Astro.props;
-const items = await Promise.all(b.items.map(async (i) => ({ ...i, html: await md(i.text) })));
+// a card presenting a page hidden in the control panel is left out; with none left, so is the block
+const hidden = await hiddenPaths();
+const items = await Promise.all(
+  b.items.filter((i) => !leadsToHidden(i.link, hidden)).map(async (i) => ({ ...i, html: await md(i.text) })),
+);
 ---
 
+{items.length > 0 && (
 <Section {...b} headingId={id}>
   {
     b.style === 'tiles' ? (
@@ -33,7 +38,7 @@ const items = await Promise.all(b.items.map(async (i) => ({ ...i, html: await md
           <li class="card">
             {i.image && (
               <div class="frame">
-                <Img src={i.image} alt={i.alt ?? ''} sizes="(min-width: 1024px) 400px, (min-width: 600px) 50vw, 100vw" />
+                <Img src={i.image} alt={i.alt ?? ''} focus={i.focus} sizes="(min-width: 1024px) 400px, (min-width: 600px) 50vw, 100vw" />
               </div>
             )}
             <h3 set:html={txt(i.title)} />
@@ -45,3 +50,4 @@ const items = await Promise.all(b.items.map(async (i) => ({ ...i, html: await md
     )
   }
 </Section>
+)}

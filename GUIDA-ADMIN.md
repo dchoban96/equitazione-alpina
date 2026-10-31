@@ -53,6 +53,14 @@ l'**Apertura** (con il titolo grande), e ce n'è una sola per pagina.
 - Se appena entrati le anteprime delle foto restano vuote, torna indietro
   (freccia ← in alto a sinistra) e riapri la pagina.
 
+### Punto da tenere in vista
+
+Sotto ogni foto c'è il riquadro **Punto da tenere in vista** (nelle gallerie
+si apre con la freccia ›). Tocca la foto sulla parte più importante, per
+esempio il muso del cavallo: quando il sito taglia la foto (sul telefono, nelle
+anteprime quadrate) quel punto resta sempre visibile. Le tre piccole anteprime
+mostrano subito come viene tagliata. **Torna al centro** annulla la scelta.
+
 ### Gallerie
 
 **Gallerie** → scegli la galleria → **Aggiungi foto**: scegli la foto,
@@ -73,6 +81,21 @@ In ogni pagina, il riquadro **Google e condivisione**:
 **Dati aziendali**: telefono, WhatsApp, email, indirizzo, orari, social,
 ragione sociale e partita IVA, l'ordine del menu e dei link in fondo alla
 pagina. Cambiano su tutte le pagine insieme.
+
+## Nascondere una pagina non ancora pronta
+
+Nel pannello, in cima alla scheda **Pagina** (o **Articolo**), l'interruttore
+**Visibile sul sito**:
+
+- **spento** = la pagina è **nascosta**: non è sul sito, non compare nel menu
+  né su Google, e i collegamenti delle altre pagine verso di lei vengono
+  disattivati da soli. Nel pannello resta, e ci puoi lavorare;
+- **acceso** = la pagina torna visibile.
+
+Il cambio va online quando premi **Pubblica**. Se la pagina ha sottopagine, il
+pannello propone di nascondere (o mostrare) anche quelle. La pagina iniziale non
+si può nascondere. Nella pagina di **Benvenuto** del pannello trovi l'elenco
+delle pagine con testi di prova, ognuna con il suo interruttore.
 
 ## Pagine nuove
 

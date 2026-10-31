@@ -116,6 +116,7 @@ collections:
               - { name: closing, label: Frase finale, widget: string, required: false }
               - { name: image, label: Foto, widget: image, required: false }
               - { name: imageAlt, label: Descrizione della foto, widget: string, required: false, hint: "Cosa si vede nella foto (serve a chi non vede e a Google)." }
+              - { name: focus, widget: hidden, required: false } # punto della foto, scelto nel pannello
               - { name: coordinates, widget: hidden, required: false }
               - { name: footnote, widget: hidden, required: false }
               - { name: video, widget: hidden, required: false }
@@ -154,20 +155,13 @@ collections:
                   - { label: Grande, con il testo sopra, value: overlay }
               - { name: caption, widget: hidden, required: false }
               - { name: fit, widget: hidden, required: false }
+              # set by tapping the photo in the control panel (/pannello/): any "x% y%"
               - name: focus
-                label: Parte della foto da tenere in vista
-                widget: select
+                label: Punto della foto da tenere in vista
+                widget: string
                 required: false
-                hint: "Quando la foto viene tagliata, questa parte resta visibile. Vuoto = centro."
-                options:
-                  - { label: Tutto a sinistra, value: "0% 50%" }
-                  - { label: Sinistra, value: "25% 50%" }
-                  - { label: Destra, value: "75% 50%" }
-                  - { label: Tutto a destra, value: "100% 50%" }
-                  - { label: In alto, value: "50% 0%" }
-                  - { label: Verso l'alto, value: "50% 25%" }
-                  - { label: Verso il basso, value: "50% 75%" }
-                  - { label: In basso, value: "50% 100%" }
+                pattern: ['^(\d{1,3}% \d{1,3}%)?$', 'Due percentuali, es. "25% 50%" (meglio sceglierlo dal pannello toccando la foto)']
+                hint: "Si imposta più comodamente dal pannello, toccando la foto. Vuoto = centro."
               - { name: details, widget: hidden, required: false }
               - *note
               - *altitude
@@ -196,6 +190,7 @@ collections:
                   - { name: text, label: Testo, widget: markdown, required: false, buttons: *mdbuttons, editor_components: [] }
                   - { name: image, label: Foto (solo per «Schede con foto»), widget: image, required: false }
                   - { name: alt, label: Descrizione della foto, widget: string, required: false }
+                  - { name: focus, widget: hidden, required: false } # punto della foto, scelto nel pannello
                   - { name: link, label: Link, widget: string, required: false, hint: "Es. /equitazione/lezioni/" }
                   - { name: label, label: Testo del link, widget: string, required: false, hint: "Es. Scopri di più" }
               - *note
@@ -365,6 +360,7 @@ collections:
           - { name: caption, label: Didascalia (facoltativa), widget: string, required: false }
           - { name: place, widget: hidden, required: false }
           - { name: altitude, widget: hidden, required: false }
+          - { name: focus, widget: hidden, required: false } # punto della foto, scelto nel pannello
 
   # --------------------------------------------------------------- articles
   - name: articoli
@@ -387,6 +383,7 @@ collections:
       - { name: summary, label: Riassunto, widget: text, hint: "Al massimo 155 caratteri: si vede anche su Google." }
       - { name: cover, label: Foto di copertina, widget: image }
       - { name: coverAlt, label: Descrizione della foto di copertina, widget: string }
+      - { name: coverFocus, widget: hidden, required: false } # punto della copertina, scelto nel pannello
       - { name: section, label: Sezione, widget: select, options: *sections }
       - { name: draft, label: Bozza (non ancora pubblicato), widget: boolean, default: true }
       - { name: body, label: Testo, widget: markdown, buttons: [bold, italic, link, heading-two, heading-three, bulleted-list, quote], editor_components: [] }

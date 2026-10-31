@@ -8,6 +8,7 @@ import { Editor } from './Editor';
 import { dropPending, loadPending, pendingNames, photoRefs, setKnownPhotos, unusedSince } from './photos';
 import { PublishDialog } from './Publish';
 import { View } from './Views';
+import { canHide, currentState, isHidden, mockups, setHidden } from './visibility';
 
 export default function App() {
   const [session, setSession] = useState<Session | null>(() => loadSession());
@@ -301,7 +302,7 @@ function Shell({ session, onSignOut }: { session: Session; onSignOut: () => void
           ) : !model ? (
             <Splash text="Carico i contenuti…" />
           ) : item && (item.kind === 'page' || item.kind === 'article' || item.kind === 'gallery') ? (
-            <Editor key={item.id} item={item} open={open} />
+            <Editor key={item.id} item={item} model={model} open={open} />
           ) : item ? (
             <View item={item} open={open} />
           ) : (
@@ -333,7 +334,7 @@ function Menu({ model, query, selected, open }: { model: Model; query: string; s
           open(it.id);
         }}
       >
-        <span class={`p-dot p-dot--${it.state}`} aria-hidden="true" />
+        <span class={`p-dot p-dot--${currentState(it)}`} aria-hidden="true" />
         <span class="p-row__text">{it.title}</span>
         {allDrafts()[it.id] && <span class="p-row__dirty" title="Modifiche non pubblicate" aria-label="modificata" />}
       </a>
@@ -356,7 +357,8 @@ function Menu({ model, query, selected, open }: { model: Model; query: string; s
 function Welcome({ model, open }: { model: Model; open: (id: string) => void }) {
   const all = model.groups.flatMap((g) => g.items);
   const count = (k: string) => all.filter((i) => i.kind === k).length;
-  const mock = all.filter((i) => i.state === 'mock');
+  const mock = mockups(model);
+  const shown = mock.filter((m) => canHide(m) && !isHidden(m));
   return (
     <>
       <header class="p-head">
@@ -373,22 +375,52 @@ function Welcome({ model, open }: { model: Model; open: (id: string) => void }) 
           <li><span class="p-dot p-dot--live" /> Pubblicata</li>
           <li><span class="p-dot p-dot--hidden" /> Online, nascosta dal menu</li>
           <li><span class="p-dot p-dot--mock" /> Con testi o foto di prova</li>
-          <li><span class="p-dot p-dot--draft" /> Bozza, non è sul sito</li>
+          <li><span class="p-dot p-dot--draft" /> Nascosta, non è sul sito</li>
         </ul>
       </section>
       {mock.length > 0 && (
         <section class="p-card">
-          <h2>Da completare</h2>
-          <p class="p-quiet">Queste pagine hanno ancora testi o foto di prova.</p>
-          <ul class="p-links">
-            {mock.map((m) => (
-              <li key={m.id}>
-                <a href={`#/${m.id}`} onClick={(e) => (e.preventDefault(), open(m.id))}>
-                  {m.title}
-                </a>
-              </li>
-            ))}
+          <h2>Pagine di prova</h2>
+          <p class="p-quiet">
+            Hanno ancora testi o foto di prova. Puoi nasconderle finché non sono pronte e renderle visibili quando le hai
+            completate: il resto del sito resta online, e i collegamenti verso le pagine nascoste vengono disattivati.
+          </p>
+          <ul class="p-vislist">
+            {mock.map((m) => {
+              const hidden = isHidden(m);
+              return (
+                <li key={m.id}>
+                  <a href={`#/${m.id}`} onClick={(e) => (e.preventDefault(), open(m.id))}>
+                    <span class={`p-dot p-dot--${currentState(m)}`} aria-hidden="true" />
+                    {m.kind === 'article' ? `Articolo · ${m.title}` : m.title}
+                  </a>
+                  <label class="p-switch p-switch--small">
+                    <input
+                      type="checkbox"
+                      role="switch"
+                      checked={!hidden}
+                      onChange={(e) => setHidden(m, !(e.target as HTMLInputElement).checked)}
+                      aria-label={`${m.title}: visibile sul sito`}
+                    />
+                    <span class="p-switch__track" aria-hidden="true" />
+                    <span class="p-switch__text">{hidden ? 'Nascosta' : 'Visibile'}</span>
+                  </label>
+                </li>
+              );
+            })}
           </ul>
+          {shown.length > 1 && (
+            <button
+              type="button"
+              class="p-btn p-btn--small"
+              onClick={() =>
+                confirm(`Nascondere tutte le ${shown.length} pagine ancora visibili di questo elenco? Andranno offline quando premi Pubblica.`) &&
+                shown.forEach((m) => setHidden(m, true))
+              }
+            >
+              Nascondi tutte ({shown.length})
+            </button>
+          )}
         </section>
       )}
     </>

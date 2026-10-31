@@ -25,7 +25,7 @@ const fmt = new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'long', ye
         {articles.map((a) => (
           <li class="article-card">
             <div class="frame">
-              <Img src={a.data.cover} alt={a.data.coverAlt} sizes="(min-width: 1024px) 400px, (min-width: 600px) 50vw, 100vw" />
+              <Img src={a.data.cover} alt={a.data.coverAlt} focus={a.data.coverFocus} sizes="(min-width: 1024px) 400px, (min-width: 600px) 50vw, 100vw" />
             </div>
             <time datetime={a.data.date.toISOString().slice(0, 10)}>{fmt.format(a.data.date)}</time>
             <h3>

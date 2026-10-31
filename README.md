@@ -54,6 +54,22 @@ Every build lists the files still marked `mockup: true`. To replace a page:
 write the real text, swap the images, remove `mockup: true`. Delete the
 `mockup-*.jpg` files once nothing uses them.
 
+## Hidden pages
+
+A page or article can be hidden while it is not ready: in the control panel
+(`/pannello/`) switch off **Visibile sul sito**, or set `draft: true` in the
+file. A hidden page is left out of the production build, the menu, the footer,
+the sitemap and the breadcrumb. Links to it are switched off too:
+
+- a card (`cards` block) whose `link` leads to a hidden page is left out, and a
+  cards block with no card left is not shown;
+- any other link to it (Markdown text, articles, buttons) becomes plain text
+  after the build (`integrations/link-nascosti.mjs`, which lists them).
+
+Subpages of a hidden page stay online unless hidden as well; the panel offers
+to hide them together. The home page cannot be hidden. The preview build and
+the dev server still show hidden pages, marked «Bozza».
+
 ## Missing content
 
 Anything not yet supplied is written as `[DA COMPLETARE: what is needed]`. It
@@ -90,6 +106,11 @@ the build with a message naming the file and field. The demo page
        place: Valmalenco               # optional
        altitude: 2000                  # optional, metres
    ```
+
+`focus` (optional, `"x% y%"`) is the point that stays in view when the photo
+is cropped: thumbnails, narrow phone screens. The panel sets it by tapping the
+photo. The same field exists on the photos of `hero`, `text`, `text-image` and
+`cards` blocks, and as `coverFocus` on articles; no value means the centre.
 
 `alt` is required: a photo without it stops the build. Sizes, AVIF/WebP and
 lazy loading are handled automatically. A gallery page stays `draft: true`
