@@ -62,7 +62,7 @@ const tiles = b.tiles ?? [];
                 {t.label && <span class="mtile__label" set:html={txt(t.label)} />}
               </li>
             ) : t.highlight ? (
-              <li class="mtile mtile--highlight">{t.text && <p set:html={txt(t.text)} />}</li>
+              <li class:list={['mtile mtile--highlight', { 'is-short': (t.text ?? '').length < 70 }]}>{t.text && <p set:html={txt(t.text)} />}</li>
             ) : (
               <li class="mtile mtile--card">
                 {t.title && <p class="mtile__title" set:html={txt(t.title)} />}

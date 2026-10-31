@@ -113,7 +113,7 @@ blocks:
     heading: "Verso l'Alpe Palù"
     image: "@assets/foto/lago-palu-valmalenco.jpg"
     alt: "Il lago Palù in Valmalenco d'estate: acqua verde chiaro, prato asciutto, pini cembri e la montagna sullo sfondo"
-    side: "overlay"
+    side: "right"
     note: "≈ 1950 m"
     altitude: 1950
     lead: "Quando la neve libera i pascoli alti si sale verso l'Alpe Palù. Sono pochi mesi, diversi da tutto il resto dell'anno: pascoli aperti, granito chiaro, silenzio."

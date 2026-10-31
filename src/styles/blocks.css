@@ -104,6 +104,46 @@
 .hero__media {
   margin-top: var(--space-7);
 }
+/* Text and photo (every opening with a photo, except the full-screen ones): the title across the
+   whole width on two lines; under it the intro on the left (its second
+   paragraph steps back) and the photo on the right, so it shows on the
+   first screen without taking it over. Phones: title, text, photo. */
+.blk--hero:not(.blk--hero--photo-first) h1 {
+  max-width: 24ch;
+}
+.blk--hero:not(.blk--hero--photo-first) .hero__intro p + p {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+}
+.blk--hero:not(.blk--hero--photo-first) .hero__media {
+  --ratio: 4 / 3;
+  margin-top: var(--space-6);
+}
+@media (min-width: 1024px) {
+  .blk--hero:not(.blk--hero--photo-first):has(.hero__media) > .blk__in {
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    grid-auto-flow: row dense; /* the photo takes the first free row on the right */
+    column-gap: var(--space-7);
+  }
+  /* the sequence's items sit straight in the grid: title across, text left */
+  .blk--hero:not(.blk--hero--photo-first):has(.hero__media) .hero-seq {
+    display: contents;
+  }
+  .blk--hero:not(.blk--hero--photo-first):has(.hero__media) .hero-seq > * {
+    grid-column: 1;
+  }
+  .blk--hero:not(.blk--hero--photo-first):has(.hero__media) .hero-seq > :is(.hero__coords, .kicker, h1) {
+    grid-column: 1 / -1;
+  }
+  .blk--hero:not(.blk--hero--photo-first):has(.hero__media) .hero__media {
+    grid-column: 2;
+    grid-row: span 6;
+    align-self: start;
+    margin-top: 0;
+  }
+}
+
 /* photo first, then the title and text (order only: the H1 is still read first) */
 .blk--hero--photo-first .blk__in {
   display: flex;
@@ -302,8 +342,13 @@
    Panel and tiles share the first screen and end above the nearest ridge,
    which rises about a third of --ridges-height over the bottom edge. */
 .blk--hero--mosaic {
+  --mosaic-top: 160px; /* header and breadcrumb above the panel */
   --mosaic-tiles: clamp(150px, 21svh, 230px);
-  --mosaic-panel: clamp(320px, calc(100svh - 160px - var(--ridges-height) * 0.34 - 12px - var(--mosaic-tiles)), 620px);
+  --mosaic-panel: clamp(320px, calc(100svh - var(--mosaic-top) - var(--ridges-height) * 0.34 - 12px - var(--mosaic-tiles)), 620px);
+}
+/* the home page: no breadcrumb, the header floats over the page */
+.has-overlay-header .blk--hero--mosaic {
+  --mosaic-top: 112px;
 }
 .hero-mosaic__panel {
   position: relative;
@@ -416,6 +461,12 @@
   padding: clamp(18px, 2vw, 28px);
   background: var(--color-heading);
   color: #f5efe3;
+}
+/* a short line (a saying) is set larger, in italics */
+.mtile--highlight.is-short p {
+  font-size: clamp(1.25rem, 1rem + 0.8vw, 1.75rem);
+  font-style: italic;
+  line-height: 1.25;
 }
 .mtile--highlight p {
   margin: 0;
@@ -1554,7 +1605,7 @@ html:has(.lightbox[open]) :is(.ridges, .edge-bottom) {
   text-decoration: none;
 }
 .map .frame {
-  --ratio: 16 / 7;
+  --ratio: 3 / 1;
 }
 @media (max-width: 820px) {
   .map .frame {

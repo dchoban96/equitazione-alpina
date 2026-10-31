@@ -18,30 +18,45 @@ seo:
   image: "@assets/foto/cavallo-pezzato-al-pascolo.jpg"
 blocks:
   - type: "hero"
+    layout: mosaic
     title: "Trent'anni sugli stessi sentieri"
     intro: |-
-      Simone De Capitani lavora con i cavalli da oltre trent’anni. Ha iniziato quando in Valtellina erano in pochi a praticare l’equitazione di montagna. Da allora continua a percorrere gli stessi versanti, stagione dopo stagione, imparando a conoscere ogni cavallo che lo accompagna.
-
-      Per chi arriva qui la prima volta, fa la differenza affidarsi a chi sa cogliere anche i segnali più sottili del cavallo.
+      Simone De Capitani lavora con i cavalli da oltre trent’anni.
     altitude: 500
     coordinates: "Albosaggia · Valtellina — 46°16′N 9°84′E"
-    closing: "I cavalli ci prestano le ali che ci mancano"
-    footnote: "Si sale da 500 a 1950 m"
-    panelKicker: "Rilevazione"
     panel:
-      - label: "Ora"
-        value: "9:00"
-      - label: "Quota"
-        value: "500 m"
-      - label: "Stagione"
-        value: "Fine estate"
-      - label: "Luogo"
-        value: "Albosaggia"
-      - label: ->
-        value: È da lì che comincia tutto il resto.
+      - label: Albosaggia, tutto l’anno
+        value: 500 m
+      - label: Valmalenco, d’estate
+        value: 1950 m
     image: "@assets/foto/foto-img-3906.jpg"
     imageAlt: "Cavalli che mangiano"
     focus: 36% 38%
+    actions:
+      - label: Prenota una passeggiata
+        link: /contatti/
+      - label: Le attività
+        link: "#servizi"
+    tiles:
+      - image: "@assets/foto/cavallo-pezzato-al-pascolo.jpg"
+        alt: Cavallo pezzato bianco e nero al pascolo, mentre bruca l'erba alta di un prato soleggiato del maneggio
+      - highlight: true
+        text: I cavalli ci prestano le ali che ci mancano
+      - image: "@assets/foto/montagne-in-estate.jpg"
+        alt: Pareti rocciose di una montagna della Valmalenco sotto il cielo d'estate, con gli abeti in primo piano
+        label: Valmalenco, d’estate
+      - title: Due montagne, due stagioni
+        text: "Le Orobie sopra Albosaggia e la Valmalenco: si sale da 500 a 1950 m."
+        link: "#montagne"
+        label: Dove si va
+  - type: text
+    heading: Simone De Capitani
+    body: |
+      Ha iniziato quando in Valtellina erano in pochi a praticare l’equitazione di montagna. Da allora continua a percorrere gli stessi versanti, stagione dopo stagione, imparando a conoscere ogni cavallo che lo accompagna.
+
+      Per chi arriva qui la prima volta, fa la differenza affidarsi a chi sa cogliere anche i segnali più sottili del cavallo.
+    image: "@assets/foto/puledro-al-trotto-nel-maneggio.jpg"
+    alt: Puledro sauro che trotta sulla sabbia del tondino, lungo lo steccato di legno del maneggio
   - type: "facts"
     items:
       - label: "Dal"
@@ -51,6 +66,7 @@ blocks:
       - label: "Sede estiva"
         value: "Valmalenco - San Giuseppe"
   - type: "places"
+    anchor: montagne
     altitude: 1300
     kicker: "Dove si va"
     note: "1300 → 1950 m"
@@ -71,7 +87,7 @@ blocks:
     heading: "Verso l'Alpe Palù"
     image: "@assets/foto/lago-palu-valmalenco.jpg"
     alt: "Il lago Palù in Valmalenco d'estate: acqua verde chiaro, prato asciutto, pini cembri e la montagna sullo sfondo"
-    side: "overlay"
+    side: "left"
     note: "≈ 1950 m"
     altitude: 1950
     lead: "Tra le mete più gettonate del periodo estivo troviamo l'Alpe Palù, un oasi che ti porta fuori dal mondo."

@@ -44,7 +44,7 @@ blocks:
     heading: "Il versante retico"
     image: "@assets/foto/mockup-terrazzamenti.jpg"
     alt: "Illustrazione di prova: vigneti terrazzati al tramonto"
-    side: "below"
+    side: "right"
     caption: "Illustrazione di prova"
   - type: "cta-contact"
     kicker: "Equitazione Alpina"
