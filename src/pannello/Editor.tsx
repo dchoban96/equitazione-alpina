@@ -19,7 +19,7 @@ type Data = Record<string, any>;
 
 /* ---------- what each section shows, in the site's order ---------- */
 
-type Kind = 'line' | 'para' | 'md' | 'photo' | 'video' | 'bool' | 'side' | 'style' | 'section' | 'number' | 'pairs' | 'items' | 'chips' | 'url';
+type Kind = 'line' | 'para' | 'md' | 'photo' | 'video' | 'bool' | 'flag' | 'layout' | 'side' | 'style' | 'section' | 'number' | 'pairs' | 'items' | 'chips' | 'url';
 interface Spec {
   key: string;
   kind: Kind;
@@ -33,6 +33,7 @@ interface Spec {
   blank?: Data; // items: a new entry
   hint?: string;
   limit?: number; // characters, shown as a counter
+  showIf?: (obj: Data) => boolean; // shown only when the entry is of the right sort (e.g. a photo tile)
 }
 
 const HEADING: Spec[] = [
@@ -40,21 +41,48 @@ const HEADING: Spec[] = [
   { key: 'note', kind: 'line', label: 'Nota accanto all\'etichetta' },
   { key: 'heading', kind: 'line', label: 'Titolo' },
 ];
-const PAIRS = (key: string, label: string, min = 0): Spec => ({ key, kind: 'pairs', label, min });
+const PAIRS = (key: string, label: string, min = 0, hint?: string): Spec => ({ key, kind: 'pairs', label, min, hint });
 
 const BLOCKS: Record<string, { name: string; fields: Spec[] }> = {
   hero: {
     name: 'Apertura',
     fields: [
-      { key: 'kicker', kind: 'line', label: 'Etichetta sopra il titolo' },
+      { key: 'layout', kind: 'layout', label: "Aspetto dell'apertura" },
+      { key: 'kicker', kind: 'line', label: 'Etichetta sopra il titolo', hint: "Non compare con la foto grande: lì c'è già il percorso della pagina." },
       { key: 'title', kind: 'line', label: 'Titolo principale', req: true },
       { key: 'intro', kind: 'md', label: 'Introduzione' },
-      { key: 'closing', kind: 'line', label: 'Frase finale' },
-      { key: 'footnote', kind: 'line', label: 'Nota in fondo' },
+      { key: 'closing', kind: 'line', label: 'Frase finale', hint: 'Solo con testo e foto affiancati.' },
+      { key: 'footnote', kind: 'line', label: 'Nota in fondo', hint: 'Solo con testo e foto affiancati.' },
       { key: 'video', kind: 'video', label: "Sfondo dell'apertura" },
       { key: 'image', kind: 'photo', label: 'Foto', alt: 'imageAlt', focus: 'focus' },
-      { key: 'panelKicker', kind: 'line', label: 'Titolo del riquadro' },
-      PAIRS('panel', 'Riquadro'),
+      {
+        key: 'actions',
+        kind: 'items',
+        label: 'Pulsanti sotto il testo',
+        blank: { label: '', link: '' },
+        item: [
+          { key: 'label', kind: 'line', label: 'Scritta', req: true },
+          { key: 'link', kind: 'url', label: 'Collegamento', req: true, hint: 'Una pagina del sito (es. /contatti/) o una sezione di questa pagina (es. #servizi).' },
+        ],
+      },
+      PAIRS('panel', 'Numeri sulla foto', 0, 'Con la foto grande: due numeri in basso a destra, es. 500 m · Albosaggia, tutto l’anno.'),
+      {
+        key: 'tiles',
+        kind: 'items',
+        label: 'Riquadri sotto la foto grande',
+        hint: 'Quattro riquadri: una foto, una frase sul fondo scuro, una foto, una scheda con collegamento.',
+        blank: {},
+        item: [
+          // a new tile shows every field; once it has a photo, the dark-tile switch
+          // or a card title, only the fields of that sort stay
+          { key: 'image', kind: 'photo', label: 'Foto', alt: 'alt', focus: 'focus', showIf: (o) => !o.highlight && !o.title && !o.link },
+          { key: 'highlight', kind: 'flag', label: 'Riquadro scuro con una frase (senza foto)', showIf: (o) => !o.image && !o.title && !o.link },
+          { key: 'title', kind: 'line', label: 'Titolo della scheda', showIf: (o) => !o.image && !o.highlight },
+          { key: 'text', kind: 'para', label: 'Testo', showIf: (o) => !o.image },
+          { key: 'link', kind: 'url', label: 'Collegamento', hint: 'Una pagina del sito o una sezione di questa pagina.', showIf: (o) => !o.image && !o.highlight },
+          { key: 'label', kind: 'line', label: 'Scritta del collegamento, o etichetta sulla foto', showIf: (o) => !o.highlight },
+        ],
+      },
     ],
   },
   text: {
@@ -282,6 +310,7 @@ const move = <T,>(list: T[], from: number, to: number) => {
 /* ---------- one field ---------- */
 
 function FieldEdit({ spec, obj, path, set }: { spec: Spec; obj: Data; path: Path; set: (p: Path, v: unknown) => void }) {
+  if (spec.showIf && !spec.showIf(obj)) return null;
   const v = obj[spec.key];
   const here = [...path, spec.key];
   const text = (val: string) => set(here, val === '' && !spec.req ? undefined : val);
@@ -308,7 +337,13 @@ function FieldEdit({ spec, obj, path, set }: { spec: Spec; obj: Data; path: Path
     case 'video':
       return <HeroBackground label={spec.label} video={v} set={(val) => set(here, val)} />;
     case 'photo':
-      if (!v) return null;
+      if (!v)
+        return (
+          <div class="p-input">
+            <span class="p-input__label">{spec.label}</span>
+            <PhotoPicker label="Aggiungi una foto" prefix="foto" onPicked={([f]) => set(here, f)} />
+          </div>
+        );
       return (
         <div class="p-input">
           <span class="p-input__label">{spec.label}</span>
@@ -329,6 +364,22 @@ function FieldEdit({ spec, obj, path, set }: { spec: Spec; obj: Data; path: Path
           {spec.focus && <FocusPicker src={v} value={obj[spec.focus]} onChange={(val) => set([...path, spec.focus!], val)} />}
         </div>
       );
+    case 'flag':
+      return (
+        <label class="p-check">
+          <input type="checkbox" checked={v === true} onChange={(e) => set(here, (e.target as HTMLInputElement).checked || undefined)} />
+          {spec.label}
+        </label>
+      );
+    case 'layout':
+      return (
+        <Labelled label={spec.label}>
+          <select aria-label={spec.label} value={v ?? 'standard'} onChange={(e) => set(here, (e.target as HTMLSelectElement).value === 'mosaic' ? 'mosaic' : undefined)}>
+            <option value="standard">Testo e foto affiancati</option>
+            <option value="mosaic">Foto grande, con i riquadri sotto</option>
+          </select>
+        </Labelled>
+      );
     case 'bool':
       return (
         <label class="p-check">
@@ -342,8 +393,6 @@ function FieldEdit({ spec, obj, path, set }: { spec: Spec; obj: Data; path: Path
           <select aria-label={spec.label} value={v ?? 'right'} onChange={(e) => set(here, (e.target as HTMLSelectElement).value)}>
             <option value="right">A destra del testo</option>
             <option value="left">A sinistra del testo</option>
-            <option value="below">Sotto il testo</option>
-            <option value="overlay">Grande, con il testo sopra</option>
           </select>
         </Labelled>
       );
@@ -391,10 +440,11 @@ function FieldEdit({ spec, obj, path, set }: { spec: Spec; obj: Data; path: Path
     }
     case 'pairs': {
       const list: Data[] = v || [];
-      if (!list.length && !spec.min && spec.key !== 'items') return null;
+      if (!list.length && !spec.min && spec.key !== 'items' && !spec.hint) return null;
       return (
         <div class="p-input">
           <span class="p-input__label">{spec.label}</span>
+          {spec.hint && <p class="p-quiet">{spec.hint}</p>}
           {list.map((row, i) => (
             <div class="p-pair" key={row[ORIGIN] ?? `n${i}`}>
               <input type="text" aria-label="Etichetta" placeholder="Etichetta" value={row.label ?? ''} onInput={(e) => set([...here, i, 'label'], (e.target as HTMLInputElement).value)} />
@@ -411,6 +461,7 @@ function FieldEdit({ spec, obj, path, set }: { spec: Spec; obj: Data; path: Path
       return (
         <div class="p-input">
           <span class="p-input__label">{spec.label}</span>
+          {spec.hint && <p class="p-quiet">{spec.hint}</p>}
           <div class="p-sub">
             {list.map((it, i) => (
               <div class="p-subcard" key={it[ORIGIN] ?? `n${i}`}>

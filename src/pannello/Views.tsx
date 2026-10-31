@@ -56,13 +56,17 @@ const FIELD_LABELS: Record<string, string> = {
   details: 'Dettagli',
   footnote: 'Nota in fondo',
   panelKicker: 'Etichetta del riquadro',
-  panel: 'Riquadro',
+  panel: 'Numeri sulla foto',
   note: 'Nota',
   altitude: 'Altitudine (m)',
   tags: 'Argomenti',
   date: 'Data',
   stars: 'Stelle',
   sections: 'Sezioni',
+  layout: "Aspetto dell'apertura",
+  actions: 'Pulsanti',
+  tiles: 'Riquadri',
+  highlight: 'Riquadro scuro',
 };
 
 // technical fields the client never sees (they stay untouched in the files)
@@ -73,6 +77,7 @@ const HIDDEN = new Set([
 ]);
 const MARKDOWN = new Set(['intro', 'body', 'text', 'answer']);
 const PHOTO = new Set(['image', 'cover', 'file']);
+const LAYOUT: Record<string, string> = { mosaic: 'Foto grande, con i riquadri sotto' };
 const SIDE: Record<string, string> = { left: 'Sinistra', right: 'Destra', below: 'Sotto il testo', overlay: 'Sotto il testo, sovrapposta' };
 const STATE: Record<string, string> = {
   live: 'Pubblicata',
@@ -116,6 +121,7 @@ function Value({ k, v, parent }: { k: string; v: unknown; parent: Record<string,
   if (PHOTO.has(k)) return <Photo src={v} alt={parent.imageAlt ?? parent.alt ?? parent.coverAlt} />;
   if (typeof v === 'boolean') return <>{v ? 'Sì' : 'No'}</>;
   if (k === 'side' && typeof v === 'string') return <>{SIDE[v] ?? v}</>;
+  if (k === 'layout' && typeof v === 'string') return <>{LAYOUT[v] ?? v}</>;
   if (k === 'focus' && typeof v === 'string') return <>{focusLabel(v)}</>;
   if (typeof v === 'string') {
     if (MARKDOWN.has(k)) return <div class="p-prose" dangerouslySetInnerHTML={{ __html: md(v) }} />;

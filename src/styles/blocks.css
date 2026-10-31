@@ -220,34 +220,21 @@
   gap: var(--space-3);
   margin: var(--space-6) 0 0;
 }
-.blk--hero :is(.hero-intro, .hero-mosaic__panel) .btn--ghost {
+.hero-mosaic__panel .btn--ghost {
   border-color: rgba(255, 255, 255, 0.35);
   background: rgba(255, 255, 255, 0.14);
   color: var(--color-on-overlay);
 }
-.blk--hero :is(.hero-intro, .hero-mosaic__panel) .btn--ghost:hover {
+.hero-mosaic__panel .btn--ghost:hover {
   border-color: rgba(255, 255, 255, 0.65);
   background: rgba(255, 255, 255, 0.22);
   color: var(--color-on-overlay);
 }
 
-/* ---------- hero, layout "intro": a print that opens into the panel ---------- */
-.blk--hero--intro,
 .blk--hero--mosaic {
   padding-top: var(--space-4);
   padding-bottom: var(--space-7);
 }
-.hero-intro {
-  position: relative;
-  height: clamp(440px, calc(100svh - var(--layout-header) - 130px), 820px);
-}
-.hero-intro__photo {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  border-radius: var(--radius-lg);
-}
-.hero-intro__photo :is(picture, img),
 .hero-mosaic__panel > picture,
 .hero-mosaic__panel > picture img,
 .mtile--photo :is(picture, img) {
@@ -256,86 +243,6 @@
   height: 100%;
   object-fit: cover;
   object-position: var(--focus, 50% 50%);
-}
-/* a veil at the bottom, under the title */
-.hero-intro__photo::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(18, 26, 16, 0) 40%, rgba(18, 26, 16, 0.66) 100%);
-}
-.hero-intro__text {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: clamp(24px, 4vw, 56px);
-  text-align: center;
-  color: var(--color-on-overlay);
-}
-.hero-intro__text .kicker {
-  color: rgba(255, 255, 255, 0.85);
-}
-.blk--hero--intro h1 {
-  max-width: 18ch;
-  margin: 0;
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: clamp(2.5rem, 1rem + 5vw, 5.5rem);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: var(--color-on-overlay);
-  text-wrap: balance;
-}
-.hero-intro__text .hero__intro {
-  max-width: 52ch;
-  margin-top: var(--space-4);
-  font-size: var(--text-lg);
-  color: rgba(255, 255, 255, 0.9);
-}
-.hero-intro__text .hero__actions {
-  justify-content: center;
-}
-@keyframes intro-open {
-  0%,
-  18% {
-    clip-path: polygon(40% 34%, 61% 31%, 60% 63%, 39% 66%);
-  }
-  100% {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  }
-}
-@keyframes intro-zoom {
-  0%,
-  18% {
-    transform: scale(1.3);
-  }
-}
-@keyframes intro-fade {
-  from {
-    opacity: 0;
-  }
-}
-.js .hero-intro__photo {
-  animation: intro-open 1.7s cubic-bezier(0.65, 0, 0.25, 1) both;
-}
-.js .hero-intro__photo img {
-  animation: intro-zoom 1.7s cubic-bezier(0.65, 0, 0.25, 1) both;
-}
-.js .hero-intro__photo::after {
-  animation: intro-fade 0.6s ease 1.2s both;
-}
-.js .hero-intro__text > * {
-  animation: rise-in var(--duration-slow) var(--easing-standard) 1.35s both;
-}
-.js .hero-intro__text > h1 {
-  animation-delay: 1.45s;
-}
-.js .hero-intro__text > :is(.hero__intro, .hero__actions) {
-  animation-delay: 1.6s;
 }
 
 /* ---------- hero, layout "mosaic": the photo panel, then a row of tiles ----------
@@ -595,10 +502,6 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .js .hero-intro__photo,
-  .js .hero-intro__photo img,
-  .js .hero-intro__photo::after,
-  .js .hero-intro__text > *,
   .js .hero-mosaic__tiles > .mtile {
     animation: none !important;
   }
@@ -1027,6 +930,63 @@
 }
 .card .tile__link {
   margin-top: auto;
+}
+
+/* ---------- rows of cards: siblings share their row lines ----------
+   Cards side by side line up part by part (photo, label, title, text, link),
+   whatever the length of each text: every card spans the same rows of its
+   list (subgrid), and each part has a fixed row, so a missing part leaves
+   its row empty instead of shifting the others. The list's row gap becomes
+   the cards' bottom margin, so it never falls between the parts. */
+@supports (grid-template-rows: subgrid) {
+  .grid:has(> .tile, > .place),
+  .cards,
+  .articles {
+    row-gap: 0;
+  }
+  .grid > .tile,
+  .grid > .place,
+  .cards > .card,
+  .articles > .article-card {
+    display: grid;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+    align-content: start;
+  }
+  .grid > .tile {
+    grid-row: span 3;
+    margin-bottom: var(--space-3);
+  }
+  .tile > h3 { grid-row: 1; }
+  .tile > .prose { grid-row: 2; }
+  .tile > .tile__link { grid-row: 3; align-self: end; }
+
+  .grid > .place {
+    grid-row: span 4;
+    margin-bottom: var(--space-3);
+  }
+  .place > .place__alt { grid-row: 1; justify-self: start; align-self: start; }
+  .place > h3 { grid-row: 2; margin-bottom: var(--space-3); }
+  .place > .prose { grid-row: 3; }
+  .place > .place__season { grid-row: 4; justify-self: start; align-self: end; }
+
+  .cards > .card {
+    grid-row: span 4;
+    margin-bottom: var(--space-4);
+  }
+  .card > .frame { grid-row: 1; margin-bottom: calc(var(--space-2) + var(--space-3)); }
+  .card > h3 { grid-row: 2; margin-bottom: var(--space-3); }
+  .card > .prose { grid-row: 3; }
+  .card > .tile__link { grid-row: 4; align-self: end; padding-top: var(--space-3); }
+
+  .articles > .article-card {
+    grid-row: span 4;
+    margin-bottom: var(--space-5);
+  }
+  .article-card > .frame { grid-row: 1; }
+  .article-card > time { grid-row: 2; }
+  .article-card > h3 { grid-row: 3; }
+  .article-card > p { grid-row: 4; }
 }
 
 /* ---------- quote: .ea-citazione ---------- */

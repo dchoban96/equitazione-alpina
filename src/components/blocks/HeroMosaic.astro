@@ -17,12 +17,15 @@ interface Props {
 const { block: b, draft, ui } = Astro.props;
 const intro = await md(b.intro);
 const tiles = b.tiles ?? [];
+const videoSrc = b.video && import.meta.env.BASE_URL.replace(/\/$/, '') + b.video;
 ---
 
 <section class="blk blk--hero blk--hero--mosaic" id={b.anchor} data-altitude={b.altitude}>
   <div class="blk__in">
     <div class="hero-mosaic__panel">
       <Img src={b.image!} alt={b.imageAlt ?? ''} focus={b.focus} sizes="(min-width: 1320px) 1220px, 100vw" priority />
+      {/* started by the script in Hero.astro, which also renders this component */}
+      {videoSrc && <video class="hero__video" data-src={videoSrc} muted loop playsinline preload="none" aria-hidden="true" />}
       <div class="hero-mosaic__text hero-seq">
         <h1>
           <Fragment set:html={txt(b.title)} />

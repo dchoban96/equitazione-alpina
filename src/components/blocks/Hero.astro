@@ -1,10 +1,10 @@
 ---
 /* Page opening (ea-hero): coordinates line, H1, intro, closing line, footnote,
    optional photo with a data panel over it. The mountain ridges are drawn by
-   the layout on every page (site setting `ridges`). */
+   the layout on every page (site setting `ridges`). Layout "mosaic": see
+   HeroMosaic. */
 import type { Block } from '../../lib/content';
 import Img from '../Img.astro';
-import HeroIntro from './HeroIntro.astro';
 import HeroMosaic from './HeroMosaic.astro';
 import { txt, md } from '../../lib/text';
 
@@ -18,9 +18,7 @@ const intro = await md(b.intro);
 ---
 
 {
-  b.image && b.layout === 'intro' ? (
-    <HeroIntro block={b} draft={draft} ui={ui} />
-  ) : b.image && b.layout === 'mosaic' ? (
+  b.image && b.layout === 'mosaic' ? (
     <HeroMosaic block={b} draft={draft} ui={ui} />
   ) : (
 <section class:list={['blk blk--hero', { 'blk--hero--photo-first': b.image && b.panel }]} id={b.anchor} data-altitude={b.altitude}>
