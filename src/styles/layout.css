@@ -124,6 +124,25 @@
   color: inherit;
   text-decoration: none;
 }
+/* over a full-screen opening photo (html.on-cover, set by Hero.astro): no glass,
+   white words; the usual capsule comes back once the photo is scrolled past or
+   the menu opens. The drop-down lists keep their own glass and colours. */
+.on-cover .site-header:not(:has(.nav-drawer[open])) .site-header__bar::before {
+  border-color: transparent;
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+.on-cover .site-header:not(:has(.nav-drawer[open])) :is(.site-header__logo, .nav-desktop > ul > li > a, .nav-drawer > summary) {
+  color: var(--color-on-overlay);
+}
+.on-cover .site-header:not(:has(.nav-drawer[open])) :is(.nav-desktop > ul > li > a[aria-current], .nav-drawer > summary) {
+  background: rgba(255, 255, 255, 0.16);
+}
+.on-cover .site-header:not(:has(.nav-drawer[open])) .nav-desktop > ul > li > a:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
 .site-header__logo {
   display: inline-flex;
   align-items: center;
@@ -740,6 +759,13 @@
 }
 .altimeter[hidden] {
   display: none;
+}
+/* the gauge waits until the full-screen opening photo is scrolled past */
+.altimeter {
+  transition: opacity var(--duration-base) var(--easing-standard);
+}
+.on-cover .altimeter {
+  opacity: 0;
 }
 .altimeter__reading {
   font-size: 0.75rem;

@@ -1,21 +1,64 @@
 ---
 /* Page opening (ea-hero): coordinates line, H1, intro, closing line, footnote,
    optional photo with a data panel over it. The mountain ridges are drawn by
-   the layout on every page (site setting `ridges`). */
-import type { Block } from '../../lib/content';
+   the layout on every page (site setting `ridges`).
+   layout "cover": the photo fills the screen and everything sits on it, the
+   breadcrumb included (the layout leaves it out); the panel becomes the
+   figures beside the text, and `actions` the buttons under it. */
+import type { Block, Crumb } from '../../lib/content';
+import { url } from '../../lib/content';
 import Img from '../Img.astro';
+import Breadcrumb from '../Breadcrumb.astro';
 import { txt, md } from '../../lib/text';
 
 interface Props {
   block: Extract<Block, { type: 'hero' }>;
   draft: boolean;
   ui: Record<string, string>;
+  crumbs?: Crumb[];
 }
-const { block: b, draft, ui } = Astro.props;
+const { block: b, draft, ui, crumbs = [] } = Astro.props;
 const intro = await md(b.intro);
+const cover = b.layout === 'cover' && Boolean(b.image);
+const videoSrc = b.video && import.meta.env.BASE_URL.replace(/\/$/, '') + b.video;
 ---
 
-{/* A hero with the readings panel (the home page) opens with the photo; the H1 stays first in the markup. */}
+{
+  cover ? (
+    <section class="blk blk--hero blk--hero--cover" id={b.anchor} data-altitude={b.altitude} data-cover>
+      <div class="hero__bg">
+        <Img src={b.image!} alt={b.imageAlt ?? ''} focus={b.focus} sizes="100vw" priority />
+        {videoSrc && <video class="hero__video" data-src={videoSrc} muted loop playsinline preload="none" aria-hidden="true" />}
+      </div>
+      <div class="blk__in">
+        <div class="hero-seq">
+          {crumbs.length > 1 ? <Breadcrumb crumbs={crumbs} label={ui.breadcrumbLabel} /> : b.kicker && <p class="kicker" set:html={txt(b.kicker)} />}
+          <h1>
+            <Fragment set:html={txt(b.title)} />
+            {draft && <span class="draft-badge">{ui.draftBadge}</span>}
+          </h1>
+          {intro && <div class="hero__intro prose" set:html={intro} />}
+          {b.actions?.length ? (
+            <p class="hero__actions">
+              {b.actions.map((a, i) => (
+                <a class:list={['btn', { 'btn--ghost': i > 0 }]} href={url(a.link)} set:html={txt(a.label)} />
+              ))}
+            </p>
+          ) : null}
+        </div>
+        {b.panel?.length ? (
+          <dl class="hero__figures">
+            {b.panel.map((r) => (
+              <div>
+                <dt set:html={txt(r.label)} />
+                <dd set:html={txt(r.value)} />
+              </div>
+            ))}
+          </dl>
+        ) : null}
+      </div>
+    </section>
+  ) : (
 <section class:list={['blk blk--hero', { 'blk--hero--photo-first': b.image && b.panel }]} id={b.anchor} data-altitude={b.altitude}>
   <div class="blk__in">
     <div class="hero-seq">
@@ -64,6 +107,8 @@ const intro = await md(b.intro);
     }
   </div>
 </section>
+  )
+}
 
 <script>
   /* The hero clip loads only when motion is welcome and data is not being
@@ -77,5 +122,18 @@ const intro = await md(b.intro);
       v.autoplay = true;
       v.src = v.dataset.src!;
     });
+  }
+
+  /* Full-screen opening: while it is under the header, <html> gets `on-cover`
+     (white header, no altimeter); scrolling past it brings the usual look back. */
+  const cover = document.querySelector<HTMLElement>('[data-cover]');
+  if (cover) {
+    const update = () => {
+      const header = document.querySelector<HTMLElement>('[data-header]')?.getBoundingClientRect().bottom ?? 80;
+      document.documentElement.classList.toggle('on-cover', cover.getBoundingClientRect().bottom > header);
+    };
+    update();
+    addEventListener('scroll', update, { passive: true });
+    addEventListener('resize', update);
   }
 </script>
