@@ -55,6 +55,7 @@ blocks:
         text: "Mantello interamente nero, con tartufo nero."
         image: "@assets/foto/pastore-della-lessinia-e-del-lagorai-nero-profilo.jpg"
         alt: "Pastore della Lessinia e del Lagorai dal mantello nero, di profilo"
+        focus: 77% 57%
       - title: "Marrone"
         text: "Nelle varie tonalità, dalle più scure alle più chiare: da cannella a castagna. Nei mantelli marroni il tartufo è marrone-fegato."
         image: "@assets/foto/cane-fulvo-profilo.jpg"
