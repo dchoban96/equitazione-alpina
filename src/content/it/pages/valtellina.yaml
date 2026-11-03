@@ -9,7 +9,7 @@ nav:
 seo:
   title: "Guida alla Valtellina · Sondrio, Orobie, Valmalenco"
   description: "Una guida alla Valtellina scritta da chi ci vive: Sondrio, Albosaggia e le Orobie, la Valmalenco, la storia, la cucina e cosa fare in ogni stagione."
-  image: "@assets/foto/mockup-valle-sondrio.jpg"
+  image: "@assets/foto/condivisione-img-6930.jpg"
 blocks:
   - type: "hero"
     kicker: "Guida"
