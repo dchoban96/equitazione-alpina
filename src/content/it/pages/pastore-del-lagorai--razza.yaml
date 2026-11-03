@@ -45,6 +45,7 @@ blocks:
     image: "@assets/foto/pastore-della-lessinia-e-del-lagorai-nero-profilo.jpg"
     alt: "Un Pastore della Lessinia e del Lagorai nero di profilo sul prato, davanti a una staccionata di legno"
     side: "right"
+    focus: 75% 28%
   - type: "cards"
     anchor: "colorazioni"
     kicker: "Il mantello"
