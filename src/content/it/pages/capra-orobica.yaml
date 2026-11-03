@@ -15,7 +15,7 @@ blocks:
     kicker: "Capra Orobica"
     title: "Capra Orobica, una razza delle nostre montagne"
     intro: |
-      Sul versante orobico, accanto ai cavalli, pascolano le nostre capre. Sono Orobiche: una razza di queste montagne, con le corna lunghe e ritorte e il pelo lungo, che un tempo ogni famiglia della zona allevava e che oggi è rimasta a pochi.
+      Sul versante orobico, accanto ai cavalli, pascolano le nostre capre. Sono Orobiche, una razza originaria di queste montagne, caratterizzata da corna lunghe, ritorte e dal pelo lungo. Un tempo ogni famiglia della zona le allevava; oggi, invece, sono allevate da pochi.
     image: "@assets/foto/capra-orobica-con-capretto-nel-bosco.jpg"
     imageAlt: "Una Capra Orobica bianca con il campanaccio e il suo capretto, nel bosco"
   - type: "text-image"

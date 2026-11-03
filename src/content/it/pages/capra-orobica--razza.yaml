@@ -15,7 +15,7 @@ blocks:
     kicker: "La razza"
     title: "La Capra Orobica: razza e caratteristiche"
     intro: |
-      La Capra Orobica, detta anche di Val Gerola, è la capra delle Alpi Orobie. Di taglia media, si riconosce da lontano: corna molto lunghe, appiattite e leggermente ritorte, presenti anche nelle femmine, e un mantello di pelo lungo. La sua origine non è documentata con certezza; l'ipotesi più accreditata è che venga proprio dalla Val Gerola, in provincia di Sondrio, dove l'isolamento l'ha resa diversa dalle altre capre.
+      La Capra Orobica, detta anche di Val Gerola, è la capra delle Alpi Orobie. Di taglia media, la Capra Orobica si distingue per il mantello lungo e le corna molto lunghe, appiattite e leggermente ritorte, presenti anche nelle femmine. La sua origine non è documentata con certezza: secondo l’ipotesi più accreditata, proviene dalla Val Gerola, in provincia di Sondrio, dove l’isolamento ha contribuito a distinguerla dalle altre razze caprine.
     image: "@assets/foto/capra-orobica-muso-nero.jpg"
     imageAlt: "Una Capra Orobica dal muso nero e dalle corna lunghe tra le foglie secche"
   - type: "facts"
